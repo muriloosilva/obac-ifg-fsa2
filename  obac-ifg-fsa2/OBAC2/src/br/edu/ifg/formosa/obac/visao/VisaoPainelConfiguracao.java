@@ -16,6 +16,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 
+import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeMascaraNumeria;
 
 public class VisaoPainelConfiguracao extends JPanel{
@@ -77,11 +78,17 @@ public class VisaoPainelConfiguracao extends JPanel{
 		private LineBorder bordaCT = null;
 	//Formata numero digitado - Formatação para os números nas Caixas de Texto
 		private DefaultFormatterFactory fnd = null;
+		
+	//Modelo painel de configuração
+		private ModeloPainelConfiguracao mpc = null;
 	
-	public VisaoPainelConfiguracao() {
+	public VisaoPainelConfiguracao(ModeloPainelConfiguracao mpc) {
 		super(null);
 		this.setSize(250, 600);
 		this.setBackground(Color.DARK_GRAY);
+		
+		//Modelo painel de configuração
+			this.mpc = mpc;
 		
 		//Fonte da maioria dos textos
 			fonte = new Font("Arial", Font.BOLD, 13);
@@ -131,15 +138,14 @@ public class VisaoPainelConfiguracao extends JPanel{
 				pPropulsao.setBounds(10, 50, 230, 110);
 			this.add(pPropulsao);
 		//Caixas de seleção
-			String [] propulsoes = {"Canhão", "Mola"};
-			csPropulsao = new JComboBox<>(propulsoes);
+			csPropulsao = new JComboBox<>(mpc.getPropulsoes());
 				csPropulsao.setBounds(10, 5, 210, 20);
 				csPropulsao.setFont(fonte);
 			pPropulsao.add(csPropulsao);
 		//Rótulos
 		//Dado 1
 			//Rótulo
-			rPropulsaoDado1 = new JLabel("Dado 1");
+			rPropulsaoDado1 = new JLabel(mpc.getDado1Canhao());
 				configRotulos(rPropulsaoDado1, 10, 25, 210, 20);
 			pPropulsao.add(rPropulsaoDado1);
 			//Caixas de Texto
@@ -148,7 +154,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 			pPropulsao.add(ctPropulsaoDado1);
 		//Dado 2
 			//Rótulo
-			rPropulsaoDado2 = new JLabel("Dado 2");
+			rPropulsaoDado2 = new JLabel(mpc.getDado2Canhao());
 				configRotulos(rPropulsaoDado2, 10, 65, 210, 20);
 			pPropulsao.add(rPropulsaoDado2);
 			//Caixas de Texto
@@ -174,8 +180,8 @@ public class VisaoPainelConfiguracao extends JPanel{
 				configRotulos(rAmbienteDadoSimulacao, 10, 0, 210, 20);
 			pAmbiente.add(rAmbienteDadoSimulacao);
 			//Caixa de Seleção
-			String [] simulacoes = {"Plano", "Subida", "Decida", "Plano e Precipício", "Queda Livre", "Lançamento Oblíquo"};
-			csAmbienteSimulacao = new JComboBox<>(simulacoes);
+			csAmbienteSimulacao = new JComboBox<>(mpc.getSimulacoesPadrao());
+				csAmbienteSimulacao.insertItemAt(mpc.getLancamentoObliquo(), 5);
 				csAmbienteSimulacao.setBounds(10, 20, 210, 20);
 				csAmbienteSimulacao.setFont(fonte);
 			pAmbiente.add(csAmbienteSimulacao);
@@ -185,8 +191,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 				configRotulos(rAmbienteDadoAtrito, 10, 40, 210, 20);
 			pAmbiente.add(rAmbienteDadoAtrito);
 			//Caixa de Seleção
-			String [] atritos = {"Asfalto", "Alumínio", "Madeira"};
-			csAmbienteAtrito = new JComboBox<>(atritos);
+			csAmbienteAtrito = new JComboBox<>(mpc.getAtritos());
 				csAmbienteAtrito.setBounds(10, 60, 210, 20);
 				csAmbienteAtrito.setFont(fonte);
 			pAmbiente.add(csAmbienteAtrito);
@@ -196,8 +201,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 				configRotulos(rAmbienteDadoGravidade, 10, 80, 210, 20);
 			pAmbiente.add(rAmbienteDadoGravidade);
 			//Caixa de Seleção
-			String [] gravidade = {"Terra", "Lua", "Marte"};
-			csAmbienteGravidade = new JComboBox<>(gravidade);
+			csAmbienteGravidade = new JComboBox<>(mpc.getGravidade());
 				csAmbienteGravidade.setBounds(10, 100, 210, 20);
 				csAmbienteGravidade.setFont(fonte);
 			pAmbiente.add(csAmbienteGravidade);

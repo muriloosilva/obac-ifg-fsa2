@@ -7,33 +7,32 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 
 public class ControlePainelConfiguracaoAtualizacoes {
 	
-	public ControlePainelConfiguracaoAtualizacoes(final VisaoPainelConfiguracao vpc) {
+	public ControlePainelConfiguracaoAtualizacoes(final VisaoPainelConfiguracao vpc, final ModeloPainelConfiguracao mpc) {
 		
 		//Mudança nos rótulos de dados da propulsão e nas simulações disponíveis
 		vpc.getCsPropulsao().addActionListener(new ActionListener() {
-			private String canhao = "Canhão";
-			private String mola = "Mola";
-			private String dado1Canhao = "Ângulo (°)"; 
-			private String dado2Canhao = "Energia (J)";
-			private String dado1Mola = "Tamaho da Mola(m)";
-			private String dado2Mola = "Constante Elástica (N/m)";
+			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(vpc.getCsPropulsao().getSelectedItem().equals(canhao)){
+				if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getCanhao())){
 					//Rótulos
-					vpc.getrPropulsaoDado1().setText(dado1Canhao);
-					vpc.getrPropulsaoDado2().setText(dado2Canhao);
+					vpc.getrPropulsaoDado1().setText(mpc.getDado1Canhao());
+					vpc.getrPropulsaoDado2().setText(mpc.getDado2Canhao());
 					//Caixa de seleção das simulações
+					vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), 5);
 				}
-				else if(vpc.getCsPropulsao().getSelectedItem().equals(mola)){
+				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getMola())){
 					//Rótulos
-					vpc.getrPropulsaoDado1().setText(dado1Mola);
-					vpc.getrPropulsaoDado2().setText(dado2Mola);
+					vpc.getrPropulsaoDado1().setText(mpc.getDado1Mola());
+					vpc.getrPropulsaoDado2().setText(mpc.getDado2Mola());
 					//Caixa de seleção das simulações
+					if(vpc.getCsAmbienteSimulacao().getItemCount()==6)
+						vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo 
 				}
 				else{
 					JOptionPane.showMessageDialog(null,
