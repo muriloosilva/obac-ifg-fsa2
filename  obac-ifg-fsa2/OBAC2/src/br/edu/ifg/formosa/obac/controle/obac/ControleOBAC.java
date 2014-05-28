@@ -20,6 +20,11 @@ public class ControleOBAC {
 		private VisaoPainelConfiguracao vpc = null;
 	//Painel de Informações
 		private VisaoPainelInformacao vpi = null;
+		
+	//Painel da Superfície
+	//Painel do Objeto
+	//Painel da Escala
+	//Painel de Simulação
 	
 	public ControleOBAC(OBAC obac) {
 		
@@ -40,7 +45,7 @@ public class ControleOBAC {
 		new ControlePainelConfiguracaoAtualizacoes(vpc, mpc);
 		
 		
-		//Painel de Configurações
+		//Painel de Informações
 		vpi = new VisaoPainelInformacao();
 		painelPrincipal.add(vpi);
 		
