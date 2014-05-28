@@ -82,6 +82,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 	//Modelo painel de configuração
 		private ModeloPainelConfiguracao mpc = null;
 	
+	//Construtor
 	public VisaoPainelConfiguracao(ModeloPainelConfiguracao mpc) {
 		super(null);
 		this.setSize(250, 600);

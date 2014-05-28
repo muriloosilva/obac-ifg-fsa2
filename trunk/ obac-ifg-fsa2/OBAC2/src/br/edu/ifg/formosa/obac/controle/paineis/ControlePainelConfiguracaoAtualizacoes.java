@@ -48,7 +48,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			public void stateChanged(ChangeEvent arg0) {
 				vpc.getrObjetoAtualCoefRest().setText(""+(vpc.getdObjetoCoeficienteRestituicao().getValue()/100.0));
 				//O valor do Deslizante (JSlider) é pego e dividido por 100
-				//Em seguida é passado para um rótulo (JLabel), afim do usuário saber o valor que a simulação usará
+				//Em seguida é passado para um rótulo (JLabel), a fim do usuário saber o valor que a simulação usará
 			}
 		});
 	}
