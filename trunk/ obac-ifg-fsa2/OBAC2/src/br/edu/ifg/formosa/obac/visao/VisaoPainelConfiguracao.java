@@ -114,7 +114,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 		
 		//Botões de ações
 			//Inicia/Pausa
-			baIniciaPausar = new JButton("Iniciar Simulação");
+			baIniciaPausar = new JButton(mpc.getBotaoIniciar());
 				baIniciaPausar.setFont(fonte);
 				baIniciaPausar.setBounds(30, 535, 190, 20);
 			this.add(baIniciaPausar);
@@ -182,7 +182,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 			pAmbiente.add(rAmbienteDadoSimulacao);
 			//Caixa de Seleção
 			csAmbienteSimulacao = new JComboBox<>(mpc.getSimulacoesPadrao());
-				csAmbienteSimulacao.insertItemAt(mpc.getLancamentoObliquo(), 5);
+				csAmbienteSimulacao.insertItemAt(mpc.getLancamentoObliquo(), csAmbienteSimulacao.getItemCount());
 				csAmbienteSimulacao.setBounds(10, 20, 210, 20);
 				csAmbienteSimulacao.setFont(fonte);
 			pAmbiente.add(csAmbienteSimulacao);
