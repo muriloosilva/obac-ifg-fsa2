@@ -4,7 +4,9 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoAtualizacoes;
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecucao;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
@@ -43,6 +45,8 @@ public class ControleOBAC {
 		
 		//Controles do Painel de Configuração
 		new ControlePainelConfiguracaoAtualizacoes(vpc, mpc);
+		new ControlePainelConfiguracaoEntradaDeDados(vpc);
+		new ControlePainelConfiguracaoExecucao(vpc, mpc);
 		
 		
 		//Painel de Informações
