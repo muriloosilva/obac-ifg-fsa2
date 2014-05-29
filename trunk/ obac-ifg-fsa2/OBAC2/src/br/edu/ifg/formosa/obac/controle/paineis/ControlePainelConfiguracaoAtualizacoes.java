@@ -13,10 +13,8 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 public class ControlePainelConfiguracaoAtualizacoes {
 	
 	public ControlePainelConfiguracaoAtualizacoes(final VisaoPainelConfiguracao vpc, final ModeloPainelConfiguracao mpc) {
-		
 		//Mudança nos rótulos de dados da propulsão e nas simulações disponíveis
 		vpc.getCsPropulsao().addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getCanhao())){
@@ -24,14 +22,15 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vpc.getrPropulsaoDado1().setText(mpc.getDado1Canhao());
 					vpc.getrPropulsaoDado2().setText(mpc.getDado2Canhao());
 					//Caixa de seleção das simulações
-					vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), 5);
+					if(vpc.getCsAmbienteSimulacao().getItemCount()==5)//Teste lógico para que adicione apenas uma vez
+						vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), vpc.getCsAmbienteSimulacao().getItemCount());
 				}
 				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getMola())){
 					//Rótulos
 					vpc.getrPropulsaoDado1().setText(mpc.getDado1Mola());
 					vpc.getrPropulsaoDado2().setText(mpc.getDado2Mola());
 					//Caixa de seleção das simulações
-					if(vpc.getCsAmbienteSimulacao().getItemCount()==6)
+					if(vpc.getCsAmbienteSimulacao().getItemCount()==6)//Teste lógico para não remover uma linha desnecessária
 						vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo 
 				}
 				else{
