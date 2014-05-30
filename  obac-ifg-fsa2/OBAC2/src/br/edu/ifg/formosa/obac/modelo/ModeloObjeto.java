@@ -6,6 +6,23 @@ public class ModeloObjeto {
 	public static final double altura = 10; //Os valores de alt e larg sao para inicializar as variaveis
 	public static final double largura = 10;
 	
+	public final double posXPlano = 0; //As 12 variaveis que se seguem orientam a posicao inical do objeto em pixels nas diferetes simulacoes. Valores devem ser preenchidos corretamete
+	public final double posYPlano = 0;
+	
+	public final double posXSubida = 0;
+	public final double posYSubida = 0;
+	
+	public final double posXDescida = 0;
+	public final double posYDescida = 0;
+	
+	public final double posXPrecipicio = 0;
+	public final double posYPrecipicio = 0;
+	
+	public final double posXQueda = 0;
+	public final double posYQueda = 0;
+	
+	public final double posXLancamento = 0;
+	public final double posYLancamento = 0;
 	//Variaveis
 	//--Double	
 	private double massa;
@@ -17,10 +34,10 @@ public class ModeloObjeto {
 	private double aceleracao;
 	private double aceleracaoY;
 	
-	private double posicaoX;
-	private double posicaoY;
+	private double posicaoX = 0;	//Posicao em Metros
+	private double posicaoY = 0;
 	
-	private double posicaoXPx;
+	private double posicaoXPx; //Posicao em Pixels
 	private double posicaoYPx;
 	
 	

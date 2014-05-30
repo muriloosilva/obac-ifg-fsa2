@@ -5,6 +5,7 @@ public class ModeloEscala {
 	//--String
 	private String[] valorMarcadores = new String[4];
 	private String valorMarcadorInicial = "0";
+	
 	//--Int
 	private int[] posXInicioMarcadores = new int[4];
 	private int[] posYInicioMarcadores = new int[4];
@@ -15,10 +16,7 @@ public class ModeloEscala {
 	private int posYMarcadorInicial = 0;
 	
 	//Getters
-	public String[] getValorMarcadores(){
-		return this.valorMarcadores;
-	}
-	public String getValorMarcadorInicial(){
-		return this.valorMarcadorInicial;
-	}
+	public String[] getValorMarcadores() {return this.valorMarcadores;}
+	public String getValorMarcadorInicial() {return this.valorMarcadorInicial;}
+	
 }
