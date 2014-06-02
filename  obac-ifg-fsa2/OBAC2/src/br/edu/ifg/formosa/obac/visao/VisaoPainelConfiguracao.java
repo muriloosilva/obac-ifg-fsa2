@@ -101,10 +101,6 @@ public class VisaoPainelConfiguracao extends JPanel{
 		fnd = new DefaultFormatterFactory(new NumberFormatter(new DecimalFormat("###0.##")));
 		
 		//Título do painel principal
-		rTituloConfiguracao = new JLabel("Configuração");
-			configRotulos(rTituloConfiguracao, 10, 5, 230, 15);
-			rTituloConfiguracao.setFont(new Font("Arial", Font.BOLD, 16));
-		this.add(rTituloConfiguracao);
 			
 		//Configuração dos paineis internos
 		configPainelPropulsao();
@@ -116,12 +112,12 @@ public class VisaoPainelConfiguracao extends JPanel{
 			//Inicia/Pausa
 			baIniciaPausar = new JButton(mpc.getBotaoIniciar());
 				baIniciaPausar.setFont(fonte);
-				baIniciaPausar.setBounds(30, 535, 190, 20);
+				baIniciaPausar.setBounds(30, 510, 190, 20);
 			this.add(baIniciaPausar);
 			//Nova simulação
 			baNovaSimulacao = new JButton("Nova Simulação");
 				baNovaSimulacao.setFont(fonte);
-				baNovaSimulacao.setBounds(30, 560, 190, 20);
+				baNovaSimulacao.setBounds(30, 535, 190, 20);
 			this.add(baNovaSimulacao);
 		
 		this.repaint();
@@ -131,12 +127,12 @@ public class VisaoPainelConfiguracao extends JPanel{
 	private void configPainelPropulsao(){
 		//Título
 			rTituloPropulsao = new JLabel("Propulsão");
-				configRotulos(rTituloPropulsao, 10, 30, 230, 20);
+				configRotulos(rTituloPropulsao, 10, 5, 230, 20);
 			this.add(rTituloPropulsao);
 		//Painel
 			pPropulsao = new JPanel(null);
 				pPropulsao.setBackground(Color.GRAY);
-				pPropulsao.setBounds(10, 50, 230, 110);
+				pPropulsao.setBounds(10, 25, 230, 110);
 			this.add(pPropulsao);
 		//Caixas de seleção
 			csPropulsao = new JComboBox<>(mpc.getPropulsoes());
@@ -168,12 +164,12 @@ public class VisaoPainelConfiguracao extends JPanel{
 	private void configPainelAmbiente(){
 		//Título
 			rTituloAmbiente = new JLabel("Ambiente");
-				configRotulos(rTituloAmbiente, 10, 170, 230, 20);
+				configRotulos(rTituloAmbiente, 10, 145, 230, 20);
 			this.add(rTituloAmbiente);
 		//Painel
 			pAmbiente = new JPanel(null);
 				pAmbiente.setBackground(Color.GRAY);
-				pAmbiente.setBounds(10, 190, 230, 125);
+				pAmbiente.setBounds(10, 165, 230, 125);
 			this.add(pAmbiente);
 		//Simulação
 			//Rótulo
@@ -212,12 +208,12 @@ public class VisaoPainelConfiguracao extends JPanel{
 	private void configPainelObjeto(){
 		//Título
 			rTituloObjeto = new JLabel("Objeto");
-				configRotulos(rTituloObjeto, 10, 325, 230, 20);
+				configRotulos(rTituloObjeto, 10, 300, 230, 20);
 			this.add(rTituloObjeto);
 		//Painel
 			pObjeto = new JPanel(null);
 				pObjeto.setBackground(Color.GRAY);
-				pObjeto.setBounds(10, 345, 230, 100);
+				pObjeto.setBounds(10, 320, 230, 100);
 			this.add(pObjeto);
 		//Massa
 			//Rótulo
@@ -255,12 +251,12 @@ public class VisaoPainelConfiguracao extends JPanel{
 	private void configPainelColisao(){
 		//Título
 			rTituloColisao = new JLabel("Colisão");
-				configRotulos(rTituloColisao, 10, 455, 230, 20);
+				configRotulos(rTituloColisao, 10, 430, 230, 20);
 			this.add(rTituloColisao);
 		//Painel
 			pObstaculo = new JPanel(null);
 				pObstaculo.setBackground(Color.GRAY);
-				pObstaculo.setBounds(10, 475, 230, 45);
+				pObstaculo.setBounds(10, 450, 230, 45);
 			this.add(pObstaculo);
 		//Rótulo
 			rColisaoObstaculo = new JLabel("Deseja colocar um obstaculo?");
@@ -279,6 +275,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 				boColisaoNao.setFont(fonte);
 				boColisaoNao.setForeground(Color.WHITE);
 				boColisaoNao.setBackground(Color.GRAY);
+				boColisaoNao.setSelected(true);
 				boColisaoNao.setBounds(105, 20, 105, 20);
 			pObstaculo.add(boColisaoNao);
 		//Grupo de Botões
