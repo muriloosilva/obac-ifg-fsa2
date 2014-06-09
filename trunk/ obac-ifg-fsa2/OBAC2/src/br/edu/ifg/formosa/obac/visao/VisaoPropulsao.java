@@ -17,6 +17,7 @@ public class VisaoPropulsao extends JPanel {
 		super(null);
 		
 		this.setSize(750, 600);
+		this.setOpaque(true);
 	}
 	
 	//--Paint

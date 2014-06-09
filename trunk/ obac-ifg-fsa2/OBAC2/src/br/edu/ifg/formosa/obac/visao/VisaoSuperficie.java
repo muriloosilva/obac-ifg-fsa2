@@ -17,6 +17,7 @@ public class VisaoSuperficie extends JPanel {
 		super(null);
 		
 		this.setSize(750, 600);
+		this.setOpaque(true);
 	}
 	
 	//--Paint
@@ -24,6 +25,9 @@ public class VisaoSuperficie extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		
 		g2d.setColor(Color.white);
+		g2d.fillRect(0, 0, 750, 600); //Fundo branco provisorio
+		
+		g2d.setColor(Color.lightGray);
 		g2d.fillRect(80, 80, 300, 200);
 		
 		g2d.setColor(Color.black);
