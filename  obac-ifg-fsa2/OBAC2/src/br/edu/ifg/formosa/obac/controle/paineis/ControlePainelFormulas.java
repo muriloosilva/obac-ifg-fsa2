@@ -3,7 +3,6 @@ package br.edu.ifg.formosa.obac.controle.paineis;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloSuperficie;
-import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ControlePainelFormulas {
 	
