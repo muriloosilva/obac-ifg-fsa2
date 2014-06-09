@@ -8,7 +8,6 @@ import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
@@ -91,8 +90,7 @@ public class VisaoPainelFormulas extends JScrollPane{
 		
 		//Velocidade Inicial
 		rVInicial = new JLabel("Velocidade Inicial");//Rótulo
-			rVInicial.setToolTipText(ModeloFormulas.propMolaTextual);//Ebibe texto com a fórmula no Rótulo
-		atVInicial = new JTextArea(ModeloFormulas.propMola);//Área de Texto
+		atVInicial = new JTextArea(ModeloFormulas.propCanhao);//Área de Texto
 		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro);
 		
 		
@@ -166,5 +164,42 @@ public class VisaoPainelFormulas extends JScrollPane{
 			pr.setPreferredSize(new Dimension(220, 80));//Define as proporções máximas do Painel de Rolagem
 		p.add(pr, BorderLayout.CENTER);
 	}
+	
+//Getters____________________________________________________________
+	public JTextArea getAtVInicial() {
+		return atVInicial;
+	}
 
+	public JTextArea getAtFNormal() {
+		return atFNormal;
+	}
+
+	public JTextArea getAtAtrito() {
+		return atAtrito;
+	}
+
+	public JTextArea getAtAceleracao() {
+		return atAceleracao;
+	}
+
+	public JTextArea getAtPosFinal() {
+		return atPosFinal;
+	}
+
+	public JTextArea getAtTempo() {
+		return atTempo;
+	}
+
+	public JTextArea getAtNovaPos() {
+		return atNovaPos;
+	}
+
+	public JTextArea getAtColisao() {
+		return atColisao;
+	}
+
+	public JTextArea getAtNovaPosColisao() {
+		return atNovaPosColisao;
+	}
+	
 }
