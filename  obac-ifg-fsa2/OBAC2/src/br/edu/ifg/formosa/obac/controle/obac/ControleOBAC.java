@@ -5,17 +5,16 @@ import java.awt.Font;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.border.LineBorder;
 
-import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoAtualizacoes;
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecucao;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
 public class ControleOBAC {
 	
@@ -31,11 +30,8 @@ public class ControleOBAC {
 		private VisaoPainelInformacao vpi = null;
 	//Painel de Fórmulas
 		private VisaoPainelFormulas vpf = null;
-		
-	//Painel da Superfície
-	//Painel do Objeto
-	//Painel da Escala
 	//Painel de Simulação
+		private VisaoPainelSimulacao vPS = null;
 	
 	public ControleOBAC(OBAC obac) {
 		
@@ -74,6 +70,10 @@ public class ControleOBAC {
 		//Painel de Informações
 		vpi = new VisaoPainelInformacao();
 		painelPrincipal.add(vpi);
+		
+		//Painel de Simulação
+		vPS = new VisaoPainelSimulacao();
+		painelPrincipal.add(vPS);
 		
 		//Repintar Applet
 		obac.repaint();

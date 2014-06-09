@@ -6,13 +6,14 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-public class VisaoEscala extends JPanel{
+public class VisaoPropulsao extends JPanel {
 	//Constantes
 	//--Long
 	private static final long serialVersionUID = 1L;
 	
 	//Metodos
-	public VisaoEscala() {
+	//--Construtor
+	public VisaoPropulsao() {
 		super(null);
 		
 		this.setSize(750, 600);
@@ -22,10 +23,10 @@ public class VisaoEscala extends JPanel{
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		g2d.setColor(Color.green);
-		g2d.fillRect(200, 200, 300, 200);
+		g2d.setColor(Color.red);
+		g2d.fillRect(160, 160, 300, 200);
 		
 		g2d.setColor(Color.black);
-		g2d.drawString("Este retangulo pertence a escala", 200, 210);
+		g2d.drawString("Este retangulo pertence a propulsao", 160, 170);
 	}
 }
