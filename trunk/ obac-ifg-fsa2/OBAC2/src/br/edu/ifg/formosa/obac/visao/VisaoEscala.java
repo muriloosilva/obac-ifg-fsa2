@@ -20,6 +20,7 @@ public class VisaoEscala extends JPanel{
 	private ModeloEscala mE = null;
 	
 	//Metodos
+	//--Construtor #01
 	public VisaoEscala() {
 		super(null);		
 		this.setSize(750, 600);
@@ -28,10 +29,9 @@ public class VisaoEscala extends JPanel{
 		mE = new ModeloEscala();		
 	}
 	
-	//Plano - Tipo de Simulacao(0); Inicio em X; Fim em X; Inicio em Y; Fim em Y;
-	public VisaoEscala(int zero, int eIX, int eFX, int eIY, int eFY) {
+	//--Construtor #02 - Inicio em X; Fim em X; Inicio em Y; Fim em Y; Quantidade de marcadores desejados
+	public VisaoEscala(int eIX, int eFX, int eIY, int eFY, int qMarcadores) {
 		this();
-		mE.setTipoSimulacao(zero);
 		
 		mE.setEscalaInicioX(eIX);
 		mE.setEscalaFimX(eFX);
@@ -39,7 +39,9 @@ public class VisaoEscala extends JPanel{
 		mE.setEscalaInicioY(eIY);
 		mE.setEscalaFimY(eFY);
 		
-		mE.setMetadeEscala(ControleEscala.retornaMetade(eIX, eFX));
+		mE.setQtdMarcadores(qMarcadores);
+		
+		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(eIX, eFX, qMarcadores));
 	}
 	
 	//--Paint
@@ -47,17 +49,16 @@ public class VisaoEscala extends JPanel{
 		Graphics2D g2d = (Graphics2D) g;
 		
 		g2d.setColor(Color.black);
+		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimX(), mE.getEscalaFimY());
 		
-		switch (mE.getTipoSimulacao()) {
-			case 0: //Plano
-				g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimX(), mE.getEscalaFimY());
-				
-				g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 10);
-				g2d.drawLine(mE.getMetadeEscala(), mE.getEscalaInicioY(), mE.getMetadeEscala(), mE.getEscalaInicioY() + 5);
-				g2d.drawLine(mE.getEscalaFimX(), mE.getEscalaInicioY(), mE.getEscalaFimX(), mE.getEscalaInicioY() + 10);
-				break;
-			default:
-				break;
+		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 15);
+		g2d.drawLine(mE.getEscalaFimX(), mE.getEscalaFimY(), mE.getEscalaFimX(), mE.getEscalaFimY() + 15);
+		
+		//for -> desenha os marcadores
+		for (int i=1;i<=mE.getQtdMarcadores();i++) {
+			int auxiliar = mE.getEscalaInicioX() + (i * mE.getEspacamentoMarcadores());
+			
+			g2d.drawLine(auxiliar, mE.getEscalaInicioY(), auxiliar, mE.getEscalaInicioY() + 8);
 		}
 	}
 }
