@@ -1,5 +1,8 @@
 package br.edu.ifg.formosa.obac.visao;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 import javax.swing.JPanel;
 
 public class VisaoPainelSimulacao extends JPanel {
@@ -24,11 +27,12 @@ public class VisaoPainelSimulacao extends JPanel {
 		
 		this.setSize(750, 600);
 		this.setLocation(250, 0);
+		this.setBackground(Color.white);
 		
 		vS = new VisaoSuperficie();
 		vO = new VisaoObjeto();
 		vP = new VisaoPropulsao();
-		vE = new VisaoEscala();
+		vE = new VisaoEscala(0, 80, 699, 564, 564);
 		
 		this.add(vE);
 		this.add(vP);
