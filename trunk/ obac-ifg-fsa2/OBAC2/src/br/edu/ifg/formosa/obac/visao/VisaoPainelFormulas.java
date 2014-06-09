@@ -91,56 +91,56 @@ public class VisaoPainelFormulas extends JScrollPane{
 		//Velocidade Inicial
 		rVInicial = new JLabel("Velocidade Inicial");//Rótulo
 		atVInicial = new JTextArea(ModeloFormulas.propCanhao);//Área de Texto
-		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro);
+		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro, 5);
 		
 		
 		//Força Normal
 		rFNormal = new JLabel("Força Normal");
 		atFNormal = new JTextArea(ModeloFormulas.forcaNormal);
-		addComponentes(pFNormal, rFNormal, prFNormal, atFNormal, UtilidadeCores.azulIndigo, UtilidadeCores.amareloKhaki);
+		addComponentes(pFNormal, rFNormal, prFNormal, atFNormal, UtilidadeCores.azulIndigo, UtilidadeCores.amareloKhaki, 3);
 		
 		//Atrito
 		rAtrito = new JLabel("Atrito");
 		atAtrito = new JTextArea(ModeloFormulas.atrito);
-		addComponentes(pAtrito, rAtrito, prAtrito, atAtrito, UtilidadeCores.azulEscuro, UtilidadeCores.amarelo);
+		addComponentes(pAtrito, rAtrito, prAtrito, atAtrito, UtilidadeCores.azulEscuro, UtilidadeCores.amarelo, 3);
 		
 		//Aceleração
 		rAceleracao = new JLabel("Aceleração");
 		atAceleracao = new JTextArea(ModeloFormulas.aceleracaoDescida);
-		addComponentes(pAceleracao, rAceleracao, prAceleracao, atAceleracao, UtilidadeCores.azul, UtilidadeCores.amareloAcafrao);
+		addComponentes(pAceleracao, rAceleracao, prAceleracao, atAceleracao, UtilidadeCores.azul, UtilidadeCores.amareloAcafrao, 6);
 		
 		//Posição final
 		rPosFinal = new JLabel("Posição Final");
 		atPosFinal = new JTextArea(ModeloFormulas.posicaoFinalDescida);
-		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloQueimado);
+		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloQueimado, 6);
 		
 		//Tempo
 		rTempo = new JLabel("Tempo");
 		atTempo = new JTextArea(ModeloFormulas.tempo);
-		addComponentes(pTempo, rTempo, prTempo, atTempo, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro);
+		addComponentes(pTempo, rTempo, prTempo, atTempo, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 5);
 		
 		//Nova Posição
 		rNovaPos = new JLabel("Nova Posição");
 		atNovaPos = new JTextArea(ModeloFormulas.novaPosicao);
-		addComponentes(pNovaPos, rNovaPos, prNovaPos, atNovaPos, UtilidadeCores.azulRoyal, UtilidadeCores.laranja);
+		addComponentes(pNovaPos, rNovaPos, prNovaPos, atNovaPos, UtilidadeCores.azulRoyal, UtilidadeCores.laranja, 6);
 		
 		//Colisão
 		rColisao = new JLabel("Colisão");
 		atColisao = new JTextArea();
-		addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado);
+		addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 1);
 		
 		//Nova Posição Após Colisão
 		rNovaPosColisao = new JLabel("Nova Posição Após Colisão");
 		atNovaPosColisao = new JTextArea(ModeloFormulas.novaPosicao);
-		addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho);
+		addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6);
 	}
 	
 	//Este método Recebe os três componentes que se referem a uma fórmula
 	//Passa suas posições, tamanhos e outras configurações
-	private void addComponentes(JPanel p, JLabel r, JScrollPane pr, JTextArea at, Color corFundo, Color corFonte){
+	private void addComponentes(JPanel p, JLabel r, JScrollPane pr, JTextArea at, Color corFundo, Color corFonte, int numLinhasAT){
 		//Painel - Contém todos os componentes a seguir e é adicionado no painel de fundo
 		p = new JPanel(new BorderLayout());
-			p.setMaximumSize(new Dimension(230, 100));//Define as proporções máximas do Painel
+			p.setMaximumSize(new Dimension(230, (20+numLinhasAT*15)));//Define as proporções máximas do Painel
 			p.setBackground(corFundo);//Muda a cor de fundo
 			p.setBorder(new LineBorder(Color.BLACK, 1));//Define a borda dos paineis para que seja vista a delimitação que existe entre cada painel
 		pFundo.add(p);
@@ -156,12 +156,11 @@ public class VisaoPainelFormulas extends JScrollPane{
 			at.setBackground(corFundo);//Muda a cor de fundo
 			at.setDisabledTextColor(corFonte);//Muda a cor da fonte
 			at.setEnabled(false);//Impossibilita a edição do texto pelo usuário
-//		at.setText(" Jerônimo,"+ "\n Matheus e"+ "\n Murilo"+ "\n part. Jefferson"+ "\n Em:"+ "\n OBAC 2.0"	+ "\n Patrocionado por: CNPQ"+ "\n e JAVA");
 		
 		//Painel de Rolagem - Recebe a área de texto e eé adicionado no painel da fórmula
 		pr = new JScrollPane(at);
 			pr.setBorder(null);//Retira a borda do painel de rolagem da fórmula 
-			pr.setPreferredSize(new Dimension(220, 80));//Define as proporções máximas do Painel de Rolagem
+			pr.setPreferredSize(new Dimension(220, (numLinhasAT*15)));//Define as proporções máximas do Painel de Rolagem
 		p.add(pr, BorderLayout.CENTER);
 	}
 	
