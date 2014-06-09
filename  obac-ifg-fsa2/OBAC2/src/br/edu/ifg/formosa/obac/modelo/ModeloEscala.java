@@ -9,9 +9,11 @@ public class ModeloEscala {
 	private int escalaFimX = 0; //Fim da escala X (px)
 	private int escalaFimY = 0; //Fim da escala Y (px)
 	
-	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)
-	
+	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)	
 	private int qtdMarcadores = 0; //Numero de marcadores existentes na escala
+	
+	//--Double
+	private double angulo = 0; //Angulo para rotacionar a escala;
 	
 	//Metodos
 	//--Getters
@@ -21,6 +23,7 @@ public class ModeloEscala {
 	public int getEscalaFimY() {return escalaFimY;}
 	public int getEspacamentoMarcadores() {return espacamentoMarcadores;}
 	public int getQtdMarcadores() {return qtdMarcadores;}
+	public double getAngulo() {return angulo;}
 	
 	//--Setters
 	public void setEscalaInicioX(int escalaInicioX) {this.escalaInicioX = escalaInicioX;}
@@ -29,4 +32,5 @@ public class ModeloEscala {
 	public void setEscalaFimY(int escalaFimY) {this.escalaFimY = escalaFimY;}	
 	public void setEspacamentoMarcadores(int espacamentoMarcadores) {this.espacamentoMarcadores = espacamentoMarcadores;}
 	public void setQtdMarcadores(int qtdMarcadores) {this.qtdMarcadores = qtdMarcadores;}
+	public void setAngulo(double angulo) {this.angulo = angulo;}
 }
