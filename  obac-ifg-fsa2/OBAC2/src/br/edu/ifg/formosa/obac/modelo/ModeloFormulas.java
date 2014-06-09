@@ -25,8 +25,8 @@ public class ModeloFormulas {
 	
 	//Fórmulas com variáveis
 		//Propulsões
-		public static String propMola = "V0= (K+x^2/Massa) \n";//Mola
-		public static String propCanhao = "V0 = ";//Canhão
+		public static String propMola = "V0= (K+x^2/m) \n";//Mola
+		public static String propCanhao = "V0 = m";//Canhão
 		//Força Normal
 		public static String forcaNormal = "N = m * g";
 		//Atrito
@@ -43,8 +43,113 @@ public class ModeloFormulas {
 		public static String tempo = "t = (Vf - V0)/a \nt = ΔV/a";
 		//Nova Posição
 		public static String novaPosicao = "s=s0+v0*t+(a*t^2)/2 \n";
-	/*
-	 -+-+-+- incluir macetes em alguma parte???
-	*/
+		
+	//Propulção pela mola	
+	public String propulsaoMola(double k, double x, double m){
+		//V0= (K+x^2/Massa)
+		String s = "V0 = (" +k +"+" +x+"^2/" +m +")\n";
+		s += "V0 = (" +k +"+" +Math.pow(x, 2) +"/" +m +")\n";
+		s += "V0 = (" +(k+ Math.pow(x, 2)) +"/" +m +")\n";
+		s += "V0 = (" +((k +Math.pow(x, 2) )/m) +")";
+		return s;
+	}
+
+//	public String propulsaoCanhao(){}
+
+	//Força normal
+	public String forcaNormal(double m, double g){
+		//N = m * g
+		String s = "N = " +m +" * " +g +"\n";
+		s += "N = " +(m*g);
+		return s;
+	}
+
+	//Atrito
+	public String atrito(double fNormal, double coefAtr){
+		//Fat = N * µ
+		String s = "Fat = " +fNormal +" * " +coefAtr +"\n";
+		s += "Fat = " +(fNormal*coefAtr);
+		return s;
+	}
+
+	//Aceleração no Plano
+	public String aceleracaoPlano(double fAtr, double m){
+		//a = Fat/m * (-1)
+		String s = "a = " +fAtr +"/" +m +" * -1\n";
+		s += "a = " +(fAtr/m) +" * -1\n";
+		s += "a = " +(-(fAtr/m));
+		return s;
+	}
+
+	//Aceleração na Queda
+	public String aceleracaoQueda(double g){
+		//a = g
+		String s = "a = " +g;
+		return s;
+	}
 	
+	//Aceleração descida
+	public String aceleracaoDescida(double g, double angulo, double coefAtr){
+		//a = [(g * Sen(?)) + (µ * g * Cos(?))]
+		String s = "a = [(" +g +" * Sen(" +angulo+")) + ("+coefAtr+" * "+g+" * Cos("+angulo+"))]\n";
+		s += "a = [(" +g +" * " +Math.sin(angulo)+") + ("+coefAtr+" * "+g+" * "+Math.cos(angulo)+")]\n";
+		s += "a = [" +(g*Math.sin(angulo))+") + ("+(coefAtr*g*Math.cos(angulo))+"]\n";
+		s += "a = " +((g*Math.sin(angulo))+(coefAtr*g*Math.cos(angulo)));
+		return s;
+	}
+
+	//Aceleração Subida
+	public String aceleracaoSubida(double g, double angulo, double coefAtr){
+		//a = [(g * Sen(?)) + (µ * g * Cos(?))] * (-1)
+		String s = "a = [(" +g +" * Sen(" +angulo+")) + ("+coefAtr+" * "+g+" * Cos("+angulo+"))] * (-1)\n";
+		s += "a = [(" +g +" * " +Math.sin(angulo)+") + ("+coefAtr+" * "+g+" * "+Math.cos(angulo)+")] * (-1)\n";
+		s += "a = [" +(g*Math.sin(angulo))+") + ("+(coefAtr*g*Math.cos(angulo))+"] * (-1)\n";
+		s += "a = " +((g*Math.sin(angulo))+(coefAtr*g*Math.cos(angulo))) +"\n";
+		s += "a = " +(((g*Math.sin(angulo))+(coefAtr*g*Math.cos(angulo)))*-1);
+		return s;
+	}
+
+	//Posição final na descida
+	public String posicaoFinalDescida(double v0, double a){
+		//Sf = (V0^2 * -1)/(2 * a)
+		String s = "Sf = ("+v0+"^2 * -1)/(2 * "+a+")\n";
+		s += "Sf = ("+Math.pow(v0, 2) +"* -1)/"+(2*a) +"\n";
+		s += "Sf = "+(Math.pow(v0,2) * -1)+"/"+(2*a) +"\n";
+		s += "Sf = "+((Math.pow(v0,2) * -1)/(2*a));
+		return s;
+	}
+	
+	//Posição final no plano
+	public String posicaoFinalPlano(double v0, double a){
+		//Sf = (V0^2 * -1)/(2 * a) * (-1)
+		String s = "Sf = ("+v0+"^2 * -1)/(2 * "+a+") * (-1)\n";
+		s += "Sf = ("+Math.pow(v0,2) +"* -1)/"+(2*a) +"* (-1)\n";
+		s += "Sf = "+(Math.pow(v0,2) * -1)+"/"+(2*a) +" * (-1)\n";
+		s += "Sf = "+((Math.pow(v0,2) * -1)/(2*a)) +"\n";
+		s += "Sf = "+(((Math.pow(v0,2) * -1)/(2*a)) * -1);
+		return s;
+	}
+
+	//Tempo
+	public String tempo(double v0, double a){
+		//t = (Vf - V0)/a
+		String s = "t = (0 - " +v0+")/"+a+"\n";
+		s += "t = " +(0-v0)+"/"+a+"\n";
+		s += "t = " +((0-v0)/a);
+		return s;
+	}
+	
+	//Nova posição
+	public String novaPosicao(double s0, double v0, double t, double a){
+		//s=s0+v0*t+(a*t^2)/2
+		String s = novaPosicao +"\n"; 
+		s += "s = "+s0+" + "+v0+" * "+t+" + ("+a+" * "+t+"^2)/2 \n";
+		s += "s = "+s0+" + "+(v0*t)+" + ("+a+" * "+Math.pow(t,2)+")/2 \n";
+		s += "s = "+(s0+(v0*t))+" + ("+(a*Math.pow(t,2))+")/2 \n";
+		s += "s = "+(s0+(v0*t))+" + "+((a*Math.pow(t,2))/2) +"\n";
+		s += "s = "+((s0+(v0*t))+((a*Math.pow(t,2))/2));
+		return s;
+	}
+
+//	public String colisao(){}
 }

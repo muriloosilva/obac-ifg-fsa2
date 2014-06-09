@@ -27,12 +27,12 @@ public class VisaoPainelSimulacao extends JPanel {
 		
 		this.setSize(750, 600);
 		this.setLocation(250, 0);
-		this.setBackground(Color.white);
+		this.setBackground(Color.BLUE);
 		
 		vS = new VisaoSuperficie();
 		vO = new VisaoObjeto();
 		vP = new VisaoPropulsao();
-		vE = new VisaoEscala(100, 600, 564, 564, 5);
+		vE = new VisaoEscala(100, 700, 564, 564, 5);
 		
 		this.add(vE);
 		this.add(vP);
