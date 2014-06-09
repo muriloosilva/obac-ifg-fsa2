@@ -62,7 +62,7 @@ public class ControleOBAC {
 		painelAbas.setTitleAt(1, "Fórmulas");
 		
 		//Controles do Painel de Configuração
-		new ControlePainelConfiguracaoAtualizacoes(vpc, mpc);
+		new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf);
 		new ControlePainelConfiguracaoEntradaDeDados(vpc);
 		new ControlePainelConfiguracaoExecucao(vpc, mpc);
 		
