@@ -140,7 +140,6 @@ public class VisaoPainelFormulas extends JScrollPane{
 	private void addComponentes(JPanel p, JLabel r, JScrollPane pr, JTextArea at, Color corFundo, Color corFonte, int numLinhasAT){
 		//Painel - Contém todos os componentes a seguir e é adicionado no painel de fundo
 		p = new JPanel(new BorderLayout());
-			p.setMaximumSize(new Dimension(230, (20+numLinhasAT*15)));//Define as proporções máximas do Painel
 			p.setBackground(corFundo);//Muda a cor de fundo
 			p.setBorder(new LineBorder(Color.BLACK, 1));//Define a borda dos paineis para que seja vista a delimitação que existe entre cada painel
 		pFundo.add(p);
@@ -148,7 +147,6 @@ public class VisaoPainelFormulas extends JScrollPane{
 		//Rótulo - Indica a fórmula pressa, é adicionado no painel de sua fórmula
 		r.setFont(fonteTitulos);//Define a fonte utilizada nos nomes das fórmulas
 		r.setForeground(corFonte);//Muda a cor da fonte
-		r.setMaximumSize(new Dimension(230, 20));//Define as proporções máximas do Rótulo
 		p.add(r, BorderLayout.NORTH);
 		
 		//Área de Texto - Área onde as fórmulas são exibidas, é adicionado no painel de rolagen da sua fórmula
@@ -160,7 +158,8 @@ public class VisaoPainelFormulas extends JScrollPane{
 		//Painel de Rolagem - Recebe a área de texto e eé adicionado no painel da fórmula
 		pr = new JScrollPane(at);
 			pr.setBorder(null);//Retira a borda do painel de rolagem da fórmula 
-			pr.setPreferredSize(new Dimension(220, (numLinhasAT*15)));//Define as proporções máximas do Painel de Rolagem
+			pr.setPreferredSize(new Dimension(220, (numLinhasAT*15)));//Define as proporções máximas do Painel de Rolagem considerando o número de linhas nescessárias para ele (15 pix por linha)
+			pr.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);//Retira a rolagem vertical do painel
 		p.add(pr, BorderLayout.CENTER);
 	}
 	
