@@ -8,11 +8,13 @@ import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
 public class ControleEscala {
 	//Metodos
 	//--Construtor
-	public ControleEscala(final OBAC obac, final VisaoEscala vE, final ModeloEscala mE, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
+	public ControleEscala(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps,  final VisaoEscala vE, final ModeloEscala mE, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
 		vPC.getCsAmbienteSimulacao().addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -27,8 +29,9 @@ public class ControleEscala {
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[4])) {//Queda
 					mudaModeloEscala(mE, 100, 100, 500, 100, 5, 90);
 				}
-				obac.repaint(); //da um 'glitch' no obac. buscar alternativa
-				//economiza linhas se estiver embaixo dos ifs
+				vpi.repaint();
+				vps.repaint(); //da um 'glitch' no obac. buscar alternativa
+				//Colocar o repaint no final do código evita que aja repetições
 			}
 		});
 	}
