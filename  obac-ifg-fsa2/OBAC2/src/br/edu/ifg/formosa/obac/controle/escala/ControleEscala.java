@@ -18,20 +18,17 @@ public class ControleEscala {
 			public void actionPerformed(ActionEvent arg0) {
 				if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[0])) { //Plano
 					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
-					obac.repaint(); //da um 'glitch' no obac. buscar alternativa
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[1])) {//Descida
 					mudaModeloEscala(mE, 100, 564, 750, 564, 5, -45);
-					obac.repaint();
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[2])) {//Subida
 					mudaModeloEscala(mE, 100, 100, 750, 100, 5, 45);
-					obac.repaint();
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[3])) {//Precipicio
 					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
-					obac.repaint();
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[4])) {//Queda
 					mudaModeloEscala(mE, 100, 100, 500, 100, 5, 90);
-					obac.repaint();
 				}
+				obac.repaint(); //da um 'glitch' no obac. buscar alternativa
+				//economiza linhas se estiver embaixo dos ifs
 			}
 		});
 	}
