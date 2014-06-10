@@ -5,7 +5,7 @@ public class ModeloFormulas {
 	//Fórmulas em texto
 		//Propulsões
 		public static String propMolaTextual = "Velocidade_Inicial = [(Constante_Elastica + Compresão_da_mola^2)/Massa]";//Mola
-		public static String propCanhaoTextual = "Velocidade_Inicial = ";//Canhão
+		public static String propCanhaoTextual = "Velocidade_Inicial =  = (2 * energia * massa)";//Canhão
 		//Força Normal
 		public static String forcaNormalTextual = "Força_Normal = Massa * Gravidade";
 		//Atrito
