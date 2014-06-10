@@ -1,9 +1,8 @@
 package br.edu.ifg.formosa.obac.visao;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
 import javax.swing.JPanel;
+
+import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 
 public class VisaoPainelSimulacao extends JPanel {
 	//Constantes
@@ -22,7 +21,7 @@ public class VisaoPainelSimulacao extends JPanel {
 	
 	//Metodos
 	//--Construtor
-	public VisaoPainelSimulacao() {
+	public VisaoPainelSimulacao(ModeloEscala mE) {
 		super(null);
 		
 		this.setSize(750, 600);
@@ -31,11 +30,14 @@ public class VisaoPainelSimulacao extends JPanel {
 		vS = new VisaoSuperficie();
 		vO = new VisaoObjeto();
 		vP = new VisaoPropulsao();
-		vE = new VisaoEscala(100, 700, 564, 564, 5, 0);
+		vE = new VisaoEscala(mE);
 		
 		this.add(vE);
 		this.add(vP);
 		this.add(vO);
 		this.add(vS);
 	}
+	
+	//--Getters
+	public VisaoEscala getVisaoEscala() {return vE;}
 }

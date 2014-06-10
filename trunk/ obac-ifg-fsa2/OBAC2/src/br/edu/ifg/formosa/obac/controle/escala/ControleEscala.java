@@ -1,9 +1,17 @@
 package br.edu.ifg.formosa.obac.controle.escala;
 
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
+import br.edu.ifg.formosa.obac.visao.VisaoEscala;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
+
 public class ControleEscala {
 	//Metodos
-	public ControleEscala() {
-		
+	//--Construtor
+	public ControleEscala(VisaoEscala vE, ModeloEscala mE, final VisaoPainelConfiguracao vPC) {
+		vE = new VisaoEscala(100, 700, 564, 564, 5, 0, mE);
 	}
 	
 	//--Metodo utilizado para deteminar espacamento dos marcadores na escala
@@ -15,4 +23,7 @@ public class ControleEscala {
 		 * Se o numero de marcadores for 8, a linha (escala) tera de ser dividida em nove partes (8 mar + 1 = 9 partes)
 		 */
 	}
+	
+	//--Altera os valores do ModeloEscala
+
 }
