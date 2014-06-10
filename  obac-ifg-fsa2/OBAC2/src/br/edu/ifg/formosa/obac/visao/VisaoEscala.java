@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
@@ -21,17 +20,17 @@ public class VisaoEscala extends JPanel{
 	
 	//Metodos
 	//--Construtor #01
-	public VisaoEscala() {
+	public VisaoEscala(ModeloEscala mE) {
 		super(null);		
 		this.setSize(750, 600);
 		this.setOpaque(true);
 		
-		mE = new ModeloEscala();		
+		this.mE = mE;
 	}
 	
 	//--Construtor #02 - Inicio em X; Fim em X; Inicio em Y; Fim em Y; Quantidade de marcadores desejados
-	public VisaoEscala(int eIX, int eFX, int eIY, int eFY, int qMarcadores, double angulo) {
-		this();
+	public VisaoEscala(int eIX, int eFX, int eIY, int eFY, int qMarcadores, double angulo, ModeloEscala mE) {
+		this(mE);
 		
 		mE.setEscalaInicioX(eIX);
 		mE.setEscalaFimX(eFX);

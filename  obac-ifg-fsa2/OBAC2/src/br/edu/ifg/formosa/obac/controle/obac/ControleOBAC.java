@@ -6,9 +6,11 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoAtualizacoes;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecucao;
+import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
@@ -24,6 +26,8 @@ public class ControleOBAC {
 		private JTabbedPane painelAbas = null;
 	//Modelo Painel de Configuração - Contém os arrays de string utilizados e as strings que são modificadas durante o código
 		private ModeloPainelConfiguracao mpc = null;
+	//Modelo da Escala
+		private ModeloEscala mE = null;
 	//Painel de Configuração
 		private VisaoPainelConfiguracao vpc = null;
 	//Painel de Informações
@@ -50,6 +54,9 @@ public class ControleOBAC {
 		//Modelo Painel de Configuração
 		mpc = new ModeloPainelConfiguracao();
 		
+		//Modelo Escala
+		mE = new ModeloEscala();
+		
 		//Painel de Configuração
 		vpc = new VisaoPainelConfiguracao(mpc);
 		painelAbas.add(vpc);
@@ -64,16 +71,18 @@ public class ControleOBAC {
 		//Controles do Painel de Configuração
 		new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf);
 		new ControlePainelConfiguracaoEntradaDeDados(vpc);
-		new ControlePainelConfiguracaoExecucao(vpc, mpc);
-		
+		new ControlePainelConfiguracaoExecucao(vpc, mpc);		
 		
 		//Painel de Informações
 		vpi = new VisaoPainelInformacao();
 		painelPrincipal.add(vpi);
 		
 		//Painel de Simulação
-		vPS = new VisaoPainelSimulacao();
+		vPS = new VisaoPainelSimulacao(mE);
 		painelPrincipal.add(vPS);
+		
+		//Controle do Painel de Escalas
+		new ControleEscala(vPS.getVisaoEscala(), mE, vpc);
 		
 		//Repintar Applet
 		obac.repaint();
