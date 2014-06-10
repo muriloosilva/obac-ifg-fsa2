@@ -82,7 +82,7 @@ public class ControleOBAC {
 		painelPrincipal.add(vPS);
 		
 		//Controle do Painel de Escalas
-		new ControleEscala(obac, vPS.getVisaoEscala(), mE, vpc, mpc);
+		new ControleEscala(vpi, vPS, vPS.getVisaoEscala(), mE, vpc, mpc);
 		
 		//Repintar Applet
 		obac.repaint();
