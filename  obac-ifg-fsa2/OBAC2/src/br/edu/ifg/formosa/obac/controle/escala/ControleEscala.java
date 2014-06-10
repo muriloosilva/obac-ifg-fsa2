@@ -1,17 +1,39 @@
 package br.edu.ifg.formosa.obac.controle.escala;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
+import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
+import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 
 public class ControleEscala {
 	//Metodos
 	//--Construtor
-	public ControleEscala(VisaoEscala vE, ModeloEscala mE, final VisaoPainelConfiguracao vPC) {
-		vE = new VisaoEscala(100, 700, 564, 564, 5, 0, mE);
+	public ControleEscala(final OBAC obac, final VisaoEscala vE, final ModeloEscala mE, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
+		vPC.getCsAmbienteSimulacao().addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[0])) { //Plano
+					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
+					obac.repaint(); //da um 'glitch' no obac. buscar alternativa
+				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[1])) {//Descida
+					mudaModeloEscala(mE, 100, 564, 750, 564, 5, -45);
+					obac.repaint();
+				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[2])) {//Subida
+					mudaModeloEscala(mE, 100, 100, 750, 100, 5, 45);
+					obac.repaint();
+				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[3])) {//Precipicio
+					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
+					obac.repaint();
+				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[4])) {//Queda
+					mudaModeloEscala(mE, 100, 100, 500, 100, 5, 90);
+					obac.repaint();
+				}
+			}
+		});
 	}
 	
 	//--Metodo utilizado para deteminar espacamento dos marcadores na escala
@@ -25,5 +47,12 @@ public class ControleEscala {
 	}
 	
 	//--Altera os valores do ModeloEscala
-
+	private void mudaModeloEscala(ModeloEscala mE, int eIX, int eIY, int eFX, int eFY, int qMarcadores, double angulo) {
+		mE.setAngulo(angulo);
+		mE.setEscalaFimX(eFX);
+		mE.setEscalaFimY(eFY);
+		mE.setEscalaInicioX(eIX);
+		mE.setEscalaInicioY(eIY);
+		mE.setQtdMarcadores(qMarcadores);
+	}
 }

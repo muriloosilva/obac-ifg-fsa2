@@ -3,14 +3,14 @@ package br.edu.ifg.formosa.obac.modelo;
 public class ModeloEscala {
 	//Variaveis
 	//--Inteiro
-	private int escalaInicioX = 0; //Inicio da escala X (px)
-	private int escalaInicioY = 0; //Inicio da escala Y (px)
+	private int escalaInicioX = 100; //Inicio da escala X (px)
+	private int escalaInicioY = 564; //Inicio da escala Y (px)
 	
-	private int escalaFimX = 0; //Fim da escala X (px)
-	private int escalaFimY = 0; //Fim da escala Y (px)
+	private int escalaFimX = 700; //Fim da escala X (px)
+	private int escalaFimY = 564; //Fim da escala Y (px)
 	
 	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)	
-	private int qtdMarcadores = 0; //Numero de marcadores existentes na escala
+	private int qtdMarcadores = 5; //Numero de marcadores existentes na escala
 	
 	//--Double
 	private double angulo = 0; //Angulo para rotacionar a escala;

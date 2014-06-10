@@ -29,7 +29,7 @@ public class VisaoEscala extends JPanel{
 	}
 	
 	//--Construtor #02 - Inicio em X; Fim em X; Inicio em Y; Fim em Y; Quantidade de marcadores desejados
-	public VisaoEscala(int eIX, int eFX, int eIY, int eFY, int qMarcadores, double angulo, ModeloEscala mE) {
+	/*public VisaoEscala(int eIX, int eFX, int eIY, int eFY, int qMarcadores, double angulo, ModeloEscala mE) {
 		this(mE);
 		
 		mE.setEscalaInicioX(eIX);
@@ -42,15 +42,17 @@ public class VisaoEscala extends JPanel{
 		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(eIX, eFX, qMarcadores));
 		
 		mE.setAngulo(Math.toRadians(angulo));
-	}
+	}*/
 	
 	//--Paint
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
 		g2d.translate(mE.getEscalaInicioX(), mE.getEscalaInicioY());
-		g2d.rotate(mE.getAngulo());
+		g2d.rotate(Math.toRadians(mE.getAngulo()));
 		g2d.translate(-mE.getEscalaInicioX(), -mE.getEscalaInicioY());
+		
+		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimX(), mE.getQtdMarcadores()));
 		
 		g2d.setColor(Color.black);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimX(), mE.getEscalaFimY());
