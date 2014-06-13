@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.modelo;
 
 public class ModeloEscala {
+	
 	//Variaveis
 	//--Inteiro
 	private int escalaInicioX = 100; //Inicio da escala X (px)
