@@ -30,8 +30,8 @@ public class ControleEscala {
 					mudaModeloEscala(mE, 100, 100, 500, 100, 5, 90);
 				}
 				vpi.repaint();
-				vps.repaint(); //da um 'glitch' no obac. buscar alternativa
-				//Colocar o repaint no final do código evita que aja repetições
+				vps.repaint();
+				//Colocar o repaint no final do código evita repetições no código
 			}
 		});
 	}
