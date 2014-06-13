@@ -10,6 +10,7 @@ import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoAtualizacoes;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecucao;
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
@@ -54,19 +55,13 @@ public class ControleOBAC {
 		//Modelo Painel de Configuração
 		mpc = new ModeloPainelConfiguracao();
 		
-		//Modelo Escala
-		mE = new ModeloEscala();
-		
 		//Painel de Configuração
 		vpc = new VisaoPainelConfiguracao(mpc);
-		painelAbas.add(vpc);
-		painelAbas.setTitleAt(0, "Configuração");
+		painelAbas.add(vpc, "Configuração");
 		
 		//Painel de Fórmulas
 		vpf = new VisaoPainelFormulas();
-		
-		painelAbas.add(vpf);
-		painelAbas.setTitleAt(1, "Fórmulas");
+		painelAbas.add(vpf, "Fórmulas");
 		
 		//Controles do Painel de Configuração
 		new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf);
@@ -76,6 +71,12 @@ public class ControleOBAC {
 		//Painel de Informações
 		vpi = new VisaoPainelInformacao();
 		painelPrincipal.add(vpi);
+		
+		//Controle do painel de informações
+		ControlePainelInformacao cpi = new ControlePainelInformacao(vpi);
+		
+		//Modelo Escala
+		mE = new ModeloEscala();
 		
 		//Painel de Simulação
 		vPS = new VisaoPainelSimulacao(mE);
