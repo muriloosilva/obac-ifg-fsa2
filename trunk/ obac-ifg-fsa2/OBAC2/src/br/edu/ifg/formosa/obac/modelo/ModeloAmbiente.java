@@ -45,17 +45,17 @@ public class ModeloAmbiente {
 	//--Setters
 	public static void setCoefAtrito(double coefAtrito) {
 		ModeloAmbiente.coefAtrito = coefAtrito;
-		cpi.mudaValorCoefAtrito(ModeloAmbiente.coefAtrito);//Altera o valor do Coeficiente de atrito no painel de informções
+//		cpi.mudaValorCoefAtrito(ModeloAmbiente.coefAtrito);//Altera o valor do Coeficiente de atrito no painel de informções
 	}
 	public static void setGravSelecionada(double gravSelecionada) {
 		ModeloAmbiente.gravSelecionada = gravSelecionada;
-		cpi.mudaValorGravidade(ModeloAmbiente.gravSelecionada);//Altera a gravidade no painel de informações
+//		cpi.mudaValorGravidade(ModeloAmbiente.gravSelecionada);//Altera a gravidade no painel de informações
 	}
 	public void setTempo(double tempo) {
 		this.tempo = tempo;
-		cpi.mudaValorTempo(this.tempo);//Altualiza o valor do tempo no painel de informações
+//		cpi.mudaValorTempo(this.tempo);//Altualiza o valor do tempo no painel de informações
 	}
-	public void setmE(ModeloEscala mE) {this.mE = mE;}  //Pq vc não set isso no construtor matheus??
+	public void setmE(ModeloEscala mE) {this.mE = mE;}  //Pq vc não setou isso no construtor matheus??
 	public void setmO(ModeloObjeto mO) {this.mO = mO;}
 	public void setmS(ModeloSuperficie mS) {this.mS = mS;}
 	
