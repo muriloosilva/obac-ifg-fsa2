@@ -1,6 +1,18 @@
 package br.edu.ifg.formosa.obac.modelo;
 
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+
 public class ModeloObjeto {
+	
+	//Controle Painel de Configuração - atualizar dados referente ao ambiente
+	private static ControlePainelInformacao cpi = null;
+	
+	//Construtor - To deixando desativado para vc arrumar o modelo ambiente depois
+		//Os controles do CPI tbm estão comentados para evitar problimas no funcionamento
+//	public ModeloObjeto(ControlePainelInformacao cpi) {
+//		ModeloObjeto.cpi = cpi;
+//	}
+	
 	//Constantes
 	//--Double
 	public static final double altura = 10; //Os valores de alt e larg sao para inicializar as variaveis
@@ -61,10 +73,19 @@ public class ModeloObjeto {
 	public void setCoefRestituicao(double coefRestituicao) {this.coefRestituicao = coefRestituicao;}
 	public void setVelocidade(double velocidade) {this.velocidade = velocidade;}
 	public void setVelocidadeInicial(double velocidadeInicial) {this.velocidadeInicial = velocidadeInicial;}
-	public void setAceleracao(double aceleracao) {this.aceleracao = aceleracao;}
+	public void setAceleracao(double aceleracao) {
+		this.aceleracao = aceleracao;
+//		cpi.mudaValorAceleracao(this.aceleracao);//Altera o valor da aceleração no PInfo
+	}
 	public void setAceleracaoY(double aceleracaoY) {this.aceleracaoY = aceleracaoY;}
-	public void setPosicaoX(double posicaoX) {this.posicaoX = posicaoX;}
-	public void setPosicaoY(double posicaoY) {this.posicaoY = posicaoY;}
+	public void setPosicaoX(double posicaoX) {
+		this.posicaoX = posicaoX;
+//		cpi.mudaValorPosAtualX(this.posicaoX);//Atualiza posição em metros do eixo X no PInfo
+	}
+	public void setPosicaoY(double posicaoY) {
+		this.posicaoY = posicaoY;
+//		cpi.mudaValorPosAtualY(this.posicaoY);//Atualiza posição em metros do eixo Y no PInfo
+	}
 	public void setPosicaoXPx(double posicaoXPx) {this.posicaoXPx = posicaoXPx;}
 	public void setPosicaoYPx(double posicaoYPx) {this.posicaoYPx = posicaoYPx;}
 	
