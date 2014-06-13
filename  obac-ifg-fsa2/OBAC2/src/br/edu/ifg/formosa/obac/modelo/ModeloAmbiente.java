@@ -1,6 +1,17 @@
 package br.edu.ifg.formosa.obac.modelo;
 
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+
 public class ModeloAmbiente {
+	
+	//Controle Painel de Configuração - atualizar dados referente ao ambiente
+	private static ControlePainelInformacao cpi = null;
+	
+	//Construtor
+	public ModeloAmbiente(ControlePainelInformacao cpi) {
+		ModeloAmbiente.cpi = cpi;
+	}
+	
 	//Constantes
 	//--Double
 	public static final double gravidadeTerra = 9.8;
@@ -32,10 +43,19 @@ public class ModeloAmbiente {
 	public ModeloSuperficie getmS() {return mS;}
 	
 	//--Setters
-	public static void setCoefAtrito(double coefAtrito) {ModeloAmbiente.coefAtrito = coefAtrito;}
-	public static void setGravSelecionada(double gravSelecionada) {ModeloAmbiente.gravSelecionada = gravSelecionada;}
-	public void setTempo(double tempo) {this.tempo = tempo;}
-	public void setmE(ModeloEscala mE) {this.mE = mE;}
+	public static void setCoefAtrito(double coefAtrito) {
+		ModeloAmbiente.coefAtrito = coefAtrito;
+		cpi.mudaValorCoefAtrito(ModeloAmbiente.coefAtrito);//Altera o valor do Coeficiente de atrito no painel de informções
+	}
+	public static void setGravSelecionada(double gravSelecionada) {
+		ModeloAmbiente.gravSelecionada = gravSelecionada;
+		cpi.mudaValorGravidade(ModeloAmbiente.gravSelecionada);//Altera a gravidade no painel de informações
+	}
+	public void setTempo(double tempo) {
+		this.tempo = tempo;
+		cpi.mudaValorTempo(this.tempo);//Altualiza o valor do tempo no painel de informações
+	}
+	public void setmE(ModeloEscala mE) {this.mE = mE;}  //Pq vc não set isso no construtor matheus??
 	public void setmO(ModeloObjeto mO) {this.mO = mO;}
 	public void setmS(ModeloSuperficie mS) {this.mS = mS;}
 	
