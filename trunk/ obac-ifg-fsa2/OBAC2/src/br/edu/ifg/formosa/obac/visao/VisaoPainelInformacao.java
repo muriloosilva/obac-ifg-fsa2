@@ -157,7 +157,16 @@ public class VisaoPainelInformacao extends JPanel{
         g.setColor(ppColor);
         g.fillRect(0,0,750,40); //x,y,width,height
     }
-	
-	
+
+//Getters dos Valores
+	public UtilidadeRotuloTransparente getrGravidadeValor() {return rGravidadeValor;}
+	public UtilidadeRotuloTransparente getrCoefAtritoValor() {return rCoefAtritoValor;}
+	public UtilidadeRotuloTransparente getrForcaAtritoValor() {return rForcaAtritoValor;}
+	public UtilidadeRotuloTransparente getrForcaNormalValor() {return rForcaNormalValor;}
+	public UtilidadeRotuloTransparente getrPosFinalValor() {return rPosFinalValor;}
+	public UtilidadeRotuloTransparente getrAceleracaoValor() {return rAceleracaoValor;}
+	public UtilidadeRotuloTransparente getrPosAtualEixoXValor() {return rPosAtualEixoXValor;}
+	public UtilidadeRotuloTransparente getrPosAtualEixoYValor() {return rPosAtualEixoYValor;}
+	public UtilidadeRotuloTransparente getrTempoValor() {return rTempoValor;}
 
 }
