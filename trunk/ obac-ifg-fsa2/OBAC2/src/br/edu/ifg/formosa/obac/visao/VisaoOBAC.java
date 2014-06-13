@@ -1,9 +1,5 @@
 package br.edu.ifg.formosa.obac.visao;
 
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-
 import br.edu.ifg.formosa.obac.principal.OBAC;
 
 public class VisaoOBAC {

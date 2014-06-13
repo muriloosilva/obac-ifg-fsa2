@@ -31,7 +31,6 @@ public class VisaoPainelConfiguracao extends JPanel{
 		private JPanel pObstaculo = null;
 	//Rótulos
 		//Títulos dos paineis
-		private JLabel rTituloConfiguracao = null;
 		private JLabel rTituloPropulsao = null;
 		private JLabel rTituloAmbiente = null;
 		private JLabel rTituloObjeto = null;
