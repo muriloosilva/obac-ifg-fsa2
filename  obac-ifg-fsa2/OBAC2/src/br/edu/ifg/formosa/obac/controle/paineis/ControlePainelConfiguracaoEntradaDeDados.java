@@ -9,7 +9,7 @@ public class ControlePainelConfiguracaoEntradaDeDados {
 	private static VisaoPainelConfiguracao vpc = null;
 	
 	public ControlePainelConfiguracaoEntradaDeDados(VisaoPainelConfiguracao vpc) {
-		this.vpc = vpc;
+		ControlePainelConfiguracaoEntradaDeDados.vpc = vpc;
 	}
 	
 	public static boolean verificaCampos(){
