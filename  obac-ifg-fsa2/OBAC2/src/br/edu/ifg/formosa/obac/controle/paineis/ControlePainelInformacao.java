@@ -8,7 +8,7 @@ public class ControlePainelInformacao {
 	private static VisaoPainelInformacao vpi = null;
 	
 	
-	//Ainda faltando força normal, força de atrito e posição final
+	//Ainda faltando força normal, força de atrito e posição final - No OBAC original estavam no modelo do objeto
 	public ControlePainelInformacao(VisaoPainelInformacao vpi) {
 		ControlePainelInformacao.vpi = vpi;
 	}
