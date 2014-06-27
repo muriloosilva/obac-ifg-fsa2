@@ -21,49 +21,77 @@ public class VisaoPainelFormulas extends JScrollPane{
 	private static final long serialVersionUID = 1L;
 	
 	//Paineis interno
-	private JPanel pFundo = null;
-	private JPanel pVInicial = null;
-	private JPanel pFNormal = null;
-	private JPanel pAtrito = null;
-	private JPanel pAceleracao = null;
-	private JPanel pPosFinal = null;
-	private JPanel pTempo = null;
-	private JPanel pNovaPos = null;
-	private JPanel pColisao = null;
-	private JPanel pNovaPosColisao = null;
+		//Simulações normais - Sem colisão
+		private JPanel pFundo = null;
+		private JPanel pVInicial = null;
+		private JPanel pFNormal = null;
+		private JPanel pAtrito = null;
+		private JPanel pAceleracao = null;
+		private JPanel pPosFinal = null;
+		private JPanel pTempo = null;
+		private JPanel pNovaPos = null;
+		//Simulações normais - Com a colisão
+		private JPanel pColisao = null;
+		private JPanel pNovaPosColisao = null;
+		//Específicas dos lançamento obliquo
+		private JPanel pMovimentoHorizontal = null;
+		private JPanel pMovimentoVertical = null;
+		private JPanel pAlcanceTotalHorizontal = null;
+		private JPanel pAlcanceTotalVertical = null;
 	
 	//Rótulos
-	private JLabel rVInicial = null;
-	private JLabel rFNormal = null;
-	private JLabel rAtrito = null;
-	private JLabel rAceleracao = null;
-	private JLabel rPosFinal = null;
-	private JLabel rTempo = null;
-	private JLabel rNovaPos = null;
-	private JLabel rColisao = null;
-	private JLabel rNovaPosColisao = null;
+		//Simulações normais - Sem colisão
+		private JLabel rVInicial = null;
+		private JLabel rFNormal = null;
+		private JLabel rAtrito = null;
+		private JLabel rAceleracao = null;
+		private JLabel rPosFinal = null;
+		private JLabel rTempo = null;
+		private JLabel rNovaPos = null;
+		//Simulações normais - Com a colisão
+		private JLabel rColisao = null;
+		private JLabel rNovaPosColisao = null;
+		//Específicas dos lançamento obliquo
+		private JLabel rMovimentoHorizontal = null;
+		private JLabel rMovimentoVertical = null;
+		private JLabel rAlcanceTotalHorizontal = null;
+		private JLabel rAlcanceTotalVertical = null;
 	
 	//Paineis de rolagem
-	private JScrollPane prVInicial = null;
-	private JScrollPane prFNormal = null;
-	private JScrollPane prAtrito = null;
-	private JScrollPane prAceleracao = null;
-	private JScrollPane prPosFinal = null;
-	private JScrollPane prTempo = null;
-	private JScrollPane prNovaPos = null;
-	private JScrollPane prColisao = null;
-	private JScrollPane prNovaPosColisao = null;
+		//Simulações normais - Sem colisão
+		private JScrollPane prVInicial = null;
+		private JScrollPane prFNormal = null;
+		private JScrollPane prAtrito = null;
+		private JScrollPane prAceleracao = null;
+		private JScrollPane prPosFinal = null;
+		private JScrollPane prTempo = null;
+		private JScrollPane prNovaPos = null;
+		//Simulações normais - Com a colisão
+		private JScrollPane prColisao = null;
+		private JScrollPane prNovaPosColisao = null;
+		//Específicas dos lançamento obliquo
+		private JScrollPane prMovimentoHorizontal = null;
+		private JScrollPane prMovimentoVertical = null;
+		private JScrollPane prAlcanceTotalHorizontal = null;
+		private JScrollPane prAlcanceTotalVertical = null;
 		
 	//Áreas de Texto
-	private JTextArea atVInicial = null;
-	private JTextArea atFNormal = null;
-	private JTextArea atAtrito = null;
-	private JTextArea atAceleracao = null;
-	private JTextArea atPosFinal = null;
-	private JTextArea atTempo = null;
-	private JTextArea atNovaPos = null;
-	private JTextArea atColisao = null;
-	private JTextArea atNovaPosColisao = null;
+		//Simulações normais - Sem colisão
+		private JTextArea atVInicial = null;
+		private JTextArea atFNormal = null;
+		private JTextArea atAtrito = null;
+		private JTextArea atAceleracao = null;
+		private JTextArea atPosFinal = null;
+		private JTextArea atTempo = null;
+		private JTextArea atNovaPos = null;
+		//Simulações normais - Com a colisão
+		private JTextArea atColisao = null;
+		private JTextArea atNovaPosColisao = null;
+		//Específicas dos lançamento obliquo
+		private JTextArea atMovimentoHorizontal = null;
+		private JTextArea atMovimentoVertical = null;
+		private JTextArea atAlcanceTotalHorizontal = null;
+		private JTextArea atAlcanceTotalVertical = null;
 	
 	
 	//Fontes
@@ -91,57 +119,78 @@ public class VisaoPainelFormulas extends JScrollPane{
 		//Velocidade Inicial
 		rVInicial = new JLabel("Velocidade Inicial");//Rótulo
 		atVInicial = new JTextArea(ModeloFormulas.propCanhao);//Área de Texto
-		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro, 5);
-		
+		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro, 5, true);
 		
 		//Força Normal
 		rFNormal = new JLabel("Força Normal");
 		atFNormal = new JTextArea(ModeloFormulas.forcaNormal);
-		addComponentes(pFNormal, rFNormal, prFNormal, atFNormal, UtilidadeCores.azulIndigo, UtilidadeCores.amareloKhaki, 3);
+		addComponentes(pFNormal, rFNormal, prFNormal, atFNormal, UtilidadeCores.azulIndigo, UtilidadeCores.amareloKhaki, 3, true);
 		
 		//Atrito
 		rAtrito = new JLabel("Atrito");
 		atAtrito = new JTextArea(ModeloFormulas.atrito);
-		addComponentes(pAtrito, rAtrito, prAtrito, atAtrito, UtilidadeCores.azulEscuro, UtilidadeCores.amarelo, 3);
+		addComponentes(pAtrito, rAtrito, prAtrito, atAtrito, UtilidadeCores.azulEscuro, UtilidadeCores.amarelo, 3, true);
 		
 		//Aceleração
 		rAceleracao = new JLabel("Aceleração");
 		atAceleracao = new JTextArea(ModeloFormulas.aceleracaoDescida);
-		addComponentes(pAceleracao, rAceleracao, prAceleracao, atAceleracao, UtilidadeCores.azul, UtilidadeCores.amareloAcafrao, 6);
+		addComponentes(pAceleracao, rAceleracao, prAceleracao, atAceleracao, UtilidadeCores.azul, UtilidadeCores.amareloAcafrao, 6, true);
 		
 		//Posição final
 		rPosFinal = new JLabel("Posição Final");
 		atPosFinal = new JTextArea(ModeloFormulas.posicaoFinalDescida);
-		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloQueimado, 6);
+		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloQueimado, 6, true);
 		
 		//Tempo
 		rTempo = new JLabel("Tempo");
-		atTempo = new JTextArea(ModeloFormulas.tempo);
-		addComponentes(pTempo, rTempo, prTempo, atTempo, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 5);
+		atTempo = new JTextArea(ModeloFormulas.tempo +"\n" +ModeloFormulas.tempoTotal);
+		addComponentes(pTempo, rTempo, prTempo, atTempo, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 5, true);
 		
 		//Nova Posição
 		rNovaPos = new JLabel("Nova Posição");
 		atNovaPos = new JTextArea(ModeloFormulas.novaPosicao);
-		addComponentes(pNovaPos, rNovaPos, prNovaPos, atNovaPos, UtilidadeCores.azulRoyal, UtilidadeCores.laranja, 6);
+		addComponentes(pNovaPos, rNovaPos, prNovaPos, atNovaPos, UtilidadeCores.azulRoyal, UtilidadeCores.laranja, 6, true);
 		
 		//Colisão
 		rColisao = new JLabel("Colisão");
 		atColisao = new JTextArea();
-		addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 1);
+		addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 1, false);
 		
 		//Nova Posição Após Colisão
 		rNovaPosColisao = new JLabel("Nova Posição Após Colisão");
 		atNovaPosColisao = new JTextArea(ModeloFormulas.novaPosicao);
-		addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6);
+		addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6, false);
+		
+		//Movimento Horizontal
+		rMovimentoHorizontal = new JLabel("Movimento Horizontal");
+		atMovimentoHorizontal = new JTextArea(ModeloFormulas.movimentoHorizontal);
+		addComponentes(pMovimentoHorizontal, rMovimentoHorizontal, prMovimentoHorizontal, atMovimentoHorizontal, UtilidadeCores.azulEscuro, UtilidadeCores.amarelo, 5, false);
+		
+		//Movimento Vertical
+		rMovimentoVertical = new JLabel("Movimento Vertical");
+		atMovimentoVertical = new JTextArea(ModeloFormulas.movimentoVertical);
+		addComponentes(pMovimentoVertical, rMovimentoVertical, prMovimentoVertical, atMovimentoVertical, UtilidadeCores.azul, UtilidadeCores.amareloAcafrao, 5, false);
+		
+		//Alcance Total Horizontal
+		rAlcanceTotalHorizontal = new JLabel("Alcance Total Horizontal");
+		atAlcanceTotalHorizontal = new JTextArea(ModeloFormulas.alcanceHorizontal);
+		addComponentes(pAlcanceTotalHorizontal, rAlcanceTotalHorizontal, prAlcanceTotalHorizontal, atAlcanceTotalHorizontal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloQueimado, 5, false);
+		
+		//Altura Total Vertical
+		rAlcanceTotalVertical = new JLabel("Altura Total Vertical");
+		atAlcanceTotalVertical = new JTextArea(ModeloFormulas.alturaVertical);
+		addComponentes(pAlcanceTotalVertical, rAlcanceTotalVertical, prAlcanceTotalVertical, atAlcanceTotalVertical, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 5, false);
+		
 	}
 	
 	//Este método Recebe os três componentes que se referem a uma fórmula
 	//Passa suas posições, tamanhos e outras configurações
-	private void addComponentes(JPanel p, JLabel r, JScrollPane pr, JTextArea at, Color corFundo, Color corFonte, int numLinhasAT){
+	private void addComponentes(JPanel p, JLabel r, JScrollPane pr, JTextArea at, Color corFundo, Color corFonte, int numLinhasAT, boolean painelVisivel){
 		//Painel - Contém todos os componentes a seguir e é adicionado no painel de fundo
 		p = new JPanel(new BorderLayout());
 			p.setBackground(corFundo);//Muda a cor de fundo
 			p.setBorder(new LineBorder(Color.BLACK, 1));//Define a borda dos paineis para que seja vista a delimitação que existe entre cada painel
+			p.setVisible(painelVisivel);//Utilizado para que os paineis que não pertencem a imulação principal não apareçam, caso eles sejeam nexesário fica a cargo do controle decidir quais seram vistao. Isso é feito assim que a simulação é iniciada. 
 		pFundo.add(p);
 		
 		//Rótulo - Indica a fórmula pressa, é adicionado no painel de sua fórmula
@@ -163,41 +212,54 @@ public class VisaoPainelFormulas extends JScrollPane{
 		p.add(pr, BorderLayout.CENTER);
 	}
 	
-//Getters____________________________________________________________
-	public JTextArea getAtVInicial() {
-		return atVInicial;
-	}
+//Getters das Areas de Texto___________________________________________________
+	//Estas tem o texto modificado durante a execução
+	public JTextArea getAtVInicial() {return atVInicial;}
+	public JTextArea getAtFNormal() {return atFNormal;}
+	public JTextArea getAtAtrito() {return atAtrito;}
+	public JTextArea getAtAceleracao() {return atAceleracao;}
+	public JTextArea getAtPosFinal() {return atPosFinal;}
+	public JTextArea gsetAtTempo() {return atTempo;}
+	public JTextArea getAtNovaPos() {return atNovaPos;}
+	public JTextArea getAtColisao() {return atColisao;}
+	public JTextArea getAtNovaPosColisao() {return atNovaPosColisao;}
+	public JTextArea getAtMovimentoHorizontal() {return atMovimentoHorizontal;}
+	public JTextArea getAtMovimentoVertical() {return atMovimentoVertical;}
+	public JTextArea getAtAlcanceTotalHorizontal() {return atAlcanceTotalHorizontal;}
+	public JTextArea getAtAlcanceTotalVertical() {return atAlcanceTotalVertical;}
 
-	public JTextArea getAtFNormal() {
-		return atFNormal;
-	}
-
-	public JTextArea getAtAtrito() {
-		return atAtrito;
-	}
-
-	public JTextArea getAtAceleracao() {
-		return atAceleracao;
-	}
-
-	public JTextArea getAtPosFinal() {
-		return atPosFinal;
-	}
-
-	public JTextArea getAtTempo() {
-		return atTempo;
-	}
-
-	public JTextArea getAtNovaPos() {
-		return atNovaPos;
-	}
-
-	public JTextArea getAtColisao() {
-		return atColisao;
-	}
-
-	public JTextArea getAtNovaPosColisao() {
-		return atNovaPosColisao;
+//Setter dos Paineis de Rolagem_______________________________________________
+	//dependendo da simulação estes paineis podem ou não aparecer
+	public void setPVInicial(boolean visivel) {pVInicial.setVisible(visivel);}
+	public void setPFNormal(boolean visivel) {pFNormal.setVisible(visivel);}
+	public void setPAtrito(boolean visivel) {pAtrito.setVisible(visivel);}
+	public void setPAceleracao(boolean visivel) {pAceleracao.setVisible(visivel);}
+	public void setPPosFinal(boolean visivel) {pPosFinal.setVisible(visivel);}
+	public void setPTempo(boolean visivel) {pTempo.setVisible(visivel);}
+	public void setPNovaPos(boolean visivel) {pNovaPos.setVisible(visivel);}
+	public void setPColisao(boolean visivel) {pColisao.setVisible(visivel);}
+	public void setPNovaPosColisao(boolean visivel) {pNovaPosColisao.setVisible(visivel);}
+	public void setpMovimentoHorizontal(boolean visivel) {pMovimentoHorizontal.setVisible(visivel);}
+	public void setpMovimentoVertical(boolean visivel) {pMovimentoVertical.setVisible(visivel);}
+	public void setpAlcanceTotalHorizontal(boolean visivel) {pAlcanceTotalHorizontal.setVisible(visivel);}
+	public void setpAlcanceTotalVertical(boolean visivel) {pAlcanceTotalVertical.setVisible(visivel);}
+	
+//Modificador do tempo para as simulções
+	public void modificaPTempo(boolean lancamentoObliq){
+		if(lancamentoObliq){
+			atTempo.setBackground(UtilidadeCores.azulIndigo);//área de texto
+			atTempo.setForeground(UtilidadeCores.amareloKhaki);
+			rTempo.setBackground(UtilidadeCores.azulIndigo);//rótulo
+			rTempo.setForeground(UtilidadeCores.amareloKhaki);
+			pTempo.setBackground(UtilidadeCores.azulIndigo);//painel
+		}
+		else{
+			atTempo.setBackground(UtilidadeCores.azulMetalico);//área de texto
+			atTempo.setForeground(UtilidadeCores.amareloOuro);
+			rTempo.setBackground(UtilidadeCores.azulMetalico);//rótulo
+			rTempo.setForeground(UtilidadeCores.amareloOuro);
+			pTempo.setBackground(UtilidadeCores.azulMetalico);//painel}
+		}
 	}
 	
 }
