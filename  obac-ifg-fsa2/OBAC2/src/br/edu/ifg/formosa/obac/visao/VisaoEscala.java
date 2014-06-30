@@ -52,13 +52,13 @@ public class VisaoEscala extends JPanel{
 		g2d.rotate(Math.toRadians(mE.getAngulo()));
 		g2d.translate(-mE.getEscalaInicioX(), -mE.getEscalaInicioY());
 		
-		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimX(), mE.getQtdMarcadores()));
+		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimXPix(), mE.getQtdMarcadores()));
 		
 		g2d.setColor(Color.black);
-		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimX(), mE.getEscalaFimY());
+		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());
 				
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 15);
-		g2d.drawLine(mE.getEscalaFimX(), mE.getEscalaFimY(), mE.getEscalaFimX(), mE.getEscalaFimY() + 15);
+		g2d.drawLine(mE.getEscalaFimXPix(), mE.getEscalaFimYPix(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix() + 15);
 
 		//for -> desenha os marcadores
 		for (int i=1;i<=mE.getQtdMarcadores();i++) {

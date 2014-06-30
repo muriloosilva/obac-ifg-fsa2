@@ -21,7 +21,7 @@ public class ModeloAmbiente {
 	//Variáveis
 	//--Double
 	public static double coefAtrito; //Recebe ou o atrito da madeira, ou do asfalto ou do aluminio
-	public static double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte
+	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte
 	
 	private double tempo; //OBAC1
 	
@@ -32,11 +32,11 @@ public class ModeloAmbiente {
 	
 	//Metodos
 	//--Getters
-	public static double getGravidadeterra() {return gravidadeTerra;}
-	public static double getGravidadelua() {return gravidadeLua;}
-	public static double getGravidademarte() {return gravidadeMarte;}
+//	public static double getGravidadeterra() {return gravidadeTerra;} - Variáveis estáticas não precisam de getters
+//	public static double getGravidadelua() {return gravidadeLua;}
+//	public static double getGravidademarte() {return gravidadeMarte;}
 	public static double getCoefAtrito() {return coefAtrito;}
-	public static double getGravSelecionada() {return gravSelecionada;}
+	public double getGravSelecionada() {return gravSelecionada;}
 	public double getTempo() {return tempo;}
 	public ModeloEscala getmE() {return mE;}
 	public ModeloObjeto getmO() {return mO;}
@@ -47,8 +47,8 @@ public class ModeloAmbiente {
 		ModeloAmbiente.coefAtrito = coefAtrito;
 //		cpi.mudaValorCoefAtrito(ModeloAmbiente.coefAtrito);//Altera o valor do Coeficiente de atrito no painel de informções
 	}
-	public static void setGravSelecionada(double gravSelecionada) {
-		ModeloAmbiente.gravSelecionada = gravSelecionada;
+	public void setGravSelecionada(double gravSelecionada) {
+		this.gravSelecionada = gravSelecionada;
 //		cpi.mudaValorGravidade(ModeloAmbiente.gravSelecionada);//Altera a gravidade no painel de informações
 	}
 	public void setTempo(double tempo) {

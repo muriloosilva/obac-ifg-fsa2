@@ -40,7 +40,7 @@ public class ModeloObjeto {
 	private double massa;
 	private double coefRestituicao;
 	
-	private double velocidade;
+	private double velocidade;//Esta se torna desnecessária se a velocidade não mudar
 	private double velocidadeInicial;
 	
 	private double aceleracao;
@@ -52,11 +52,16 @@ public class ModeloObjeto {
 	private double posicaoXPx; //Posicao em Pixels
 	private double posicaoYPx;
 	
+	private double posFinalMetros = 0;//Posição final do objeto em metros
+	private double posFinalPix = 0;//Posição final do objeto em Pixels
+	
+	private double forcaNormal = 0;//Força normal agindo no objeto
+	
 	
 	//Metodos
 	//--Getters
-	public static double getAltura() {return altura;}
-	public static double getLargura() {return largura;}
+//	public static double getAltura() {return altura;}---Variáveis estáticas não precisam de getters
+//	public static double getLargura() {return largura;}
 	public double getMassa() {return massa;}
 	public double getCoefRestituicao() {return coefRestituicao;}
 	public double getVelocidade() {return velocidade;}
@@ -67,6 +72,9 @@ public class ModeloObjeto {
 	public double getPosicaoY() {return posicaoY;}
 	public double getPosicaoXPx() {return posicaoXPx;}
 	public double getPosicaoYPx() {return posicaoYPx;}
+	public double getForcaNormal(){return forcaNormal;}
+	public double getPosFinalMetros(){return posFinalMetros;}
+	public double getPosFinalPix(){return posFinalPix;}
 	
 	//Setters
 	public void setMassa(double massa) {this.massa = massa;}
@@ -88,5 +96,8 @@ public class ModeloObjeto {
 	}
 	public void setPosicaoXPx(double posicaoXPx) {this.posicaoXPx = posicaoXPx;}
 	public void setPosicaoYPx(double posicaoYPx) {this.posicaoYPx = posicaoYPx;}
+	public void setForcaNormal(double forcaNormal){this.forcaNormal = forcaNormal;}
+	public void setPosFinalMetros(double posFinalMetros){this.posFinalMetros = posFinalMetros;}
+	public void setPosFinalPix(double posFinalPix){this.posFinalPix = posFinalPix;}
 	
 }
