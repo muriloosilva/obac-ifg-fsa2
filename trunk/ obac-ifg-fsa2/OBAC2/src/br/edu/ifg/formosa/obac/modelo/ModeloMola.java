@@ -26,9 +26,9 @@ public class ModeloMola {
 	//Calculo de X
 //	public calculaX(/*Recebe a posição atual do objeto*/){
 		//SUBTRAI O TAMNHO DA MULA PELO TAMNHO FINAL DA MOLA (POSIÇÃO INICIAL DO OBJETO NO EIXO X OU Y NO CASO DA QUEDA LIVRE)
-//		(tamanhoIniMolaM-tamanhoIniMolaM)
+//		
 		//O TAMANHO DE X É DADO EM METROS, MAS AKI AINDA ESTÁ EM PIXEL, LOGO, TEM QUE EXISTIR UM MÉTODO ESTÁTICO PARA ISSO SER FEITO
-//		return X;
+//		return (tamanhoIniMolaM-tamanhoIniMolaM);
 //	}
 	
 //Getters
