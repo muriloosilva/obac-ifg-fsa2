@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.border.LineBorder;
 
-import br.edu.ifg.formosa.obac.modelo.ModeloFormulas;
+import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeCores;
 
 public class VisaoPainelFormulas extends JScrollPane{
@@ -118,37 +118,37 @@ public class VisaoPainelFormulas extends JScrollPane{
 		
 		//Velocidade Inicial
 		rVInicial = new JLabel("Velocidade Inicial");//Rótulo
-		atVInicial = new JTextArea(ModeloFormulas.propCanhao);//Área de Texto
+		atVInicial = new JTextArea(ModeloPainelFormulas.propCanhao);//Área de Texto
 		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro, 5, true);
 		
 		//Força Normal
 		rFNormal = new JLabel("Força Normal");
-		atFNormal = new JTextArea(ModeloFormulas.forcaNormal);
+		atFNormal = new JTextArea(ModeloPainelFormulas.forcaNormal);
 		addComponentes(pFNormal, rFNormal, prFNormal, atFNormal, UtilidadeCores.azulIndigo, UtilidadeCores.amareloKhaki, 3, true);
 		
 		//Atrito
 		rAtrito = new JLabel("Atrito");
-		atAtrito = new JTextArea(ModeloFormulas.atrito);
+		atAtrito = new JTextArea(ModeloPainelFormulas.atrito);
 		addComponentes(pAtrito, rAtrito, prAtrito, atAtrito, UtilidadeCores.azulEscuro, UtilidadeCores.amarelo, 3, true);
 		
 		//Aceleração
 		rAceleracao = new JLabel("Aceleração");
-		atAceleracao = new JTextArea(ModeloFormulas.aceleracaoDescida);
+		atAceleracao = new JTextArea(ModeloPainelFormulas.aceleracaoDescida);
 		addComponentes(pAceleracao, rAceleracao, prAceleracao, atAceleracao, UtilidadeCores.azul, UtilidadeCores.amareloAcafrao, 6, true);
 		
 		//Posição final
 		rPosFinal = new JLabel("Posição Final");
-		atPosFinal = new JTextArea(ModeloFormulas.posicaoFinalDescida);
+		atPosFinal = new JTextArea(ModeloPainelFormulas.posicaoFinalDescida);
 		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloQueimado, 6, true);
 		
 		//Tempo
 		rTempo = new JLabel("Tempo");
-		atTempo = new JTextArea(ModeloFormulas.tempo +"\n" +ModeloFormulas.tempoTotal);
+		atTempo = new JTextArea(ModeloPainelFormulas.tempo +"\n" +ModeloPainelFormulas.tempoTotal);
 		addComponentes(pTempo, rTempo, prTempo, atTempo, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 5, true);
 		
 		//Nova Posição
 		rNovaPos = new JLabel("Nova Posição");
-		atNovaPos = new JTextArea(ModeloFormulas.novaPosicao);
+		atNovaPos = new JTextArea(ModeloPainelFormulas.novaPosicao);
 		addComponentes(pNovaPos, rNovaPos, prNovaPos, atNovaPos, UtilidadeCores.azulRoyal, UtilidadeCores.laranja, 6, true);
 		
 		//Colisão
@@ -158,27 +158,27 @@ public class VisaoPainelFormulas extends JScrollPane{
 		
 		//Nova Posição Após Colisão
 		rNovaPosColisao = new JLabel("Nova Posição Após Colisão");
-		atNovaPosColisao = new JTextArea(ModeloFormulas.novaPosicao);
+		atNovaPosColisao = new JTextArea(ModeloPainelFormulas.novaPosicao);
 		addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6, false);
 		
 		//Movimento Horizontal
 		rMovimentoHorizontal = new JLabel("Movimento Horizontal");
-		atMovimentoHorizontal = new JTextArea(ModeloFormulas.movimentoHorizontal);
+		atMovimentoHorizontal = new JTextArea(ModeloPainelFormulas.movimentoHorizontal);
 		addComponentes(pMovimentoHorizontal, rMovimentoHorizontal, prMovimentoHorizontal, atMovimentoHorizontal, UtilidadeCores.azulEscuro, UtilidadeCores.amarelo, 5, false);
 		
 		//Movimento Vertical
 		rMovimentoVertical = new JLabel("Movimento Vertical");
-		atMovimentoVertical = new JTextArea(ModeloFormulas.movimentoVertical);
+		atMovimentoVertical = new JTextArea(ModeloPainelFormulas.movimentoVertical);
 		addComponentes(pMovimentoVertical, rMovimentoVertical, prMovimentoVertical, atMovimentoVertical, UtilidadeCores.azul, UtilidadeCores.amareloAcafrao, 5, false);
 		
 		//Alcance Total Horizontal
 		rAlcanceTotalHorizontal = new JLabel("Alcance Total Horizontal");
-		atAlcanceTotalHorizontal = new JTextArea(ModeloFormulas.alcanceHorizontal);
+		atAlcanceTotalHorizontal = new JTextArea(ModeloPainelFormulas.alcanceHorizontal);
 		addComponentes(pAlcanceTotalHorizontal, rAlcanceTotalHorizontal, prAlcanceTotalHorizontal, atAlcanceTotalHorizontal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloQueimado, 5, false);
 		
 		//Altura Total Vertical
 		rAlcanceTotalVertical = new JLabel("Altura Total Vertical");
-		atAlcanceTotalVertical = new JTextArea(ModeloFormulas.alturaVertical);
+		atAlcanceTotalVertical = new JTextArea(ModeloPainelFormulas.alturaVertical);
 		addComponentes(pAlcanceTotalVertical, rAlcanceTotalVertical, prAlcanceTotalVertical, atAlcanceTotalVertical, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 5, false);
 		
 	}

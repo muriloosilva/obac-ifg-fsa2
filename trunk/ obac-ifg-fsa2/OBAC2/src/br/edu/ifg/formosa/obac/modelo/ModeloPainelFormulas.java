@@ -1,6 +1,6 @@
 package br.edu.ifg.formosa.obac.modelo;
 
-public class ModeloFormulas {
+public class ModeloPainelFormulas {
 	
 	//Fórmulas em texto - se não for encontrado uso idica-se total remoção das linas 5-24
 //		//Propulsões

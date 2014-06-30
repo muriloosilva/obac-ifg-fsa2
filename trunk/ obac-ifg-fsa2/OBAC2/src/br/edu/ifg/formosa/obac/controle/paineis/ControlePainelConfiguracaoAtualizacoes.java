@@ -7,7 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import br.edu.ifg.formosa.obac.modelo.ModeloFormulas;
+import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
@@ -28,7 +28,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					if(vpc.getCsAmbienteSimulacao().getItemCount()==5)//Teste lógico para que adicione apenas uma vez
 						vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), vpc.getCsAmbienteSimulacao().getItemCount());
 					//Painel de Fórmulas
-					vpf.getAtVInicial().setText(ModeloFormulas.propCanhao);
+					vpf.getAtVInicial().setText(ModeloPainelFormulas.propCanhao);
 				}
 				//Propulsão pela mola
 				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getMola())){
@@ -39,7 +39,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					if(vpc.getCsAmbienteSimulacao().getItemCount()==6)//Teste lógico para não remover uma linha desnecessária
 						vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo
 					//Painel de Fórmulas
-					vpf.getAtVInicial().setText(ModeloFormulas.propMola);
+					vpf.getAtVInicial().setText(ModeloPainelFormulas.propMola);
 				} 
 				else{
 					JOptionPane.showMessageDialog(null,
