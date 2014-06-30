@@ -15,9 +15,7 @@ public class ModeloMola {
 	private double kAtual;//Atual
 	
 	//Modelo do Objeto
-	private ModeloObjeto mo = null;//OBS Matheus: A posição original dos objetos no eixo x não altera na subida, descida e P&P. Ela gira sozinha com a rotação do painel, sem alterações no valor xPix dela.
-								   //Por isso eu peço que considere a opção de haver apenas uma variável e uma constante para a posição em pixel do objeto
-								  //Tbm aproveito a deixa para pedir uma forma de vc alocar as variáveis que são citadas em controlePainelInformação 
+	private ModeloObjeto mo = null; 
 	
 	//Construtor
 	public ModeloMola(ModeloObjeto mo) {this.mo = mo;}

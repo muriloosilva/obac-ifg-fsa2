@@ -7,8 +7,6 @@ public class ControlePainelInformacao {
 
 	private static VisaoPainelInformacao vpi = null;
 	
-	
-	//Ainda faltando força normal, força de atrito e posição final - No OBAC original estavam no modelo do objeto
 	public ControlePainelInformacao(VisaoPainelInformacao vpi) {
 		ControlePainelInformacao.vpi = vpi;
 	}
@@ -34,14 +32,14 @@ public class ControlePainelInformacao {
 	
 	//Metódo que zera os valores do Painel de Informação
 	public static void resertaPInfo(){
-		vpi.getrGravidadeValor().setText(0.0+"");
-		vpi.getrCoefAtritoValor().setText(0.0+"");
-		vpi.getrForcaAtritoValor().setText(0.0+"");
-		vpi.getrForcaNormalValor().setText(0.0+"");
-		vpi.getrPosFinalValor().setText(0.0+"");
-		vpi.getrAceleracaoValor().setText(0.0+"");
-		vpi.getrPosAtualEixoXValor().setText(0.0+"");
-		vpi.getrPosAtualEixoYValor().setText(0.0+"");
-		vpi.getrTempoValor().setText(0.0+"");
+		vpi.getrGravidadeValor().setText("0.0");
+		vpi.getrCoefAtritoValor().setText("0.0");
+		vpi.getrForcaAtritoValor().setText("0.0");
+		vpi.getrForcaNormalValor().setText("0.0");
+		vpi.getrPosFinalValor().setText("0.0");
+		vpi.getrAceleracaoValor().setText("0.0");
+		vpi.getrPosAtualEixoXValor().setText("0.0");
+		vpi.getrPosAtualEixoYValor().setText("0.0");
+		vpi.getrTempoValor().setText("0.0");
 	}
 }
