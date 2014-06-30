@@ -38,7 +38,7 @@ public class ModeloPainelFormulas {
 		public static String aceleracaoSubida = aceleracaoDescida + " * (-1)";//Subida
 		//Posição final
 		public static String posicaoFinalDescida = "Sf = (V0^2 * -1)/(2 * a)";
-		public static String posicaoFinalPlano = posicaoFinalDescida + " * (-1)";
+		public static String posicaoFinalPadrao = posicaoFinalDescida + " * (-1)";
 		//Tempo
 		public static String tempo = "t = (Vf - V0)/a \nt = ΔV/a";
 		//Nova Posição
