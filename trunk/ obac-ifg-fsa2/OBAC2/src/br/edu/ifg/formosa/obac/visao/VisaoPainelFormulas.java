@@ -148,7 +148,8 @@ public class VisaoPainelFormulas extends JScrollPane{
 		
 		//Nova Posição
 		rNovaPos = new JLabel("Nova Posição");
-		atNovaPos = new JTextArea(ModeloPainelFormulas.novaPosicao);
+		rNovaPos.setToolTipText("Equação horária das abscissas");
+		atNovaPos = new JTextArea(ModeloPainelFormulas.equaHorariaAbscissa);
 		addComponentes(pNovaPos, rNovaPos, prNovaPos, atNovaPos, UtilidadeCores.azulRoyal, UtilidadeCores.laranja, 6, true);
 		
 		//Colisão
@@ -156,9 +157,12 @@ public class VisaoPainelFormulas extends JScrollPane{
 		atColisao = new JTextArea();
 		addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 1, false);
 		
+		//Velocidade pós Colosão - Criar os componentes e refazer o esquema de cores
+		
 		//Nova Posição Após Colisão
 		rNovaPosColisao = new JLabel("Nova Posição Após Colisão");
-		atNovaPosColisao = new JTextArea(ModeloPainelFormulas.novaPosicao);
+		rNovaPosColisao.setToolTipText("Equação horária das abscissas");
+		atNovaPosColisao = new JTextArea(ModeloPainelFormulas.equaHorariaAbscissa);
 		addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6, false);
 		
 		//Movimento Horizontal

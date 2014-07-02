@@ -18,20 +18,20 @@ public class ModeloObjeto {
 	public static final double altura = 10; //Os valores de alt e larg sao para inicializar as variaveis
 	public static final double largura = 10;
 	
-	public final double posXPlano = 0; //As 12 variaveis que se seguem orientam a posicao inical do objeto em pixels nas diferetes simulacoes. Valores devem ser preenchidos corretamete
-	public final double posYPlano = 0;
+	public final double posXIniPlano = 0; //As 12 variaveis que se seguem orientam a posicao inical do objeto em pixels nas diferetes simulacoes. Valores devem ser preenchidos corretamete
+	public final double posYIniPlano = 0;
 	
-	public final double posXSubida = 0;
-	public final double posYSubida = 0;
+	public final double posXIniSubida = 0;
+	public final double posYIniSubida = 0;
 	
-	public final double posXDescida = 0;
-	public final double posYDescida = 0;
+	public final double posXIniDescida = 0;
+	public final double posYIniDescida = 0;
 	
-	public final double posXPrecipicio = 0;
-	public final double posYPrecipicio = 0;
+	public final double posXIniPrecipicio = 0;
+	public final double posYIniPrecipicio = 0;
 	
-	public final double posXQueda = 0;
-	public final double posYQueda = 0;
+	public final double posXIniQueda = 0;
+	public final double posYIniQueda = 0;
 	
 	public final double posXLancamento = 0;
 	public final double posYLancamento = 0;
@@ -46,8 +46,8 @@ public class ModeloObjeto {
 	private double aceleracao;
 	private double aceleracaoY;
 	
-	private double posicaoX = 0;	//Posicao em Metros
-	private double posicaoY = 0;
+	private double posicaoXMetros = 0;	//Posicao em Metros
+	private double posicaoYMetros = 0;
 	
 	private double posicaoXPx; //Posicao em Pixels
 	private double posicaoYPx;
@@ -68,8 +68,8 @@ public class ModeloObjeto {
 	public double getVelocidadeInicial() {return velocidadeInicial;}
 	public double getAceleracao() {return aceleracao;}
 	public double getAceleracaoY() {return aceleracaoY;}
-	public double getPosicaoX() {return posicaoX;}
-	public double getPosicaoY() {return posicaoY;}
+	public double getPosicaoXMetros() {return posicaoXMetros;}
+	public double getPosicaoYMetros() {return posicaoYMetros;}
 	public double getPosicaoXPx() {return posicaoXPx;}
 	public double getPosicaoYPx() {return posicaoYPx;}
 	public double getForcaNormal(){return forcaNormal;}
@@ -86,12 +86,12 @@ public class ModeloObjeto {
 //		cpi.mudaValorAceleracao(this.aceleracao);//Altera o valor da aceleração no PInfo
 	}
 	public void setAceleracaoY(double aceleracaoY) {this.aceleracaoY = aceleracaoY;}
-	public void setPosicaoX(double posicaoX) {
-		this.posicaoX = posicaoX;
+	public void setPosicaoXMetros(double posicaoXMetros) {
+		this.posicaoXMetros = posicaoXMetros;
 //		cpi.mudaValorPosAtualX(this.posicaoX);//Atualiza posição em metros do eixo X no PInfo
 	}
-	public void setPosicaoY(double posicaoY) {
-		this.posicaoY = posicaoY;
+	public void setPosicaoYMetros(double posicaoYMetros) {
+		this.posicaoYMetros = posicaoYMetros;
 //		cpi.mudaValorPosAtualY(this.posicaoY);//Atualiza posição em metros do eixo Y no PInfo
 	}
 	public void setPosicaoXPx(double posicaoXPx) {this.posicaoXPx = posicaoXPx;}
