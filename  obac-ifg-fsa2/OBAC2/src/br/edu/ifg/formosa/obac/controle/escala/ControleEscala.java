@@ -48,8 +48,8 @@ public class ControleEscala {
 	//--Altera os valores do ModeloEscala
 	private void mudaModeloEscala(ModeloEscala mE, int eIX, int eIY, int eFX, int eFY, int qMarcadores, double angulo) {
 		mE.setAngulo(angulo);
-		mE.setEscalaFimX(eFX);
-		mE.setEscalaFimY(eFY);
+		mE.setEscalaFimXPix(eFX);
+		mE.setEscalaFimYPix(eFY);
 		mE.setEscalaInicioX(eIX);
 		mE.setEscalaInicioY(eIY);
 		mE.setQtdMarcadores(qMarcadores);

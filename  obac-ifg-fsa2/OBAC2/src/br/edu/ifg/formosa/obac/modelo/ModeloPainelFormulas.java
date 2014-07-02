@@ -25,7 +25,7 @@ public class ModeloPainelFormulas {
 	
 	//Fórmulas com variáveis
 		//Propulsões
-		public static String propMola = "V0 = (K+x^2/m) \n";//Mola
+		public static String propMola = "V0 = √(K+x^2/m) \n";//Mola
 		public static String propCanhao = "V0 = (2 * e * m)";//Canhão
 		//Força Normal
 		public static String forcaNormal = "N = m * g";
@@ -42,7 +42,9 @@ public class ModeloPainelFormulas {
 		//Tempo
 		public static String tempo = "t = (Vf - V0)/a \nt = ΔV/a";
 		//Nova Posição
-		public static String novaPosicao = "s=s0+v0*t+(a*t^2)/2 \n";
+		public static String equaHorariaAbscissa = "s=s0+v0*t+(a*t^2)/2 \n";
+		//Velocidade pós colisão - Equação de Torricceli
+		public static String equaTorricceli = "V² = V0^2 + 2 * a * ΔS \n V = √(V0^2 + 2 * a * ΔS)";
 		//Lançamento Obliquo
 			//Tempo Total
 			public static String tempoTotal = "t=(2*v*sen(θ))/g)";
@@ -160,7 +162,7 @@ public class ModeloPainelFormulas {
 	//Nova posição
 	public String novaPosicao(double s0, double v0, double t, double a){
 		//s=s0+v0*t+(a*t^2)/2
-		String s = novaPosicao +"\n"; 
+		String s = equaHorariaAbscissa +"\n"; 
 		s += "s = "+s0+" + "+v0+" * "+t+" + ("+a+" * "+t+"^2)/2 \n";
 		s += "s = "+s0+" + "+(v0*t)+" + ("+a+" * "+Math.pow(t,2)+")/2 \n";
 		s += "s = "+(s0+(v0*t))+" + ("+(a*Math.pow(t,2))+")/2 \n";

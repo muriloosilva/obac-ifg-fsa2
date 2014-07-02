@@ -22,7 +22,7 @@ public class ControleFormulasObjeto {
 	//Aceleração no Plano -> a = Fat/massa * -1
 	public void aceleracaoPlano(){
 		ma.getmO().setAceleracao(
-			(ma.getmS().getCoefAtrito()/ma.getmO().getMassa())
+			(ma.getmS().getCoefAtritoSelecionado()/ma.getmO().getMassa())
 		);
 	}
 	
@@ -35,7 +35,7 @@ public class ControleFormulasObjeto {
 	public void calculaAceleracaoSubida(){
 		ma.getmO().setAceleracao(
 			((ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.getmS().anguloInclinacaoGraus)))
-			 + (ma.getmS().getCoefAtrito()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.getmS().anguloInclinacaoGraus)))
+			 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.getmS().anguloInclinacaoGraus)))
 			)
 			
 		);
@@ -45,7 +45,7 @@ public class ControleFormulasObjeto {
 	public void calculaAceleracaoDescida(){
 		ma.getmO().setAceleracao(((
 		 (ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.getmS().anguloInclinacaoGraus)))
-		 + (ma.getmS().getCoefAtrito()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.getmS().anguloInclinacaoGraus))*(-1))
+		 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.getmS().anguloInclinacaoGraus))*(-1))
 		)));
 	}
 	
@@ -78,11 +78,28 @@ public class ControleFormulasObjeto {
 		);
 	}
 	
+	//Calcula Novas posições do objeto - s=s0+v0*t+(a*t^2)/2
+	public void calculaNovaPosicao(){
+		ma.getmO().setPosicaoXMetros(
+			//S0 = 0
+			(ma.getmO().getVelocidadeInicial()*ma.getTempo())
+			+((ma.getmO().getAceleracao()*ma.getTempo()*ma.getTempo())/2)
+		);
+	}
+	
+	//Velocidade após colisão do objeto - V²=V02+2*a*ΔS
+	public void calculaVelocidadePosColisao(){
+		ma.getmO().setVelocidade(Math.sqrt(
+			((ma.getmO().getVelocidadeInicial()*2)
+			+(2*ma.getmO().getAceleracao()*ma.getmO().getPosicaoXMetros()))
+		));
+	}
+	
 	//Calcula coeficiente de restituição
 		//---Este método existe no obac original, ma não vejo uma aplicação dele nesta revisão do projeto
 		//---Já que ele é apenas um set do coeficiente de restituição que está em uma classe diferente
 	
-	//Testes lógicos para definirem a parada do objeto
+	//Testes lógicos para definirem a parada do objeto de acordo com a simulação
 		//Plano
 		public boolean paradaPlano(){
 			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalPix()) return true;

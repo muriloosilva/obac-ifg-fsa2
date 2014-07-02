@@ -17,7 +17,7 @@ public class ModeloEscala {
 	private int qtdMarcadores = 5; //Numero de marcadores existentes na escala
 	
 	//--Double
-	private double angulo = 0; //Angulo para rotacionar a escala;
+	private double angulo = 0; //Angulo para rotacionar a escala; -- Ta repetida em modelo superfície
 	
 	//Metodos
 	//--Getters
