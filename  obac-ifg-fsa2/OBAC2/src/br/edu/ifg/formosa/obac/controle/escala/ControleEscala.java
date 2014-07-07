@@ -19,14 +19,22 @@ public class ControleEscala {
 			public void actionPerformed(ActionEvent arg0) {
 				if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[0])) { //Plano
 					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
+					mE.setEscalaSelecionada(0);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[1])) {//Descida
 					mudaModeloEscala(mE, 100, 564, 750, 564, 5, -45);
+					mE.setEscalaSelecionada(1);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[2])) {//Subida
 					mudaModeloEscala(mE, 100, 100, 750, 100, 5, 45);
+					mE.setEscalaSelecionada(2);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[3])) {//Precipicio
 					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
+					mE.setEscalaSelecionada(3);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[4])) {//Queda
 					mudaModeloEscala(mE, 100, 100, 500, 100, 5, 90);
+					mE.setEscalaSelecionada(4);
+				} else { //Projétil
+					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
+					mE.setEscalaSelecionada(5);
 				}
 				vpi.repaint();
 				vps.repaint();
