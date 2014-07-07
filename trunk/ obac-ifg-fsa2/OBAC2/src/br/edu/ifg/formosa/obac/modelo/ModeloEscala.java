@@ -10,8 +10,8 @@ public class ModeloEscala {
 	private int escalaFimXPix = 700; //Fim da escala X (px)
 	private int escalaFimYPix = 564; //Fim da escala Y (px)
 	
-	private long escalaFimXM = 700; //Fim da escala X (m)
-	private long escalaFimYM = 564; //Fim da escala Y (m)
+	private long escalaFimXM = 0; //Fim da escala X (m)
+	private long escalaFimYM = 0; //Fim da escala Y (m)
 	
 	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)	
 	private int qtdMarcadores = 5; //Numero de marcadores existentes na escala

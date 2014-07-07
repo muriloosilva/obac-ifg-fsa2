@@ -43,5 +43,14 @@ public class ControleFormulasSuperficie {
 	}
 	
 	//Calcula escala Queda Livre
+	public void calculaEscalaQueda(){
+		long pontoFinalEscala=1000;//Esta escala possui o tamanho fixo de 1000 Metros
+		ma.getmE().setEscalaFimYM(pontoFinalEscala);
+		//Verificar o surface.setEscala() do OBAC riginal. Qual a utilidade dele
+	}
+	
 	//Calcula Escala P&P
+	public void escalaPlanoPrecipicio(){
+		
+	}
 }
