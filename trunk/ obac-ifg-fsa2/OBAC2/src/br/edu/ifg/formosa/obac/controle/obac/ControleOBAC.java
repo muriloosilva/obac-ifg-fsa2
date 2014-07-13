@@ -37,6 +37,9 @@ public class ControleOBAC {
 		private VisaoPainelFormulas vpf = null;
 	//Painel de Simulação
 		private VisaoPainelSimulacao vPS = null;
+	//Controles do Painel de Configuração
+		private ControlePainelConfiguracaoEntradaDeDados cpced = null;
+		private ControlePainelConfiguracaoAtualizacoes cpca = null;
 	
 	public ControleOBAC(OBAC obac) {
 		
@@ -64,9 +67,9 @@ public class ControleOBAC {
 		painelAbas.add(vpf, "Fórmulas");
 		
 		//Controles do Painel de Configuração
-		new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf);
-		new ControlePainelConfiguracaoEntradaDeDados(vpc);
-		new ControlePainelConfiguracaoExecucao(vpc, mpc);		
+		cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf);
+		cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
+		new ControlePainelConfiguracaoExecucao(vpc, mpc, cpca, cpced);	
 		
 		//Painel de Informações
 		vpi = new VisaoPainelInformacao();
