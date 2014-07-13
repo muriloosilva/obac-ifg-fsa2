@@ -35,6 +35,10 @@ public class ModeloObjeto {
 	
 	public final double posXLancamento = 0;
 	public final double posYLancamento = 0;
+	
+	public static final int pontoFinalObjetoDescidaPix = 518;
+	public static final int pontoFinalObjetoSubidaPix = 0;
+	
 	//Variaveis
 	//--Double	
 	private double massa;
