@@ -8,7 +8,9 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 
 public class ControlePainelConfiguracaoExecucao {
 
-	public ControlePainelConfiguracaoExecucao(final VisaoPainelConfiguracao vpc, final ModeloPainelConfiguracao mpc) {
+	public ControlePainelConfiguracaoExecucao(final VisaoPainelConfiguracao vpc, final ModeloPainelConfiguracao mpc,
+			final ControlePainelConfiguracaoAtualizacoes cpca, final ControlePainelConfiguracaoEntradaDeDados cpced)
+	{
 		
 		//Botão Iniciar/Pausar
 		vpc.getBaIniciaPausar().addActionListener(new ActionListener() {
@@ -16,7 +18,8 @@ public class ControlePainelConfiguracaoExecucao {
 			public void actionPerformed(ActionEvent arg0) {
 				//Inicia simulação
 				if (vpc.getBaIniciaPausar().getText().equals(mpc.getBotaoIniciar())==true
-					&& ControlePainelConfiguracaoEntradaDeDados.verificaCampos()==true) {
+					&& cpced.verificaCampos()==true) {
+					cpca.desativaComponentes(false);//Desativar componentes
 				}
 				//Pausa simulação
 				else if(vpc.getBaIniciaPausar().getText().equals(mpc.getBotaoPausar())){}
@@ -30,6 +33,7 @@ public class ControlePainelConfiguracaoExecucao {
 		vpc.getBaNovaSimulacao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				cpca.desativaComponentes(true);//Ativar componentes
 			}
 		});
 	}
