@@ -111,12 +111,13 @@ public class VisaoPainelConfiguracao extends JPanel{
 			//Inicia/Pausa
 			baIniciaPausar = new JButton(mpc.getBotaoIniciar());
 				baIniciaPausar.setFont(fonte);
-				baIniciaPausar.setBounds(30, 510, 190, 20);
+				baIniciaPausar.setBounds(30, 510, 190, 22);
 			this.add(baIniciaPausar);
 			//Nova simulação
 			baNovaSimulacao = new JButton("Nova Simulação");
 				baNovaSimulacao.setFont(fonte);
-				baNovaSimulacao.setBounds(30, 535, 190, 20);
+				baNovaSimulacao.setBounds(30, 537, 190, 22);
+				baNovaSimulacao.setVisible(false);
 			this.add(baNovaSimulacao);
 		
 		this.repaint();
@@ -183,7 +184,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 			pAmbiente.add(csAmbienteSimulacao);
 		//Atrito
 			//Rótulo
-			rAmbienteDadoAtrito = new JLabel("Atrito");
+			rAmbienteDadoAtrito = new JLabel("Superfície");
 				configRotulos(rAmbienteDadoAtrito, 10, 40, 210, 20);
 			pAmbiente.add(rAmbienteDadoAtrito);
 			//Caixa de Seleção
