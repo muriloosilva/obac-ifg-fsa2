@@ -41,7 +41,6 @@ public class ModeloMola {
 	public void setTamanhoMolaFinPix(double tamanhoMolaFinPix) {this.tamanhoMolaFinPix = tamanhoMolaFinPix;}
 	public void setTamanhoIniMolaM(double tamanhoIniMolaM) {this.tamanhoIniMolaM = tamanhoIniMolaM;}
 	public void setTamanhoMolaFinM(double tamanhoMolaFinM) {this.tamanhoMolaFinM = tamanhoMolaFinM;}
-//	public void setX(double x) {this.x = x;} - Pode não ser viável a sua aplicação, já que o calculo dele é feito anesta classe
 	public void setkAtual(double kAtual) {this.kAtual = kAtual;}
 
 }
