@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 
 public class ControleFormulasObjeto {
 
@@ -106,6 +107,39 @@ public class ControleFormulasObjeto {
 			else return false;
 		}
 		//Plano e Precipício
+		public boolean paradaPlanoPrecipicio(){
+			//Condição de parada caso o Objeto não caia
+			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalPix()
+			  && ma.getmO().getPosFinalPix() <= ma.getmE().getTamanhoPrecipicioPix()){
+				return true;
+			}
+			//Condição de para caso o objeto caia
+			else if(ma.getmO().getPosicaoYPx() >= ma.getmE().getFimAmbienteYPix()){
+				return true;
+			}
+			//Exceção - Caida
+			else/**/return false;
+		}
+		
 		//Subida
+		public boolean paradaSubida(){
+			if (ma.getmO().getPosicaoXPx() >= ModeloObjeto.pontoFinalObjetoSubidaPix) {
+				return false;
+			}
+			else{
+				//Este valor é repassado para o OBJETO com o fim de evitar que o objeto retorne
+				ma.getmO().setPosicaoXPx(ModeloObjeto.pontoFinalObjetoSubidaPix);
+				return true;
+			}
+		}
+		
 		//Descida
+		public boolean paradaDescida(){
+			if (ma.getmO().getPosicaoXPx() >= ModeloObjeto.pontoFinalObjetoDescidaPix) {
+				//Este valor é repassado para o OBJETO com o fim de evitar que o objeto retorne
+				ma.getmO().setPosicaoXPx(ModeloObjeto.pontoFinalObjetoDescidaPix);
+				return true;
+			}
+			else{return false;}
+		}
 }
