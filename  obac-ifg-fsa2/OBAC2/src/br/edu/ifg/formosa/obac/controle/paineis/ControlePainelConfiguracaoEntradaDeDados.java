@@ -12,14 +12,14 @@ public class ControlePainelConfiguracaoEntradaDeDados {
 		ControlePainelConfiguracaoEntradaDeDados.vpc = vpc;
 	}
 	
-	public static boolean verificaCampos(){
+	public boolean verificaCampos(){
 		//Todos os campos de dados
 		if(vpc.getCtPropulsaoDado1().getText().equalsIgnoreCase("") == true
 		|| vpc.getCtPropulsaoDado2().getText().equalsIgnoreCase("") == true
 		|| vpc.getCtObjetoMassa().getText().equalsIgnoreCase("") == true
 		){
 			JOptionPane.showMessageDialog(null,
-				"Porfavor, preencha todos os campos de texto para que a simulação seja iniciada.",
+				"Por favor,\n preencha todos os campos de texto para que a simulação seja iniciada.",
 				"Aviso", JOptionPane.WARNING_MESSAGE);
 			return false;
 		}
