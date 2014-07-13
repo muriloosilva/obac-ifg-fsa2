@@ -14,8 +14,24 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ControlePainelConfiguracaoAtualizacoes {
 	
+	//Constantes
+	private final VisaoPainelConfiguracao vpc;
+	private final ModeloPainelConfiguracao mpc;
+	private final VisaoPainelFormulas vpf;
+	
+	//Construtor
 	public ControlePainelConfiguracaoAtualizacoes(final VisaoPainelConfiguracao vpc, final ModeloPainelConfiguracao mpc, final VisaoPainelFormulas vpf) {
-		//Mudança nos rótulos de dados da propulsão e nas simulações disponíveis
+		this.vpc = vpc;
+		this.mpc = mpc;
+		this.vpf = vpf;
+		
+		acaoPropulsoes();
+		acaoCoefDeRestituicao();
+		
+	}
+	
+	//Alterações realizadas de acordo com a propulsão selecionada
+	private void acaoPropulsoes(){
 		vpc.getCsPropulsao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -48,8 +64,10 @@ public class ControlePainelConfiguracaoAtualizacoes {
 				}
 			}
 		});
-		
-		//Coeficiente de restituição
+	}
+	
+	//Atualização do rótulo da barra do Coeficiente de restituição
+	private void acaoCoefDeRestituicao(){
 		vpc.getdObjetoCoeficienteRestituicao().addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
@@ -60,4 +78,18 @@ public class ControlePainelConfiguracaoAtualizacoes {
 		});
 	}
 
+	//Método usado na execução para que a interação com os componentes seja removida
+	public void desativaComponentes(boolean ativado){
+		vpc.getCsPropulsao().setEnabled(ativado);
+		vpc.getCtPropulsaoDado1().setEnabled(ativado);
+		vpc.getCtPropulsaoDado2().setEnabled(ativado);
+		vpc.getCsAmbienteSimulacao().setEnabled(ativado);
+		vpc.getCsAmbienteAtrito().setEnabled(ativado);
+		vpc.getCsAmbienteGravidade().setEnabled(ativado);
+		vpc.getCtObjetoMassa().setEnabled(ativado);
+		vpc.getdObjetoCoeficienteRestituicao().setEnabled(ativado);
+		vpc.getBoColisaoSim().setEnabled(ativado);
+		vpc.getBoColisaoNao().setEnabled(ativado);
+		vpc.getBaNovaSimulacao().setVisible(!ativado);
+	}
 }
