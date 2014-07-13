@@ -2,6 +2,10 @@ package br.edu.ifg.formosa.obac.modelo;
 
 public class ModeloEscala {
 	
+	//Constantes
+	private final int tamanhoPrecipicioPix = 286;//Este valor é usado porque assim é considerado que 50% + 1pix do tamanho do objeto estará por cima do plano, de forma que o equilíbrio dele seja mantido(Tamnho_do_plano(330)-Tamho_do_objeto(30)-50%+1_do_Objeto_Pix(16))
+	private final int fimAmbienteYPix = 600;
+	
 	//Variaveis
 	//--Inteiro
 	private int escalaInicioX = 100; //Inicio da escala X (px)
@@ -25,6 +29,8 @@ public class ModeloEscala {
 	
 	//Metodos
 	//--Getters
+	public int getTamanhoPrecipicioPix() {return tamanhoPrecipicioPix;}
+	public int getFimAmbienteYPix() {return fimAmbienteYPix;}
 	public int getEscalaInicioX() {return escalaInicioX;}
 	public int getEscalaInicioY() {return escalaInicioY;}
 	public int getEscalaFimXPix() {return escalaFimXPix;}
