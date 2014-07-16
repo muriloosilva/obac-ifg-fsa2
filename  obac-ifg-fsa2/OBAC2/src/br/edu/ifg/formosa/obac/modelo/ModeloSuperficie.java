@@ -11,23 +11,18 @@ public class ModeloSuperficie {
 	public static final double alturaSuperficie = 420; //Valor em px - OBAC1
 	
 	public static final double anguloInclinacaoGraus = 45; //Valor ainda nao definido - Utilizado para subida e descida
-	
+		
 	//Variaveis
-	//--Int
-	private int superficieSelecionada = 0; /*Utilizada para mudar a imagem de fundo
-										    *0-asfalto/1-aluminio/2-madeira
-										    */	
 	//--Double
 	private double coefAtritoSelecionado = 0;	
-	private double forcaAtrito = 0;
+	private double forcaAtrito = 0;	
 	
-	//Getters
-	public int getSuperficieSelecionada() {return superficieSelecionada;}
+	//Metodos
+	//--Getters
 	public void setCoefAtritoSelecionado(double coefAtritoSelecionado){this.coefAtritoSelecionado = coefAtritoSelecionado;}
 	public void setForcaAtrito(double forcaAtrito){this.forcaAtrito = forcaAtrito;}
 	
-	//Setters
-	public void setSuperficieSelecionada(int superficieSelecionada) {this.superficieSelecionada = superficieSelecionada;}
+	//--Setters
 	public double getCoefAtritoSelecionado(){return coefAtritoSelecionado;}
 	public double getForcaAtrito(){return forcaAtrito;}
 }

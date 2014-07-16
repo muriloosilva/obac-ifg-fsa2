@@ -14,13 +14,6 @@ public class ControleSuperficie {
 		vPC.getCsAmbienteAtrito().addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (vPC.getCsAmbienteAtrito().getSelectedItem().equals(mPC.getAtritos()[0])) {
-					mS.setSuperficieSelecionada(0);
-				} else if (vPC.getCsAmbienteAtrito().getSelectedItem().equals(mPC.getAtritos()[1])) {
-					mS.setSuperficieSelecionada(1);
-				} else {
-					mS.setSuperficieSelecionada(2);
-				}
 			}
 		});
 	}

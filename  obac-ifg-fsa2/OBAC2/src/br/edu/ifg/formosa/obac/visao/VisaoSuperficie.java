@@ -1,18 +1,29 @@
 package br.edu.ifg.formosa.obac.visao;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.net.URL;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 
 public class VisaoSuperficie extends JPanel {
 	//Constantes
 	//--Long
 	private static final long serialVersionUID = 1L;
 
+	//Variaveis
+	//--ImageIcon
+	private ImageIcon gravidade = null;
+	private ImageIcon andaime = null;
+	private ImageIcon superficie = null;
+	//--URL
+	public static URL urlG = null;
+	public static URL urlA = null;
+	public static URL urlS = null;	
+	
 	//Metodos
 	//--Construtor
 	public VisaoSuperficie() {
@@ -20,23 +31,22 @@ public class VisaoSuperficie extends JPanel {
 		
 		this.setSize(750, 600);
 		this.setOpaque(true);
+		
+		//URL
+		urlG = this.getClass().getClassLoader().getResource(ModeloAmbiente.modeloURL + "ambiente/" + ModeloAmbiente.gravidadeSel + ".png");
+		urlA = this.getClass().getClassLoader().getResource(ModeloAmbiente.modeloURL + "andaimes/" + ModeloAmbiente.andaimeSel + ".png");
+
+		//ImageIcon
+		gravidade = new ImageIcon(urlG);
+		andaime = new ImageIcon(urlA);
 	}
 	
 	//--Paint
 	public void paint (Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.setColor(Color.white);
-		g2d.fillRect(0, 0, 750, 600); //Fundo branco provisorio
-		Image i = Toolkit.getDefaultToolkit().getImage("C:/Users/Matheus/workspace/OBAC2/src/br/edu/ifg/formosa/obac/imagens/lua/aluminio/descida.jpg");
-		g2d.drawImage(i, 0, 0, this);
 		
-		/*g2d.setColor(Color.white);
-		g2d.fillRect(0, 0, 750, 600); //Fundo branco provisorio
-		
-		g2d.setColor(Color.lightGray);
-		g2d.fillRect(80, 80, 300, 200);
-		
-		g2d.setColor(Color.black);
-		g2d.drawString("Este retangulo pertence a superficie", 80, 90);*/
+		g2d.drawImage(gravidade.getImage(), 0, 0, this);
+		g2d.drawImage(andaime.getImage(), 0, 0, this);
+		//g2d.drawImage(superficie.getImage(), 0, 0, this);
 	}
 }

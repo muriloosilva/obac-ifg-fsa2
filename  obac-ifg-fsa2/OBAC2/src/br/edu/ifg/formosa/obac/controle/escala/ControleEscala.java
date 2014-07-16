@@ -27,7 +27,7 @@ public class ControleEscala {
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
-					mudaModeloEscala(mA.getmEPri(), 100, 564, 750, 564, 5, 27.5);
+					mudaModeloEscala(mA.getmEPri(), 100, 564, 750, 564, 5, -27.5);
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio

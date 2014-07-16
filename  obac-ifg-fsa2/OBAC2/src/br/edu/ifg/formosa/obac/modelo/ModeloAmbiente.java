@@ -17,15 +17,19 @@ public class ModeloAmbiente {
 	public static final double gravidadeTerra = 9.8;
 	public static final double gravidadeLua = 1.6;
 	public static final double gravidadeMarte = 3.7;
+
+	//--String
+	public static final String modeloURL = "br/edu/ifg/formosa/obac/imagens/";
 	
-	//Variáveis
-	//--Int
-	private int gravidadeSel = 0; //Utilizada para desenhar o fundo 0-Terra/1-Lua/2-Marte
-	
+	//Variáveis	
 	//--Double
 	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte
 	
 	private double tempo; //OBAC1
+	
+	//--String
+	public static String gravidadeSel = "terra"; //Utilizada para mudar a imagem de fundo
+	public static String andaimeSel = "plano"; //Utilizada para mudar a imagem de fundo
 	
 	//--Objeto, Escala e Superficie
 	private ModeloEscala mEPri = new ModeloEscala(); //Escala utilizada em todas as simulações
@@ -35,7 +39,6 @@ public class ModeloAmbiente {
 	
 	//Metodos
 	//--Getters
-	public int getGravidadeSel() {return gravidadeSel;}
 	public double getGravSelecionada() {return gravSelecionada;}
 	public double getTempo() {return tempo;}
 	public ModeloEscala getmEPri() {return mEPri;}
@@ -44,7 +47,6 @@ public class ModeloAmbiente {
 	public ModeloSuperficie getmS() {return mS;}
 	
 	//--Setters
-	public void setGravidadeSel(int gravidadeSel) {this.gravidadeSel = gravidadeSel;}
 	public void setGravSelecionada(double gravSelecionada) {
 		this.gravSelecionada = gravSelecionada;
 //		cpi.mudaValorGravidade(ModeloAmbiente.gravSelecionada);//Altera a gravidade no painel de informações
