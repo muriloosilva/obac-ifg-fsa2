@@ -117,7 +117,7 @@ public class ControleFormulasObjeto {
 			else if(ma.getmO().getPosicaoYPx() >= ma.getmEPri().getFimAmbienteYPix()){
 				return true;
 			}
-			//Exceção - Caida
+			//Exceção - O bojeto ainda se movimenta
 			else/**/return false;
 		}
 		
