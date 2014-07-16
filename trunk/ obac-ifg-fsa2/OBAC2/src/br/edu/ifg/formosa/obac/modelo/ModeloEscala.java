@@ -20,10 +20,6 @@ public class ModeloEscala {
 	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)	
 	private int qtdMarcadores = 5; //Numero de marcadores existentes na escala
 	
-	private int escalaSelecionada = 0;/*Utilizada para desenhar a imagem de fundo
-									   *0-plano/1-subida/2-descida/3-prec./4-queda/5-projetil
-	                                   */
-	
 	//--Double
 	private double angulo = 0; //Angulo para rotacionar a escala; -- Ta repetida em modelo superfície
 	
@@ -39,7 +35,6 @@ public class ModeloEscala {
 	public long getEscalaFimYM() {return escalaFimYM;}	
 	public int getEspacamentoMarcadores() {return espacamentoMarcadores;}
 	public int getQtdMarcadores() {return qtdMarcadores;}
-	public int getEscalaSelecionada() {return escalaSelecionada;}
 	public double getAngulo() {return angulo;}
 	
 	//--Setters
@@ -51,6 +46,5 @@ public class ModeloEscala {
 	public void setEscalaFimYM(long escalaFimYM) {this.escalaFimYM = escalaFimYM;}	
 	public void setEspacamentoMarcadores(int espacamentoMarcadores) {this.espacamentoMarcadores = espacamentoMarcadores;}
 	public void setQtdMarcadores(int qtdMarcadores) {this.qtdMarcadores = qtdMarcadores;}
-	public void setEscalaSelecionada(int escalaSelecionada) {this.escalaSelecionada = escalaSelecionada;}
 	public void setAngulo(double angulo) {this.angulo = angulo;}
 }

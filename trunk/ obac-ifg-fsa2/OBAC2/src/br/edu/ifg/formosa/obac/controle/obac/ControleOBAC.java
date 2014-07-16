@@ -7,12 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
+import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleAmbiente;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoAtualizacoes;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecucao;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
-import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
@@ -86,11 +86,17 @@ public class ControleOBAC {
 		vPS = new VisaoPainelSimulacao(mA);
 		painelPrincipal.add(vPS);
 		
-		//Controle do Painel de Escalas
+		//Controles - Escala/Ambiente
 		new ControleEscala(vpi, vPS, vPS.getVisaoEscalaPri(), mA, vpc, mpc);
+		new ControleAmbiente(mA, vpc, mpc, this);
 		
 		//Repintar Applet
 		obac.repaint();
 	}
 	
+	//Metodo para repintar o painel de informações e o de simulação
+	public void repinta() {
+		this.vpi.repaint();
+		this.vPS.repaint();
+	}
 }
