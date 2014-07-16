@@ -45,7 +45,7 @@ public class ControleOBAC {
 		
 		//Painel Principal
 		painelPrincipal = new JPanel(null);
-			painelPrincipal.setBackground(Color.BLACK);
+			painelPrincipal.setBackground(Color.yellow);
 			painelPrincipal.setSize(1000, 600);
 		obac.add(painelPrincipal);
 		
