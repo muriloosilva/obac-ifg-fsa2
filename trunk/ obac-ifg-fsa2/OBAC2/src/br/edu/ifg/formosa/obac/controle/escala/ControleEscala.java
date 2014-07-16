@@ -21,10 +21,10 @@ public class ControleEscala {
 					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
 					mE.setEscalaSelecionada(0);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[1])) {//Descida
-					mudaModeloEscala(mE, 100, 564, 750, 564, 5, -45);
+					mudaModeloEscala(mE, 100, 564, 750, 564, 5, 27.5);
 					mE.setEscalaSelecionada(1);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[2])) {//Subida
-					mudaModeloEscala(mE, 100, 100, 750, 100, 5, 45);
+					mudaModeloEscala(mE, 100, 100, 750, 100, 5, 27.5);
 					mE.setEscalaSelecionada(2);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[3])) {//Precipicio
 					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);

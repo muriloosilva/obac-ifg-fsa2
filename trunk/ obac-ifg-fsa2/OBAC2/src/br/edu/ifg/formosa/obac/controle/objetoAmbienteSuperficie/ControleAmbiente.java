@@ -24,4 +24,9 @@ public class ControleAmbiente {
 			}
 		});
 	}
+	
+	//Método utilizado para mudar a imagem de fundo
+	/*public static void mudaImagemFundo(ModeloAmbiente mA) {
+		switch (mA.getmE().getEsca)
+	}*/
 }
