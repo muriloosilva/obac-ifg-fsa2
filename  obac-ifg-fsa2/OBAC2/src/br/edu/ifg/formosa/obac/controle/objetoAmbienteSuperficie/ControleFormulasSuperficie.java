@@ -39,14 +39,14 @@ public class ControleFormulasSuperficie {
 		if(pontoFinalEscala < 100){pontoFinalEscala = 100;}
 		
 		//Passa o ponto final da escala para a escala real
-		ma.getmE().setEscalaFimXM(pontoFinalEscala);
+		ma.getmEPri().setEscalaFimXM(pontoFinalEscala);
 	}
 	
 	//Calcula escala Queda Livre
 	public void calculaEscalaQueda(){
 		long pontoFinalEscala=1000;//Esta escala possui o tamanho fixo de 1000 Metros
-		ma.getmE().setEscalaFimYM(pontoFinalEscala);
-		//Verificar o surface.setEscala() do OBAC riginal. Qual a utilidade dele
+		ma.getmEPri().setEscalaFimYM(pontoFinalEscala);
+		//Verificar o surface.setEscala() do OBAC original. Qual a utilidade dele
 	}
 	
 	//Calcula Escala P&P

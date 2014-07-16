@@ -2,7 +2,7 @@ package br.edu.ifg.formosa.obac.visao;
 
 import javax.swing.JPanel;
 
-import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
+import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 
 public class VisaoPainelSimulacao extends JPanel {
 	//Constantes
@@ -17,11 +17,12 @@ public class VisaoPainelSimulacao extends JPanel {
 	//--Propulsao
 	private VisaoPropulsao vP = null;
 	//--Escala
-	private VisaoEscala vE = null;
+	private VisaoEscala vEPri = null;
+	private VisaoEscala vESec = null;
 	
 	//Metodos
 	//--Construtor
-	public VisaoPainelSimulacao(ModeloEscala mE) {
+	public VisaoPainelSimulacao(ModeloAmbiente mA) {
 		super(null);
 		
 		this.setSize(750, 600);
@@ -30,14 +31,19 @@ public class VisaoPainelSimulacao extends JPanel {
 		vS = new VisaoSuperficie();
 		vO = new VisaoObjeto();
 		vP = new VisaoPropulsao();
-		vE = new VisaoEscala(mE);
+		vEPri = new VisaoEscala(mA.getmEPri());
+		vESec = new VisaoEscala(mA.getmESec());
 		
-		this.add(vE);
+		this.add(vEPri);
+		this.add(vESec);
 		this.add(vP);
 		this.add(vO);
 		this.add(vS);
+		
+		vESec.setVisible(false); //A escala sec. só aparece no Projetil e no P&P
 	}
 	
 	//--Getters
-	public VisaoEscala getVisaoEscala() {return vE;}
+	public VisaoEscala getVisaoEscalaPri() {return vEPri;}
+	public VisaoEscala getVisaoEscalaSec() {return vESec;}
 }

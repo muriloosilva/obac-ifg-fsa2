@@ -3,6 +3,7 @@ package br.edu.ifg.formosa.obac.controle.escala;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoEscala;
@@ -13,28 +14,36 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 public class ControleEscala {
 	//Metodos
 	//--Construtor
-	public ControleEscala(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps,  final VisaoEscala vE, final ModeloEscala mE, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
+	public ControleEscala(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps,  final VisaoEscala vE, final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
 		vPC.getCsAmbienteSimulacao().addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[0])) { //Plano
-					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
-					mE.setEscalaSelecionada(0);
-				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[1])) {//Descida
-					mudaModeloEscala(mE, 100, 564, 750, 564, 5, 27.5);
-					mE.setEscalaSelecionada(1);
-				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[2])) {//Subida
-					mudaModeloEscala(mE, 100, 100, 750, 100, 5, 27.5);
-					mE.setEscalaSelecionada(2);
-				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[3])) {//Precipicio
-					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
-					mE.setEscalaSelecionada(3);
-				} else if (vPC.getCsAmbienteSimulacao().getSelectedItem().equals(mPC.getSimulacoesPadrao()[4])) {//Queda
-					mudaModeloEscala(mE, 100, 100, 500, 100, 5, 90);
-					mE.setEscalaSelecionada(4);
+				if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 0) { //Plano
+					mudaModeloEscala(mA.getmEPri(), 100, 564, 700, 564, 5, 0);
+					
+					vps.getVisaoEscalaSec().setVisible(false); //Escala secundaria fica invisivel
+				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
+					mudaModeloEscala(mA.getmEPri(), 100, 100, 750, 100, 5, 27.5);
+					
+					vps.getVisaoEscalaSec().setVisible(false);
+				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
+					mudaModeloEscala(mA.getmEPri(), 100, 564, 750, 564, 5, 27.5);
+					
+					vps.getVisaoEscalaSec().setVisible(false);
+				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio
+					mudaModeloEscala(mA.getmEPri(), 100, 564, 700, 564, 5, 0);
+					
+					mudaModeloEscala(mA.getmESec(), 10, 300, 296, 300, 2, 0);
+					vps.getVisaoEscalaSec().setVisible(true); //Escala secundaria fica visivel
+				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {//Queda
+					mudaModeloEscala(mA.getmEPri(), 100, 100, 500, 100, 5, 90);
+					
+					vps.getVisaoEscalaSec().setVisible(false);
 				} else { //Projétil
-					mudaModeloEscala(mE, 100, 564, 700, 564, 5, 0);
-					mE.setEscalaSelecionada(5);
+					mudaModeloEscala(mA.getmEPri(), 100, 564, 700, 564, 5, 0);
+					
+					mudaModeloEscala(mA.getmESec(), 100, 100, 500, 100, 5, 90);
+					vps.getVisaoEscalaSec().setVisible(true);
 				}
 				vpi.repaint();
 				vps.repaint();

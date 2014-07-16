@@ -7,7 +7,7 @@ public class ModeloPainelConfiguracao {
 	private final String [] propulsoes = {"Canhão", "Mola"};
 	
 	//Array de String usado nos tipos de simulação
-	private final String [] simulacoesPadrao = {"Plano", "Subida", "Decida", "Plano e Precipício", "Queda Livre"};
+	private final String [] simulacoesPadrao = {"Plano", "Subida", "Descida", "Plano e Precipício", "Queda Livre"};
 	//String que completa o array acima quando a propulsão canhão é selecionada, sendo també utilizada em ControlePainelConfiguracaoAtualizacoes
 	private final String lancamentoObliquo = "Lançamento Oblíquo";
 	

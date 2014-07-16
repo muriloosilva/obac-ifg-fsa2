@@ -28,7 +28,8 @@ public class ModeloAmbiente {
 	private double tempo; //OBAC1
 	
 	//--Objeto, Escala e Superficie
-	private ModeloEscala mE = new ModeloEscala();
+	private ModeloEscala mEPri = new ModeloEscala(); //Escala utilizada em todas as simulações
+	private ModeloEscala mESec = new ModeloEscala(); //Escala utilizada somente em Projetil e P&P
 	private ModeloObjeto mO = new ModeloObjeto();
 	private ModeloSuperficie mS = new ModeloSuperficie();
 	
@@ -37,7 +38,8 @@ public class ModeloAmbiente {
 	public int getGravidadeSel() {return gravidadeSel;}
 	public double getGravSelecionada() {return gravSelecionada;}
 	public double getTempo() {return tempo;}
-	public ModeloEscala getmE() {return mE;}
+	public ModeloEscala getmEPri() {return mEPri;}
+	public ModeloEscala getmESec() {return mESec;}
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
 	
@@ -51,7 +53,4 @@ public class ModeloAmbiente {
 		this.tempo = tempo;
 //		cpi.mudaValorTempo(this.tempo);//Altualiza o valor do tempo no painel de informações
 	}
-	public void setmE(ModeloEscala mE) {this.mE = mE;}  //Pq vc não setou isso no construtor matheus??
-	public void setmO(ModeloObjeto mO) {this.mO = mO;}
-	public void setmS(ModeloSuperficie mS) {this.mS = mS;}	
 }
