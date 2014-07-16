@@ -28,22 +28,6 @@ public class VisaoEscala extends JPanel{
 		this.mE = mE;
 	}
 	
-	//--Construtor #02 - Inicio em X; Fim em X; Inicio em Y; Fim em Y; Quantidade de marcadores desejados
-	/*public VisaoEscala(int eIX, int eFX, int eIY, int eFY, int qMarcadores, double angulo, ModeloEscala mE) {
-		this(mE);
-		
-		mE.setEscalaInicioX(eIX);
-		mE.setEscalaFimX(eFX);
-		
-		mE.setEscalaInicioY(eIY);
-		mE.setEscalaFimY(eFY);
-		
-		mE.setQtdMarcadores(qMarcadores);		
-		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(eIX, eFX, qMarcadores));
-		
-		mE.setAngulo(Math.toRadians(angulo));
-	}*/
-	
 	//--Paint
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;

@@ -75,7 +75,7 @@ public class ControleFormulasObjeto {
 		//Por ser muito utilizada, esta função poderia ser mandada para uma classe de utilidades de forma genérica
 	public void calculaPosFinalPix(){
 		ma.getmO().setPosFinalPix(
-			(ma.getmO().getPosFinalMetros()/ma.getmE().getEscalaFimXM())
+			(ma.getmO().getPosFinalMetros()/ma.getmEPri().getEscalaFimXM())
 		);
 	}
 	
@@ -110,11 +110,11 @@ public class ControleFormulasObjeto {
 		public boolean paradaPlanoPrecipicio(){
 			//Condição de parada caso o Objeto não caia
 			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalPix()
-			  && ma.getmO().getPosFinalPix() <= ma.getmE().getTamanhoPrecipicioPix()){
+			  && ma.getmO().getPosFinalPix() <= ma.getmEPri().getTamanhoPrecipicioPix()){
 				return true;
 			}
 			//Condição de para caso o objeto caia
-			else if(ma.getmO().getPosicaoYPx() >= ma.getmE().getFimAmbienteYPix()){
+			else if(ma.getmO().getPosicaoYPx() >= ma.getmEPri().getFimAmbienteYPix()){
 				return true;
 			}
 			//Exceção - Caida
