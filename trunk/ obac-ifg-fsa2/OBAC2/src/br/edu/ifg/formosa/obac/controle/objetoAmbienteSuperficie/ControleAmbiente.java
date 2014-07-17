@@ -28,13 +28,13 @@ public class ControleAmbiente {
 	public static void mudaImagemFundo(VisaoPainelConfiguracao vPC, ModeloAmbiente mA) {
 		switch (vPC.getCsAmbienteGravidade().getSelectedIndex()) {
 			case 0:
-				mA.gravidadeSel = "terra";
+				mA.setUrlG("terra");
 				break;
 			case 1:
-				mA.gravidadeSel = "lua";
+				mA.setUrlG("lua");
 				break;
 			case 2:
-				mA.gravidadeSel = "marte";
+				mA.setUrlG("marte");
 				break;
 		}
 		

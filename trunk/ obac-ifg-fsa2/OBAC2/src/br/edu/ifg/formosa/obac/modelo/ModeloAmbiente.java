@@ -1,5 +1,7 @@
 package br.edu.ifg.formosa.obac.modelo;
 
+import java.net.URL;
+
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 
 public class ModeloAmbiente {
@@ -21,15 +23,18 @@ public class ModeloAmbiente {
 	//--String
 	public static final String modeloURL = "br/edu/ifg/formosa/obac/imagens/";
 	
-	//Variáveis	
+	//Variáveis
 	//--Double
-	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte
-	
+	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
 	private double tempo; //OBAC1
 	
 	//--String
 	public static String gravidadeSel = "terra"; //Utilizada para mudar a imagem de fundo
 	public static String andaimeSel = "plano"; //Utilizada para mudar a imagem de fundo
+	
+	//--URL
+	private URL urlG = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + this.gravidadeSel + ".png");
+	private URL urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + this.andaimeSel + ".png");
 	
 	//--Objeto, Escala e Superficie
 	private ModeloEscala mEPri = new ModeloEscala(); //Escala utilizada em todas as simulações
@@ -45,6 +50,8 @@ public class ModeloAmbiente {
 	public ModeloEscala getmESec() {return mESec;}
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
+	public URL getUrlG() {return urlG;}
+	public URL getUrlA() {return urlA;}
 	
 	//--Setters
 	public void setGravSelecionada(double gravSelecionada) {
@@ -55,4 +62,6 @@ public class ModeloAmbiente {
 		this.tempo = tempo;
 //		cpi.mudaValorTempo(this.tempo);//Altualiza o valor do tempo no painel de informações
 	}
+	public void setUrlG(String urlG) {this.urlG = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + urlG + ".png");}
+	public void setUrlA(String urlA) {this.urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlA + ".png");}
 }
