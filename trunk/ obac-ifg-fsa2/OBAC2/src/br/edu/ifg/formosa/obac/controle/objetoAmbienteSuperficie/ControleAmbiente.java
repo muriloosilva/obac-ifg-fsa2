@@ -18,25 +18,8 @@ public class ControleAmbiente {
 		vPC.getCsAmbienteGravidade().addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				mudaImagemFundo(vPC, mA);
 				cO.repinta();
 			}
 		});
-	}
-	
-	//Método utilizado para mudar a imagem de fundo
-	public static void mudaImagemFundo(VisaoPainelConfiguracao vPC, ModeloAmbiente mA) {
-		switch (vPC.getCsAmbienteGravidade().getSelectedIndex()) {
-			case 0:
-				mA.setUrlG("terra");
-				break;
-			case 1:
-				mA.setUrlG("lua");
-				break;
-			case 2:
-				mA.setUrlG("marte");
-				break;
-		}
-		
 	}
 }
