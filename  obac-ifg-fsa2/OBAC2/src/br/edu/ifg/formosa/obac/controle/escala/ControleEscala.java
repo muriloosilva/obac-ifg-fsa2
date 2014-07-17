@@ -23,11 +23,11 @@ public class ControleEscala {
 					
 					vps.getVisaoEscalaSec().setVisible(false); //Escala secundaria fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
-					mudaModeloEscala(mA.getmEPri(), 100, 100, 750, 100, 5, 27.5);
+					mudaModeloEscala(mA.getmEPri(), 100, 564, 750, 564, 5, -27.5);
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
-					mudaModeloEscala(mA.getmEPri(), 100, 564, 750, 564, 5, -27.5);
+					mudaModeloEscala(mA.getmEPri(), 100, 100, 750, 100, 5, 27.5);
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio

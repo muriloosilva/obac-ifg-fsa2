@@ -28,13 +28,10 @@ public class ModeloAmbiente {
 	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
 	private double tempo; //OBAC1
 	
-	//--String
-	public static String gravidadeSel = "terra"; //Utilizada para mudar a imagem de fundo
-	public static String andaimeSel = "plano"; //Utilizada para mudar a imagem de fundo
-	
 	//--URL
-	private URL urlG = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + this.gravidadeSel + ".png");
-	private URL urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + this.andaimeSel + ".png");
+	private URL urlGr = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + "terra" + ".png"); //gravidade
+	private URL urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + "plano" + ".png"); //andaime
+	private URL urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + "guindasteF" + ".png"); //guindaste
 	
 	//--Objeto, Escala e Superficie
 	private ModeloEscala mEPri = new ModeloEscala(); //Escala utilizada em todas as simulações
@@ -50,18 +47,20 @@ public class ModeloAmbiente {
 	public ModeloEscala getmESec() {return mESec;}
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
-	public URL getUrlG() {return urlG;}
+	public URL getUrlGr() {return urlGr;}
 	public URL getUrlA() {return urlA;}
+	public URL getUrlGu() {return urlGu;}
 	
 	//--Setters
 	public void setGravSelecionada(double gravSelecionada) {
 		this.gravSelecionada = gravSelecionada;
-//		cpi.mudaValorGravidade(ModeloAmbiente.gravSelecionada);//Altera a gravidade no painel de informações
+//		cpi.mudaValorGravidade(ModeloAmbiente.gravSelecionada); //Altera a gravidade no painel de informações
 	}
 	public void setTempo(double tempo) {
 		this.tempo = tempo;
-//		cpi.mudaValorTempo(this.tempo);//Altualiza o valor do tempo no painel de informações
+//		cpi.mudaValorTempo(this.tempo); //Altualiza o valor do tempo no painel de informações
 	}
-	public void setUrlG(String urlG) {this.urlG = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + urlG + ".png");}
+	public void setUrlGr(String urlGr) {this.urlGr = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + urlGr + ".png");}
 	public void setUrlA(String urlA) {this.urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlA + ".png");}
+	public void setUrlGu(String urlGu) {this.urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlGu + ".png");}
 }
