@@ -22,13 +22,13 @@ public class VisaoPainelSimulacao extends JPanel {
 	
 	//Metodos
 	//--Construtor
-	public VisaoPainelSimulacao(ModeloAmbiente mA) {
+	public VisaoPainelSimulacao(ModeloAmbiente mA, VisaoPainelConfiguracao vPC) {
 		super(null);
 		
 		this.setSize(750, 600);
 		this.setLocation(250, 0);
 		
-		vS = new VisaoSuperficie();
+		vS = new VisaoSuperficie(vPC, mA);
 		vO = new VisaoObjeto();
 		vP = new VisaoPropulsao();
 		vEPri = new VisaoEscala(mA.getmEPri());

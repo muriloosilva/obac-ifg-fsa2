@@ -83,7 +83,7 @@ public class ControleOBAC {
 		mA = new ModeloAmbiente(cpi);
 		
 		//Painel de Simulação
-		vPS = new VisaoPainelSimulacao(mA);
+		vPS = new VisaoPainelSimulacao(mA, vpc);
 		painelPrincipal.add(vPS);
 		
 		//Controles - Escala/Ambiente
