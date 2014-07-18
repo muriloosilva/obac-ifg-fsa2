@@ -46,4 +46,5 @@ public class VisaoPainelSimulacao extends JPanel {
 	//--Getters
 	public VisaoEscala getVisaoEscalaPri() {return vEPri;}
 	public VisaoEscala getVisaoEscalaSec() {return vESec;}
+	public VisaoSuperficie getVisaoSuperficie() {return vS;}
 }

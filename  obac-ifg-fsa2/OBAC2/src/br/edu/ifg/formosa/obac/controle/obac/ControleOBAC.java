@@ -88,7 +88,7 @@ public class ControleOBAC {
 		
 		//Controles - Escala/Ambiente
 		new ControleEscala(vpi, vPS, vPS.getVisaoEscalaPri(), mA, vpc, mpc);
-		new ControleAmbiente(mA, vpc, mpc, this);
+		new ControleAmbiente(mA, vpc, mpc, this, vPS.getVisaoSuperficie());
 		
 		//Repintar Applet
 		obac.repaint();
