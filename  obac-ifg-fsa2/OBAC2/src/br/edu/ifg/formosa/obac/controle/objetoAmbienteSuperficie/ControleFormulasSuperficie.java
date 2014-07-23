@@ -27,13 +27,13 @@ public class ControleFormulasSuperficie {
 		long pontoFinalEscala=0;
 		
 		//Laço de repetição que gera o tamanho da escala
-		for(int i = 1; i<=ma.getmO().getPosFinalMetros(); i*=10){pontoFinalEscala=i;}
+		for(int i = 1; i<=ma.getmO().getPosFinalXMetros(); i*=10){pontoFinalEscala=i;}
 		//Uma ultima epansão no valor para dar mais dinamismo na simulação 
 		pontoFinalEscala*=10;
 		
 		//Verificação realizada para que a escala não tenha um ponto final muito distante
 		//Se o objeto parar antes da metade da escala, a escala é reduzida pela metade
-		if(pontoFinalEscala > (2*ma.getmO().getPosFinalMetros())){pontoFinalEscala = pontoFinalEscala/2;}
+		if(pontoFinalEscala > (2*ma.getmO().getPosFinalXMetros())){pontoFinalEscala = pontoFinalEscala/2;}
 		
 		//Teste que impede a escala de ter um valor menor que o seu valor mínimo(100m)
 		if(pontoFinalEscala < 100){pontoFinalEscala = 100;}
