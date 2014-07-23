@@ -1,6 +1,16 @@
 package br.edu.ifg.formosa.obac.modelo;
 
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+
 public class ModeloSuperficie {
+	
+	private ControlePainelInformacao cPI = null;
+	
+	//Construtor
+	public ModeloSuperficie(ControlePainelInformacao cPI) {
+		this.cPI = cPI;
+	}
+	
 	//Constantes
 	//--Double
 	public static final double atritoMadeira = 0.62;
@@ -14,15 +24,21 @@ public class ModeloSuperficie {
 		
 	//Variaveis
 	//--Double
-	private double coefAtritoSelecionado = 0;	
-	private double forcaAtrito = 0;	
+	private double coefAtritoSelecionado;	
+	private double forcaAtrito;	
 	
 	//Metodos
-	//--Getters
-	public void setCoefAtritoSelecionado(double coefAtritoSelecionado){this.coefAtritoSelecionado = coefAtritoSelecionado;}
-	public void setForcaAtrito(double forcaAtrito){this.forcaAtrito = forcaAtrito;}
-	
 	//--Setters
+	public void setCoefAtritoSelecionado(double coefAtritoSelecionado){
+		this.coefAtritoSelecionado = coefAtritoSelecionado;
+		cPI.mudaValorCoefAtrito(this.coefAtritoSelecionado);
+	}
+	public void setForcaAtrito(double forcaAtrito){
+		this.forcaAtrito = forcaAtrito;
+		cPI.mudaValorForcaAtrito(this.forcaAtrito);
+	}
+	
+	//--Getters
 	public double getCoefAtritoSelecionado(){return coefAtritoSelecionado;}
 	public double getForcaAtrito(){return forcaAtrito;}
 }

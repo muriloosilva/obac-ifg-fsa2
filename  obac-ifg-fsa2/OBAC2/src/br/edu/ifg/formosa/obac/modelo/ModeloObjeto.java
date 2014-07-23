@@ -9,9 +9,9 @@ public class ModeloObjeto {
 	
 	//Construtor - To deixando desativado para vc arrumar o modelo ambiente depois
 		//Os controles do CPI tbm estão comentados para evitar problimas no funcionamento
-//	public ModeloObjeto(ControlePainelInformacao cpi) {
-//		ModeloObjeto.cpi = cpi;
-//	}
+	public ModeloObjeto(ControlePainelInformacao cpi) {
+		ModeloObjeto.cpi = cpi;
+	}
 	
 	//Constantes
 	//--Double
@@ -56,16 +56,16 @@ public class ModeloObjeto {
 	private double posicaoXPx; //Posicao em Pixels
 	private double posicaoYPx;
 	
-	private double posFinalMetros = 0;//Posição final do objeto em metros
-	private double posFinalPix = 0;//Posição final do objeto em Pixels
+	private double posFinalXMetros = 0;//Posição final do objeto em metros no eixo X
+	private double posFinalXPix = 0;//Posição final do objeto em Pixels no eixo X
+	private double posFinalYMetros = 0;//Posição final do objeto em metros no eixo Y
+	private double posFinalYPix = 0;//Posição final do objeto em Pixels no eixo Y 
 	
 	private double forcaNormal = 0;//Força normal agindo no objeto
 	
 	
 	//Metodos
 	//--Getters
-//	public static double getAltura() {return altura;}---Variáveis estáticas não precisam de getters
-//	public static double getLargura() {return largura;}
 	public double getMassa() {return massa;}
 	public double getCoefRestituicao() {return coefRestituicao;}
 	public double getVelocidade() {return velocidade;}
@@ -77,31 +77,43 @@ public class ModeloObjeto {
 	public double getPosicaoXPx() {return posicaoXPx;}
 	public double getPosicaoYPx() {return posicaoYPx;}
 	public double getForcaNormal(){return forcaNormal;}
-	public double getPosFinalMetros(){return posFinalMetros;}
-	public double getPosFinalPix(){return posFinalPix;}
+	public double getPosFinalXMetros(){return posFinalXMetros;}
+	public double getPosFinalXPix(){return posFinalXPix;}
+	public double getPosFinalYMetros(){return posFinalYMetros;}
+	public double getPosFinalYPix(){return posFinalYPix;}
 	
 	//Setters
 	public void setMassa(double massa) {this.massa = massa;}
 	public void setCoefRestituicao(double coefRestituicao) {this.coefRestituicao = coefRestituicao;}
+	public void setAceleracaoY(double aceleracaoY) {this.aceleracaoY = aceleracaoY;}
+	public void setPosicaoXPx(double posicaoXPx) {this.posicaoXPx = posicaoXPx;}
+	public void setPosicaoYPx(double posicaoYPx) {this.posicaoYPx = posicaoYPx;}
+	public void setPosFinalXPix(double posFinalXPix){this.posFinalXPix = posFinalXPix;}
+	public void setPosFinalYPix(double posFinalYPix){this.posFinalYPix = posFinalYPix;}
+	
+	//Setters relacionados ao Painel de Informação
+	public void setPosFinalYMetros(double posFinalYMetros){this.posFinalYMetros = posFinalYMetros;}
 	public void setVelocidade(double velocidade) {this.velocidade = velocidade;}
 	public void setVelocidadeInicial(double velocidadeInicial) {this.velocidadeInicial = velocidadeInicial;}
 	public void setAceleracao(double aceleracao) {
 		this.aceleracao = aceleracao;
-//		cpi.mudaValorAceleracao(this.aceleracao);//Altera o valor da aceleração no PInfo
+		cpi.mudaValorAceleracao(this.aceleracao);//Altera o valor da aceleração no PInfo
 	}
-	public void setAceleracaoY(double aceleracaoY) {this.aceleracaoY = aceleracaoY;}
 	public void setPosicaoXMetros(double posicaoXMetros) {
 		this.posicaoXMetros = posicaoXMetros;
-//		cpi.mudaValorPosAtualX(this.posicaoX);//Atualiza posição em metros do eixo X no PInfo
+		cpi.mudaValorPosAtualX(this.posicaoXMetros);//Atualiza posição em metros do eixo X no PInfo
 	}
 	public void setPosicaoYMetros(double posicaoYMetros) {
 		this.posicaoYMetros = posicaoYMetros;
-//		cpi.mudaValorPosAtualY(this.posicaoY);//Atualiza posição em metros do eixo Y no PInfo
+		cpi.mudaValorPosAtualY(this.posicaoYMetros);//Atualiza posição em metros do eixo Y no PInfo
 	}
-	public void setPosicaoXPx(double posicaoXPx) {this.posicaoXPx = posicaoXPx;}
-	public void setPosicaoYPx(double posicaoYPx) {this.posicaoYPx = posicaoYPx;}
-	public void setForcaNormal(double forcaNormal){this.forcaNormal = forcaNormal;}
-	public void setPosFinalMetros(double posFinalMetros){this.posFinalMetros = posFinalMetros;}
-	public void setPosFinalPix(double posFinalPix){this.posFinalPix = posFinalPix;}
+	public void setForcaNormal(double forcaNormal){
+		this.forcaNormal = forcaNormal;
+		cpi.mudaValorForcaNormal(this.forcaNormal);
+	}
+	public void setPosFinalXMetros(double posFinalXMetros){
+		this.posFinalXMetros = posFinalXMetros;
+		cpi.mudaValorPosFinal(this.posFinalXMetros);
+	}
 	
 }
