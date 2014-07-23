@@ -13,7 +13,10 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntrad
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecucao;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
+import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
+import br.edu.ifg.formosa.obac.modelo.ModeloSuperficie;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
@@ -22,25 +25,42 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
 public class ControleOBAC {
 	
-	//Painel Principal
+	//Paineis desta Classe
+		//Painel Principal
 		private JPanel painelPrincipal = null;
-	//Painel de Abas
+		//Painel de Abas
 		private JTabbedPane painelAbas = null;
-	//Modelo Painel de Configuração - Contém os arrays de string utilizados e as strings que são modificadas durante o código
+	
+	//Modelos
+		//Modelo Painel de Configuração - Contém os arrays de string utilizados e as strings que são modificadas durante o código
 		private ModeloPainelConfiguracao mpc = null;
-	//Modelo do Ambiente
+		//Modelo da Escala Primária
+		private ModeloEscala mEPri = null;
+		//Modelo da Escala Secundária
+		private ModeloEscala mESec = null;
+		///Modelo do Objeto
+		private ModeloObjeto mO = null;
+		//Modelo da Superfície
+		private ModeloSuperficie mS = null;
+		//Modelo do Ambiente
 		private ModeloAmbiente mA = null;
-	//Painel de Configuração
+		
+	//Visão
+		//Painel de Configuração
 		private VisaoPainelConfiguracao vpc = null;
-	//Painel de Informações
+		//Painel de Informações
 		private VisaoPainelInformacao vpi = null;
-	//Painel de Fórmulas
+		//Painel de Fórmulas
 		private VisaoPainelFormulas vpf = null;
-	//Painel de Simulação
+		//Painel de Simulação
 		private VisaoPainelSimulacao vPS = null;
-	//Controles do Painel de Configuração
+		
+	//Controles
+		//Controles do Painel de Configuração
 		private ControlePainelConfiguracaoEntradaDeDados cpced = null;
 		private ControlePainelConfiguracaoAtualizacoes cpca = null;
+		//Controle Painel de Informação
+		private ControlePainelInformacao cpi = null;
 	
 	public ControleOBAC(OBAC obac) {
 		
@@ -77,10 +97,18 @@ public class ControleOBAC {
 		painelPrincipal.add(vpi);
 		
 		//Controle do painel de informações
-		ControlePainelInformacao cpi = new ControlePainelInformacao(vpi);
-		
+		cpi = new ControlePainelInformacao(vpi);
+
+		//Modelo da Escala Primária
+		mEPri = new ModeloEscala();
+		//Modelo da Escala Secundária
+		mESec = new ModeloEscala();
+		///Modelo do Objeto
+		mO = new ModeloObjeto(cpi);
+		//Modelo da Superfície
+		mS = new ModeloSuperficie(cpi);
 		//Modelo Escala
-		mA = new ModeloAmbiente(cpi);
+		mA = new ModeloAmbiente(cpi, mEPri, mESec, mO, mS);
 		
 		//Painel de Simulação
 		vPS = new VisaoPainelSimulacao(mA, vpc);
