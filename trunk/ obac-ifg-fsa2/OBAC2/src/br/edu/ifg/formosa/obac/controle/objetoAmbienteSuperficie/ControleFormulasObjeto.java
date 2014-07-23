@@ -53,12 +53,12 @@ public class ControleFormulasObjeto {
 	//Calcula Posição Final Padrão -> Sf = (V0^2 * -1)/(2 * a)*(-1)
 	public void calculaPosFinalPadrao(){
 		calculaPosFinalDescida();
-		ma.getmO().setPosFinalMetros((ma.getmO().getPosFinalMetros()*-1));
+		ma.getmO().setPosFinalXMetros((ma.getmO().getPosFinalXMetros()*-1));
 	}
 	
 	//Calcula Posição Final na Descida -> Sf = (V0^2 * -1)/(2 * a)
 	public void calculaPosFinalDescida(){
-		ma.getmO().setPosFinalMetros(
+		ma.getmO().setPosFinalXMetros(
 			(ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())
 			/(2*ma.getmO().getAceleracao())
 		);
@@ -74,8 +74,8 @@ public class ControleFormulasObjeto {
 	//Calcula posição final Pixel
 		//Por ser muito utilizada, esta função poderia ser mandada para uma classe de utilidades de forma genérica
 	public void calculaPosFinalPix(){
-		ma.getmO().setPosFinalPix(
-			(ma.getmO().getPosFinalMetros()/ma.getmEPri().getEscalaFimXM())
+		ma.getmO().setPosFinalXPix(
+			(ma.getmO().getPosFinalXMetros()/ma.getmEPri().getEscalaFimXM())
 		);
 	}
 	
@@ -103,14 +103,14 @@ public class ControleFormulasObjeto {
 	//Testes lógicos para definirem a parada do objeto de acordo com a simulação
 		//Plano
 		public boolean paradaPlano(){
-			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalPix()) return true;
+			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalXPix()) return true;
 			else return false;
 		}
 		//Plano e Precipício
 		public boolean paradaPlanoPrecipicio(){
 			//Condição de parada caso o Objeto não caia
-			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalPix()
-			  && ma.getmO().getPosFinalPix() <= ma.getmEPri().getTamanhoPrecipicioPix()){
+			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalXPix()
+			  && ma.getmO().getPosFinalXPix() <= ma.getmEPri().getTamanhoPrecipicioPix()){
 				return true;
 			}
 			//Condição de para caso o objeto caia
