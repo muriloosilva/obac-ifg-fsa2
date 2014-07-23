@@ -3,7 +3,9 @@ package br.edu.ifg.formosa.obac.visao;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class VisaoPropulsao extends JPanel {
@@ -29,5 +31,8 @@ public class VisaoPropulsao extends JPanel {
 		
 		g2d.setColor(Color.black);
 		g2d.drawString("Este retangulo pertence a propulsao", 160, 170);
+		
+		g2d.setColor(Color.CYAN);
+		g2d.fillRect(30, 470, 75+25, 30);
 	}
 }
