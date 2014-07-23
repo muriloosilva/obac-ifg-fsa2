@@ -2,26 +2,30 @@ package br.edu.ifg.formosa.obac.modelo;
 
 public class ModeloMola {
 	
+	//Modelo do Objeto
+	private ModeloObjeto mo = null;
+	
+	//Construtor
+	public ModeloMola(ModeloObjeto mo) {
+		this.mo = mo;
+	}
+	
 	//Medidas da MOLA
 	private final double tamanhoMolaIniPix = 100;//tamanho inicial em pixels 
 	private double tamanhoMolaFinPix;//tamanho final em pixels = Pos inicial do objeto
 	private double tamanhoIniMolaM;//tamanho inicial em metros
 	private double tamanhoMolaFinM;//tamanho final em metros
-	
 	//Taxa de deformação da mola
 	private double x;
-	
 	//Constante elástica(k)
 	private double kAtual;//Atual
 	
-	//Modelo do Objeto
-	private ModeloObjeto mo = null; 
-	
-	//Construtor
-	public ModeloMola(ModeloObjeto mo) {this.mo = mo;}
 	
 	//Cálculo de avelocidade - V0 = (K+x^2/m)
-	public double velocidadeLancamento(){return ((kAtual+Math.pow(x, 2))/mo.getMassa());}
+	public void velocidadeLancamento(){
+		mo.setVelocidadeInicial(((kAtual+Math.pow(x, 2))/mo.getMassa()));
+	}
+	
 	
 	//Calculo de X
 //	public calculaX(/*Recebe a posição atual do objeto*/){
