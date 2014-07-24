@@ -29,5 +29,8 @@ public class VisaoObjeto extends JPanel {
 		
 		g2d.setColor(Color.black);
 		g2d.drawString("Este retangulo pertence ao objeto", 120, 130);
+		
+		g2d.setColor(Color.blue);
+		g2d.fillRect(130, 470, 30, 30);
 	}
 }
