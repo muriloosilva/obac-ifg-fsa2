@@ -30,6 +30,8 @@ public class ControleOBAC {
 		private JPanel painelPrincipal = null;
 		//Painel de Abas
 		private JTabbedPane painelAbas = null;
+		//Painel para o pSimulação e o pInformação para tentar evitar o problema da sobreposição que ococrre durante o uso dos métodos repaint de ambos os paineis
+		private JPanel painelDeRepintar = null;
 	
 	//Modelos
 		//Modelo Painel de Configuração - Contém os arrays de string utilizados e as strings que são modificadas durante o código
@@ -76,6 +78,13 @@ public class ControleOBAC {
 			painelAbas.setFont(new Font("Arial", Font.BOLD, 15));
 		painelPrincipal.add(painelAbas);
 		
+		//Painel de Repintar
+		painelDeRepintar = new JPanel(null);
+		painelDeRepintar.setBackground(Color.blue);
+		painelDeRepintar.setBounds(251, 0, 750, 600);
+		painelPrincipal.add(painelDeRepintar);
+		
+		
 		//Modelo Painel de Configuração
 		mpc = new ModeloPainelConfiguracao();
 		
@@ -94,7 +103,7 @@ public class ControleOBAC {
 		
 		//Painel de Informações
 		vpi = new VisaoPainelInformacao();
-		painelPrincipal.add(vpi);
+		painelDeRepintar.add(vpi);
 		
 		//Controle do painel de informações
 		cpi = new ControlePainelInformacao(vpi);
@@ -112,7 +121,7 @@ public class ControleOBAC {
 		
 		//Painel de Simulação
 		vPS = new VisaoPainelSimulacao(mA, vpc);
-		painelPrincipal.add(vPS);
+		painelDeRepintar.add(vPS);
 		
 		//Controles - Escala/Ambiente
 		new ControleEscala(vpi, vPS, vPS.getVisaoEscalaPri(), mA, vpc, mpc);
@@ -124,7 +133,8 @@ public class ControleOBAC {
 	
 	//Metodo para repintar o painel de informações e o de simulação
 	public void repinta() {
-		this.vpi.repaint();
-		this.vPS.repaint();
+//		this.vpi.repaint();
+//		this.vPS.repaint();
+		this.painelPrincipal.repaint();
 	}
 }
