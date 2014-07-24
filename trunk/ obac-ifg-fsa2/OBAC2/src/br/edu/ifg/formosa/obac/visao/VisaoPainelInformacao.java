@@ -51,7 +51,7 @@ public class VisaoPainelInformacao extends JPanel{
 	
 	public VisaoPainelInformacao() {
 		this.setOpaque(false);
-		this.setBounds(250, 0, 750, 40);
+		this.setSize(750, 40);
 		this.setBackground(Color.DARK_GRAY);
 		
 		//Layout
