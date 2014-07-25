@@ -1,20 +1,37 @@
 package br.edu.ifg.formosa.obac.modelo;
 
+import java.net.URI;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+import br.edu.ifg.formosa.obac.principal.OBAC;
+
 public class ModeloMola {
 	
 	//Modelo do Objeto
 	private ModeloObjeto mo = null;
 	
+	//Controle Do Painel deInformação
+	private ControlePainelInformacao cpi = null;
+	
+	//Imagem
+	private ImageIcon imagemMola = new ImageIcon(this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens//mola/mola100px.png"));
+	private int imagemTamanhoYPix = 30;
+	private int imagemPosicaoYPix = 0;
+	
 	//Construtor
-	public ModeloMola(ModeloObjeto mo) {
+	public ModeloMola(ModeloObjeto mo, ControlePainelInformacao cpi) {
 		this.mo = mo;
+		this.cpi = cpi;
 	}
 	
 	//Medidas da MOLA
-	private final double tamanhoMolaIniPix = 100;//tamanho inicial em pixels 
-	private double tamanhoMolaFinPix;//tamanho final em pixels = Pos inicial do objeto
-	private double tamanhoIniMolaM;//tamanho inicial em metros
-	private double tamanhoMolaFinM;//tamanho final em metros
+	private final int tamanhoMolaTotalPix = 100;//tamanho inicial em pixels 
+	private int tamanhoMolaAtualPix=tamanhoMolaTotalPix;//tamanho final em pixels = Pos inicial do objeto
+	private double tamanhoMolaTotalM;//tamanho inicial em metros
+	private double tamanhoMolaAtualM;//tamanho final em metros
 	//Taxa de deformação da mola
 	private double x;
 	//Constante elástica(k)
@@ -28,23 +45,27 @@ public class ModeloMola {
 	
 	
 	//Calculo de X
-//	public calculaX(/*Recebe a posição atual do objeto*/){
-		//SUBTRAI O TAMNHO DA MULA PELO TAMNHO FINAL DA MOLA (POSIÇÃO INICIAL DO OBJETO NO EIXO X OU Y NO CASO DA QUEDA LIVRE)
-//		
-		//O TAMANHO DE X É DADO EM METROS, MAS AKI AINDA ESTÁ EM PIXEL, LOGO, TEM QUE EXISTIR UM MÉTODO ESTÁTICO PARA ISSO SER FEITO
-//		return (tamanhoIniMolaM-tamanhoIniMolaM);
-//	}
+	//-----Subitrai o tamanho total da mola em metros pelo tamanho atual em metros da mesma
+	public void calculaX(){
+		this.x = (tamanhoMolaTotalM-tamanhoMolaAtualM);
+		cpi.mudaValorTaxaDeDeformacao(x);
+	}
 	
 //Getters
-	public double getTamanhoMolaFinPix() {return tamanhoMolaFinPix;}
-	public double getTamanhoMolaFinM() {return tamanhoMolaFinM;}
+	public int getTamanhoMolaAtualPix() {return tamanhoMolaAtualPix;}
+	public double getTamanhoMolaAtualM() {return tamanhoMolaAtualM;}
 	public double getX() {return x;}
 	public double getkAtual() {return kAtual;}
-	public double getTamanhoMolaIniPix() {return tamanhoMolaIniPix;}
+	public int getTamanhoMolaTotalPix() {return tamanhoMolaTotalPix;}
+	public double getTamanhoMolaTotalM(){return tamanhoMolaTotalM;}
+	public ImageIcon getImagemMola(){return imagemMola;}
 //Setters
-	public void setTamanhoMolaFinPix(double tamanhoMolaFinPix) {this.tamanhoMolaFinPix = tamanhoMolaFinPix;}
-	public void setTamanhoIniMolaM(double tamanhoIniMolaM) {this.tamanhoIniMolaM = tamanhoIniMolaM;}
-	public void setTamanhoMolaFinM(double tamanhoMolaFinM) {this.tamanhoMolaFinM = tamanhoMolaFinM;}
-	public void setkAtual(double kAtual) {this.kAtual = kAtual;}
+	public void setTamanhoMolaAtualPix(int tamanhoMolaAtualPix) {this.tamanhoMolaAtualPix = tamanhoMolaAtualPix;}
+	public void setTamanhoMolaTotalM(double tamanhoMolaTotalM) {this.tamanhoMolaTotalM = tamanhoMolaTotalM;}
+	public void setTamanhoMolaAtualM(double tamanhoMolaAtualM) {this.tamanhoMolaAtualM = tamanhoMolaAtualM;}
+	public void setkAtual(double kAtual) {
+		this.kAtual = kAtual;
+		cpi.mudaValorConstanteElastica(kAtual);
+	}
 
 }
