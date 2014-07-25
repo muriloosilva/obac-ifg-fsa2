@@ -8,18 +8,32 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.modelo.ModeloMola;
+
 public class VisaoPropulsao extends JPanel {
 	//Constantes
 	//--Long
 	private static final long serialVersionUID = 1L;
 	
+	//Variáveis
+	//--Modelos das propulsões
+	private ModeloAmbiente mA = null;
+	//--Imagem exibida
+	private ImageIcon imagemPropulsao = null;
+	//--Posições iniciais da propulção
+	private int posIniXProp=30, posIniYProp=470;
+	
 	//Metodos
 	//--Construtor
-	public VisaoPropulsao() {
+	public VisaoPropulsao(ModeloAmbiente mA) {
 		super(null);
 		
 		this.setSize(750, 600);
 		this.setOpaque(true);
+		
+		this.mA = mA;
+		imagemPropulsao = mA.getmM().getImagemMola();
 	}
 	
 	//--Paint
@@ -32,7 +46,11 @@ public class VisaoPropulsao extends JPanel {
 		g2d.setColor(Color.black);
 		g2d.drawString("Este retangulo pertence a propulsao", 160, 170);
 		
-		g2d.setColor(Color.CYAN);
-		g2d.fillRect(30, 470, 75+25, 30);
+		g2d.drawImage(imagemPropulsao.getImage(), posIniXProp, posIniYProp, this);
 	}
+
+	//Get e Set
+	public ImageIcon getImagemPropulsao(){return imagemPropulsao;}
+	public void setImagemPropulsao(ImageIcon imagemPropulsao){this.imagemPropulsao = imagemPropulsao;}
+	public void setPosicoes(int posIniXProp, int posIniYProp){this.posIniXProp=posIniXProp; this.posIniYProp=posIniYProp;}
 }
