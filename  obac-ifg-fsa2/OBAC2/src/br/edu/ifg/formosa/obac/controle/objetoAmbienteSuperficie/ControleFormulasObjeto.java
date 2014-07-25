@@ -71,14 +71,6 @@ public class ControleFormulasObjeto {
 		);
 	}
 	
-	//Calcula posição final Pixel
-		//Por ser muito utilizada, esta função poderia ser mandada para uma classe de utilidades de forma genérica
-	public void calculaPosFinalPix(){
-		ma.getmO().setPosFinalXPix(
-			(ma.getmO().getPosFinalXMetros()/ma.getmEPri().getEscalaFimXM())
-		);
-	}
-	
 	//Calcula Novas posições do objeto - s=s0+v0*t+(a*t^2)/2
 	public void calculaNovaPosicao(){
 		ma.getmO().setPosicaoXMetros(
