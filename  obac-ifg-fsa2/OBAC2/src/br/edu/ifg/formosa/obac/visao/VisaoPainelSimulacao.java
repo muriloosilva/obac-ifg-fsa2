@@ -30,7 +30,7 @@ public class VisaoPainelSimulacao extends JPanel {
 		
 		vS = new VisaoSuperficie(vPC, mA);
 		vO = new VisaoObjeto();
-		vP = new VisaoPropulsao();
+		vP = new VisaoPropulsao(mA);
 		vEPri = new VisaoEscala(mA.getmEPri());
 		vESec = new VisaoEscala(mA.getmESec());
 		
@@ -44,6 +44,8 @@ public class VisaoPainelSimulacao extends JPanel {
 	}
 	
 	//--Getters
+	public VisaoObjeto getVisaoObjeto(){return vO;}
+	public VisaoPropulsao getVisaoPropulsao(){return vP;}
 	public VisaoEscala getVisaoEscalaPri() {return vEPri;}
 	public VisaoEscala getVisaoEscalaSec() {return vESec;}
 	public VisaoSuperficie getVisaoSuperficie() {return vS;}
