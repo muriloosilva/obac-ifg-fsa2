@@ -12,8 +12,10 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoAtuali
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecucao;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
+import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.modelo.ModeloSuperficie;
@@ -46,6 +48,8 @@ public class ControleOBAC {
 		private ModeloSuperficie mS = null;
 		//Modelo do Ambiente
 		private ModeloAmbiente mA = null;
+		//Modelo Da propulsão por mola
+		private ModeloMola mM = null;
 		
 	//Visão
 		//Painel de Configuração
@@ -63,6 +67,8 @@ public class ControleOBAC {
 		private ControlePainelConfiguracaoAtualizacoes cpca = null;
 		//Controle Painel de Informação
 		private ControlePainelInformacao cpi = null;
+		//Controle da Mola
+		private ControleMolaMouse cmm = null;
 	
 	public ControleOBAC(OBAC obac) {
 		
@@ -85,50 +91,57 @@ public class ControleOBAC {
 		painelPrincipal.add(painelDeRepintar);
 		
 		
-		//Modelo Painel de Configuração
-		mpc = new ModeloPainelConfiguracao();
-		
-		//Painel de Configuração
-		vpc = new VisaoPainelConfiguracao(mpc);
-		painelAbas.add(vpc, "Configuração");
-		
-		//Painel de Fórmulas
-		vpf = new VisaoPainelFormulas();
-		painelAbas.add(vpf, "Fórmulas");
-		
-		//Controles do Painel de Configuração
-		cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf);
-		cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
-		new ControlePainelConfiguracaoExecucao(vpc, mpc, cpca, cpced);	
-		
 		//Painel de Informações
-		vpi = new VisaoPainelInformacao();
-		painelDeRepintar.add(vpi);
-		
+			vpi = new VisaoPainelInformacao();
+			painelDeRepintar.add(vpi);
 		//Controle do painel de informações
-		cpi = new ControlePainelInformacao(vpi);
-
-		//Modelo da Escala Primária
-		mEPri = new ModeloEscala();
-		//Modelo da Escala Secundária
-		mESec = new ModeloEscala();
-		///Modelo do Objeto
-		mO = new ModeloObjeto(cpi);
-		//Modelo da Superfície
-		mS = new ModeloSuperficie(cpi);
-		//Modelo Escala
-		mA = new ModeloAmbiente(cpi, mEPri, mESec, mO, mS);
-		
+			cpi = new ControlePainelInformacao(vpi);
+			
+		//Modelos das Simulações
+			//Modelo da Escala Primária
+			mEPri = new ModeloEscala();
+			//Modelo da Escala Secundária
+			mESec = new ModeloEscala();
+			///Modelo do Objeto
+			mO = new ModeloObjeto(cpi);
+			//Modelo da Superfície
+			mS = new ModeloSuperficie(cpi);
+			//Modelo da Propulsão por Mola
+			mM = new ModeloMola(mO, cpi);
+			//Modelo Escala
+			mA = new ModeloAmbiente(cpi, mEPri, mESec, mO, mS, mM);
+			
+		//Painel de Configuração
+			//Modelo Painel de Configuração
+			mpc = new ModeloPainelConfiguracao();
+			//Visão Painel de Configuração
+			vpc = new VisaoPainelConfiguracao(mpc);
+			painelAbas.add(vpc, "Configuração");
+			
+		//Painel de Fórmulas
+			vpf = new VisaoPainelFormulas();
+			painelAbas.add(vpf, "Fórmulas");
+			
 		//Painel de Simulação
-		vPS = new VisaoPainelSimulacao(mA, vpc);
-		painelDeRepintar.add(vPS);
-		
+			vPS = new VisaoPainelSimulacao(mA, vpc);
+			painelDeRepintar.add(vPS);
+			
 		//Controles - Escala/Ambiente
-		new ControleEscala(vpi, vPS, vPS.getVisaoEscalaPri(), mA, vpc, mpc);
-		new ControleAmbiente(mA, vpc, mpc, this, vPS.getVisaoSuperficie());
-		
+			new ControleEscala(vpi, vPS, vPS.getVisaoEscalaPri(), mA, vpc, mpc);
+			new ControleAmbiente(mA, vpc, mpc, this, vPS.getVisaoSuperficie(), vPS);
+			
+		//Controle da propulsão por mola
+			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPS.getVisaoObjeto(), mA);
+			
+		//Controles do Painel de Configuração
+			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS.getVisaoPropulsao(),mM, cmm);
+			cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
+			new ControlePainelConfiguracaoExecucao(vpc, mpc, cpca, cpced);
+			
+		vpc.getCsPropulsao().setSelectedIndex(1);
+			
 		//Repintar Applet
-		obac.repaint();
+			obac.repaint();
 	}
 	
 	//Metodo para repintar o painel de informações e o de simulação
