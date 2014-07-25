@@ -14,16 +14,18 @@ public class ModeloAmbiente {
 	private ModeloEscala mESec = null; //Escala utilizada somente em Projetil e P&P
 	private ModeloObjeto mO = null;
 	private ModeloSuperficie mS = null;
+	private ModeloMola mM = null;
 	
 	//Construtor
 	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEPri, ModeloEscala mESec,
-						  ModeloObjeto mO, ModeloSuperficie mS)
+						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM)
 	{
 		ModeloAmbiente.cpi = cpi;
 		this.mEPri = mEPri;
 		this.mESec = mESec;
 		this.mO = mO;
 		this.mS = mS;
+		this.mM = mM;
 	}
 	
 	//Constantes
@@ -54,6 +56,7 @@ public class ModeloAmbiente {
 	public ModeloEscala getmESec() {return mESec;}
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
+	public ModeloMola getmM(){return mM;}
 	public URL getUrlGr() {return urlGr;}
 	public URL getUrlA() {return urlA;}
 	public URL getUrlGu() {return urlGu;}
