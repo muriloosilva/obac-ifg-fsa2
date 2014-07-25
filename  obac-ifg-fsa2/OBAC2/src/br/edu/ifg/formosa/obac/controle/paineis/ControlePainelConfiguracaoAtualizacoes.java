@@ -7,10 +7,14 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
+import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
+import br.edu.ifg.formosa.obac.visao.VisaoPropulsao;
 
 public class ControlePainelConfiguracaoAtualizacoes {
 	
@@ -18,12 +22,24 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	private final VisaoPainelConfiguracao vpc;
 	private final ModeloPainelConfiguracao mpc;
 	private final VisaoPainelFormulas vpf;
+	private final VisaoPainelInformacao vpi;
+	private final VisaoPropulsao vp;
+	private final ModeloMola mm;
+	private final ControleMolaMouse cmm;
 	
 	//Construtor
-	public ControlePainelConfiguracaoAtualizacoes(final VisaoPainelConfiguracao vpc, final ModeloPainelConfiguracao mpc, final VisaoPainelFormulas vpf) {
+	public ControlePainelConfiguracaoAtualizacoes( VisaoPainelConfiguracao vpc,
+		   ModeloPainelConfiguracao mpc, VisaoPainelFormulas vpf,
+		   VisaoPainelInformacao vpi, VisaoPropulsao vp,
+		   ModeloMola mm, ControleMolaMouse cmm)
+	{
 		this.vpc = vpc;
 		this.mpc = mpc;
 		this.vpf = vpf;
+		this.vpi = vpi;
+		this.vp = vp;
+		this.mm = mm;
+		this.cmm = cmm;
 		
 		acaoPropulsoes();
 		acaoCoefDeRestituicao();
@@ -45,6 +61,12 @@ public class ControlePainelConfiguracaoAtualizacoes {
 						vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), vpc.getCsAmbienteSimulacao().getItemCount());
 					//Painel de Fórmulas
 					vpf.getAtVInicial().setText(ModeloPainelFormulas.propCanhao);
+					//Painel de Informações
+					vpi.setVisivelCanhao();
+					//Altera a imagem
+//					vp.setImagemPropulsao(null);
+					//Remove o movimento da mola
+					cmm.desativaMolaMouse();
 				}
 				//Propulsão pela mola
 				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getMola())){
@@ -56,6 +78,12 @@ public class ControlePainelConfiguracaoAtualizacoes {
 						vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo
 					//Painel de Fórmulas
 					vpf.getAtVInicial().setText(ModeloPainelFormulas.propMola);
+					//Painel de Informações
+					vpi.setVisivelMola();
+					//Altera a imagem
+					vp.setImagemPropulsao(mm.getImagemMola());
+					//Adiciona o movimento da mola
+					cmm.ativaMolaMouse();
 				} 
 				else{
 					JOptionPane.showMessageDialog(null,
