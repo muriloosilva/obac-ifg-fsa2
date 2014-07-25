@@ -8,17 +8,22 @@ import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 import br.edu.ifg.formosa.obac.visao.VisaoSuperficie;
 
 public class ControleAmbiente {
 	
 	//Constante do painel de configuração
 	private final VisaoPainelConfiguracao vPC;
+	private final VisaoPainelSimulacao vPS;
 	
 	//Métodos
 	//--Construtor
-	public ControleAmbiente(final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC, final ControleOBAC cO, final VisaoSuperficie vS) {
+	public ControleAmbiente(final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC,
+			final ModeloPainelConfiguracao mPC, final ControleOBAC cO, final VisaoSuperficie vS,
+			VisaoPainelSimulacao vPS) {
 		this.vPC = vPC;
+		this.vPS = vPS;
 		
 		vPC.getCsAmbienteGravidade().addActionListener(new ActionListener() {
 			@Override
@@ -97,7 +102,9 @@ public class ControleAmbiente {
 			if(!propulsao){
 				vPC.getCtPropulsaoDado1().setText("");
 				vPC.getCtPropulsaoDado2().setText("");
+				vPS.getVisaoPropulsao().setVisible(propulsao);
 			}
+			else{vPS.getVisaoPropulsao().setVisible(propulsao);}
 	}
 	
 }
