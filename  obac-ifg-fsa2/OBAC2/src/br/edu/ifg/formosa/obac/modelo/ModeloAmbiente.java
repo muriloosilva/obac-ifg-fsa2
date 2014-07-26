@@ -4,30 +4,7 @@ import java.net.URL;
 
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 
-public class ModeloAmbiente {
-	
-	//Controle Painel de Configuração - atualizar dados referente ao ambiente
-	private static ControlePainelInformacao cpi = null;
-	
-	//--Objeto, Escala e Superficie
-	private ModeloEscala mEPri = null; //Escala utilizada em todas as simulações
-	private ModeloEscala mESec = null; //Escala utilizada somente em Projetil e P&P
-	private ModeloObjeto mO = null;
-	private ModeloSuperficie mS = null;
-	private ModeloMola mM = null;
-	
-	//Construtor
-	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEPri, ModeloEscala mESec,
-						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM)
-	{
-		ModeloAmbiente.cpi = cpi;
-		this.mEPri = mEPri;
-		this.mESec = mESec;
-		this.mO = mO;
-		this.mS = mS;
-		this.mM = mM;
-	}
-	
+public class ModeloAmbiente {	
 	//Constantes
 	//--Double
 	public static final double gravidadeTerra = 9.8;
@@ -39,6 +16,7 @@ public class ModeloAmbiente {
 	
 	//Variáveis
 	//--Double
+	public static double anguloRotacaoGraus = 0; //Mais de uma classe(visao) precisam rotacionar, por isso essa variavel aqui; 
 	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
 	private double tempo; //OBAC1
 	
@@ -47,8 +25,29 @@ public class ModeloAmbiente {
 	private URL urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + "plano" + ".png"); //andaime
 	private URL urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + "guindasteF" + ".png"); //guindaste
 	
+	//--Controle Painel de Configuração - atualizar dados referente ao ambiente
+	private static ControlePainelInformacao cpi = null;
 	
-	//Metodos
+	//--Objeto, Escala e Superficie
+	private ModeloEscala mEPri = null; //Escala utilizada em todas as simulações
+	private ModeloEscala mESec = null; //Escala utilizada somente em Projetil e P&P
+	private ModeloObjeto mO = null;
+	private ModeloSuperficie mS = null;
+	private ModeloMola mM = null;
+	
+	//Metodos	
+	//--Construtor
+	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEPri, ModeloEscala mESec,
+						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM)
+	{
+		ModeloAmbiente.cpi = cpi;
+		this.mEPri = mEPri;
+		this.mESec = mESec;
+		this.mO = mO;
+		this.mS = mS;
+		this.mM = mM;
+	}
+	
 	//--Getters
 	public double getGravSelecionada() {return gravSelecionada;}
 	public double getTempo() {return tempo;}

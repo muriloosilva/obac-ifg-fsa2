@@ -17,7 +17,7 @@ public class ModeloMola {
 	private ControlePainelInformacao cpi = null;
 	
 	//Imagem
-	private ImageIcon imagemMola = new ImageIcon(this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens//mola/mola100px.png"));
+	private ImageIcon imagemMola = new ImageIcon(this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens//propulsao/mola100px.png"));
 	private int imagemTamanhoYPix = 30;
 	private int imagemPosicaoYPix = 0;
 	

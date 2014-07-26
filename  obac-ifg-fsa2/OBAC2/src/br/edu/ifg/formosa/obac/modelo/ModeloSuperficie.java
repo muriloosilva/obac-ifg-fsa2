@@ -19,8 +19,6 @@ public class ModeloSuperficie {
 	
 	public static final double larguraSuperficie = 500; //Valor em px - OBAC1
 	public static final double alturaSuperficie = 420; //Valor em px - OBAC1
-	
-	public static final double anguloInclinacaoGraus = 45; //Valor ainda nao definido - Utilizado para subida e descida
 		
 	//Variaveis
 	//--Double

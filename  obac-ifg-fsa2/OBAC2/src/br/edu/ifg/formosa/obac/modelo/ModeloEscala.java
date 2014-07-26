@@ -20,9 +20,6 @@ public class ModeloEscala {
 	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)	
 	private int qtdMarcadores = 5; //Numero de marcadores existentes na escala
 	
-	//--Double
-	private double angulo = 0; //Angulo para rotacionar a escala; -- Ta repetida em modelo superfície
-	
 	//Metodos
 	//--Getters
 	public int getTamanhoPrecipicioPix() {return tamanhoPrecipicioPix;}
@@ -35,7 +32,6 @@ public class ModeloEscala {
 	public long getEscalaFimYM() {return escalaFimYM;}	
 	public int getEspacamentoMarcadores() {return espacamentoMarcadores;}
 	public int getQtdMarcadores() {return qtdMarcadores;}
-	public double getAngulo() {return angulo;}
 	
 	//--Setters
 	public void setEscalaInicioX(int escalaInicioX) {this.escalaInicioX = escalaInicioX;}
@@ -46,5 +42,4 @@ public class ModeloEscala {
 	public void setEscalaFimYM(long escalaFimYM) {this.escalaFimYM = escalaFimYM;}	
 	public void setEspacamentoMarcadores(int espacamentoMarcadores) {this.espacamentoMarcadores = espacamentoMarcadores;}
 	public void setQtdMarcadores(int qtdMarcadores) {this.qtdMarcadores = qtdMarcadores;}
-	public void setAngulo(double angulo) {this.angulo = angulo;}
 }

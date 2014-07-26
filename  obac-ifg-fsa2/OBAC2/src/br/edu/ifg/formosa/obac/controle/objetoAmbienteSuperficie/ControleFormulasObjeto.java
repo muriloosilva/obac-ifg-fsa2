@@ -35,8 +35,8 @@ public class ControleFormulasObjeto {
 	//Aceleração na Subida -> a = [(g * Sen(θ)) + (μ * g * Cos(θ))]*(-1)
 	public void calculaAceleracaoSubida(){
 		ma.getmO().setAceleracao(
-			((ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.getmS().anguloInclinacaoGraus)))
-			 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.getmS().anguloInclinacaoGraus)))
+			((ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.anguloRotacaoGraus)))
+			 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.anguloRotacaoGraus)))
 			)
 			
 		);
@@ -45,8 +45,8 @@ public class ControleFormulasObjeto {
 	//Aceleração na Descida -> a = [(g * Sen(θ)) + (μ * g * Cos(θ))]
 	public void calculaAceleracaoDescida(){
 		ma.getmO().setAceleracao(((
-		 (ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.getmS().anguloInclinacaoGraus)))
-		 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.getmS().anguloInclinacaoGraus))*(-1))
+		 (ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.anguloRotacaoGraus)))
+		 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.anguloRotacaoGraus))*(-1))
 		)));
 	}
 	
