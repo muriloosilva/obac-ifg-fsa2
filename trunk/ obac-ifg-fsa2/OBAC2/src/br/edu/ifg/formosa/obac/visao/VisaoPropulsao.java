@@ -53,4 +53,6 @@ public class VisaoPropulsao extends JPanel {
 	public ImageIcon getImagemPropulsao(){return imagemPropulsao;}
 	public void setImagemPropulsao(ImageIcon imagemPropulsao){this.imagemPropulsao = imagemPropulsao;}
 	public void setPosicoes(int posIniXProp, int posIniYProp){this.posIniXProp=posIniXProp; this.posIniYProp=posIniYProp;}
+	public int getPosIniXProp(){return posIniXProp;}
+	public int getPosIniYProp(){return posIniYProp;}
 }
