@@ -160,19 +160,19 @@ public class VisaoPainelFormulas extends JScrollPane{
 			//Colisão
 			rColisao = new JLabel("Colisão");
 			atColisao = new JTextArea(ModeloPainelFormulas.colisao);
-			addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulNeon, UtilidadeCores.laranja, 6, true);
+			addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulNeon, UtilidadeCores.laranja, 6, false);
 			
 			//Velocidade pós Colosão - Criar os componentes e refazer o esquema de cores
 			rVelocidadePosColisao = new JLabel("Velocidade Após Colisão");
 			rVelocidadePosColisao.setToolTipText("Equação de Torricceli");
 			atVelocidadePosColisao = new JTextArea(ModeloPainelFormulas.equaTorricceli);
-			addComponentes(pVelocidadePosColisao, rVelocidadePosColisao, prVelocidadePosColisao, atVelocidadePosColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 6, true);
+			addComponentes(pVelocidadePosColisao, rVelocidadePosColisao, prVelocidadePosColisao, atVelocidadePosColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 6, false);
 			
 			//Nova Posição Após Colisão
 			rNovaPosColisao = new JLabel("Nova Posição Após Colisão");
 			rNovaPosColisao.setToolTipText("Equação horária das abscissas");
 			atNovaPosColisao = new JTextArea(ModeloPainelFormulas.equaHorariaAbscissa);
-			addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6, true);
+			addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6, false);
 		
 		
 		//Lançamento Oblíquo
