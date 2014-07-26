@@ -15,8 +15,8 @@ public class ModeloObjeto {
 	
 	//Constantes
 	//--Double
-	public static final double altura = 10; //Os valores de alt e larg sao para inicializar as variaveis
-	public static final double largura = 10;
+	public static final double altura = 30; //Os valores de alt e larg sao para inicializar as variaveis
+	public static final double largura = 30;
 	
 	public final double posXIniPlano = 0; //As 12 variaveis que se seguem orientam a posicao inical do objeto em pixels nas diferetes simulacoes. Valores devem ser preenchidos corretamete
 	public final double posYIniPlano = 0;
