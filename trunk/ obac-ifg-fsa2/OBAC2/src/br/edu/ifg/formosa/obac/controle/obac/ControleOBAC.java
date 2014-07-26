@@ -146,8 +146,6 @@ public class ControleOBAC {
 	
 	//Metodo para repintar o painel de informações e o de simulação
 	public void repinta() {
-//		this.vpi.repaint();
-//		this.vPS.repaint();
 		this.painelPrincipal.repaint();
 	}
 }

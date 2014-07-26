@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
+import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 
 public class VisaoEscala extends JPanel{
@@ -33,7 +34,7 @@ public class VisaoEscala extends JPanel{
 		Graphics2D g2d = (Graphics2D) g;
 		
 		g2d.translate(mE.getEscalaInicioX(), mE.getEscalaInicioY());
-		g2d.rotate(Math.toRadians(mE.getAngulo()));
+		g2d.rotate(Math.toRadians(ModeloAmbiente.anguloRotacaoGraus));
 		g2d.translate(-mE.getEscalaInicioX(), -mE.getEscalaInicioY());
 		
 		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimXPix(), mE.getQtdMarcadores()));
