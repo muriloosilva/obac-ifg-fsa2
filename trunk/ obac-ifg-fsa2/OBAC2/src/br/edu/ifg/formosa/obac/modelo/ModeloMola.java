@@ -28,6 +28,7 @@ public class ModeloMola {
 	}
 	
 	//Medidas da MOLA
+	private final int tamanhoMolaMinimoPix = 25;//Tamanho mínimo em pixels que a mola pode assumir 
 	private final int tamanhoMolaTotalPix = 100;//tamanho inicial em pixels 
 	private int tamanhoMolaAtualPix=tamanhoMolaTotalPix;//tamanho final em pixels = Pos inicial do objeto
 	private double tamanhoMolaTotalM;//tamanho inicial em metros
@@ -52,6 +53,7 @@ public class ModeloMola {
 	}
 	
 //Getters
+	public int getTamanhoMolaMinimoPix() {return tamanhoMolaMinimoPix;}
 	public int getTamanhoMolaAtualPix() {return tamanhoMolaAtualPix;}
 	public double getTamanhoMolaAtualM() {return tamanhoMolaAtualM;}
 	public double getX() {return x;}
