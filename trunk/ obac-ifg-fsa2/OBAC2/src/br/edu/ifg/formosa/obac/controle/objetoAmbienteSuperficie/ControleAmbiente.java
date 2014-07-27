@@ -1,5 +1,6 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,12 +32,15 @@ public class ControleAmbiente {
 				switch (vPC.getCsAmbienteGravidade().getSelectedIndex()) { //Determina qual a imagem de fundo
 					case 0:
 						mA.setUrlGr("terra");
+						mA.cor = Color.black;
 						break;
 					case 1:
 						mA.setUrlGr("lua");
+						mA.cor = Color.white;
 						break;
 					case 2:
 						mA.setUrlGr("marte");
+						mA.cor = Color.white;
 						break;
 				}
 				mudaImagem(cO, vS, mA);

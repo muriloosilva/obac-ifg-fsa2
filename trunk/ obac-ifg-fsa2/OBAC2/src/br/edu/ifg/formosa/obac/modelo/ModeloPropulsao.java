@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 
-public class ModeloMola {
+public class ModeloPropulsao {
 	
 	//Modelo do Objeto
 	private ModeloObjeto mo = null;
@@ -22,7 +22,7 @@ public class ModeloMola {
 	private int imagemPosicaoYPix = 0;
 	
 	//Construtor
-	public ModeloMola(ModeloObjeto mo, ControlePainelInformacao cpi) {
+	public ModeloPropulsao(ModeloObjeto mo, ControlePainelInformacao cpi) {
 		this.mo = mo;
 		this.cpi = cpi;
 	}

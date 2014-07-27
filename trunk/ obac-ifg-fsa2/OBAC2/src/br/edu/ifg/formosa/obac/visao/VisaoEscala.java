@@ -34,12 +34,12 @@ public class VisaoEscala extends JPanel{
 		Graphics2D g2d = (Graphics2D) g;
 		
 		g2d.translate(mE.getEscalaInicioX(), mE.getEscalaInicioY());
-		g2d.rotate(Math.toRadians(ModeloAmbiente.anguloRotacaoGraus));
+		g2d.rotate(Math.toRadians(mE.getAnguloRotacaoGraus()));
 		g2d.translate(-mE.getEscalaInicioX(), -mE.getEscalaInicioY());
 		
 		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimXPix(), mE.getQtdMarcadores()));
 		
-		g2d.setColor(Color.white);
+		g2d.setColor(ModeloAmbiente.cor);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());
 				
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 15);

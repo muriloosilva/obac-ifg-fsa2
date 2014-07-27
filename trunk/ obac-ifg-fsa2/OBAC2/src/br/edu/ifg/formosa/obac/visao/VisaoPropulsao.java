@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
-import br.edu.ifg.formosa.obac.modelo.ModeloMola;
+import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
 
 public class VisaoPropulsao extends JPanel {
 	//Constantes
@@ -38,7 +38,11 @@ public class VisaoPropulsao extends JPanel {
 	
 	//--Paint
 	public void paint(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
+		Graphics2D g2d = (Graphics2D) g;		
+
+		g2d.translate(posIniXProp, posIniYProp);
+		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
+		g2d.translate(-posIniXProp, -posIniYProp);
 		
 		g2d.drawImage(imagemPropulsao.getImage(), posIniXProp, posIniYProp, this);
 	}

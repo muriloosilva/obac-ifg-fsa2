@@ -1,5 +1,6 @@
 package br.edu.ifg.formosa.obac.modelo;
 
+import java.awt.Color;
 import java.net.URL;
 
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
@@ -16,7 +17,7 @@ public class ModeloAmbiente {
 	
 	//Variáveis
 	//--Double
-	public static double anguloRotacaoGraus = 0; //Mais de uma classe(visao) precisam rotacionar, por isso essa variavel aqui; 
+	public static double anguloInclinacaoGraus = 0;
 	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
 	private double tempo; //OBAC1
 	
@@ -33,12 +34,15 @@ public class ModeloAmbiente {
 	private ModeloEscala mESec = null; //Escala utilizada somente em Projetil e P&P
 	private ModeloObjeto mO = null;
 	private ModeloSuperficie mS = null;
-	private ModeloMola mM = null;
+	private ModeloPropulsao mM = null;
+	
+	//--Color
+	public static Color cor = Color.black; //Utilizado pra desenhar a escala de maneira que fique bem visivel nas simuações
 	
 	//Metodos	
 	//--Construtor
 	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEPri, ModeloEscala mESec,
-						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM)
+						  ModeloObjeto mO, ModeloSuperficie mS, ModeloPropulsao mM)
 	{
 		ModeloAmbiente.cpi = cpi;
 		this.mEPri = mEPri;
@@ -55,7 +59,7 @@ public class ModeloAmbiente {
 	public ModeloEscala getmESec() {return mESec;}
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
-	public ModeloMola getmM(){return mM;}
+	public ModeloPropulsao getmM(){return mM;}
 	public URL getUrlGr() {return urlGr;}
 	public URL getUrlA() {return urlA;}
 	public URL getUrlGu() {return urlGu;}
