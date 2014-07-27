@@ -15,7 +15,7 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
-import br.edu.ifg.formosa.obac.modelo.ModeloMola;
+import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.modelo.ModeloSuperficie;
@@ -49,7 +49,7 @@ public class ControleOBAC {
 		//Modelo do Ambiente
 		private ModeloAmbiente mA = null;
 		//Modelo Da propulsão por mola
-		private ModeloMola mM = null;
+		private ModeloPropulsao mM = null;
 		
 	//Visão
 		//Painel de Configuração
@@ -107,7 +107,7 @@ public class ControleOBAC {
 			//Modelo da Superfície
 			mS = new ModeloSuperficie(cpi);
 			//Modelo da Propulsão por Mola
-			mM = new ModeloMola(mO, cpi);
+			mM = new ModeloPropulsao(mO, cpi);
 			//Modelo Escala
 			mA = new ModeloAmbiente(cpi, mEPri, mESec, mO, mS, mM);
 			
