@@ -24,31 +24,31 @@ public class ControleEscala {
 					
 					vps.getVisaoEscalaSec().setVisible(false); //Escala secundaria fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
-					mudaModeloEscala(mA.getmEPri(), 160, 520, 719, 520, 5, -27.5);
+					mudaModeloEscala(mA.getmEPri(), 160, 480, 773, 480, 5, -23.9);
 					ModeloAmbiente.anguloInclinacaoGraus = -27.5;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
-					mudaModeloEscala(mA.getmEPri(), 100, 100, 750, 100, 5, 27.5);
+					mudaModeloEscala(mA.getmEPri(), 160, 300, 772, 300, 5, 23.9);
 					ModeloAmbiente.anguloInclinacaoGraus = 27.5;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio
-					mudaModeloEscala(mA.getmEPri(), 100, 564, 700, 564, 5, 0);
+					mudaModeloEscala(mA.getmEPri(), 160, 520, 719, 520, 5, 0);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
-					mudaModeloEscala(mA.getmESec(), 10, 300, 296, 300, 2, 0);
+					mudaModeloEscala(mA.getmESec(), 160, 230, 329, 230, 1, 0);
 					vps.getVisaoEscalaSec().setVisible(true); //Escala secundaria fica visivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {//Queda
-					mudaModeloEscala(mA.getmEPri(), 100, 100, 500, 100, 5, 90);
+					mudaModeloEscala(mA.getmEPri(), 320, 123, 696, 123, 5, 90);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else { //Projétil
-					mudaModeloEscala(mA.getmEPri(), 100, 564, 700, 564, 5, 0);
+					mudaModeloEscala(mA.getmEPri(), 160, 520, 719, 520, 5, 0);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
-					mudaModeloEscala(mA.getmESec(), 100, 100, 500, 100, 5, 90);
+					mudaModeloEscala(mA.getmESec(), 60, 100, 459, 100, 5, 90);
 					vps.getVisaoEscalaSec().setVisible(true);
 				}
 				vpi.repaint();

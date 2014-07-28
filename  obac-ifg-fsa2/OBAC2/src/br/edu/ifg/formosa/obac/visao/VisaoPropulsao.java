@@ -33,7 +33,7 @@ public class VisaoPropulsao extends JPanel {
 		this.setOpaque(true);
 		
 		this.mA = mA;
-		imagemPropulsao = mA.getmM().getImagemMola();
+		imagemPropulsao = mA.getmP().getImagemMola();
 	}
 	
 	//--Paint
