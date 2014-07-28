@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
+import br.edu.ifg.formosa.obac.modelo.ModeloMola;
+import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
@@ -20,27 +22,36 @@ public class ControleEscala {
 			public void actionPerformed(ActionEvent arg0) {
 				if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 0) { //Plano
 					mudaModeloEscala(mA.getmEPri(), 160, 520, 719, 520, 5, 0);
+					mudaPosMola(mA.getmM(), 30, 470);
+					mudaPosObjeto(mA.getmO(), 130, 470);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					vps.getVisaoEscalaSec().setVisible(false); //Escala secundaria fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
 					mudaModeloEscala(mA.getmEPri(), 160, 480, 773, 480, 5, -23.9);
-					ModeloAmbiente.anguloInclinacaoGraus = -27.5;
+					mudaPosMola(mA.getmM(), 19, 475);
+					mudaPosObjeto(mA.getmO(), 110, 433);
+					ModeloAmbiente.anguloInclinacaoGraus = -23.9;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
 					mudaModeloEscala(mA.getmEPri(), 160, 300, 772, 300, 5, 23.9);
-					ModeloAmbiente.anguloInclinacaoGraus = 27.5;
+					mudaPosMola(mA.getmM(), 40, 169);
+					mudaPosObjeto(mA.getmO(), 132, 210);
+					ModeloAmbiente.anguloInclinacaoGraus = 23.9;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio
 					mudaModeloEscala(mA.getmEPri(), 160, 520, 719, 520, 5, 0);
+					mudaPosMola(mA.getmM(), 30, 166);
+					mudaPosObjeto(mA.getmO(), 130, 166);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					mudaModeloEscala(mA.getmESec(), 160, 230, 329, 230, 1, 0);
 					vps.getVisaoEscalaSec().setVisible(true); //Escala secundaria fica visivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {//Queda
 					mudaModeloEscala(mA.getmEPri(), 320, 123, 696, 123, 5, 90);
+					mudaPosObjeto(mA.getmO(), 361, 94);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
@@ -76,5 +87,17 @@ public class ControleEscala {
 		mE.setEscalaInicioY(eIY);
 		mE.setQtdMarcadores(qMarcadores);
 		mE.setAnguloRotacaoGraus(angulo);
+	}
+	
+	//--Altera os valores de posicionamento da propulsão-Mola
+	private void mudaPosMola(ModeloMola mM, int posX, int posY) {
+		mM.setPosX(posX);
+		mM.setPosY(posY);
+	}
+	
+	//--Altera os valores de posicionamento do objeto
+	private void mudaPosObjeto(ModeloObjeto mO, int posX, int posY) {
+		mO.setPosicaoXPx(posX);
+		mO.setPosicaoYPx(posY);
 	}
 }

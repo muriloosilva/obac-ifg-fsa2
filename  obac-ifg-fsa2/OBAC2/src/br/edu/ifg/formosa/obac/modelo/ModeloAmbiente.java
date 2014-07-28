@@ -34,7 +34,7 @@ public class ModeloAmbiente {
 	private ModeloEscala mESec = null; //Escala utilizada somente em Projetil e P&P
 	private ModeloObjeto mO = null;
 	private ModeloSuperficie mS = null;
-	private ModeloPropulsao mP = null;
+	private ModeloMola mM = null;
 	
 	//--Color
 	public static Color cor = Color.black; //Utilizado pra desenhar a escala de maneira que fique bem visivel nas simuações
@@ -42,14 +42,14 @@ public class ModeloAmbiente {
 	//Metodos	
 	//--Construtor
 	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEPri, ModeloEscala mESec,
-						  ModeloObjeto mO, ModeloSuperficie mS, ModeloPropulsao mM)
+						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM)
 	{
 		ModeloAmbiente.cpi = cpi;
 		this.mEPri = mEPri;
 		this.mESec = mESec;
 		this.mO = mO;
 		this.mS = mS;
-		this.mP = mM;
+		this.mM = mM;
 	}
 	
 	//--Getters
@@ -59,7 +59,7 @@ public class ModeloAmbiente {
 	public ModeloEscala getmESec() {return mESec;}
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
-	public ModeloPropulsao getmP(){return mP;}
+	public ModeloMola getmM(){return mM;}
 	public URL getUrlGr() {return urlGr;}
 	public URL getUrlA() {return urlA;}
 	public URL getUrlGu() {return urlGu;}

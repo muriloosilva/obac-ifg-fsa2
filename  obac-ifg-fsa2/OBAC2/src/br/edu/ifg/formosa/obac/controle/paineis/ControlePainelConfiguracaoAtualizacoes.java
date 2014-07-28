@@ -8,7 +8,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
-import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
+import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
@@ -24,14 +24,14 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	private final VisaoPainelFormulas vpf;
 	private final VisaoPainelInformacao vpi;
 	private final VisaoPropulsao vp;
-	private final ModeloPropulsao mm;
+	private final ModeloMola mm;
 	private final ControleMolaMouse cmm;
 	
 	//Construtor
 	public ControlePainelConfiguracaoAtualizacoes( VisaoPainelConfiguracao vpc,
 		   ModeloPainelConfiguracao mpc, VisaoPainelFormulas vpf,
 		   VisaoPainelInformacao vpi, VisaoPropulsao vp,
-		   ModeloPropulsao mm, ControleMolaMouse cmm)
+		   ModeloMola mm, ControleMolaMouse cmm)
 	{
 		this.vpc = vpc;
 		this.mpc = mpc;

@@ -29,7 +29,7 @@ public class VisaoPainelSimulacao extends JPanel {
 //		this.setLocation(250, 0);
 		
 		vS = new VisaoSuperficie(vPC, mA);
-		vO = new VisaoObjeto();
+		vO = new VisaoObjeto(mA);
 		vP = new VisaoPropulsao(mA);
 		vEPri = new VisaoEscala(mA.getmEPri());
 		vESec = new VisaoEscala(mA.getmESec());

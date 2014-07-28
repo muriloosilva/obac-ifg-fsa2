@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 
-public class ModeloPropulsao {
+public class ModeloMola {
 	
 	//Modelo do Objeto
 	private ModeloObjeto mo = null;
@@ -22,7 +22,7 @@ public class ModeloPropulsao {
 	private int imagemPosicaoYPix = 0;
 	
 	//Construtor
-	public ModeloPropulsao(ModeloObjeto mo, ControlePainelInformacao cpi) {
+	public ModeloMola(ModeloObjeto mo, ControlePainelInformacao cpi) {
 		this.mo = mo;
 		this.cpi = cpi;
 	}
@@ -37,6 +37,10 @@ public class ModeloPropulsao {
 	private double x;
 	//Constante elástica(k)
 	private double kAtual;//Atual
+	
+	//Posição da Mola - pixels
+	private int posX = 30;
+	private int posY = 470;
 	
 	
 	//Cálculo de avelocidade - V0 = (K+x^2/m)
@@ -61,6 +65,8 @@ public class ModeloPropulsao {
 	public int getTamanhoMolaTotalPix() {return tamanhoMolaTotalPix;}
 	public double getTamanhoMolaTotalM(){return tamanhoMolaTotalM;}
 	public ImageIcon getImagemMola(){return imagemMola;}
+	public int getPosX() {return posX;}
+	public int getPosY() {return posY;}
 //Setters
 	public void setTamanhoMolaAtualPix(int tamanhoMolaAtualPix) {this.tamanhoMolaAtualPix = tamanhoMolaAtualPix;}
 	public void setTamanhoMolaTotalM(double tamanhoMolaTotalM) {this.tamanhoMolaTotalM = tamanhoMolaTotalM;}
@@ -69,5 +75,6 @@ public class ModeloPropulsao {
 		this.kAtual = kAtual;
 		cpi.mudaValorConstanteElastica(kAtual);
 	}
-
+	public void setPosX(int posX) {this.posX = posX;}
+	public void setPosY(int posY) {this.posY = posY;}
 }

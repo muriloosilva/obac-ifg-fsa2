@@ -34,7 +34,7 @@ public class ControleMolaSoltura implements Runnable{
 	@Override
 	public void run() {
 		//É calculada a taxa de deformação e a velocidade de lançamento do objeto
-		ma.getmP().calculaX();
+		ma.getmM().calculaX();
 //		ma.getmP().velocidadeLancamento();
 		//###Retornar com a velocidade assim que o controle principal da simulação estiver funcionando
 		
@@ -42,16 +42,16 @@ public class ControleMolaSoltura implements Runnable{
 			double cont = 0.5;
 			int atraso = 20;
 		//Laço de repetição que traz a mola para a posição inicial
-		for (double i = ma.getmP().getTamanhoMolaAtualPix();
-			i < ma.getmP().getTamanhoMolaTotalPix();
+		for (double i = ma.getmM().getTamanhoMolaAtualPix();
+			i < ma.getmM().getTamanhoMolaTotalPix();
 			i+=cont)
 		{
 			//Move o objeto
 			ma.getmO().setPosicaoXPx((int)i);
 			//Altera o tamanho da imagem para ajustála a compressão
-			vp.setImagemPropulsao(new ImageIcon(ma.getmP().getImagemMola().getImage().getScaledInstance((int)i, 30, Image.SCALE_DEFAULT)));
+			vp.setImagemPropulsao(new ImageIcon(ma.getmM().getImagemMola().getImage().getScaledInstance((int)i, 30, Image.SCALE_DEFAULT)));
 			//Corrige o valor na variável do tamanho da mola localizado no modelo
-			ma.getmP().setTamanhoMolaAtualPix((int)i);
+			ma.getmM().setTamanhoMolaAtualPix((int)i);
 			//Repaint
 			cOBAC.repinta();
 			//Sleep - pausas no carregamento
@@ -63,10 +63,10 @@ public class ControleMolaSoltura implements Runnable{
 		
 		//Correção dos valores do tamnho da mola e da posição do objeto para evitar o desconforto visual
 		//Ocorre apenas quando a imagem não está no tamanho correto
-		if(ma.getmP().getTamanhoMolaAtualPix()<ma.getmP().getTamanhoMolaTotalPix()){
+		if(ma.getmM().getTamanhoMolaAtualPix()<ma.getmM().getTamanhoMolaTotalPix()){
 			//Retorna a mola para a posição original (primeiro no modelo depois na imagem)
-			ma.getmP().setTamanhoMolaAtualPix(ma.getmP().getTamanhoMolaTotalPix());
-			vp.setImagemPropulsao(ma.getmP().getImagemMola());
+			ma.getmM().setTamanhoMolaAtualPix(ma.getmM().getTamanhoMolaTotalPix());
+			vp.setImagemPropulsao(ma.getmM().getImagemMola());
 			//Posiciona o Objeto na posição original
 			ma.getmO().setPosicaoXPx(130);
 			//Repaint
