@@ -62,7 +62,7 @@ public class ControleMolaMouse {
 			//Confirma se a posição em que o mouse está é permitida no eixo x(30px do epaço vazio e mais 20px para a mola não desaparecer)
 			(x>=(ma.getmM().getPosX()+ma.getmM().getTamanhoMolaMinimoPix())&& x<=(ma.getmM().getPosX()+ma.getmM().getTamanhoMolaTotalPix()))
 			 //Confirma se a posição do mouse no eixo Y está correta
-			&&(y>=ma.getmM().getPosY() && y<=(ma.getmM().getPosY()+ma.getmO().altura))
+			&&(y>=ma.getmM().getPosY() && y<=(ma.getmM().getPosY()+ma.getmO().alturaLargura))
 		);
 			  
 		if(areaDaMola){

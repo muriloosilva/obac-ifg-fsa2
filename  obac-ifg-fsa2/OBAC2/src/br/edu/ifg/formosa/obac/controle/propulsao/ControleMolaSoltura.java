@@ -24,7 +24,7 @@ public class ControleMolaSoltura implements Runnable{
 		this.cOBAC = cOBAC;
 		
 		//Remoção dos mouse*listeners
-		cmm.desativaMolaMouse();
+//		cmm.desativaMolaMouse();
 		
 		t = new Thread(this);
 		t.start();
@@ -46,12 +46,12 @@ public class ControleMolaSoltura implements Runnable{
 			i < ma.getmM().getTamanhoMolaTotalPix();
 			i+=cont)
 		{
-			//Move o objeto
-			ma.getmO().setPosicaoXPx((int)i);
 			//Altera o tamanho da imagem para ajustála a compressão
 			vp.setImagemPropulsao(new ImageIcon(ma.getmM().getImagemMola().getImage().getScaledInstance((int)i, 30, Image.SCALE_DEFAULT)));
 			//Corrige o valor na variável do tamanho da mola localizado no modelo
 			ma.getmM().setTamanhoMolaAtualPix((int)i);
+			//Move o objeto (valor de i+posição inicial do objeto+ 1 pixel para o objeto ficar na frente da mola)
+			ma.getmO().setPosicaoXPx((int)i+ma.getmM().getPosX()+1);
 			//Repaint
 			cOBAC.repinta();
 			//Sleep - pausas no carregamento
