@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 
 public class VisaoObjeto extends JPanel {
 	//Constantes
@@ -37,6 +38,12 @@ public class VisaoObjeto extends JPanel {
 		g2d.translate(-mA.getmO().getPosicaoXPx(), -mA.getmO().getPosicaoYPx());
 		
 		g2d.setColor(Color.blue);
-		g2d.fillRect(mA.getmO().getPosicaoXPx(), mA.getmO().getPosicaoYPx(), 30, 30);
+		g2d.fillRect(mA.getmO().getPosicaoXPx(), mA.getmO().getPosicaoYPx(), ModeloObjeto.alturaLargura, ModeloObjeto.alturaLargura);
+		
+		g2d.setColor(Color.white);
+		g2d.drawRect(mA.getmM().getPosX(),
+					mA.getmM().getPosY(),
+					100,
+					mA.getmO().alturaLargura);
 	}
 }

@@ -43,6 +43,12 @@ public class VisaoPropulsao extends JPanel {
 		g2d.translate(-mA.getmM().getPosX(), -mA.getmM().getPosY());
 		
 		g2d.drawImage(imagemPropulsao.getImage(), mA.getmM().getPosX(), mA.getmM().getPosY(), this);
+		
+		g2d.setColor(Color.red);
+		g2d.drawRect(mA.getmM().getPosX(),
+					mA.getmM().getPosY(),
+					100,
+					mA.getmO().alturaLargura);
 	}
 
 	//Get e Set
