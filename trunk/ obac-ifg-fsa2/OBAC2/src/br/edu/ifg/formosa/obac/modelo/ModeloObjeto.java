@@ -18,24 +18,6 @@ public class ModeloObjeto {
 	public static final double altura = 30; //Os valores de alt e larg sao para inicializar as variaveis
 	public static final double largura = 30;
 	
-	public final double posXIniPlano = 0; //As 12 variaveis que se seguem orientam a posicao inical do objeto em pixels nas diferetes simulacoes. Valores devem ser preenchidos corretamete
-	public final double posYIniPlano = 0;
-	
-	public final double posXIniSubida = 0;
-	public final double posYIniSubida = 0;
-	
-	public final double posXIniDescida = 0;
-	public final double posYIniDescida = 0;
-	
-	public final double posXIniPrecipicio = 0;
-	public final double posYIniPrecipicio = 0;
-	
-	public final double posXIniQueda = 0;
-	public final double posYIniQueda = 0;
-	
-	public final double posXLancamento = 0;
-	public final double posYLancamento = 0;
-	
 	public static final int pontoFinalObjetoDescidaPix = 518;
 	public static final int pontoFinalObjetoSubidaPix = 0;
 	
@@ -53,9 +35,6 @@ public class ModeloObjeto {
 	private double posicaoXMetros = 0;	//Posicao em Metros
 	private double posicaoYMetros = 0;
 	
-	private int posicaoXPx; //Posicao em Pixels
-	private int posicaoYPx;
-	
 	private double posFinalXMetros = 0;//Posição final do objeto em metros no eixo X
 	private int posFinalXPix = 0;//Posição final do objeto em Pixels no eixo X
 	private double posFinalYMetros = 0;//Posição final do objeto em metros no eixo Y
@@ -63,6 +42,10 @@ public class ModeloObjeto {
 	
 	private double forcaNormal = 0;//Força normal agindo no objeto
 	
+	//--Int
+	//Posicao em Pixels
+	private int posicaoXPx = 130; 
+	private int posicaoYPx = 470;
 	
 	//Metodos
 	//--Getters

@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
-import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
+import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 
 public class VisaoPropulsao extends JPanel {
 	//Constantes
@@ -21,8 +21,6 @@ public class VisaoPropulsao extends JPanel {
 	private ModeloAmbiente mA = null;
 	//--Imagem exibida
 	private ImageIcon imagemPropulsao = null;
-	//--Posições iniciais da propulção
-	private int posIniXProp=30, posIniYProp=470;
 	
 	//Metodos
 	//--Construtor
@@ -33,24 +31,21 @@ public class VisaoPropulsao extends JPanel {
 		this.setOpaque(true);
 		
 		this.mA = mA;
-		imagemPropulsao = mA.getmP().getImagemMola();
+		imagemPropulsao = mA.getmM().getImagemMola();
 	}
 	
 	//--Paint
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;		
 
-		g2d.translate(posIniXProp, posIniYProp);
+		g2d.translate(mA.getmM().getPosX(), mA.getmM().getPosY());
 		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
-		g2d.translate(-posIniXProp, -posIniYProp);
+		g2d.translate(-mA.getmM().getPosX(), -mA.getmM().getPosY());
 		
-		g2d.drawImage(imagemPropulsao.getImage(), posIniXProp, posIniYProp, this);
+		g2d.drawImage(imagemPropulsao.getImage(), mA.getmM().getPosX(), mA.getmM().getPosY(), this);
 	}
 
 	//Get e Set
 	public ImageIcon getImagemPropulsao(){return imagemPropulsao;}
 	public void setImagemPropulsao(ImageIcon imagemPropulsao){this.imagemPropulsao = imagemPropulsao;}
-	public void setPosicoes(int posIniXProp, int posIniYProp){this.posIniXProp=posIniXProp; this.posIniYProp=posIniYProp;}
-	public int getPosIniXProp(){return posIniXProp;}
-	public int getPosIniYProp(){return posIniYProp;}
 }

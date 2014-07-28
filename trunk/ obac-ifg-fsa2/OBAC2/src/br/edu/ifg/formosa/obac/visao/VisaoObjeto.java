@@ -13,24 +13,30 @@ public class VisaoObjeto extends JPanel {
 	//--Long
 	private static final long serialVersionUID = 1L;
 	
+	//Variáveis
+	//--ModeloAmbiente
+	private ModeloAmbiente mA = null;
+	
 	//Metodos
 	//--Construtor
-	public VisaoObjeto() {
+	public VisaoObjeto(ModeloAmbiente mA) {
 		super(null);
 		
 		this.setSize(750, 600);
 		this.setOpaque(true);
+		
+		this.mA = mA;
 	}
 	
 	//--Paint
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 
-		g2d.translate(130, 470);
+		g2d.translate(mA.getmO().getPosicaoXPx(), mA.getmO().getPosicaoYPx());
 		g2d.rotate(Math.toRadians(ModeloAmbiente.anguloInclinacaoGraus));
-		g2d.translate(-130, -470);
+		g2d.translate(-mA.getmO().getPosicaoXPx(), -mA.getmO().getPosicaoYPx());
 		
 		g2d.setColor(Color.blue);
-		g2d.fillRect(130, 470, 30, 30);
+		g2d.fillRect(mA.getmO().getPosicaoXPx(), mA.getmO().getPosicaoYPx(), 30, 30);
 	}
 }
