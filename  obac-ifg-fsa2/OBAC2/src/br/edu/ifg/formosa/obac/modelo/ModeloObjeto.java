@@ -15,8 +15,7 @@ public class ModeloObjeto {
 	
 	//Constantes
 	//--Double
-	public static final double altura = 30; //Os valores de alt e larg sao para inicializar as variaveis
-	public static final double largura = 30;
+	public static final int alturaLargura = 30; //Os valores de alt e larg sao para inicializar as variaveis
 	
 	public static final int pontoFinalObjetoDescidaPix = 518;
 	public static final int pontoFinalObjetoSubidaPix = 0;
