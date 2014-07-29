@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;

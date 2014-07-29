@@ -74,6 +74,7 @@ public class ControleMolaSoltura implements Runnable{
 		}
 			
 		//Para esta Thrad
+		t.interrupt();
 		t.stop();
 	}
 	

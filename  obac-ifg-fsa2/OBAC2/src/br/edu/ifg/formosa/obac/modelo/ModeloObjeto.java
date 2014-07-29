@@ -4,7 +4,7 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 
 public class ModeloObjeto {
 	
-	//Controle Painel de Configuração - atualizar dados referente ao ambiente
+	//ControleInicioSimulacoes Painel de Configuração - atualizar dados referente ao ambiente
 	private static ControlePainelInformacao cpi = null;
 	
 	//Construtor - To deixando desativado para vc arrumar o modelo ambiente depois

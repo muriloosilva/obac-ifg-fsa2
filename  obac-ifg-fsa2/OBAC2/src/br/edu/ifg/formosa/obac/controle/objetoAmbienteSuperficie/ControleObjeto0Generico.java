@@ -1,5 +1,11 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
-public class ControleObjeto0Generico {
+public interface ControleObjeto0Generico{
+	
+	
+	
+	public void pausar();
+	public void continuar();
+	public void parar();
 
 }

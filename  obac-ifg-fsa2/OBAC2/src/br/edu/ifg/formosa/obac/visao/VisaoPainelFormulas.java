@@ -234,7 +234,7 @@ public class VisaoPainelFormulas extends JScrollPane{
 	public JTextArea getAtAtrito() {return atAtrito;}
 	public JTextArea getAtAceleracao() {return atAceleracao;}
 	public JTextArea getAtPosFinal() {return atPosFinal;}
-	public JTextArea gsetAtTempo() {return atTempo;}
+	public JTextArea getAtTempo() {return atTempo;}
 	public JTextArea getAtNovaPos() {return atNovaPos;}
 	public JTextArea getAtColisao() {return atColisao;}
 	public JTextArea getAtNovaPosColisao() {return atNovaPosColisao;}

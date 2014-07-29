@@ -1,6 +1,9 @@
 package br.edu.ifg.formosa.obac.visao;
 
+import java.awt.Color;
+
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 

@@ -65,9 +65,9 @@ public class ControleOBAC {
 		//Controles do Painel de Configuração
 		private ControlePainelConfiguracaoEntradaDeDados cpced = null;
 		private ControlePainelConfiguracaoAtualizacoes cpca = null;
-		//Controle Painel de Informação
+		//ControleInicioSimulacoes Painel de Informação
 		private ControlePainelInformacao cpi = null;
-		//Controle da Mola
+		//ControleInicioSimulacoes da Mola
 		private ControleMolaMouse cmm = null;
 	
 	public ControleOBAC(OBAC obac) {
@@ -94,7 +94,7 @@ public class ControleOBAC {
 		//Painel de Informações
 			vpi = new VisaoPainelInformacao();
 			painelDeRepintar.add(vpi);
-		//Controle do painel de informações
+		//ControleInicioSimulacoes do painel de informações
 			cpi = new ControlePainelInformacao(vpi);
 			
 		//Modelos das Simulações
@@ -130,7 +130,7 @@ public class ControleOBAC {
 			new ControleEscala(vpi, vPS, vPS.getVisaoEscalaPri(), mA, vpc, mpc);
 			new ControleAmbiente(mA, vpc, mpc, this, vPS.getVisaoSuperficie(), vPS);
 			
-		//Controle da propulsão por mola
+		//ControleInicioSimulacoes da propulsão por mola
 			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPS.getVisaoObjeto(), mA);
 			
 		//Controles do Painel de Configuração
