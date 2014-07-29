@@ -26,7 +26,7 @@ public class ModeloAmbiente {
 	private URL urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + "plano" + ".png"); //andaime
 	private URL urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + "guindasteF" + ".png"); //guindaste
 	
-	//--Controle Painel de Configuração - atualizar dados referente ao ambiente
+	//--ControleInicioSimulacoes Painel de Configuração - atualizar dados referente ao ambiente
 	private static ControlePainelInformacao cpi = null;
 	
 	//--Objeto, Escala e Superficie

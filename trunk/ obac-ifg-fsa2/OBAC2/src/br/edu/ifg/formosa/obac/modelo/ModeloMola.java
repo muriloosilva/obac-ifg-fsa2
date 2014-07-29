@@ -13,7 +13,7 @@ public class ModeloMola {
 	//Modelo do Objeto
 	private ModeloObjeto mo = null;
 	
-	//Controle Do Painel deInformação
+	//ControleInicioSimulacoes Do Painel deInformação
 	private ControlePainelInformacao cpi = null;
 	
 	//Imagem
