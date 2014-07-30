@@ -28,17 +28,17 @@ public class ControleEscala {
 					
 					vps.getVisaoEscalaSec().setVisible(false); //Escala secundaria fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
-					mudaModeloEscala(mA.getmEPri(), 160, 480, 773, 480, 5, -23.9);
+					mudaModeloEscala(mA.getmEPri(), 160, 480, 773, 480, 5, -24);
 					mudaPosMola(mA.getmM(), 19, 475);
-					mudaPosObjeto(mA.getmO(), 110, 433);
-					ModeloAmbiente.anguloInclinacaoGraus = -23.9;
+					mudaPosObjeto(mA.getmO(), 120, 475);
+					ModeloAmbiente.anguloInclinacaoGraus = -24;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
-					mudaModeloEscala(mA.getmEPri(), 160, 300, 772, 300, 5, 23.9);
+					mudaModeloEscala(mA.getmEPri(), 160, 300, 772, 300, 5, 24);
 					mudaPosMola(mA.getmM(), 40, 169);
-					mudaPosObjeto(mA.getmO(), 132, 210);
-					ModeloAmbiente.anguloInclinacaoGraus = 23.9;
+					mudaPosObjeto(mA.getmO(), 140, 168);
+					ModeloAmbiente.anguloInclinacaoGraus = 24;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio
