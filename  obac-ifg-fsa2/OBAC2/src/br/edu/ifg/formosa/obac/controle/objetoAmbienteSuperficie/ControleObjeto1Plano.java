@@ -2,7 +2,6 @@ package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
-import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
@@ -25,7 +24,13 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 	private ControleFormulasObjeto cfo = null;
 	private ControleFormulasSuperficie cfs = null;
 	
-	public ControleObjeto1Plano() {}
+	
+	//Controle______________________________
+	public ControleObjeto1Plano(ModeloAmbiente ma, VisaoPainelSimulacao vps,
+								VisaoPainelFormulas vpf, ControlePainelFormulas cpf,
+								ControleFormulasObjeto cfo, ControleFormulasSuperficie cfs) {
+		
+	}
 	
 	@Override
 	public void run() {}

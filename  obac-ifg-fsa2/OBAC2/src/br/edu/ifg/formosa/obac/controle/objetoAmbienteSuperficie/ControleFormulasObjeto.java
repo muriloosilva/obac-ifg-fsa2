@@ -1,16 +1,22 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ControleFormulasObjeto {
 
 	//Modelos
 	private ModeloAmbiente ma = null;
+	private VisaoPainelFormulas vpf = null;
+	private ControlePainelFormulas cpf = null;
 	
 	//Construtor
-	public ControleFormulasObjeto(ModeloAmbiente ma) {
+	public ControleFormulasObjeto(ModeloAmbiente ma, VisaoPainelFormulas vpf, ControlePainelFormulas cpf) {
 		this.ma = ma;
+		this.vpf = vpf;
+		this.cpf = cpf;
 	}
 	
 	//Força Normal -> N = Massa*Gravidade
@@ -18,6 +24,9 @@ public class ControleFormulasObjeto {
 		ma.getmO().setForcaNormal(
 			(ma.getmO().getMassa()*ma.getGravSelecionada())
 		);
+		//Manda para o painel de fórmulas
+		vpf.getAtFNormal().setText(
+				cpf.forcaNormal(ma.getmO().getMassa(), ma.getGravSelecionada()));
 	}
 	
 	//Aceleração no Plano -> a = Fat/massa * -1
@@ -25,11 +34,17 @@ public class ControleFormulasObjeto {
 		ma.getmO().setAceleracao(
 			(ma.getmS().getCoefAtritoSelecionado()/ma.getmO().getMassa())
 		);
+		//Manda para o painel de fórmulas
+		vpf.getAtAceleracao().setText(
+				cpf.aceleracaoPlano(ma.getmS().getCoefAtritoSelecionado(), ma.getmO().getMassa()));
 	}
 	
 	//Aceleração na Queda -> a = g
 	public void calculaAceleracaoQueda(){
 		ma.getmO().setAceleracao(ma.getGravSelecionada());
+		//Manda para o painel de fórmulas
+		vpf.getAtAceleracao().setText(
+				cpf.aceleracaoQueda(ma.getGravSelecionada()));
 	}
 	
 	//Aceleração na Subida -> a = [(g * Sen(θ)) + (μ * g * Cos(θ))]*(-1)
@@ -40,6 +55,9 @@ public class ControleFormulasObjeto {
 			)
 			
 		);
+		//Manda para o painel de fórmulas
+		vpf.getAtAceleracao().setText(
+				cpf.aceleracaoSubida(ma.getGravSelecionada(), ModeloAmbiente.anguloInclinacaoGraus, ma.getmS().getCoefAtritoSelecionado()));
 	}
 	
 	//Aceleração na Descida -> a = [(g * Sen(θ)) + (μ * g * Cos(θ))]
@@ -48,12 +66,18 @@ public class ControleFormulasObjeto {
 		 (ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.anguloInclinacaoGraus)))
 		 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.anguloInclinacaoGraus))*(-1))
 		)));
+		//Manda para o painel de fórmulas
+		vpf.getAtAceleracao().setText(
+				cpf.aceleracaoDescida(ma.getGravSelecionada(), ModeloAmbiente.anguloInclinacaoGraus, ma.getmS().getCoefAtritoSelecionado()));
 	}
 	
 	//Calcula Posição Final Padrão -> Sf = (V0^2 * -1)/(2 * a)*(-1)
 	public void calculaPosFinalPadrao(){
 		calculaPosFinalDescida();
 		ma.getmO().setPosFinalXMetros((ma.getmO().getPosFinalXMetros()*-1));
+		//Manda para o painel de fórmulas
+		vpf.getAtPosFinal().setText(
+				cpf.posicaoFinalPlano(ma.getmO().getVelocidadeInicial(), ma.getmO().getAceleracao()));
 	}
 	
 	//Calcula Posição Final na Descida -> Sf = (V0^2 * -1)/(2 * a)
@@ -62,6 +86,9 @@ public class ControleFormulasObjeto {
 			(ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())
 			/(2*ma.getmO().getAceleracao())
 		);
+		//Manda para o painel de fórmulas
+		vpf.getAtPosFinal().setText(
+				cpf.posicaoFinalDescida(ma.getmO().getVelocidadeInicial(), ma.getmO().getAceleracao()));
 	}
 	
 	//Calcula Tempo -> t = (Vf - V0)/a
@@ -69,6 +96,9 @@ public class ControleFormulasObjeto {
 		ma.setTempo(
 			((0-ma.getmO().getVelocidadeInicial())/ma.getmO().getAceleracao())
 		);
+		//Manda para o painel de fórmulas
+		vpf.getAtTempo().setText(
+				cpf.tempo(ma.getmO().getVelocidadeInicial(), ma.getmO().getAceleracao()));
 	}
 	
 	//Calcula Novas posições do objeto - s=s0+v0*t+(a*t^2)/2
@@ -78,6 +108,9 @@ public class ControleFormulasObjeto {
 			(ma.getmO().getVelocidadeInicial()*ma.getTempo())
 			+((ma.getmO().getAceleracao()*ma.getTempo()*ma.getTempo())/2)
 		);
+		//Manda para o painel de fórmulas
+		vpf.getAtNovaPos().setText(
+				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempo(), ma.getmO().getAceleracao()));
 	}
 	
 	//Velocidade após colisão do objeto - V²=V02+2*a*ΔS
@@ -86,6 +119,10 @@ public class ControleFormulasObjeto {
 			((ma.getmO().getVelocidadeInicial()*2)
 			+(2*ma.getmO().getAceleracao()*ma.getmO().getPosicaoXMetros()))
 		));
+		//Manda para o painel de fórmulas
+//Criar esquema para ser usado em dois paineis (normal e pos colisão)
+		vpf.getAtNovaPos().setText(
+				cpf.equTorricceli(ma.getmO().getVelocidadeInicial(), ma.getmO().getVelocidadeInicial(), ma.getmO().getPosicaoXMetros()));
 	}
 	
 	//Calcula coeficiente de restituição
