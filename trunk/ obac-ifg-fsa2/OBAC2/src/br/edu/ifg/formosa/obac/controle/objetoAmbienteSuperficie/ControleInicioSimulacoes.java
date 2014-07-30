@@ -23,17 +23,17 @@ public class ControleInicioSimulacoes {
 		cpf.alteraTipoPainel();
 		
 		//Plano
-		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){new ControleObjeto1Plano();}
+//		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){new ControleObjeto1Plano();}
 		//Subida
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){new ControleObjeto2Subida();}
+//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){new ControleObjeto2Subida();}
 		//Descida
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){new ControleObjeto3Descida();}
+//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){new ControleObjeto3Descida();}
 		//Queda Livre
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto4PlanoPrecipicio();}
+//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto4PlanoPrecipicio();}
 		//Plano e Precipício
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==4){new ControleObjeto5QuedaLivre();}
+//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==4){new ControleObjeto5QuedaLivre();}
 		//Lançamento Oblíquo
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==5){new ControleObjeto6LancamentoObliquo();}
+//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==5){new ControleObjeto6LancamentoObliquo();}
 	}
 	
 }

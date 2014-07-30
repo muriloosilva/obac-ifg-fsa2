@@ -110,22 +110,22 @@ public class VisaoPainelInformacao extends JPanel{
 					rAceleracao.setHorizontalAlignment(JLabel.RIGHT);
 				addComponent(rAceleracao, 1, 4);
 				//Posição Final no Eixo X
-				rPosFinalX = new UtilidadeRotuloTransparente("Pos. Final:");
+				rPosFinalX = new UtilidadeRotuloTransparente("Pos. Final Eixo X:");
 					rPosFinalX.setHorizontalAlignment(JLabel.RIGHT);
 				addComponent(rPosFinalX, 1, 6);
 				//Posição Final no Eixo X
-				rPosFinalY = new UtilidadeRotuloTransparente("Pos. Final:");
+				rPosFinalY = new UtilidadeRotuloTransparente("Pos. Final Eixo Y:");
 					rPosFinalY.setHorizontalAlignment(JLabel.RIGHT);
 				addComponent(rPosFinalY, 1, 8);
 			//Segunda Linha---------------------------------------
-				//Força de Atrito
-				rForcaAtrito = new UtilidadeRotuloTransparente("Força de Atrito:");
-					rForcaAtrito.setHorizontalAlignment(JLabel.RIGHT);
-				addComponent(rForcaAtrito, 2, 0);
 				//Força Normal
 				rForcaNormal = new UtilidadeRotuloTransparente("Força Normal:");
 					rForcaNormal.setHorizontalAlignment(JLabel.RIGHT);
-				addComponent(rForcaNormal, 2, 2);
+				addComponent(rForcaNormal, 2, 0);
+				//Força de Atrito
+				rForcaAtrito = new UtilidadeRotuloTransparente("Força de Atrito:");
+					rForcaAtrito.setHorizontalAlignment(JLabel.RIGHT);
+				addComponent(rForcaAtrito, 2, 2);
 				//Velocidade
 				rVelocidade = new UtilidadeRotuloTransparente("Velocidade:");
 					rVelocidade.setHorizontalAlignment(JLabel.RIGHT);
