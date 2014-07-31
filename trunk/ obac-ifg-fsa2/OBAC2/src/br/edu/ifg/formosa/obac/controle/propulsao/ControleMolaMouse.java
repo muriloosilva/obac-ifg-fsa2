@@ -28,6 +28,8 @@ public class ControleMolaMouse {
 	//Booleana de controle - Só ativa o retorno da mola se ela foi arrastada na área permitida
 	private boolean restricaoHorizontal = false;
 	private boolean restricaoVetical = false;
+	//Taxa de ajuste - Ajusta o objeto no eixo Y
+	private int ajusteV = 0;
 	
 	//Mouse Listener
 	//-----Reação da mola/objeto quando o objeto é solto
@@ -39,7 +41,9 @@ public class ControleMolaMouse {
 			//Retorna a mola e o objeto para a posição inicial antes de dá início a simulação
 			//-----É necessário repintar a mola(do tamanho total até o incial) e mover o objeto de acordo com a expanção da mola
 			//-----Também é preciso que confirmar que a soltura da mola ocorreu com a mola comprimida 
-			if(restricaoHorizontal && restricaoVetical && ma.getmM().getTamanhoMolaAtualPix()<ma.getmM().getTamanhoMolaTotalPix()){
+			if(restricaoHorizontal && restricaoVetical &&
+			   ma.getmM().getTamanhoMolaAtualPix()<ma.getmM().getTamanhoMolaTotalPix())
+			{
 				new ControleMolaSoltura(vo, vp, ma, cOBAC, ControleMolaMouse.this, ajusteV);
 			}
 						
@@ -60,9 +64,6 @@ public class ControleMolaMouse {
 		}
 	};
 	
-	
-	//Taxa de ajuste
-	private int ajusteV = 0;
 	//Método usado para ralizar os ajustes nas variáveis que referen-se a área pegável da mola
 	public void corrigeAreaPegavel(){
 		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0
@@ -103,7 +104,8 @@ public class ControleMolaMouse {
 		}
 		else{
 			//-----É preciso que confirmar que a soltura da mola ocorreu com a mola comprimida
-			if (ma.getmM().getTamanhoMolaAtualPix()<ma.getmM().getTamanhoMolaTotalPix()) {
+			if (ma.getmM().getTamanhoMolaAtualPix()<ma.getmM().getTamanhoMolaTotalPix())
+			{
 				//A simulação também ocorre quando o usuário sai da área delimitada para a interação com a mola 
 				new ControleMolaSoltura(vo, vp, ma, cOBAC, this, ajusteV);
 			}
