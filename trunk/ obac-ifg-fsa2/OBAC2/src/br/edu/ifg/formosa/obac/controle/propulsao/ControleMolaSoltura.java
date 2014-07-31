@@ -17,14 +17,24 @@ public class ControleMolaSoltura implements Runnable{
 	private ControleOBAC cOBAC = null;
 	private Thread t = null;
 	
-	public ControleMolaSoltura(VisaoObjeto vo, VisaoPropulsao vp, ModeloAmbiente ma, ControleOBAC cOBAC, ControleMolaMouse cmm) {
+	//Variável para o reposicionamento do objeto
+	private int reposicionaObjeto = 0;
+	
+	public ControleMolaSoltura(VisaoObjeto vo, VisaoPropulsao vp,
+							   ModeloAmbiente ma, ControleOBAC cOBAC,
+							   ControleMolaMouse cmm, int ajusteAplicado)
+	{
 		this.vo = vo;
 		this.vp = vp;
 		this.ma = ma;
 		this.cOBAC = cOBAC;
 		
 		//Remoção dos mouse*listeners
-//		cmm.desativaMolaMouse();
+		cmm.desativaMolaMouse();
+		
+		if (ajusteAplicado==0) {reposicionaObjeto=0;}//Plano e P&P
+		else if (ajusteAplicado==-25) {reposicionaObjeto=-10;}//Subida
+		else if (ajusteAplicado==20) {reposicionaObjeto=10;}//Descida
 		
 		t = new Thread(this);
 		t.start();
@@ -68,7 +78,7 @@ public class ControleMolaSoltura implements Runnable{
 			ma.getmM().setTamanhoMolaAtualPix(ma.getmM().getTamanhoMolaTotalPix());
 			vp.setImagemPropulsao(ma.getmM().getImagemMola());
 			//Posiciona o Objeto na posição original
-			ma.getmO().setPosicaoXPx(130);
+			ma.getmO().setPosicaoXPx(130+reposicionaObjeto);
 			//Repaint
 			cOBAC.repinta();
 		}

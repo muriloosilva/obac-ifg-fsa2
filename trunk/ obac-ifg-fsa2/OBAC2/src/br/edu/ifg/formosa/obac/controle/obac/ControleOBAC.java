@@ -134,7 +134,7 @@ public class ControleOBAC {
 			new ControleAmbiente(mA, vpc, mpc, this, vPS.getVisaoSuperficie(), vPS);
 			
 		//ControleInicioSimulacoes da propulsão por mola
-			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPS.getVisaoObjeto(), mA);
+			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPS.getVisaoObjeto(), vpc, mA);
 			
 		//Controles do Painel de Configuração
 			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS.getVisaoPropulsao(),mp.getModeloMola(), cmm);
