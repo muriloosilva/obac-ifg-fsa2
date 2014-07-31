@@ -1,16 +1,12 @@
 package br.edu.ifg.formosa.obac.visao;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
-import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 
 public class VisaoPropulsao extends JPanel {
 	//Constantes
@@ -44,12 +40,6 @@ public class VisaoPropulsao extends JPanel {
 		g2d.translate(-mA.getmM().getPosX(), -mA.getmM().getPosY());
 		
 		g2d.drawImage(imagemPropulsao.getImage(), mA.getmM().getPosX(), mA.getmM().getPosY(), this);
-		
-		g2d.setColor(Color.red);
-		g2d.drawRect(mA.getmM().getPosX(),
-					mA.getmM().getPosY(),
-					100,
-					mA.getmO().alturaLargura);
 	}
 
 	//Get e Set
