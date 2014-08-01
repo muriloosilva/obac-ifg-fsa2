@@ -42,28 +42,41 @@ public class VisaoEscala extends JPanel{
 				
 		g2d.setColor(ModeloAmbiente.cor);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());
-				
-		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 15);
-		g2d.drawLine(mE.getEscalaFimXPix(), mE.getEscalaFimYPix(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix() + 15);
 		
 		//Desenha Marcadores - Horizontal
 		if (mE.getEscalaInicioY() == mE.getEscalaFimYPix()) { 
 		
 			mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimXPix()));
 			
-			for (int i=1;i<=ModeloEscala.qtdMarcadores;i++) {
-				int auxiliarX = mE.getEscalaInicioX() + (i * mE.getEspacamentoMarcadores());
+			g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 15);
+			g2d.drawLine(mE.getEscalaFimXPix(), mE.getEscalaFimYPix(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix() + 15);
+			
+			for (int i=0;i<=ModeloEscala.qtdMarcadores;i++) {
+				int auxiliarX = mE.getEscalaInicioX() + ((i+1) * mE.getEspacamentoMarcadores());
 	
 				g2d.drawLine(auxiliarX, mE.getEscalaInicioY(), auxiliarX, mE.getEscalaInicioY() + 8);
 				g2d.drawString(ModeloEscala.marcadoresEscala[i] + "m", auxiliarX - 15, mE.getEscalaInicioY() + 26);
 			}
-			g2d.drawString(ModeloEscala.marcadoresEscala[0] + "m", mE.getEscalaInicioX() - 15, mE.getEscalaInicioY() + 26);
-			g2d.drawString(ModeloEscala.marcadoresEscala[5] + "m", mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix() + 26);
-		} //else
+			g2d.drawString(ModeloEscala.marcadorInicial + "m", mE.getEscalaInicioX() - 9, mE.getEscalaInicioY() + 26);
+			g2d.drawString(ModeloEscala.marcadoresEscala[4] + "m", mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix() + 26);
+		} else
 		//Desenha Marcadores - Vertical
-		//if (false) {
+		if (mE.getEscalaInicioX() == mE.getEscalaFimXPix()) {
+		
+			mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioY(), mE.getEscalaFimYPix()));
 			
-		//}
+			g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX() - 15, mE.getEscalaInicioY());
+			g2d.drawLine(mE.getEscalaFimXPix(), mE.getEscalaFimYPix(), mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix());
+			
+			for (int i=3;i>=0;i--) {
+				int auxiliarY = mE.getEscalaFimYPix() - ((i+1) * mE.getEspacamentoMarcadores());
+	
+				g2d.drawLine(mE.getEscalaInicioX(), auxiliarY,  mE.getEscalaInicioX() - 8, auxiliarY);
+				g2d.drawString(ModeloEscala.marcadoresEscala[i] + "m", mE.getEscalaInicioX() - 50, auxiliarY - 1);
+			}
+			g2d.drawString(ModeloEscala.marcadoresEscala[4] + "m", mE.getEscalaInicioX() - 50, mE.getEscalaInicioY() - 1);
+			g2d.drawString(ModeloEscala.marcadorInicial + "m", mE.getEscalaFimXPix() - 28, mE.getEscalaFimYPix() - 1);			
+		}
 		//Marcador dinâmico para indicar a posição do objeto no P&P
 		if (mE.isPEP()) {
 			g2d.setColor(Color.yellow);

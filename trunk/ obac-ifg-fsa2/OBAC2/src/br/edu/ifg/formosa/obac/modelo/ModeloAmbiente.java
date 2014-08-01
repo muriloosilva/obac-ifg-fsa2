@@ -30,7 +30,8 @@ public class ModeloAmbiente {
 	private static ControlePainelInformacao cpi = null;
 	
 	//--Objeto, Escala e Superficie
-	private ModeloEscala mE = null;
+	private ModeloEscala mEH = null;
+	private ModeloEscala mEV = null;
 	private ModeloObjeto mO = null;
 	private ModeloSuperficie mS = null;
 	private ModeloMola mM = null;
@@ -40,11 +41,12 @@ public class ModeloAmbiente {
 	
 	//Metodos	
 	//--Construtor
-	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mE,
+	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEH, ModeloEscala mEV,
 						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM)
 	{
 		ModeloAmbiente.cpi = cpi;
-		this.mE = mE;
+		this.mEH = mEH;
+		this.mEV = mEV;
 		this.mO = mO;
 		this.mS = mS;
 		this.mM = mM;
@@ -53,7 +55,8 @@ public class ModeloAmbiente {
 	//--Getters
 	public double getGravSelecionada() {return gravSelecionada;}
 	public double getTempo() {return tempo;}
-	public ModeloEscala getmE() {return mE;}
+	public ModeloEscala getmEH() {return mEH;}
+	public ModeloEscala getmEV() {return mEV;}
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
 	public ModeloMola getmM(){return mM;}
