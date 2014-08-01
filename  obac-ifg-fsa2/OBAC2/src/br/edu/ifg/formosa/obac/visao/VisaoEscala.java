@@ -5,11 +5,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
+import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 
 public class VisaoEscala extends JPanel{
 	//Constantes
@@ -17,17 +17,19 @@ public class VisaoEscala extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	//Variaveis
-	//--ModeloEscala
+	//--Modelos
 	private ModeloEscala mE = null;
+	private ModeloObjeto mO = null;
 	
 	//Metodos
 	//--Construtor #01
-	public VisaoEscala(ModeloEscala mE) {
+	public VisaoEscala(ModeloEscala mE, ModeloObjeto mO) {
 		super(null);		
 		this.setSize(750, 600);
 		this.setOpaque(true);
 		
 		this.mE = mE;
+		this.mO = mO;
 	}
 	
 	//--Paint
@@ -51,9 +53,19 @@ public class VisaoEscala extends JPanel{
 			int auxiliar = mE.getEscalaInicioX() + (i * mE.getEspacamentoMarcadores());
 
 			g2d.drawLine(auxiliar, mE.getEscalaInicioY(), auxiliar, mE.getEscalaInicioY() + 8);
-			g2d.drawString(mE.marcadoresEscala[i] + "", auxiliar - 10, mE.getEscalaInicioY() + 26);
+			g2d.drawString(mE.marcadoresEscala[i] + "m", auxiliar - 15, mE.getEscalaInicioY() + 26);
 		}
-		g2d.drawString(mE.marcadoresEscala[0] + "", mE.getEscalaInicioX() - 10, mE.getEscalaInicioY() + 26);
-		g2d.drawString(mE.marcadoresEscala[5] + "", mE.getEscalaFimXPix() - 10, mE.getEscalaFimYPix() + 26);
+		g2d.drawString(mE.marcadoresEscala[0] + "m", mE.getEscalaInicioX() - 15, mE.getEscalaInicioY() + 26);
+		g2d.drawString(mE.marcadoresEscala[5] + "m", mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix() + 26);
+		
+		//Marcador dinâmico para indicar a posição do objeto no P&P
+		if (mE.isPEP()) {
+			g2d.setColor(Color.yellow);
+			
+			if (mO.getPosicaoXPx() + 30 >= mE.getEscalaInicioX()) { //Colocar em uma Thread de modo que so atualize com essa condição
+				g2d.fillOval(mO.getPosicaoXPx() + 26, mE.getEscalaInicioY() - 4, 8, 8);
+				g2d.drawString(mO.getPosicaoXMetros() + "m", mO.getPosicaoXPx() + 20, mE.getEscalaInicioY() - 8);
+			}
+		}
 	}
 }

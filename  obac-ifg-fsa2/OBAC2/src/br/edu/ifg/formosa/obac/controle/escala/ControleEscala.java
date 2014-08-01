@@ -22,50 +22,52 @@ public class ControleEscala {
 	//--Construtor
 	public ControleEscala(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps,  final VisaoEscala vE, final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
 		mEP = mA.getmEPri();
-		mES = mA.getmESec();
+		mES = mA.getmESec();		
+
+		mudaMarcadores(50);
 		
 		vPC.getCsAmbienteSimulacao().addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 0) { //Plano
-					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0); 
+					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0, false); 
 					mudaPosMola(mA.getmM(), 30, 470);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					vps.getVisaoEscalaSec().setVisible(false); //Escala secundaria fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
-					mudaModeloEscala(mA.getmEPri(), 160, 480, 720, 480, -24); 
+					mudaModeloEscala(mA.getmEPri(), 160, 480, 720, 480, -24, false); 
 					mudaPosMola(mA.getmM(), 19, 475);
 					mudaPosObjeto(mA.getmO(), 120, 475);
 					ModeloAmbiente.anguloInclinacaoGraus = -24;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
-					mudaModeloEscala(mA.getmEPri(), 160, 300, 710, 300, 24); 
+					mudaModeloEscala(mA.getmEPri(), 160, 300, 710, 300, 24, false); 
 					mudaPosMola(mA.getmM(), 40, 169);
 					mudaPosObjeto(mA.getmO(), 140, 168);
 					ModeloAmbiente.anguloInclinacaoGraus = 24;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio
-					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0); 
+					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0, true); 
 					mudaPosMola(mA.getmM(), 30, 166);
 					mudaPosObjeto(mA.getmO(), 130, 166);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					vps.getVisaoEscalaSec().setVisible(true);					
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {//Queda
-					mudaModeloEscala(mA.getmEPri(), 320, 123, 696, 123, 90);
+					mudaModeloEscala(mA.getmEPri(), 320, 123, 696, 123, 90, false);
 					mudaPosObjeto(mA.getmO(), 361, 94);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else { //Projétil
-					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0); 
+					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0, false); 
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
-					mudaModeloEscala(mA.getmESec(), 60, 100, 459, 100, 90);
+					mudaModeloEscala(mA.getmESec(), 60, 100, 459, 100, 90, false);
 					vps.getVisaoEscalaSec().setVisible(true);
 				}
 				vpi.repaint();
@@ -86,12 +88,13 @@ public class ControleEscala {
 	}
 	
 	//--Altera os valores do ModeloEscala
-	private void mudaModeloEscala(ModeloEscala mE, int eIX, int eIY, int eFX, int eFY, double angulo) {
+	private void mudaModeloEscala(ModeloEscala mE, int eIX, int eIY, int eFX, int eFY, double angulo, boolean isPEP) {
 		mE.setEscalaFimXPix(eFX);
 		mE.setEscalaFimYPix(eFY);
 		mE.setEscalaInicioX(eIX);
 		mE.setEscalaInicioY(eIY);
 		mE.setAnguloRotacaoGraus(angulo);
+		mE.setIsPEP(isPEP);
 	}
 	
 	//--Altera os valores de posicionamento da propulsão-Mola
