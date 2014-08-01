@@ -3,8 +3,10 @@ package br.edu.ifg.formosa.obac.modelo;
 public class ModeloEscala {
 	
 	//Constantes
-	private final int tamanhoPrecipicioPix = 286;//Este valor é usado porque assim é considerado que 50% + 1pix do tamanho do objeto estará por cima do plano, de forma que o equilíbrio dele seja mantido(Tamnho_do_plano(330)-Tamho_do_objeto(30)-50%+1_do_Objeto_Pix(16))
-	private final int fimAmbienteYPix = 600;
+	//--Inteiro
+	public final int tamanhoPrecipicioPix = 286;//Este valor é usado porque assim é considerado que 50% + 1pix do tamanho do objeto estará por cima do plano, de forma que o equilíbrio dele seja mantido(Tamnho_do_plano(330)-Tamho_do_objeto(30)-50%+1_do_Objeto_Pix(16))
+	public final int fimAmbienteYPix = 600;
+	public final static int qtdMarcadores = 4; //Numero de marcadores existentes nas escalas
 	
 	//Variaveis
 	//--Inteiro
@@ -18,10 +20,9 @@ public class ModeloEscala {
 	private long escalaFimYM = 0; //Fim da escala Y (m)
 	
 	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)	
-	public final static int qtdMarcadores = 4; //Numero de marcadores existentes nas escalas
 		
 	//--Double
-	private double anguloRotacaoGraus = 0;
+	private double anguloRotacaoGraus = 0; //Utilizado somente na Escala Horizontal - subida e descida incluso
 	
 	public static double[] marcadoresEscala = new double[qtdMarcadores + 2]; //0-Menor / 5-Maior
 	/* Explicação do 'qtdMarcadores + 2'
@@ -34,8 +35,6 @@ public class ModeloEscala {
 	
 	//Metodos
 	//--Getters
-	public int getTamanhoPrecipicioPix() {return tamanhoPrecipicioPix;}
-	public int getFimAmbienteYPix() {return fimAmbienteYPix;}
 	public int getEscalaInicioX() {return escalaInicioX;}
 	public int getEscalaInicioY() {return escalaInicioY;}
 	public int getEscalaFimXPix() {return escalaFimXPix;}

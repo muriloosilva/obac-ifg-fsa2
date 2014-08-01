@@ -20,8 +20,8 @@ public class VisaoPainelSimulacao extends JPanel {
 	//--Propulsao
 	private VisaoPropulsao vP = null;
 	//--Escala
-	private VisaoEscala vEPri = null;
-	private VisaoEscala vESec = null;
+	private VisaoEscala vEH = null; //Visao Escala Horizontal - Utilizada em: Plano, Subida, Descida, P&P e Projétil
+	private VisaoEscala vEV = null; //Visao Escala Vertical - Utilizada em: Queda e Projétil
 	
 	//Metodos
 	//--Construtor
@@ -33,22 +33,22 @@ public class VisaoPainelSimulacao extends JPanel {
 		vS = new VisaoSuperficie(vPC, mA);
 		vO = new VisaoObjeto(mA);
 		vP = new VisaoPropulsao(mA);
-		vEPri = new VisaoEscala(mA.getmEPri(), mA.getmO());
-		vESec = new VisaoEscala(mA.getmESec(), mA.getmO());
+		vEH = new VisaoEscala(mA.getmE(), mA.getmO());
+		vEV = new VisaoEscala(mA.getmE(), mA.getmO());
 		
-		this.add(vEPri);
-		this.add(vESec);
+		this.add(vEH);
+		this.add(vEV);
 		this.add(vP);
 		this.add(vO);
 		this.add(vS);
 		
-		vESec.setVisible(false); //A escala sec. só aparece no Projetil e no P&P
+		vEV.setVisible(false); //A Escala Vertical só é utilizada na Queda e no Projétil
 	}
 	
 	//--Getters
 	public VisaoObjeto getVisaoObjeto(){return vO;}
 	public VisaoPropulsao getVisaoPropulsao(){return vP;}
-	public VisaoEscala getVisaoEscalaPri() {return vEPri;}
-	public VisaoEscala getVisaoEscalaSec() {return vESec;}
+	public VisaoEscala getVisaoEscalaH() {return vEH;}
+	public VisaoEscala getVisaoEscalaV() {return vEV;}
 	public VisaoSuperficie getVisaoSuperficie() {return vS;}
 }

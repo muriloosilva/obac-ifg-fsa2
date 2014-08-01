@@ -38,26 +38,32 @@ public class VisaoEscala extends JPanel{
 		
 		g2d.translate(mE.getEscalaInicioX(), mE.getEscalaInicioY());
 		g2d.rotate(Math.toRadians(mE.getAnguloRotacaoGraus()));
-		g2d.translate(-mE.getEscalaInicioX(), -mE.getEscalaInicioY());
-		
-		mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimXPix(), mE.qtdMarcadores));
-		
+		g2d.translate(-mE.getEscalaInicioX(), -mE.getEscalaInicioY());	
+				
 		g2d.setColor(ModeloAmbiente.cor);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());
 				
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 15);
 		g2d.drawLine(mE.getEscalaFimXPix(), mE.getEscalaFimYPix(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix() + 15);
-
-		//for -> desenha os marcadores
-		for (int i=1;i<=mE.qtdMarcadores;i++) {
-			int auxiliar = mE.getEscalaInicioX() + (i * mE.getEspacamentoMarcadores());
-
-			g2d.drawLine(auxiliar, mE.getEscalaInicioY(), auxiliar, mE.getEscalaInicioY() + 8);
-			g2d.drawString(mE.marcadoresEscala[i] + "m", auxiliar - 15, mE.getEscalaInicioY() + 26);
-		}
-		g2d.drawString(mE.marcadoresEscala[0] + "m", mE.getEscalaInicioX() - 15, mE.getEscalaInicioY() + 26);
-		g2d.drawString(mE.marcadoresEscala[5] + "m", mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix() + 26);
 		
+		//Desenha Marcadores - Horizontal
+		if (mE.getEscalaInicioY() == mE.getEscalaFimYPix()) { 
+		
+			mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimXPix()));
+			
+			for (int i=1;i<=ModeloEscala.qtdMarcadores;i++) {
+				int auxiliarX = mE.getEscalaInicioX() + (i * mE.getEspacamentoMarcadores());
+	
+				g2d.drawLine(auxiliarX, mE.getEscalaInicioY(), auxiliarX, mE.getEscalaInicioY() + 8);
+				g2d.drawString(ModeloEscala.marcadoresEscala[i] + "m", auxiliarX - 15, mE.getEscalaInicioY() + 26);
+			}
+			g2d.drawString(ModeloEscala.marcadoresEscala[0] + "m", mE.getEscalaInicioX() - 15, mE.getEscalaInicioY() + 26);
+			g2d.drawString(ModeloEscala.marcadoresEscala[5] + "m", mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix() + 26);
+		} //else
+		//Desenha Marcadores - Vertical
+		//if (false) {
+			
+		//}
 		//Marcador dinâmico para indicar a posição do objeto no P&P
 		if (mE.isPEP()) {
 			g2d.setColor(Color.yellow);
