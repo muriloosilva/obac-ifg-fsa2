@@ -29,6 +29,9 @@ public class ModeloEscala {
 	 * não conta os das extremidades, por isso o '+2'
 	 */
 	
+	//--Boolean
+	private boolean isPEP = false;
+	
 	//Metodos
 	//--Getters
 	public int getTamanhoPrecipicioPix() {return tamanhoPrecipicioPix;}
@@ -41,6 +44,7 @@ public class ModeloEscala {
 	public long getEscalaFimYM() {return escalaFimYM;}	
 	public int getEspacamentoMarcadores() {return espacamentoMarcadores;}
 	public double getAnguloRotacaoGraus() {return anguloRotacaoGraus;}
+	public boolean isPEP() {return isPEP;}
 	
 	//--Setters
 	public void setEscalaInicioX(int escalaInicioX) {this.escalaInicioX = escalaInicioX;}
@@ -51,4 +55,5 @@ public class ModeloEscala {
 	public void setEscalaFimYM(long escalaFimYM) {this.escalaFimYM = escalaFimYM;}
 	public void setEspacamentoMarcadores(int espacamentoMarcadores) {this.espacamentoMarcadores = espacamentoMarcadores;}
 	public void setAnguloRotacaoGraus(double anguloRotacaoGraus) {this.anguloRotacaoGraus = anguloRotacaoGraus;}
+	public void setIsPEP(boolean isPEP) {this.isPEP = isPEP;}
 }
