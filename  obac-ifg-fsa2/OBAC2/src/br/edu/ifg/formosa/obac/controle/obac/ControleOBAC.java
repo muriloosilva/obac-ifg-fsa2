@@ -132,6 +132,7 @@ public class ControleOBAC {
 		//Controles - Escala/Ambiente
 			new ControleEscala(vpi, vPS, vPS.getVisaoEscalaPri(), mA, vpc, mpc);
 			new ControleAmbiente(mA, vpc, mpc, this, vPS.getVisaoSuperficie(), vPS);
+			ControleEscala.mudaMarcadores(50);
 			
 		//ControleInicioSimulacoes da propulsão por mola
 			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPS.getVisaoObjeto(), vpc, mA);

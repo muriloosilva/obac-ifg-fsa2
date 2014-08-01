@@ -14,52 +14,58 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
 public class ControleEscala {
+	//Variáveis
+	private ModeloEscala mEP = null;
+	private ModeloEscala mES = null;
+	
 	//Metodos
 	//--Construtor
 	public ControleEscala(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps,  final VisaoEscala vE, final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
+		mEP = mA.getmEPri();
+		mES = mA.getmESec();
+		
 		vPC.getCsAmbienteSimulacao().addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 0) { //Plano
-					mudaModeloEscala(mA.getmEPri(), 160, 520, 719, 520, 5, 0);
+					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0); 
 					mudaPosMola(mA.getmM(), 30, 470);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					vps.getVisaoEscalaSec().setVisible(false); //Escala secundaria fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
-					mudaModeloEscala(mA.getmEPri(), 160, 480, 773, 480, 5, -24);
+					mudaModeloEscala(mA.getmEPri(), 160, 480, 720, 480, -24); 
 					mudaPosMola(mA.getmM(), 19, 475);
 					mudaPosObjeto(mA.getmO(), 120, 475);
 					ModeloAmbiente.anguloInclinacaoGraus = -24;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
-					mudaModeloEscala(mA.getmEPri(), 160, 300, 772, 300, 5, 24);
+					mudaModeloEscala(mA.getmEPri(), 160, 300, 710, 300, 24); 
 					mudaPosMola(mA.getmM(), 40, 169);
 					mudaPosObjeto(mA.getmO(), 140, 168);
 					ModeloAmbiente.anguloInclinacaoGraus = 24;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio
-					mudaModeloEscala(mA.getmEPri(), 160, 520, 719, 520, 5, 0);
+					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0); 
 					mudaPosMola(mA.getmM(), 30, 166);
 					mudaPosObjeto(mA.getmO(), 130, 166);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
-					mudaModeloEscala(mA.getmESec(), 160, 230, 329, 230, 1, 0);
-					vps.getVisaoEscalaSec().setVisible(true); //Escala secundaria fica visivel
+					vps.getVisaoEscalaSec().setVisible(true);					
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {//Queda
-					mudaModeloEscala(mA.getmEPri(), 320, 123, 696, 123, 5, 90);
+					mudaModeloEscala(mA.getmEPri(), 320, 123, 696, 123, 90);
 					mudaPosObjeto(mA.getmO(), 361, 94);
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
 					vps.getVisaoEscalaSec().setVisible(false);
 				} else { //Projétil
-					mudaModeloEscala(mA.getmEPri(), 160, 520, 719, 520, 5, 0);
+					mudaModeloEscala(mA.getmEPri(), 160, 520, 700, 520, 0); 
 					ModeloAmbiente.anguloInclinacaoGraus = 0;
 					
-					mudaModeloEscala(mA.getmESec(), 60, 100, 459, 100, 5, 90);
+					mudaModeloEscala(mA.getmESec(), 60, 100, 459, 100, 90);
 					vps.getVisaoEscalaSec().setVisible(true);
 				}
 				vpi.repaint();
@@ -80,12 +86,11 @@ public class ControleEscala {
 	}
 	
 	//--Altera os valores do ModeloEscala
-	private void mudaModeloEscala(ModeloEscala mE, int eIX, int eIY, int eFX, int eFY, int qMarcadores, double angulo) {
+	private void mudaModeloEscala(ModeloEscala mE, int eIX, int eIY, int eFX, int eFY, double angulo) {
 		mE.setEscalaFimXPix(eFX);
 		mE.setEscalaFimYPix(eFY);
 		mE.setEscalaInicioX(eIX);
 		mE.setEscalaInicioY(eIY);
-		mE.setQtdMarcadores(qMarcadores);
 		mE.setAnguloRotacaoGraus(angulo);
 	}
 	
@@ -99,5 +104,15 @@ public class ControleEscala {
 	private void mudaPosObjeto(ModeloObjeto mO, int posX, int posY) {
 		mO.setPosicaoXPx(posX);
 		mO.setPosicaoYPx(posY);
+	}
+	
+	//--Altera os valores dos marcadores das escalas
+	public static void mudaMarcadores(int valorFinal) {
+		ModeloEscala.marcadoresEscala[0] = valorFinal * 0.0;
+		ModeloEscala.marcadoresEscala[1] = valorFinal * 0.2;
+		ModeloEscala.marcadoresEscala[2] = valorFinal * 0.4;
+		ModeloEscala.marcadoresEscala[3] = valorFinal * 0.6;
+		ModeloEscala.marcadoresEscala[4] = valorFinal * 0.8;
+		ModeloEscala.marcadoresEscala[5] = valorFinal * 1.0;
 	}
 }
