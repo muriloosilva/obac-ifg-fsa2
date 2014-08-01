@@ -21,8 +21,7 @@ public class ControleAmbiente {
 	//Métodos
 	//--Construtor
 	public ControleAmbiente(final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC,
-			final ModeloPainelConfiguracao mPC, final ControleOBAC cO, final VisaoSuperficie vS,
-			VisaoPainelSimulacao vPS) {
+			final ModeloPainelConfiguracao mPC, final ControleOBAC cO, final VisaoPainelSimulacao vPS) {
 		this.vPC = vPC;
 		this.vPS = vPS;
 		
@@ -43,7 +42,7 @@ public class ControleAmbiente {
 						mA.cor = Color.white;
 						break;
 				}
-				mudaImagem(cO, vS, mA);
+				mudaImagem(cO, vPS.getVisaoSuperficie(), mA);
 			}
 		});
 		
@@ -82,7 +81,7 @@ public class ControleAmbiente {
 						mA.setUrlA("plano");
 						break;
 				}
-				mudaImagem(cO, vS, mA);
+				mudaImagem(cO, vPS.getVisaoSuperficie(), mA);
 			}
 		});
 	}

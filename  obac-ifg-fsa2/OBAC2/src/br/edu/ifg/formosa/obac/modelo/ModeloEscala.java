@@ -19,12 +19,13 @@ public class ModeloEscala {
 	private long escalaFimXM = 0; //Fim da escala X (m)
 	private long escalaFimYM = 0; //Fim da escala Y (m)
 	
-	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)	
+	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)
 		
 	//--Double
 	private double anguloRotacaoGraus = 0; //Utilizado somente na Escala Horizontal - subida e descida incluso
 	
-	public static double[] marcadoresEscala = new double[qtdMarcadores + 2]; //0-Menor / 5-Maior
+	public static final double marcadorInicial = 0.0; //É Constante, mas deixei aqui para um melhor entendimento
+	public static double[] marcadoresEscala = new double[qtdMarcadores + 1]; //0-Menor / 4-Maior
 	/* Explicação do 'qtdMarcadores + 2'
 	 * -O qtdMarcadores indica os marcadores desenhados 'dentro' da escala, 
 	 * não conta os das extremidades, por isso o '+2'
@@ -39,9 +40,9 @@ public class ModeloEscala {
 	public int getEscalaInicioY() {return escalaInicioY;}
 	public int getEscalaFimXPix() {return escalaFimXPix;}
 	public int getEscalaFimYPix() {return escalaFimYPix;}	
+	public int getEspacamentoMarcadores() {return espacamentoMarcadores;}
 	public long getEscalaFimXM() {return escalaFimXM;}
 	public long getEscalaFimYM() {return escalaFimYM;}	
-	public int getEspacamentoMarcadores() {return espacamentoMarcadores;}
 	public double getAnguloRotacaoGraus() {return anguloRotacaoGraus;}
 	public boolean isPEP() {return isPEP;}
 	
@@ -50,9 +51,9 @@ public class ModeloEscala {
 	public void setEscalaInicioY(int escalaInicioY) {this.escalaInicioY = escalaInicioY;}
 	public void setEscalaFimXPix(int escalaFimXPix) {this.escalaFimXPix = escalaFimXPix;}
 	public void setEscalaFimYPix(int escalaFimYPix) {this.escalaFimYPix = escalaFimYPix;}	
+	public void setEspacamentoMarcadores(int espacamentoMarcadores) {this.espacamentoMarcadores = espacamentoMarcadores;}
 	public void setEscalaFimXM(long escalaFimXM) {this.escalaFimXM = escalaFimXM;}
 	public void setEscalaFimYM(long escalaFimYM) {this.escalaFimYM = escalaFimYM;}
-	public void setEspacamentoMarcadores(int espacamentoMarcadores) {this.espacamentoMarcadores = espacamentoMarcadores;}
 	public void setAnguloRotacaoGraus(double anguloRotacaoGraus) {this.anguloRotacaoGraus = anguloRotacaoGraus;}
 	public void setIsPEP(boolean isPEP) {this.isPEP = isPEP;}
 }

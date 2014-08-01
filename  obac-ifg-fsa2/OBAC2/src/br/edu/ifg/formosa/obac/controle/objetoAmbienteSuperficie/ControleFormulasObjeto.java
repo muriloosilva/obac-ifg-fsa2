@@ -139,11 +139,11 @@ public class ControleFormulasObjeto {
 		public boolean paradaPlanoPrecipicio(){
 			//Condição de parada caso o Objeto não caia
 			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalXPix()
-			  && ma.getmO().getPosFinalXPix() <= ma.getmE().tamanhoPrecipicioPix){
+			  && ma.getmO().getPosFinalXPix() <= ma.getmEH().tamanhoPrecipicioPix){
 				return true;
 			}
 			//Condição de para caso o objeto caia
-			else if(ma.getmO().getPosicaoYPx() >= ma.getmE().fimAmbienteYPix){
+			else if(ma.getmO().getPosicaoYPx() >= ma.getmEH().fimAmbienteYPix){
 				return true;
 			}
 			//Exceção - O bojeto ainda se movimenta
