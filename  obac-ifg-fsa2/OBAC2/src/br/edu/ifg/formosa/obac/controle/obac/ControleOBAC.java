@@ -40,9 +40,9 @@ public class ControleOBAC {
 		//Modelo Painel de Configuração - Contém os arrays de string utilizados e as strings que são modificadas durante o código
 		private ModeloPainelConfiguracao mpc = null;
 		//Modelo da Escala Primária
-		private ModeloEscala mEPri = null;
+		private ModeloEscala mE = null;
 		//Modelo da Escala Secundária
-		private ModeloEscala mESec = null;
+		private ModeloEscala mEV = null;
 		///Modelo do Objeto
 		private ModeloObjeto mO = null;
 		//Modelo da Superfície
@@ -112,10 +112,8 @@ public class ControleOBAC {
 			cpf = new ControlePainelFormulas(vpf, vpc);
 			
 		//Modelos das Simulações
-			//Modelo da Escala Primária
-			mEPri = new ModeloEscala();
-			//Modelo da Escala Secundária
-			mESec = new ModeloEscala();
+			//Modelo da Escala
+			mE = new ModeloEscala();
 			///Modelo do Objeto
 			mO = new ModeloObjeto(cpi);
 			//Modelo da Superfície
@@ -123,14 +121,14 @@ public class ControleOBAC {
 			//Modelo da Propulsão por Mola
 			mp = new ModeloPropulsao(mA, cpi, cpf, vpf);
 			//Modelo Escala
-			mA = new ModeloAmbiente(cpi, mEPri, mESec, mO, mS, mp.getModeloMola());
+			mA = new ModeloAmbiente(cpi, mE, mO, mS, mp.getModeloMola());
 			
 		//Painel de Simulação
 			vPS = new VisaoPainelSimulacao(mA, vpc);
 			painelDeRepintar.add(vPS);
 			
 		//Controles - Escala/Ambiente
-			new ControleEscala(vpi, vPS, vPS.getVisaoEscalaPri(), mA, vpc, mpc);
+			new ControleEscala(vpi, vPS, vPS.getVisaoEscalaH(), mA, vpc, mpc);
 			new ControleAmbiente(mA, vpc, mpc, this, vPS.getVisaoSuperficie(), vPS);
 			
 		//ControleInicioSimulacoes da propulsão por mola
