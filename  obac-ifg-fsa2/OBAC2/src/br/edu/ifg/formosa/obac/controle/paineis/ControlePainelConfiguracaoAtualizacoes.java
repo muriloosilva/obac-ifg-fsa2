@@ -7,14 +7,16 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
+import br.edu.ifg.formosa.obac.controle.obstaculo.ControleObstaculoMouse;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.modelo.ModeloMola;
-import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
+import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
-import br.edu.ifg.formosa.obac.visao.VisaoPropulsao;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
 public class ControlePainelConfiguracaoAtualizacoes {
 	
@@ -23,26 +25,31 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	private final ModeloPainelConfiguracao mpc;
 	private final VisaoPainelFormulas vpf;
 	private final VisaoPainelInformacao vpi;
-	private final VisaoPropulsao vp;
+	private final VisaoPainelSimulacao vPS;
 	private final ModeloMola mm;
 	private final ControleMolaMouse cmm;
+	private final ControleObstaculoMouse com;
+	private final ControleOBAC cOBAC;
 	
 	//Construtor
-	public ControlePainelConfiguracaoAtualizacoes( VisaoPainelConfiguracao vpc,
-		   ModeloPainelConfiguracao mpc, VisaoPainelFormulas vpf,
-		   VisaoPainelInformacao vpi, VisaoPropulsao vp,
-		   ModeloMola mm, ControleMolaMouse cmm)
+	public ControlePainelConfiguracaoAtualizacoes(
+		   VisaoPainelConfiguracao vpc, ModeloPainelConfiguracao mpc,
+		   VisaoPainelFormulas vpf, VisaoPainelInformacao vpi, VisaoPainelSimulacao vPS,
+		   ModeloMola mm, ControleMolaMouse cmm, ControleObstaculoMouse com, ControleOBAC cOBAC)
 	{
 		this.vpc = vpc;
 		this.mpc = mpc;
 		this.vpf = vpf;
 		this.vpi = vpi;
-		this.vp = vp;
+		this.vPS = vPS;
 		this.mm = mm;
 		this.cmm = cmm;
+		this.com = com;
+		this.cOBAC = cOBAC;
 		
 		acaoPropulsoes();
 		acaoCoefDeRestituicao();
+		acaoExibirColisao();
 		
 	}
 	
@@ -67,6 +74,8 @@ public class ControlePainelConfiguracaoAtualizacoes {
 //					vp.setImagemPropulsao(null);
 					//Remove o movimento da mola
 					cmm.desativaMolaMouse();
+					//Método necessário para corrigir o campo de dado 1 da propulsão por canhão
+					ajustesPConfig();
 				}
 				//Propulsão pela mola
 				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getMola())){
@@ -81,9 +90,11 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Painel de Informações
 					vpi.setVisivelMola();
 					//Altera a imagem
-					vp.setImagemPropulsao(mm.getImagemMola());
+					vPS.getVisaoPropulsao().setImagemPropulsao(mm.getImagemMola());
 					//Adiciona o movimento da mola
 					cmm.ativaMolaMouse();
+					//Método necessário para desfazer a correção o campo de dado 1 da propulsão por canhão
+					ajustesPConfig();
 				} 
 				else{
 					JOptionPane.showMessageDialog(null,
@@ -105,6 +116,83 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			}
 		});
 	}
+	
+	private void acaoExibirColisao(){		
+		vpc.getBoColisaoNao().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				vPS.getVisaoObstaculo().setVisible(false);
+				com.setListener(false);
+				cOBAC.repinta();
+			}
+		});
+		vpc.getBoColisaoSim().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				vPS.getVisaoObstaculo().setVisible(true);
+				com.setListener(true);
+				cOBAC.repinta();
+			}
+		});
+	}
+	//Série de ajustes feitos no Painel de Configuração durante a seleção de simulações
+		public void ajustesPConfig(){
+			//1º - Configura o segundo campo de dados referentes a propulsão no painel de configuração
+			//-----para que so possa ter seu valor editado caso seja a simulação de lançamento oblíquo.
+				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()!=5 
+					&& vpc.getCsPropulsao().getSelectedIndex()==0)
+				{//Inicio IF/ELSE 1
+					vpc.getCtPropulsaoDado1().setText("0");
+					vpc.getCtPropulsaoDado1().setEnabled(false);
+				}
+				else {
+					vpc.getCtPropulsaoDado1().setText("");
+					vpc.getCtPropulsaoDado1().setEnabled(true);
+				}
+			//Fim 1º
+			
+			//2º - (Des)Abilitação do obstáculo de acordo com o tipo de simulação
+				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()==0//Plano
+					||vpc.getCsAmbienteSimulacao().getSelectedIndex()==1//Subida
+					||vpc.getCsAmbienteSimulacao().getSelectedIndex()==2//Descida
+				){
+					vpc.getBoColisaoNao().setSelected(vpc.getBoColisaoNao().isSelected());
+					segundoAjuste(true);
+				}
+				else {//Simulações que não suportam a colisão: P&P, QL e LO
+					vpc.getBoColisaoNao().setSelected(true);
+					segundoAjuste(false);
+				}
+			//Fim 2º
+			
+			//3ª - Propulsão: Habilita a propulsão para qualquer simulação que não seja QL
+				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()==4/*Queda livre*/) {
+					//Edita o texto
+					vpc.getCtPropulsaoDado1().setText("");
+					vpc.getCtPropulsaoDado2().setText("");
+					//Chamanda do método terceiro ajuste
+					terceiroAjuste(false);
+				}
+				else{
+					//Chamanda do método terceiro ajuste
+					terceiroAjuste(true);
+				}
+			//Fim 3º
+		}
+		//Métodos usados por ajustesPConfig() para evitar a redundância e código
+		private void segundoAjuste(boolean anabled){
+			//Interação com os botões de opção da colisão
+			vpc.getBoColisaoNao().setEnabled(anabled);
+			vpc.getBoColisaoSim().setEnabled(anabled);
+		} 
+		private void terceiroAjuste(boolean anabled){
+			//Interação dos Campos de Texto referentes aos dados
+			vpc.getCtPropulsaoDado1().setEnabled(anabled);
+			vpc.getCtPropulsaoDado2().setEnabled(anabled);
+			//Visibilidade do painel de propulsão
+			vPS.getVisaoPropulsao().setVisible(anabled);
+		}
+		
 
 	//Método usado na execução para que a interação com os componentes seja removida
 	public void desativaComponentes(boolean ativado){

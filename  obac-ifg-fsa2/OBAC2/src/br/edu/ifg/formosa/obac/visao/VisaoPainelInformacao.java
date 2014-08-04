@@ -86,7 +86,7 @@ public class VisaoPainelInformacao extends JPanel{
 		gbc = new GridBagConstraints();
 			gbc.insets = new Insets(2, 10, 0, 0);
 			gbc.weighty = 1;
-			this.gbc.weightx = 0;
+			gbc.weightx = 0;
 			gbc.fill = GridBagConstraints.NONE;
 			gbc.anchor = GridBagConstraints.WEST;
 			gbc.ipadx =10;
