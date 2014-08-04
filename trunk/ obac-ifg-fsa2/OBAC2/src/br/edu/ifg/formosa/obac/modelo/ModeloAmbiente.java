@@ -35,6 +35,7 @@ public class ModeloAmbiente {
 	private ModeloObjeto mO = null;
 	private ModeloSuperficie mS = null;
 	private ModeloMola mM = null;
+	private ModeloObstaculo mObs = null;
 	
 	//--Color
 	public static Color cor = Color.black; //Utilizado pra desenhar a escala de maneira que fique bem visivel nas simuações
@@ -42,7 +43,7 @@ public class ModeloAmbiente {
 	//Metodos	
 	//--Construtor
 	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEH, ModeloEscala mEV,
-						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM)
+						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM, ModeloObstaculo mObs)
 	{
 		ModeloAmbiente.cpi = cpi;
 		this.mEH = mEH;
@@ -50,6 +51,7 @@ public class ModeloAmbiente {
 		this.mO = mO;
 		this.mS = mS;
 		this.mM = mM;
+		this.mObs = mObs;
 	}
 	
 	//--Getters
@@ -60,6 +62,7 @@ public class ModeloAmbiente {
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
 	public ModeloMola getmM(){return mM;}
+	public ModeloObstaculo getmObs(){return mObs;}
 	public URL getUrlGr() {return urlGr;}
 	public URL getUrlA() {return urlA;}
 	public URL getUrlGu() {return urlGu;}
