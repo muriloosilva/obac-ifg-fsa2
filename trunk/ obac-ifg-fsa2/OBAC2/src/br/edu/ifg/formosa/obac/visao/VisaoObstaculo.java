@@ -29,7 +29,7 @@ public class VisaoObstaculo extends JPanel{
 		this.mA = mA;
 		imagemObstaculo = mA.getmObs().getImagemObstaculo();
 		
-		this.setVisible(true);
+		this.setVisible(false);
 	}
 	
 	@Override

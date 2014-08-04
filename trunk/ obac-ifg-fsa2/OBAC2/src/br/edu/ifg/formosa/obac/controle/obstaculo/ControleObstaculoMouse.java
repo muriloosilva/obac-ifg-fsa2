@@ -81,8 +81,6 @@ public class ControleObstaculoMouse {
 		this.vObs = vObs;
 		this.modeloObstaculo = modeloObstaculo;
 		this.cOBAC = cObac;
-		
-		setListener(false);//Inicia sem o mouse listener
 	}
 	
 	public void setListener(boolean listener){

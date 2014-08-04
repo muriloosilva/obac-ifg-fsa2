@@ -1,9 +1,6 @@
 package br.edu.ifg.formosa.obac.visao;
 
-import java.awt.Color;
-
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 
@@ -19,6 +16,8 @@ public class VisaoPainelSimulacao extends JPanel {
 	private VisaoObjeto vO = null;
 	//--Propulsao
 	private VisaoPropulsao vP = null;
+	//--Obstáculo
+	private VisaoObstaculo vObs = null;
 	//--Escala
 	private VisaoEscala vEH = null; //Visao Escala Horizontal - Utilizada em: Plano, Subida, Descida, P&P e Projétil
 	private VisaoEscala vEV = null; //Visao Escala Vertical - Utilizada em: Queda e Projétil
@@ -33,9 +32,11 @@ public class VisaoPainelSimulacao extends JPanel {
 		vS = new VisaoSuperficie(vPC, mA);
 		vO = new VisaoObjeto(mA);
 		vP = new VisaoPropulsao(mA);
+		vObs = new VisaoObstaculo(mA);
 		vEH = new VisaoEscala(mA.getmEH(), mA.getmO());
 		vEV = new VisaoEscala(mA.getmEV(), mA.getmO());
 		
+		this.add(vObs);
 		this.add(vEH);
 		this.add(vEV);
 		this.add(vP);
@@ -48,6 +49,7 @@ public class VisaoPainelSimulacao extends JPanel {
 	//--Getters
 	public VisaoObjeto getVisaoObjeto(){return vO;}
 	public VisaoPropulsao getVisaoPropulsao(){return vP;}
+	public VisaoObstaculo getVisaoObstaculo() {return vObs;}
 	public VisaoEscala getVisaoEscalaH() {return vEH;}
 	public VisaoEscala getVisaoEscalaV() {return vEV;}
 	public VisaoSuperficie getVisaoSuperficie() {return vS;}
