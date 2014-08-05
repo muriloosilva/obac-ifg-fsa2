@@ -10,7 +10,7 @@ public class ModeloEscala {
 	
 	//Variaveis
 	//--Inteiro
-	private int escalaInicioX = 160; //Inicio da escala X (px)
+	private int escalaInicioX = 130; //Inicio da escala X (px)
 	private int escalaInicioY = 520; //Inicio da escala Y (px)
 	
 	private int escalaFimXPix = 700; //Fim da escala X (px)
@@ -20,6 +20,8 @@ public class ModeloEscala {
 	private long escalaFimYM = 0; //Fim da escala Y (m)
 	
 	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)
+	
+	private int comprimentoEscalaPx = escalaFimXPix - escalaInicioX;
 		
 	//--Double
 	private double anguloRotacaoGraus = 0; //Utilizado somente na Escala Horizontal - subida e descida incluso
@@ -41,6 +43,7 @@ public class ModeloEscala {
 	public int getEscalaFimXPix() {return escalaFimXPix;}
 	public int getEscalaFimYPix() {return escalaFimYPix;}	
 	public int getEspacamentoMarcadores() {return espacamentoMarcadores;}
+	public int getComprimentoEscalaPx() {return comprimentoEscalaPx;}
 	public long getEscalaFimXM() {return escalaFimXM;}
 	public long getEscalaFimYM() {return escalaFimYM;}	
 	public double getAnguloRotacaoGraus() {return anguloRotacaoGraus;}

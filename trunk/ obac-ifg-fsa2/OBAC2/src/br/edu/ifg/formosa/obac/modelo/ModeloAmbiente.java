@@ -19,7 +19,8 @@ public class ModeloAmbiente {
 	//--Double
 	public static double anguloInclinacaoGraus = 0;
 	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
-	private double tempo; //OBAC1
+	private double tempoAtual; //OBAC1
+	private double tempoTotal; //OBAC1
 	
 	//--URL
 	private URL urlGr = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + "terra" + ".png"); //gravidade
@@ -34,7 +35,7 @@ public class ModeloAmbiente {
 	private ModeloEscala mEV = null;
 	private ModeloObjeto mO = null;
 	private ModeloSuperficie mS = null;
-	private ModeloMola mM = null;
+	private ModeloPropulsao mP = null;
 	private ModeloObstaculo mObs = null;
 	
 	//--Color
@@ -43,25 +44,26 @@ public class ModeloAmbiente {
 	//Metodos	
 	//--Construtor
 	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEH, ModeloEscala mEV,
-						  ModeloObjeto mO, ModeloSuperficie mS, ModeloMola mM, ModeloObstaculo mObs)
+						  ModeloObjeto mO, ModeloSuperficie mS, ModeloPropulsao mP, ModeloObstaculo mObs)
 	{
 		ModeloAmbiente.cpi = cpi;
 		this.mEH = mEH;
 		this.mEV = mEV;
 		this.mO = mO;
 		this.mS = mS;
-		this.mM = mM;
+		this.mP = mP;
 		this.mObs = mObs;
 	}
 	
 	//--Getters
 	public double getGravSelecionada() {return gravSelecionada;}
-	public double getTempo() {return tempo;}
+	public double getTempoAtual() {return tempoAtual;}
+	public double getTempoTotal() {return tempoTotal;}
 	public ModeloEscala getmEH() {return mEH;}
 	public ModeloEscala getmEV() {return mEV;}
 	public ModeloObjeto getmO() {return mO;}
 	public ModeloSuperficie getmS() {return mS;}
-	public ModeloMola getmM(){return mM;}
+	public ModeloPropulsao getmP(){return mP;}
 	public ModeloObstaculo getmObs(){return mObs;}
 	public URL getUrlGr() {return urlGr;}
 	public URL getUrlA() {return urlA;}
@@ -71,14 +73,15 @@ public class ModeloAmbiente {
 	public void setUrlGr(String urlGr) {this.urlGr = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + urlGr + ".png");}
 	public void setUrlA(String urlA) {this.urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlA + ".png");}
 	public void setUrlGu(String urlGu) {this.urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlGu + ".png");}
+	public void setTempoAtual(double tempoAtual) {this.tempoAtual = tempoAtual;}
 	
 	//--Setters relacionados ao Painel de Informação
 	public void setGravSelecionada(double gravSelecionada) {
 		this.gravSelecionada = gravSelecionada;
 		cpi.mudaValorGravidade(this.gravSelecionada); //Altera a gravidade no painel de informações
 	}
-	public void setTempo(double tempo) {
-		this.tempo = tempo;
-		cpi.mudaValorTempo(this.tempo); //Altualiza o valor do tempo no painel de informações
+	public void setTempoTotal(double tempoTotal) {
+		this.tempoTotal = tempoTotal;
+		cpi.mudaValorTempo(this.tempoTotal); //Altualiza o valor do tempo no painel de informações
 	}
 }

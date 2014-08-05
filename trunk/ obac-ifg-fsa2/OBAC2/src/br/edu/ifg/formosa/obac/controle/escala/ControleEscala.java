@@ -28,29 +28,29 @@ public class ControleEscala {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 0) { //Plano
-					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, 0, false); 
-					mudaPosMola(mA.getmM(), 30, 470);
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
+					mudaPosMola(mA.getmP().getModeloMola(), 30, 470);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
-					mudaModeloEscala(mA.getmEH(), 160, 480, 720, 480, -24, false); 
-					mudaPosMola(mA.getmM(), 19, 475);
+					mudaModeloEscala(mA.getmEH(), 160, 480, 720, 480, -23.87, false); 
+					mudaPosMola(mA.getmP().getModeloMola(), 19, 475);
 					mudaPosObjeto(mA.getmO(), 120, 475);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
-					mudaModeloEscala(mA.getmEH(), 160, 300, 710, 300, 24, false); 
-					mudaPosMola(mA.getmM(), 40, 169);
+					mudaModeloEscala(mA.getmEH(), 160, 300, 710, 300, 23.87, false); 
+					mudaPosMola(mA.getmP().getModeloMola(), 40, 169);
 					mudaPosObjeto(mA.getmO(), 140, 168);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio
 					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, 0, true); 
-					mudaPosMola(mA.getmM(), 30, 166);
+					mudaPosMola(mA.getmP().getModeloMola(), 30, 166);
 					mudaPosObjeto(mA.getmO(), 130, 166);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível

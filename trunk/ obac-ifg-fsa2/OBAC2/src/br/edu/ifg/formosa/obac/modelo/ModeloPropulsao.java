@@ -6,15 +6,25 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ModeloPropulsao {
 
-	private ModeloMola mm = null;
+	//Variáveis
+	//--Int
+	private int translaX = 30;
+	private int translaY = 470;
 	
+	//--Modelos
+	private ModeloMola mM = null;
+	
+	//Métodos
+	//--Construtor
 	public ModeloPropulsao(ModeloAmbiente ma, ControlePainelInformacao cpi,
 						   ControlePainelFormulas cpf, VisaoPainelFormulas vpf)
 	{
 		
-		mm = new ModeloMola(ma, cpi, cpf, vpf);
+		mM = new ModeloMola(ma, cpi, cpf, vpf);
 	}
 	
-	public ModeloMola getModeloMola(){return mm;}
-	
+	//--Getters
+	public ModeloMola getModeloMola(){return mM;}
+	public int getTranslaX() {return translaX;}
+	public int getTranslaY() {return translaY;}
 }

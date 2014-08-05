@@ -164,6 +164,7 @@ public class VisaoPainelInformacao extends JPanel{
 				//Velocidade Pós Colisão
 				rVelocidadePosColisao = new UtilidadeRotuloTransparente("V. Pós Colisão:");
 					rVelocidadePosColisao.setHorizontalAlignment(JLabel.RIGHT);
+					rVelocidadePosColisao.setVisible(false);
 				addComponent(rVelocidadePosColisao, 3, 6);
 			
 		//Alteração nos valores de espaçamento dos componentes
@@ -221,6 +222,7 @@ public class VisaoPainelInformacao extends JPanel{
 				//Velocidade Pós Colisão
 				rVelocidadePosColisaoValor = new UtilidadeRotuloTransparente("0.0");
 					rVelocidadePosColisaoValor.setHorizontalAlignment(JLabel.RIGHT);
+					rVelocidadePosColisaoValor.setVisible(false);
 				addComponent(rVelocidadePosColisaoValor, 3, 7);
 	}
 	

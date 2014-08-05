@@ -232,6 +232,7 @@ public class ControlePainelFormulas {
 		vpf.setpMovimentoVertical(false);
 		
 		vpf.modificaPTempo(false);
+		vpf.repaint();
 	}
 	private void configuracaoColisao(){
 		vpf.setPVInicial(true);
@@ -249,6 +250,7 @@ public class ControlePainelFormulas {
 		vpf.setpMovimentoVertical(false);
 		
 		vpf.modificaPTempo(false);
+		vpf.repaint();
 	}
 	private void configuracaoLancamentoObliquo(){
 		vpf.setPVInicial(false);
@@ -266,5 +268,6 @@ public class ControlePainelFormulas {
 		vpf.setpMovimentoVertical(true);
 		
 		vpf.modificaPTempo(true);
+		vpf.repaint();
 	}
 }

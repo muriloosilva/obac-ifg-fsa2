@@ -30,7 +30,7 @@ public class ControleFormulasObjeto {
 	}
 	
 	//Aceleração no Plano -> a = Fat/massa * -1
-	public void aceleracaoPlano(){
+	public void calculaAceleracaoPlano(){
 		ma.getmO().setAceleracao(
 			(ma.getmS().getCoefAtritoSelecionado()/ma.getmO().getMassa())
 		);
@@ -93,7 +93,7 @@ public class ControleFormulasObjeto {
 	
 	//Calcula Tempo -> t = (Vf - V0)/a
 	public void calculaTempo(){
-		ma.setTempo(
+		ma.setTempoTotal(
 			((0-ma.getmO().getVelocidadeInicial())/ma.getmO().getAceleracao())
 		);
 		//Manda para o painel de fórmulas
@@ -105,12 +105,12 @@ public class ControleFormulasObjeto {
 	public void calculaNovaPosicao(){
 		ma.getmO().setPosicaoXMetros(
 			//S0 = 0
-			(ma.getmO().getVelocidadeInicial()*ma.getTempo())
-			+((ma.getmO().getAceleracao()*ma.getTempo()*ma.getTempo())/2)
+			(ma.getmO().getVelocidadeInicial()*ma.getTempoAtual())
+			+((ma.getmO().getAceleracao()*ma.getTempoAtual()*ma.getTempoAtual())/2)
 		);
 		//Manda para o painel de fórmulas
 		vpf.getAtNovaPos().setText(
-				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempo(), ma.getmO().getAceleracao()));
+				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempoAtual(), ma.getmO().getAceleracao()));
 	}
 	
 	//Velocidade após colisão do objeto - V²=V02+2*a*ΔS

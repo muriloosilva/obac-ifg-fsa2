@@ -1,32 +1,40 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
+import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
-import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
-import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
 public class ControleInicioSimulacoes {
-
+	
 	//Referências necessárias
 	//-----Modelos
 	private ModeloAmbiente mA = null;
 	//-----Visões
 	private VisaoPainelConfiguracao vpc = null;
-	private VisaoPainelSimulacao vPS = null;
 	private VisaoPainelFormulas vPF = null;
 	//-----Controles
-	private ControlePainelFormulas cpf = null;
+	private ControleOBAC cOBAC = null;
 	private ControleFormulasObjeto cfo = null;
+	private ControleFormulasSuperficie cfs = null;
+	private ControlePainelFormulas cpf = null;
 	
-	public ControleInicioSimulacoes(VisaoPainelConfiguracao vpc,
-									ControlePainelFormulas cpf)
+	public ControleInicioSimulacoes(ModeloAmbiente mA, VisaoPainelConfiguracao vpc,
+					VisaoPainelFormulas vPF,
+					ControleOBAC cOBAC, ControleFormulasObjeto cfo,
+					ControleFormulasSuperficie cfs, ControlePainelFormulas cpf)
 	{
+		//Passagem das referências
+		this.mA = mA;
 		this.vpc = vpc;
+		this.vPF = vPF;
+		this.cOBAC = cOBAC;
+		this.cfo = cfo;
+		this.cfs = cfs;
 		this.cpf = cpf;
+		
 	}
-	//ma, vps, vpf, cfp, cfs
 	
 	
 	public void iniciarSimulacao(){
@@ -34,7 +42,9 @@ public class ControleInicioSimulacoes {
 		cpf.alteraTipoPainel();
 		
 		//Plano
-//		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){new ControleObjeto1Plano;}
+		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){
+			new ControleObjeto1Plano(mA, vPF, cOBAC, cfo, cfs);
+		}
 		//Subida
 //		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){new ControleObjeto2Subida();}
 		//Descida
