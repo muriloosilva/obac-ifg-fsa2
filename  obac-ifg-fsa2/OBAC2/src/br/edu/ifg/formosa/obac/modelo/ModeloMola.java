@@ -1,13 +1,9 @@
 package br.edu.ifg.formosa.obac.modelo;
 
-import java.net.URI;
-import java.net.URL;
-
 import javax.swing.ImageIcon;
 
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
-import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ModeloMola {
@@ -22,8 +18,6 @@ public class ModeloMola {
 
 	//Imagem
 	private ImageIcon imagemMola = new ImageIcon(this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens/propulsaoObstaculo/mola100px.png"));
-	private int imagemTamanhoYPix = 30;
-	private int imagemPosicaoYPix = 0;
 
 	//Construtor
 	public ModeloMola(ModeloAmbiente ma, ControlePainelInformacao cpi,
@@ -42,7 +36,7 @@ public class ModeloMola {
 	private double tamanhoMolaTotalM;//tamanho inicial em metros
 	private double tamanhoMolaAtualM;//tamanho final em metros
 	//Taxa de deformação da mola
-	private double x;
+	private double x=0;
 	//Constante elástica(k)
 	private double kAtual;//Atual
 
@@ -52,12 +46,12 @@ public class ModeloMola {
 
 
 	//Cálculo de avelocidade - V0 = (K+x^2/m)
-	public void velocidadeLancamento(){
+	public void calculaVelocidadeLancamento(){
+		calculaX();
 		ma.getmO().setVelocidadeInicial(((kAtual+Math.pow(x, 2))/ma.getmO().getMassa()));
 
 		//Manda para o painel de fórmulas
-		vpf.getAtVInicial().setText(
-				cpf.propulsaoMola(kAtual, x, ma.getmO().getMassa()));
+		vpf.getAtVInicial().setText(cpf.propulsaoMola(kAtual,x,ma.getmO().getMassa()));
 	}
 
 

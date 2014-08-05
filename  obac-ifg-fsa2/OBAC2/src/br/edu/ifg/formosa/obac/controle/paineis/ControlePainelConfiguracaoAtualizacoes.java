@@ -9,7 +9,6 @@ import javax.swing.event.ChangeListener;
 
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.controle.obstaculo.ControleObstaculoMouse;
-import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
@@ -27,7 +26,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	private final VisaoPainelInformacao vpi;
 	private final VisaoPainelSimulacao vPS;
 	private final ModeloMola mm;
-	private final ControleMolaMouse cmm;
 	private final ControleObstaculoMouse com;
 	private final ControleOBAC cOBAC;
 	
@@ -35,7 +33,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	public ControlePainelConfiguracaoAtualizacoes(
 		   VisaoPainelConfiguracao vpc, ModeloPainelConfiguracao mpc,
 		   VisaoPainelFormulas vpf, VisaoPainelInformacao vpi, VisaoPainelSimulacao vPS,
-		   ModeloMola mm, ControleMolaMouse cmm, ControleObstaculoMouse com, ControleOBAC cOBAC)
+		   ModeloMola mm, ControleObstaculoMouse com, ControleOBAC cOBAC)
 	{
 		this.vpc = vpc;
 		this.mpc = mpc;
@@ -43,7 +41,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 		this.vpi = vpi;
 		this.vPS = vPS;
 		this.mm = mm;
-		this.cmm = cmm;
 		this.com = com;
 		this.cOBAC = cOBAC;
 		
@@ -72,8 +69,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vpi.setVisivelCanhao();
 					//Altera a imagem
 //					vp.setImagemPropulsao(null);
-					//Remove o movimento da mola
-					cmm.desativaMolaMouse();
 					//Método necessário para corrigir o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 				}
@@ -91,8 +86,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vpi.setVisivelMola();
 					//Altera a imagem
 					vPS.getVisaoPropulsao().setImagemPropulsao(mm.getImagemMola());
-					//Adiciona o movimento da mola
-					cmm.ativaMolaMouse();
 					//Método necessário para desfazer a correção o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 				} 
@@ -123,6 +116,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			public void actionPerformed(ActionEvent arg0) {
 				vPS.getVisaoObstaculo().setVisible(false);
 				com.setListener(false);
+				vpi.setVisivelColisao(false);
 				cOBAC.repinta();
 			}
 		});
@@ -131,6 +125,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			public void actionPerformed(ActionEvent arg0) {
 				vPS.getVisaoObstaculo().setVisible(true);
 				com.setListener(true);
+				vpi.setVisivelColisao(true);
 				cOBAC.repinta();
 			}
 		});

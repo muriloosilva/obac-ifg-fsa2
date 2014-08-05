@@ -8,6 +8,9 @@ import javax.swing.JTabbedPane;
 
 import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleAmbiente;
+import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleFormulasObjeto;
+import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleFormulasSuperficie;
+import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleInicioSimulacoes;
 import br.edu.ifg.formosa.obac.controle.obstaculo.ControleObstaculoMouse;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoAtualizacoes;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
@@ -54,7 +57,7 @@ public class ControleOBAC {
 		//Modelo do Ambiente
 		private ModeloAmbiente mA = null;
 		//Modelo Da propulsão por mola
-		private ModeloPropulsao mp = null;
+		private ModeloPropulsao mP = null;
 		
 	//Visão
 		//Painel de Configuração
@@ -69,6 +72,12 @@ public class ControleOBAC {
 	//Controles
 		//Controles do Painel de Fórmulas
 		private ControlePainelFormulas cpf = null;
+		//Controle Fórmulas Objeto
+		private ControleFormulasObjeto cFO = null;
+		//Controle Fórmulas Superfície
+		private ControleFormulasSuperficie cFS = null;
+		//Controle Inicio Simulações
+		private ControleInicioSimulacoes cIS = null;
 		//Controles do Painel de Configuração
 		private ControlePainelConfiguracaoEntradaDeDados cpced = null;
 		private ControlePainelConfiguracaoAtualizacoes cpca = null;
@@ -127,26 +136,33 @@ public class ControleOBAC {
 			//Modelo da Superfície
 			mS = new ModeloSuperficie(cpi);
 			//Modelo da Propulsão por Mola
-			mp = new ModeloPropulsao(mA, cpi, cpf, vpf);
+			mP = new ModeloPropulsao(mA, cpi, cpf, vpf);
 			//Modelo Obstaculo
 			mObs = new ModeloObstaculo();
 			//Modelo Escala
-			mA = new ModeloAmbiente(cpi, mEH, mEV, mO, mS, mp.getModeloMola(), mObs);
+			mA = new ModeloAmbiente(cpi, mEH, mEV, mO, mS, mP, mObs);
 			
 		//Painel de Simulação
 			vPS = new VisaoPainelSimulacao(mA, vpc);
 			painelDeRepintar.add(vPS);
 			
-		//ControleInicioSimulacoes da propulsão por mola
-			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPS.getVisaoObjeto(), vpc, mA);
+		//Controles de fórmulas
+			cFO = new ControleFormulasObjeto(mA, vpf, cpf);
+			cFS = new ControleFormulasSuperficie(mA);//Adicionar o vpf nesta classe para atualizar o pFormulas
+			//Instanciar o Controle de início das simulações
+		//Controle do início das simulações
+			cIS = new ControleInicioSimulacoes(mA, vpc, vpf, this, cFO, cFS, cpf);
+			
+		//Controle da propulsão por mola
+			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vpc, mA, cIS);
 		
 		//ControleObstaculoMouse
 			com = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mObs, this); 
 			
 		//Controles do Painel de Configuração
-			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mp.getModeloMola(), cmm, com, this);
+			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mP.getModeloMola(), com, this);
 			cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
-			new ControlePainelConfiguracaoExecucao(vpc, mpc, cpca, cpced);
+			new ControlePainelConfiguracaoExecucao(mA, vpc, mpc, cpca, cpced, cIS, cmm);
 			
 		//Controles - Escala/Ambiente
 			new ControleEscala(vpi, vPS, mA, vpc, mpc);

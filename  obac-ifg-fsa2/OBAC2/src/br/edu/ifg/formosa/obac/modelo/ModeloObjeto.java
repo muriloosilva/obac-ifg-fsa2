@@ -5,12 +5,12 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 public class ModeloObjeto {
 	
 	//ControleInicioSimulacoes Painel de Configuração - atualizar dados referente ao ambiente
-	private static ControlePainelInformacao cpi = null;
+	private ControlePainelInformacao cpi = null;
 	
 	//Construtor - To deixando desativado para vc arrumar o modelo ambiente depois
 		//Os controles do CPI tbm estão comentados para evitar problimas no funcionamento
 	public ModeloObjeto(ControlePainelInformacao cpi) {
-		ModeloObjeto.cpi = cpi;
+		this.cpi = cpi;
 	}
 	
 	//Constantes
@@ -26,7 +26,7 @@ public class ModeloObjeto {
 	private double coefRestituicao;
 	
 	private double velocidade;//Esta se torna desnecessária se a velocidade não mudar
-	private double velocidadeInicial;
+	private double velocidadeInicial = 0;
 	
 	private double aceleracao;
 	private double aceleracaoY;

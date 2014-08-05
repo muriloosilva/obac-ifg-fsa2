@@ -10,6 +10,7 @@ import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
+import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
 
 public class VisaoEscala extends JPanel{
 	//Constantes
@@ -20,25 +21,27 @@ public class VisaoEscala extends JPanel{
 	//--Modelos
 	private ModeloEscala mE = null;
 	private ModeloObjeto mO = null;
+	private ModeloPropulsao mP = null;
 	
 	//Metodos
 	//--Construtor #01
-	public VisaoEscala(ModeloEscala mE, ModeloObjeto mO) {
+	public VisaoEscala(ModeloEscala mE, ModeloObjeto mO, ModeloPropulsao mP) {
 		super(null);		
 		this.setSize(750, 600);
 		this.setOpaque(true);
 		
 		this.mE = mE;
 		this.mO = mO;
+		this.mP = mP;
 	}
 	
 	//--Paint
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		g2d.translate(mE.getEscalaInicioX(), mE.getEscalaInicioY());
+		g2d.translate(mP.getTranslaX(), mP.getTranslaY());
 		g2d.rotate(Math.toRadians(mE.getAnguloRotacaoGraus()));
-		g2d.translate(-mE.getEscalaInicioX(), -mE.getEscalaInicioY());	
+		g2d.translate(-mP.getTranslaX(), -mP.getTranslaY());	
 				
 		g2d.setColor(ModeloAmbiente.cor);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());
