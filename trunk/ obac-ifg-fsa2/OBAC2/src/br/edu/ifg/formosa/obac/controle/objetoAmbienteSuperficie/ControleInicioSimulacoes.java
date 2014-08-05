@@ -39,10 +39,11 @@ public class ControleInicioSimulacoes {
 	
 	public void iniciarSimulacao(){
 		//Mudança no painel de fórmulas
-		cpf.alteraTipoPainel();
+//		cpf.alteraTipoPainel();
 		
 		//Plano
 		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){
+			System.out.println("Passou");
 			new ControleObjeto1Plano(mA, vPF, cOBAC, cfo, cfs);
 		}
 		//Subida

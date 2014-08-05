@@ -132,7 +132,7 @@ public class ControleFormulasObjeto {
 	//Testes lógicos para definirem a parada do objeto de acordo com a simulação
 		//Plano
 		public boolean paradaPlano(){
-			if(ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalXPix()) return true;
+			if(ma.getmO().getPosicaoXMetros() >= ma.getmO().getPosFinalXMetros()) return true;
 			else return false;
 		}
 		//Plano e Precipício

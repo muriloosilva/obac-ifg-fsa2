@@ -19,12 +19,7 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
-import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
-import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
-import br.edu.ifg.formosa.obac.modelo.ModeloObstaculo;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
-import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
-import br.edu.ifg.formosa.obac.modelo.ModeloSuperficie;
 import br.edu.ifg.formosa.obac.principal.OBAC;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
@@ -44,20 +39,8 @@ public class ControleOBAC {
 	//Modelos
 		//Modelo Painel de Configuração - Contém os arrays de string utilizados e as strings que são modificadas durante o código
 		private ModeloPainelConfiguracao mpc = null;
-		//Modelo da Escala Horizontal - Utilizada em: Plano, Subida, Descida, P&P e Projétil
-		private ModeloEscala mEH = null;
-		//Modelo da Escala Vertical - Utilizada em: Queda e Projétil
-		private ModeloEscala mEV = null;
-		///Modelo do Objeto
-		private ModeloObjeto mO = null;
-		//Modelo da Superfície
-		private ModeloSuperficie mS = null;
-		//ModeloObstaculo
-		private ModeloObstaculo mObs = null;
 		//Modelo do Ambiente
 		private ModeloAmbiente mA = null;
-		//Modelo Da propulsão por mola
-		private ModeloPropulsao mP = null;
 		
 	//Visão
 		//Painel de Configuração
@@ -120,27 +103,17 @@ public class ControleOBAC {
 			//Visão Painel de Configuração
 			vpc = new VisaoPainelConfiguracao(mpc);
 			painelAbas.add(vpc, "Configuração");
+			
 		//Painel de Fórmulas
+			//Visão Painel de Fórmulas
 			vpf = new VisaoPainelFormulas();
 			painelAbas.add(vpf, "Fórmulas");
-		//Controle painel de fórmulas
+			//Controle painel de fórmulas
 			cpf = new ControlePainelFormulas(vpf, vpc);
 			
 		//Modelos das Simulações
-			//Modelo da Escala Horizontal
-			mEH = new ModeloEscala();
-			//Modelo da Escala Vertical
-			mEV = new ModeloEscala();
-			///Modelo do Objeto
-			mO = new ModeloObjeto(cpi);
-			//Modelo da Superfície
-			mS = new ModeloSuperficie(cpi);
-			//Modelo da Propulsão por Mola
-			mP = new ModeloPropulsao(mA, cpi, cpf, vpf);
-			//Modelo Obstaculo
-			mObs = new ModeloObstaculo();
 			//Modelo Escala
-			mA = new ModeloAmbiente(cpi, mEH, mEV, mO, mS, mP, mObs);
+			mA = new ModeloAmbiente(cpi, vpf, cpf);
 			
 		//Painel de Simulação
 			vPS = new VisaoPainelSimulacao(mA, vpc);
@@ -157,10 +130,10 @@ public class ControleOBAC {
 			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vpc, mA, cIS);
 		
 		//ControleObstaculoMouse
-			com = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mObs, this); 
+			com = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mA.getmObs(), this); 
 			
 		//Controles do Painel de Configuração
-			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mP.getModeloMola(), com, this);
+			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mA.getmP().getModeloMola(), com, this);
 			cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
 			new ControlePainelConfiguracaoExecucao(mA, vpc, mpc, cpca, cpced, cIS, cmm);
 			

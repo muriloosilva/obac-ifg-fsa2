@@ -53,6 +53,7 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 	//Rodar
 	@Override
 	public void run() {
+		
 		//Laço de repetição para a executar a movimentação do objeto
 		while (true) {
 			if (continuar) {
@@ -61,7 +62,10 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 					cfo.calculaNovaPosicao();
 					//Converte a posição em METROS para PIXEL para poder movimentar o objeto
 					ma.getmO().setPosicaoXPx(
-							UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(), ma.getmO().getPosicaoXMetros(), ma.getmEH().getEscalaFimXM()));
+							UtilidadeConvercoesEscala.converteMetroEmPixelX(
+									ma.getmEH().getComprimentoEscalaPx(),
+									ma.getmO().getPosicaoXMetros(),
+									ma.getmEH().getEscalaFimXM()));
 					//Repinta o painel para mostar o andamento da simulação
 					cOBAC.repinta();
 					//Repinta o painel de fórmulas
