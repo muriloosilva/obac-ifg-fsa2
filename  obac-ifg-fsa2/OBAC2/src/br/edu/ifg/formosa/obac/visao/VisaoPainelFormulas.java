@@ -121,36 +121,43 @@ public class VisaoPainelFormulas extends JScrollPane{
 		fonteFormulas = new Font("Arial", Font.BOLD, 13);
 		
 		//Velocidade Inicial
+		pVInicial = new JPanel(new BorderLayout());
 		rVInicial = new JLabel("Velocidade Inicial");//Rótulo
 		atVInicial = new JTextArea(ModeloPainelFormulas.propCanhao);//Área de Texto
 		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro, 5, true);
 		
 		//Força Normal
+		pFNormal = new JPanel(new BorderLayout());
 		rFNormal = new JLabel("Força Normal");
 		atFNormal = new JTextArea(ModeloPainelFormulas.forcaNormal);
 		addComponentes(pFNormal, rFNormal, prFNormal, atFNormal, UtilidadeCores.azulIndigo, UtilidadeCores.amareloKhaki, 3, true);
 		
 		//Atrito
+		pAtrito = new JPanel(new BorderLayout());
 		rAtrito = new JLabel("Atrito");
 		atAtrito = new JTextArea(ModeloPainelFormulas.atrito);
 		addComponentes(pAtrito, rAtrito, prAtrito, atAtrito, UtilidadeCores.azulEscuro, UtilidadeCores.amareloLimao, 3, true);
 		
 		//Aceleração
+		pAceleracao = new JPanel(new BorderLayout());
 		rAceleracao = new JLabel("Aceleração");
 		atAceleracao = new JTextArea(ModeloPainelFormulas.aceleracaoDescida);
 		addComponentes(pAceleracao, rAceleracao, prAceleracao, atAceleracao, UtilidadeCores.azul, UtilidadeCores.amarelo, 7, true);
 		
 		//Posição final
+		pPosFinal = new JPanel(new BorderLayout());
 		rPosFinal = new JLabel("Posição Final");
 		atPosFinal = new JTextArea(ModeloPainelFormulas.posicaoFinalPadrao);
 		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloAcafrao, 6, true);
 		
 		//Tempo
+		pTempo = new JPanel(new BorderLayout());
 		rTempo = new JLabel("Tempo");
 		atTempo = new JTextArea(ModeloPainelFormulas.tempo +"\n" +ModeloPainelFormulas.tempoTotal);
 		addComponentes(pTempo, rTempo, prTempo, atTempo, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 6, true);
 		
 		//Nova Posição
+		pNovaPos = new JPanel(new BorderLayout());
 		rNovaPos = new JLabel("Nova Posição");
 		rNovaPos.setToolTipText("Equação horária das abscissas");
 		atNovaPos = new JTextArea(ModeloPainelFormulas.equaHorariaAbscissa);
@@ -158,17 +165,20 @@ public class VisaoPainelFormulas extends JScrollPane{
 		
 		//Colisão
 			//Colisão
+			pColisao = new JPanel(new BorderLayout());
 			rColisao = new JLabel("Colisão");
 			atColisao = new JTextArea(ModeloPainelFormulas.colisao);
 			addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulNeon, UtilidadeCores.laranja, 6, false);
 			
 			//Velocidade pós Colosão - Criar os componentes e refazer o esquema de cores
+			pVelocidadePosColisao = new JPanel(new BorderLayout());
 			rVelocidadePosColisao = new JLabel("Velocidade Após Colisão");
 			rVelocidadePosColisao.setToolTipText("Equação de Torricceli");
 			atVelocidadePosColisao = new JTextArea(ModeloPainelFormulas.equaTorricceli);
 			addComponentes(pVelocidadePosColisao, rVelocidadePosColisao, prVelocidadePosColisao, atVelocidadePosColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 6, false);
 			
 			//Nova Posição Após Colisão
+			pNovaPosColisao= new JPanel(new BorderLayout());
 			rNovaPosColisao = new JLabel("Nova Posição Após Colisão");
 			rNovaPosColisao.setToolTipText("Equação horária das abscissas");
 			atNovaPosColisao = new JTextArea(ModeloPainelFormulas.equaHorariaAbscissa);
@@ -177,21 +187,25 @@ public class VisaoPainelFormulas extends JScrollPane{
 		
 		//Lançamento Oblíquo
 			//Movimento Horizontal
+			pMovimentoHorizontal = new JPanel(new BorderLayout());
 			rMovimentoHorizontal = new JLabel("Movimento Horizontal");
 			atMovimentoHorizontal = new JTextArea(ModeloPainelFormulas.movimentoHorizontal);
 			addComponentes(pMovimentoHorizontal, rMovimentoHorizontal, prMovimentoHorizontal, atMovimentoHorizontal, UtilidadeCores.azulEscuro, UtilidadeCores.amarelo, 5, false);
 			
 			//Movimento Vertical
+			pMovimentoVertical = new JPanel(new BorderLayout());
 			rMovimentoVertical = new JLabel("Movimento Vertical");
 			atMovimentoVertical = new JTextArea(ModeloPainelFormulas.movimentoVertical);
 			addComponentes(pMovimentoVertical, rMovimentoVertical, prMovimentoVertical, atMovimentoVertical, UtilidadeCores.azul, UtilidadeCores.amareloAcafrao, 5, false);
 			
 			//Alcance Total Horizontal
+			pAlcanceTotalHorizontal = new JPanel(new BorderLayout());
 			rAlcanceTotalHorizontal = new JLabel("Alcance Total Horizontal");
 			atAlcanceTotalHorizontal = new JTextArea(ModeloPainelFormulas.alcanceHorizontal);
 			addComponentes(pAlcanceTotalHorizontal, rAlcanceTotalHorizontal, prAlcanceTotalHorizontal, atAlcanceTotalHorizontal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloQueimado, 5, false);
 			
 			//Altura Total Vertical
+			pAlcanceTotalVertical = new JPanel(new BorderLayout());
 			rAlcanceTotalVertical = new JLabel("Altura Total Vertical");
 			atAlcanceTotalVertical = new JTextArea(ModeloPainelFormulas.alturaVertical);
 			addComponentes(pAlcanceTotalVertical, rAlcanceTotalVertical, prAlcanceTotalVertical, atAlcanceTotalVertical, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 5, false);
@@ -202,10 +216,9 @@ public class VisaoPainelFormulas extends JScrollPane{
 	//Passa suas posições, tamanhos e outras configurações
 	private void addComponentes(JPanel p, JLabel r, JScrollPane pr, JTextArea at, Color corFundo, Color corFonte, int numLinhasAT, boolean painelVisivel){
 		//Painel - Contém todos os componentes a seguir e é adicionado no painel de fundo
-		p = new JPanel(new BorderLayout());
-			p.setBackground(corFundo);//Muda a cor de fundo
-			p.setBorder(new LineBorder(Color.BLACK, 1));//Define a borda dos paineis para que seja vista a delimitação que existe entre cada painel
-			p.setVisible(painelVisivel);//Utilizado para que os paineis que não pertencem a imulação principal não apareçam, caso eles sejeam nexesário fica a cargo do controle decidir quais seram vistao. Isso é feito assim que a simulação é iniciada. 
+		p.setBackground(corFundo);//Muda a cor de fundo
+		p.setBorder(new LineBorder(Color.BLACK, 1));//Define a borda dos paineis para que seja vista a delimitação que existe entre cada painel
+		p.setVisible(painelVisivel);//Utilizado para que os paineis que não pertencem a imulação principal não apareçam, caso eles sejeam nexesário fica a cargo do controle decidir quais seram vistao. Isso é feito assim que a simulação é iniciada. 
 		pFundo.add(p);
 		
 		//Rótulo - Indica a fórmula pressa, é adicionado no painel de sua fórmula
@@ -245,7 +258,8 @@ public class VisaoPainelFormulas extends JScrollPane{
 
 //Setter dos Paineis de Rolagem_______________________________________________
 	//dependendo da simulação estes paineis podem ou não aparecer
-	public void setPVInicial(boolean visivel) {pVInicial.setVisible(visivel);}
+	public void setPVInicial(boolean visivel) {System.out.println("Visível: " +visivel);
+		pVInicial.setVisible(visivel);}
 	public void setPFNormal(boolean visivel) {pFNormal.setVisible(visivel);}
 	public void setPAtrito(boolean visivel) {pAtrito.setVisible(visivel);}
 	public void setPAceleracao(boolean visivel) {pAceleracao.setVisible(visivel);}

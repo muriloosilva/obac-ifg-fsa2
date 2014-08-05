@@ -3,7 +3,9 @@ package br.edu.ifg.formosa.obac.modelo;
 import java.awt.Color;
 import java.net.URL;
 
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ModeloAmbiente {	
 	//Constantes
@@ -18,7 +20,7 @@ public class ModeloAmbiente {
 	//Variáveis
 	//--Double
 	public static double anguloInclinacaoGraus = 0;
-	private double gravSelecionada; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
+	private double gravSelecionada = gravidadeTerra; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
 	private double tempoAtual; //OBAC1
 	private double tempoTotal; //OBAC1
 	
@@ -43,16 +45,23 @@ public class ModeloAmbiente {
 	
 	//Metodos	
 	//--Construtor
-	public ModeloAmbiente(ControlePainelInformacao cpi, ModeloEscala mEH, ModeloEscala mEV,
-						  ModeloObjeto mO, ModeloSuperficie mS, ModeloPropulsao mP, ModeloObstaculo mObs)
+	public ModeloAmbiente(ControlePainelInformacao cpi, VisaoPainelFormulas vpf,
+						  ControlePainelFormulas cpf)
 	{
 		ModeloAmbiente.cpi = cpi;
-		this.mEH = mEH;
-		this.mEV = mEV;
-		this.mO = mO;
-		this.mS = mS;
-		this.mP = mP;
-		this.mObs = mObs;
+		
+		//Modelo da Escala Horizontal - Utilizada em: Plano, Subida, Descida, P&P e Projétil
+		mEH = new ModeloEscala();
+		//Modelo da Escala Vertical - Utilizada em: Queda e Projétil
+		mEV = new ModeloEscala();
+		///Modelo do Objeto
+		mO = new ModeloObjeto(cpi);
+		//Modelo da Superfície
+		mS = new ModeloSuperficie(cpi);
+		//Modelo da Propulsão por Mola
+		mP = new ModeloPropulsao(this, cpi, cpf, vpf);
+		//Modelo Obstaculo
+		mObs = new ModeloObstaculo();
 	}
 	
 	//--Getters

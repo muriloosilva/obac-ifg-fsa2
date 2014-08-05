@@ -83,4 +83,6 @@ public class ModeloMola {
 	}
 	public void setPosX(int posX) {this.posX = posX;}
 	public void setPosY(int posY) {this.posY = posY;}
+	
+	//Setter de modelo ambiente
 }
