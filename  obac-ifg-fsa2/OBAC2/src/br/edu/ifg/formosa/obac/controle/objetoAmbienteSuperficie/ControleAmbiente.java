@@ -35,14 +35,20 @@ public class ControleAmbiente {
 					case 0:
 						mA.setUrlGr("terra");
 						mA.cor = Color.black;
+						
+						mA.setGravSelecionada(mA.gravidadeTerra);
 						break;
 					case 1:
 						mA.setUrlGr("lua");
 						mA.cor = Color.white;
+						
+						mA.setGravSelecionada(mA.gravidadeLua);
 						break;
 					case 2:
 						mA.setUrlGr("marte");
 						mA.cor = Color.white;
+						
+						mA.setGravSelecionada(mA.gravidadeMarte);
 						break;
 				}
 				mudaImagem(cO, vPS.getVisaoSuperficie(), mA);

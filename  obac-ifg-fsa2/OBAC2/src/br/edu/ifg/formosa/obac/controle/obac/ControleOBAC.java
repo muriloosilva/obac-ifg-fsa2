@@ -6,7 +6,6 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleAmbiente;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleFormulasObjeto;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleFormulasSuperficie;
@@ -18,6 +17,7 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecuc
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
+import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.principal.OBAC;
@@ -138,7 +138,7 @@ public class ControleOBAC {
 			new ControlePainelConfiguracaoExecucao(mA, vpc, mpc, cpca, cpced, cIS, cmm);
 			
 		//Controles - Escala/Ambiente
-			new ControleEscala(vpi, vPS, mA, vpc, mpc);
+			new ControleSimulacao(vpi, vPS, mA, vpc, mpc);
 			new ControleAmbiente(mA, vpc, mpc, this, vPS, cpca);
 			
 		vpc.getCsPropulsao().setSelectedIndex(1);

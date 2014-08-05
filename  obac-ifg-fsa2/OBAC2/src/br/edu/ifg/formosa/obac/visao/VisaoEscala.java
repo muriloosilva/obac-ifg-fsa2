@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import br.edu.ifg.formosa.obac.controle.escala.ControleEscala;
+import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
@@ -49,7 +49,7 @@ public class VisaoEscala extends JPanel{
 		//Desenha Marcadores - Horizontal
 		if (mE.getEscalaInicioY() == mE.getEscalaFimYPix()) { 
 		
-			mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimXPix()));
+			mE.setEspacamentoMarcadores(ControleSimulacao.retornaPedaco(mE.getEscalaInicioX(), mE.getEscalaFimXPix()));
 			
 			g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 15);
 			g2d.drawLine(mE.getEscalaFimXPix(), mE.getEscalaFimYPix(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix() + 15);
@@ -66,7 +66,7 @@ public class VisaoEscala extends JPanel{
 		//Desenha Marcadores - Vertical
 		if (mE.getEscalaInicioX() == mE.getEscalaFimXPix()) {
 		
-			mE.setEspacamentoMarcadores(ControleEscala.retornaPedaco(mE.getEscalaInicioY(), mE.getEscalaFimYPix()));
+			mE.setEspacamentoMarcadores(ControleSimulacao.retornaPedaco(mE.getEscalaInicioY(), mE.getEscalaFimYPix()));
 			
 			g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX() - 15, mE.getEscalaInicioY());
 			g2d.drawLine(mE.getEscalaFimXPix(), mE.getEscalaFimYPix(), mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix());
