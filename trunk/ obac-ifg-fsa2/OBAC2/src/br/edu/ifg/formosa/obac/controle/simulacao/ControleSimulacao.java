@@ -1,4 +1,4 @@
-package br.edu.ifg.formosa.obac.controle.escala;
+package br.edu.ifg.formosa.obac.controle.simulacao;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,18 +8,17 @@ import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
-import br.edu.ifg.formosa.obac.visao.VisaoEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
-public class ControleEscala {
+public class ControleSimulacao {
 	//Variáveis
 	private ModeloEscala mE = null;
 	
 	//Metodos
 	//--Construtor
-	public ControleEscala(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps, final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
+	public ControleSimulacao(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps, final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
 		this.mE = mA.getmEH();	
 
 		mudaMarcadores(50);
