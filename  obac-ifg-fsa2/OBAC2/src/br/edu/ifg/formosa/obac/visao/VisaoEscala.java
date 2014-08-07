@@ -39,9 +39,7 @@ public class VisaoEscala extends JPanel{
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		g2d.translate(mP.getTranslaX(), mP.getTranslaY());
 		g2d.rotate(Math.toRadians(mE.getAnguloRotacaoGraus()));
-		g2d.translate(-mP.getTranslaX(), -mP.getTranslaY());	
 				
 		g2d.setColor(ModeloAmbiente.cor);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());
@@ -58,10 +56,10 @@ public class VisaoEscala extends JPanel{
 				int auxiliarX = mE.getEscalaInicioX() + ((i+1) * mE.getEspacamentoMarcadores());
 	
 				g2d.drawLine(auxiliarX, mE.getEscalaInicioY(), auxiliarX, mE.getEscalaInicioY() + 8);
-				g2d.drawString(ModeloEscala.marcadoresEscala[i] + "m", auxiliarX - 15, mE.getEscalaInicioY() + 26);
+				g2d.drawString(mE.getMarcadoresEscala()[i] + "m", auxiliarX - 15, mE.getEscalaInicioY() + 26);
 			}
 			g2d.drawString(ModeloEscala.marcadorInicial + "m", mE.getEscalaInicioX() - 9, mE.getEscalaInicioY() + 26);
-			g2d.drawString(ModeloEscala.marcadoresEscala[4] + "m", mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix() + 26);
+			g2d.drawString(mE.getMarcadoresEscala()[4] + "m", mE.getEscalaFimXPix() - 15, mE.getEscalaFimYPix() + 26);
 		} else
 		//Desenha Marcadores - Vertical
 		if (mE.getEscalaInicioX() == mE.getEscalaFimXPix()) {
@@ -75,9 +73,9 @@ public class VisaoEscala extends JPanel{
 				int auxiliarY = mE.getEscalaFimYPix() - ((i+1) * mE.getEspacamentoMarcadores());
 	
 				g2d.drawLine(mE.getEscalaInicioX(), auxiliarY,  mE.getEscalaInicioX() - 8, auxiliarY);
-				g2d.drawString(ModeloEscala.marcadoresEscala[i] + "m", mE.getEscalaInicioX() - 50, auxiliarY - 1);
+				g2d.drawString(mE.getMarcadoresEscala()[i] + "m", mE.getEscalaInicioX() - 50, auxiliarY - 1);
 			}
-			g2d.drawString(ModeloEscala.marcadoresEscala[4] + "m", mE.getEscalaInicioX() - 50, mE.getEscalaInicioY() - 1);
+			g2d.drawString(mE.getMarcadoresEscala()[4] + "m", mE.getEscalaInicioX() - 50, mE.getEscalaInicioY() - 1);
 			g2d.drawString(ModeloEscala.marcadorInicial + "m", mE.getEscalaFimXPix() - 28, mE.getEscalaFimYPix() - 1);			
 		}
 		//Marcador dinâmico para indicar a posição do objeto no P&P

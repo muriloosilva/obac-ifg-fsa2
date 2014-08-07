@@ -27,10 +27,10 @@ public class ModeloEscala {
 	private double anguloRotacaoGraus = 0; //Utilizado somente na Escala Horizontal - subida e descida incluso
 	
 	public static final double marcadorInicial = 0.0; //É Constante, mas deixei aqui para um melhor entendimento
-	public static double[] marcadoresEscala = new double[qtdMarcadores + 1]; //0-Menor / 4-Maior
-	/* Explicação do 'qtdMarcadores + 2'
+	private double[] marcadoresEscala = new double[qtdMarcadores + 1]; //0-Menor / 4-Maior
+	/* Explicação do 'qtdMarcadores + 1'
 	 * -O qtdMarcadores indica os marcadores desenhados 'dentro' da escala, 
-	 * não conta os das extremidades, por isso o '+2'
+	 * não conta os das extremidades, por isso o '+1' devido ao inicial ser uma constante
 	 */
 	
 	//--Boolean
@@ -47,6 +47,7 @@ public class ModeloEscala {
 	public long getEscalaFimXM() {return escalaFimXM;}
 	public long getEscalaFimYM() {return escalaFimYM;}	
 	public double getAnguloRotacaoGraus() {return anguloRotacaoGraus;}
+	public double[] getMarcadoresEscala() {return marcadoresEscala;}
 	public boolean isPEP() {return isPEP;}
 	
 	//--Setters

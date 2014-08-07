@@ -35,9 +35,9 @@ public class VisaoPropulsao extends JPanel {
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;		
 
-		g2d.translate(mA.getmP().getTranslaX(), mA.getmP().getTranslaY());
+		//g2d.translate(mA.getmP().getTranslaX(), mA.getmP().getTranslaY());
 		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
-		g2d.translate(-mA.getmP().getTranslaX(), -mA.getmP().getTranslaY());
+		//g2d.translate(-mA.getmP().getTranslaX(), -mA.getmP().getTranslaY());
 		
 		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getModeloMola().getPosX(), mA.getmP().getModeloMola().getPosY(), this);
 	}

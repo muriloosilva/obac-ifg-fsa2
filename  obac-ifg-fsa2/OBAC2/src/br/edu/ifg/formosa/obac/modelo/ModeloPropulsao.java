@@ -8,7 +8,7 @@ public class ModeloPropulsao {
 
 	//Variáveis
 	//--Int
-	private int translaX = 30;
+	private int translaX = 30; //Variáveis utilizadas para rotacionar o canhão
 	private int translaY = 470;
 	
 	//--Modelos
