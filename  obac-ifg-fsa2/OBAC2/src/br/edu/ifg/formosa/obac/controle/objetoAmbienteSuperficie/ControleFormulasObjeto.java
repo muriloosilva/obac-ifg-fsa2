@@ -77,7 +77,7 @@ public class ControleFormulasObjeto {
 		ma.getmO().setPosFinalXMetros((ma.getmO().getPosFinalXMetros()*-1));
 		//Manda para o painel de fórmulas
 		vpf.getAtPosFinal().setText(
-				cpf.posicaoFinalPlano(ma.getmO().getVelocidadeInicial(), ma.getmO().getAceleracao()));
+				cpf.posicaoFinalPadrao(ma.getmO().getVelocidadeInicial(), ma.getmO().getAceleracao()));
 	}
 	
 	//Calcula Posição Final na Descida -> Sf = (V0^2 * -1)/(2 * a)
@@ -108,6 +108,9 @@ public class ControleFormulasObjeto {
 			(ma.getmO().getVelocidadeInicial()*ma.getTempoAtual())
 			+((ma.getmO().getAceleracao()*ma.getTempoAtual()*ma.getTempoAtual())/2)
 		);
+		System.out.println("ma.getmO().getVelocidadeInicial()" +ma.getmO().getVelocidadeInicial());
+		System.out.println("ma.getTempoAtual()" +ma.getTempoAtual());
+		System.out.println("ma.getmO().getAceleracao()" +ma.getmO().getAceleracao());
 		//Manda para o painel de fórmulas
 		vpf.getAtNovaPos().setText(
 				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempoAtual(), ma.getmO().getAceleracao()));

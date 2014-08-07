@@ -144,7 +144,7 @@ public class VisaoPainelInformacao extends JPanel{
 					rTempo.setHorizontalAlignment(JLabel.RIGHT);
 				addComponent(rTempo, 3, 0);
 				//Mola Taxa de Deformação
-				rX = new UtilidadeRotuloTransparente("Taxa de Deformação:");
+				rX = new UtilidadeRotuloTransparente("X da Mola:");
 					rX.setHorizontalAlignment(JLabel.RIGHT);
 					rX.setVisible(false);
 				addComponent(rX, 3, 2);

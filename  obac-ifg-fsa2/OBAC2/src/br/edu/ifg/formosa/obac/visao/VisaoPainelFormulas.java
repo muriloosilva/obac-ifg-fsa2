@@ -153,7 +153,7 @@ public class VisaoPainelFormulas extends JScrollPane{
 		//Tempo
 		pTempo = new JPanel(new BorderLayout());
 		rTempo = new JLabel("Tempo");
-		atTempo = new JTextArea(ModeloPainelFormulas.tempo +"\n" +ModeloPainelFormulas.tempoTotal);
+		atTempo = new JTextArea(ModeloPainelFormulas.tempo);
 		addComponentes(pTempo, rTempo, prTempo, atTempo, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 6, true);
 		
 		//Nova Posição
