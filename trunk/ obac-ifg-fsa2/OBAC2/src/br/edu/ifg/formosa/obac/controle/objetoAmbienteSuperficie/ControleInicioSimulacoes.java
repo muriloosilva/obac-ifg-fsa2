@@ -42,10 +42,7 @@ public class ControleInicioSimulacoes {
 //		cpf.alteraTipoPainel();
 		
 		//Plano
-		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){
-			System.out.println("Passou");
-			new ControleObjeto1Plano(mA, vPF, cOBAC, cfo, cfs);
-		}
+		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){new ControleObjeto1Plano(mA, vPF, cOBAC, cfo, cfs);}
 		//Subida
 //		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){new ControleObjeto2Subida();}
 		//Descida

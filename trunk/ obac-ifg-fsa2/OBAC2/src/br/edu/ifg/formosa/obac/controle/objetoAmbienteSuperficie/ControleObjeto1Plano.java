@@ -68,6 +68,7 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 									ma.getmEH().getEscalaFimXM()));
 					//Repinta o painel para mostar o andamento da simulação
 					cOBAC.repinta();
+					vpf.repaint();
 					//Repinta o painel de fórmulas
 					vpf.repaint();
 					//Parada no carregamento para dar o realismo da simulação
@@ -75,6 +76,8 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 					catch (InterruptedException e) {}
 					//Atualiza o tempo
 					ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
+					
+					System.out.println("PX M Atual: "+ma.getmO().getPosicaoXMetros());
 				}
 			}
 			else {parar();}

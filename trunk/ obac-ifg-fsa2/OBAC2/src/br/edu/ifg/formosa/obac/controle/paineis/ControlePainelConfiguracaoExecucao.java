@@ -36,7 +36,8 @@ public class ControlePainelConfiguracaoExecucao {
 						//Tamanho da Mola
 						mA.getmP().getModeloMola().setTamanhoMolaTotalM(Double.parseDouble(vpc.getCtPropulsaoDado1().getText()));
 						//Constante elástica
-						mA.getmP().getModeloMola().setkAtual(Double.parseDouble(vpc.getCtPropulsaoDado2().getText().replaceAll(",", ".")));
+						mA.getmP().getModeloMola().setkAtual(
+								Double.parseDouble(vpc.getCtPropulsaoDado2().getText().replaceAll(",", "."))/100);
 						//Massa
 						mA.getmO().setMassa(Double.parseDouble(vpc.getCtObjetoMassa().getText().replaceAll(",", ".")));
 						//Listener da mola

@@ -19,17 +19,19 @@ public class ControlePainelFormulas {
 	//Propulção pela mola	
 		public String propulsaoMola(double k, double x, double m){
 			//V0= (K+x^2/Massa)
-			String s = "V0 = (" +k +"+" +x+"²/" +m +")\n";
-			s += "V0 = (" +k +"+" +Math.pow(x, 2) +"/" +m +")\n";
-			s += "V0 = (" +(k+ Math.pow(x, 2)) +"/" +m +")\n";
-			s += "V0 = (" +((k +Math.pow(x, 2) )/m) +")";
+			String s = ModeloPainelFormulas.propMola +"\n";
+			s += "V0 = √(" +k +"*" +x+"²/" +m +")\n";
+			s += "V0 = √(" +k +"*" +Math.pow(x, 2) +"/" +m +")\n";
+			s += "V0 = √(" +(k*Math.pow(x, 2)) +"/" +m +")\n";
+			s += "V0 = " +(Math.sqrt(k*Math.pow(x, 2) )/m);
 			return s;
 		}
 
 		//Propulsão pelo canhão
 		public String propulsaoCanhao(double e, double m){
 			//V0 = (2 * energia * massa)
-			String s = "V0 = 2 * "+e+" * "+m +"\n";
+			String s = ModeloPainelFormulas.propCanhao +"\n";
+			s += "V0 = 2 * "+e+" * "+m +"\n";
 			s += "V0 = 2 * "+(e*m) +"\n";
 			s += "V0 = "+(2*e*m);
 			return s;
@@ -38,7 +40,8 @@ public class ControlePainelFormulas {
 		//Força normal
 		public String forcaNormal(double m, double g){
 			//N = m * g
-			String s = "N = " +m +" * " +g +"\n";
+			String s = ModeloPainelFormulas.forcaNormal +"\n";
+			s += "N = " +m +" * " +g +"\n";
 			s += "N = " +(m*g);
 			return s;
 		}
@@ -46,7 +49,8 @@ public class ControlePainelFormulas {
 		//Atrito
 		public String atrito(double fNormal, double coefAtr){
 			//Fat = N * µ
-			String s = "Fat = " +fNormal +" * " +coefAtr +"\n";
+			String s = ModeloPainelFormulas.atrito +"\n";
+			s += "Fat = " +fNormal +" * " +coefAtr +"\n";
 			s += "Fat = " +(fNormal*coefAtr);
 			return s;
 		}
@@ -54,7 +58,8 @@ public class ControlePainelFormulas {
 		//Aceleração no Plano
 		public String aceleracaoPlano(double fAtr, double m){
 			//a = Fat/m * (-1)
-			String s = "a = " +fAtr +"/" +m +" * -1\n";
+			String s = ModeloPainelFormulas.aceleracaoPlano +"\n";
+			s += "a = " +fAtr +"/" +m +" * -1\n";
 			s += "a = " +(fAtr/m) +" * -1\n";
 			s += "a = " +(-(fAtr/m));
 			return s;
@@ -63,14 +68,16 @@ public class ControlePainelFormulas {
 		//Aceleração na Queda
 		public String aceleracaoQueda(double g){
 			//a = g
-			String s = "a = " +g;
+			String s = ModeloPainelFormulas.aceleracaoQueda +"\n";
+			s += "a = " +g;
 			return s;
 		}
 		
 		//Aceleração descida
 		public String aceleracaoDescida(double g, double angulo, double coefAtr){
 			//a = [(g * Sen(?)) + (µ * g * Cos(?))]
-			String s = "a = [(" +g +" * Sen(" +angulo+")) + ("+coefAtr+" * "+g+" * Cos("+angulo+"))]\n";
+			String s = ModeloPainelFormulas.aceleracaoDescida +"\n";
+			s += "a = [(" +g +" * Sen(" +angulo+")) + ("+coefAtr+" * "+g+" * Cos("+angulo+"))]\n";
 			s += "a = [(" +g +" * " +Math.sin(angulo)+") + ("+coefAtr+" * "+g+" * "+Math.cos(angulo)+")]\n";
 			s += "a = [(" +(g*Math.sin(angulo))+") + (" +coefAtr +" * " +(g*Math.cos(angulo))+")]\n";
 			s += "a = [" +(g*Math.sin(angulo))+" + "+(coefAtr*g*Math.cos(angulo))+"]\n";
@@ -81,7 +88,8 @@ public class ControlePainelFormulas {
 		//Aceleração Subida
 		public String aceleracaoSubida(double g, double angulo, double coefAtr){
 			//a = [(g * Sen(?)) + (µ * g * Cos(?))] * (-1)
-			String s = "a = [(" +g +" * Sen(" +angulo+")) + ("+coefAtr+" * "+g+" * Cos("+angulo+"))] * (-1)\n";
+			String s = ModeloPainelFormulas.aceleracaoSubida +"\n";
+			s += "a = [(" +g +" * Sen(" +angulo+")) + ("+coefAtr+" * "+g+" * Cos("+angulo+"))] * (-1)\n";
 			s += "a = [(" +g +" * " +Math.sin(angulo)+") + ("+coefAtr+" * "+g+" * "+Math.cos(angulo)+")] * (-1)\n";
 			s += "a = [(" +(g*Math.sin(angulo))+") + (" +coefAtr +" * " +(g*Math.cos(angulo))+")] * (-1)\n";
 			s += "a = [" +(g*Math.sin(angulo))+" + "+(coefAtr*g*Math.cos(angulo))+"] * (-1)\n";
@@ -93,7 +101,8 @@ public class ControlePainelFormulas {
 		//Posição final na descida
 		public String posicaoFinalDescida(double v0, double a){
 			//Sf = (V0^2 * -1)/(2 * a)
-			String s = "Sf = ("+v0+"² * -1)/(2 * "+a+")\n";
+			String s = ModeloPainelFormulas.posicaoFinalDescida +"\n";
+			s += "Sf = ("+v0+"² * -1)/(2 * "+a+")\n";
 			s += "Sf = ("+Math.pow(v0, 2) +"* -1)/"+(2*a) +"\n";
 			s += "Sf = "+(Math.pow(v0,2) * -1)+"/"+(2*a) +"\n";
 			s += "Sf = "+((Math.pow(v0,2) * -1)/(2*a));
@@ -101,9 +110,10 @@ public class ControlePainelFormulas {
 		}
 		
 		//Posição final no plano
-		public String posicaoFinalPlano(double v0, double a){
+		public String posicaoFinalPadrao(double v0, double a){
 			//Sf = (V0^2 * -1)/(2 * a) * (-1)
-			String s = "Sf = ("+v0+"² * -1)/(2 * "+a+") * (-1)\n";
+			String s = ModeloPainelFormulas.posicaoFinalPadrao +"\n";
+			s += "Sf = ("+v0+"² * -1)/(2 * "+a+") * (-1)\n";
 			s += "Sf = ("+Math.pow(v0,2) +"* -1)/"+(2*a) +"* (-1)\n";
 			s += "Sf = "+(Math.pow(v0,2) * -1)+"/"+(2*a) +" * (-1)\n";
 			s += "Sf = "+((Math.pow(v0,2) * -1)/(2*a)) +"\n";
@@ -114,7 +124,8 @@ public class ControlePainelFormulas {
 		//Tempo
 		public String tempo(double v0, double a){
 			//t = (Vf - V0)/a
-			String s = "t = (0 - " +v0+")/"+a+"\n";
+			String s = ModeloPainelFormulas.tempo +"\n";
+			s += "t = (0 - " +v0+")/"+a+"\n";
 			s += "t = " +(0-v0)+"/"+a+"\n";
 			s += "t = " +((0-v0)/a);
 			return s;
@@ -135,7 +146,8 @@ public class ControlePainelFormulas {
 		//Colisão
 		public String colisao(double va, double ma, double mb, double e){
 			//Va'=((Va*(Ma-Mb*e))/(Ma-Mb))
-			String s = "Va'=((" +va +"*(" +ma +"-" +mb +"*" +e+"))/(" +ma +"-" +mb +"))\n";
+			String s = ModeloPainelFormulas.colisao +"\n";
+			s += "Va'=((" +va +"*(" +ma +"-" +mb +"*" +e+"))/(" +ma +"-" +mb +"))\n";
 			s += "Va'=((" +va +"*(" +ma +"-" +(mb*e) +"))/" +(ma-mb) +")\n";
 			s += "Va'=((" +va +"*" +(ma-(mb*e) )+")/" +(ma-mb) +")\n";
 			s += "Va'=(" +(va*(ma-(mb*e))) +"/" +(ma-mb) +")\n";
@@ -146,7 +158,8 @@ public class ControlePainelFormulas {
 		//Equação de Torricceli
 		public String equTorricceli(double v0, double a, double deltaS){
 			//V = √(V0^2 + 2 * a * ΔS)
-			String s = "V = " +"(" +v0 +"² + 2 *" +a +" * Δ" +deltaS +")\n";
+			String s = ModeloPainelFormulas.equaTorricceli +"\n";
+			s += "V = " +"(" +v0 +"² + 2 *" +a +" * Δ" +deltaS +")\n";
 			s += "V = (" +Math.pow(v0, 2) +" + 2 *" +(a*deltaS) +"\n";
 			s += "V = (" +Math.pow(v0, 2) +" + " +(2*(a*deltaS)) +"\n";
 			s += "V = " +(Math.pow(v0, 2)+(2*(a*deltaS)));
@@ -156,7 +169,8 @@ public class ControlePainelFormulas {
 		//Tempo Total Lançamento Oblíquo
 		public String tempoTotal(double v, double angulo, double g){
 			//t=(2*v*sen(θ))/g)
-			String s = "t Total = ((2 * " +v +" * sen(" +angulo +"))/" +g+")\n";
+			String s = ModeloPainelFormulas.tempoTotal +"\n";
+			s += "t Total = ((2 * " +v +" * sen(" +angulo +"))/" +g+")\n";
 			s += "t Total = ((2 * " +v +" * "+Math.sin(angulo) +")/" +g+")\n";
 			s += "t Total = ((2 * " +(v*Math.sin(angulo)) +")/" +g+")\n";
 			s += "t Total = (" +(2*(v*Math.sin(angulo))) +"/" +g+")\n";
@@ -167,7 +181,8 @@ public class ControlePainelFormulas {
 		
 		public String movimentoHorizontal(double v, double angulo, double t){
 			//Mov.Horiz.=v*cos(θ)*t
-			String s = "Mov. Horiz. = " +v +" * cos(" +angulo +") * " +t +"\n";
+			String s = ModeloPainelFormulas.movimentoHorizontal +"\n";
+			s += "Mov. Horiz. = " +v +" * cos(" +angulo +") * " +t +"\n";
 			s += "Mov. Horiz. = " +v +" * " +Math.cos(angulo) +" * " +t +"\n";
 			s += "Mov. Horiz. = " +v +" * " +(Math.cos(angulo)*t) +"\n";
 			s += "Mov. Horiz. = " +(v*Math.cos(angulo)*t);
@@ -176,7 +191,8 @@ public class ControlePainelFormulas {
 
 		public String movimentoVetical(double v, double angulo, double t, double g){
 			//Mov.Vert.=(v*sen(θ)*t)-((g*t)/2)
-			String s = "Mov.Vert. = ( " +v +" * sen(" +angulo +") * " +t +") - ((" +g +" * " +t +")/2) \n";
+			String s = ModeloPainelFormulas.movimentoVertical +"\n";
+			s += "Mov.Vert. = ( " +v +" * sen(" +angulo +") * " +t +") - ((" +g +" * " +t +")/2) \n";
 			s += "Mov.Vert. = ( " +v +" * " +Math.sin(angulo) +" * " +t +") - (" +(g*t) +")/2) \n";
 			s += "Mov.Vert. = ( " +v +" * " +(Math.sin(angulo)*t) +") - " +((g*t)/2) +" \n";
 			s += "Mov.Vert. = " +(v*Math.sin(angulo)*t) +" - " +((g*t)/2) +" \n";
@@ -186,7 +202,8 @@ public class ControlePainelFormulas {
 
 		public String alcanceTHorizontal(double v, double angulo, double g){
 			//Alc.T.Horiz.=(v^2*sen(2*θ))/g
-			String s = "Alc.T.Horiz. = ( " +v +"² * sen(2 * " +angulo +"))/" +g +"\n";
+			String s = ModeloPainelFormulas.alcanceHorizontal +"\n";
+			s += "Alc.T.Horiz. = ( " +v +"² * sen(2 * " +angulo +"))/" +g +"\n";
 			s += "Alc.T.Horiz. = ( " +(v*v) +" * sen(" +(2*angulo) +"))/" +g +"\n";
 			s += "Alc.T.Horiz. = ( " +(v*v) +" * " +(Math.sin(2*angulo)) +")/" +g +"\n";
 			s += "Alc.T.Horiz. = " +((v*v)*Math.sin(2*angulo)) +"/" +g +"\n";
@@ -196,7 +213,8 @@ public class ControlePainelFormulas {
 
 		public String alturaTVertical(double v, double angulo, double g){
 			//Alt.T.Vert.=(v*sen(θ))^2/(2*g)
-			String s = "Alt.T.Vert. = (" +v +" * sen(" +angulo +"))² / (2 * " +g+")\n";
+			String s = ModeloPainelFormulas.alturaVertical +"\n";
+			s += "Alt.T.Vert. = (" +v +" * sen(" +angulo +"))² / (2 * " +g+")\n";
 			s += "Alt.T.Vert. = (" +v +" * " +Math.sin(angulo) +")² / " +(2*g)+"\n";
 			s += "Alt.T.Vert. = " +(v*Math.sin(angulo)) +"² / " +(2*g)+"\n";
 			s += "Alt.T.Vert. = " +Math.pow((v*Math.sin(angulo)), 2) +" / " +(2*g)+"\n";

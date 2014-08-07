@@ -48,7 +48,9 @@ public class ModeloMola {
 	//Cálculo de avelocidade - V0 = (K+x^2/m)
 	public void calculaVelocidadeLancamento(){
 		calculaX();
-		ma.getmO().setVelocidadeInicial(((kAtual+Math.pow(x, 2))/ma.getmO().getMassa()));
+		ma.getmO().setVelocidadeInicial(
+			Math.sqrt((kAtual*Math.pow(x, 2))/ma.getmO().getMassa())
+		);
 
 		//Manda para o painel de fórmulas
 		vpf.getAtVInicial().setText(cpf.propulsaoMola(kAtual,x,ma.getmO().getMassa()));

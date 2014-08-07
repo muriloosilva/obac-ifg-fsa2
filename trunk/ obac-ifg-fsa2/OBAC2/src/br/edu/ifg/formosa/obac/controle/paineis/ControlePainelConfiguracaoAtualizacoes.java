@@ -130,6 +130,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			}
 		});
 	}
+	private String cacheTexto = "";  
 	//Série de ajustes feitos no Painel de Configuração durante a seleção de simulações
 		public void ajustesPConfig(){
 			//1º - Configura o segundo campo de dados referentes a propulsão no painel de configuração
@@ -137,11 +138,12 @@ public class ControlePainelConfiguracaoAtualizacoes {
 				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()!=5 
 					&& vpc.getCsPropulsao().getSelectedIndex()==0)
 				{//Inicio IF/ELSE 1
+					cacheTexto = vpc.getCtPropulsaoDado1().getText(); 
 					vpc.getCtPropulsaoDado1().setText("0");
 					vpc.getCtPropulsaoDado1().setEnabled(false);
 				}
 				else {
-					vpc.getCtPropulsaoDado1().setText("");
+					vpc.getCtPropulsaoDado1().setText(cacheTexto);
 					vpc.getCtPropulsaoDado1().setEnabled(true);
 				}
 			//Fim 1º
@@ -159,20 +161,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					segundoAjuste(false);
 				}
 			//Fim 2º
-			
-			//3ª - Propulsão: Habilita a propulsão para qualquer simulação que não seja QL
-				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()==4/*Queda livre*/) {
-					//Edita o texto
-					vpc.getCtPropulsaoDado1().setText("");
-					vpc.getCtPropulsaoDado2().setText("");
-					//Chamanda do método terceiro ajuste
-					terceiroAjuste(false);
-				}
-				else{
-					//Chamanda do método terceiro ajuste
-					terceiroAjuste(true);
-				}
-			//Fim 3º
 		}
 		//Métodos usados por ajustesPConfig() para evitar a redundância e código
 		private void segundoAjuste(boolean anabled){

@@ -28,7 +28,7 @@ public class ModeloPainelConfiguracao {
 	//Strings usadas em rótulos que são alterados no painel de informações
 	private final String dado1Canhao = "Ângulo (°)"; 
 	private final String dado2Canhao = "Energia (J)";
-	private final String dado1Mola = "Tamaho da Mola(m)";
+	private final String dado1Mola = "Tamaho da Mola(cm)";
 	private final String dado2Mola = "Constante Elástica (N/m)";
 	
 //Getters
