@@ -13,6 +13,7 @@ public class ModeloPropulsao {
 	
 	//--Modelos
 	private ModeloMola mM = null;
+	private ModeloCanhao mC = null;
 	
 	//Métodos
 	//--Construtor
@@ -21,10 +22,12 @@ public class ModeloPropulsao {
 	{
 		
 		mM = new ModeloMola(ma, cpi, cpf, vpf);
+		mC = new ModeloCanhao();
 	}
 	
 	//--Getters
 	public ModeloMola getModeloMola(){return mM;}
+	public ModeloCanhao getmC() {return mC;}
 	public int getTranslaX() {return translaX;}
 	public int getTranslaY() {return translaY;}
 }
