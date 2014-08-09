@@ -22,7 +22,7 @@ public class ModeloPropulsao {
 	{
 		
 		mM = new ModeloMola(ma, cpi, cpf, vpf);
-		mC = new ModeloCanhao();
+		mC = new ModeloCanhao(ma, cpi, cpf, vpf);
 	}
 	
 	//--Getters
