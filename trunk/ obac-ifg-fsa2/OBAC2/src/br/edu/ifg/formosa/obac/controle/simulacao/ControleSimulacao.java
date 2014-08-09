@@ -31,17 +31,17 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
-					mudaModeloEscala(mA.getmEH(), 160, 480, 720, 480, -23.87, false);
-					mudaPosMola(mA.getmP().getModeloMola(), 19, 475);
-					mudaPosObjeto(mA.getmO(), 120, 475);
+					mudaModeloEscala(mA.getmEH(), -65, 500, 520, 500, -23.87, false);
+					mudaPosMola(mA.getmP().getModeloMola(), -165, 440);
+					mudaPosObjeto(mA.getmO(), -65, 440);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
-					mudaModeloEscala(mA.getmEH(), 160, 300, 710, 300, 23.87, false); 
-					mudaPosMola(mA.getmP().getModeloMola(), 40, 169);
-					mudaPosObjeto(mA.getmO(), 140, 168);
+					mudaModeloEscala(mA.getmEH(), 214, 198, 799, 198, 23.87, false); 
+					mudaPosMola(mA.getmP().getModeloMola(), 114, 138);
+					mudaPosObjeto(mA.getmO(), 214, 138);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível

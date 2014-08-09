@@ -1,5 +1,9 @@
 package br.edu.ifg.formosa.obac.modelo;
 
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
+
 public class ModeloCanhao {
 	//Variáveis
 	//--Double
@@ -15,7 +19,27 @@ public class ModeloCanhao {
 
 	private int tamanhoXPixB = 0; //Posição da base
 	private int tamanhoYPixB = 0;
+	
+	//--Modelo
+	private ModeloAmbiente mA = null;
+	
+	//--Controles
+	private ControlePainelInformacao cPI = null;
+	private ControlePainelFormulas cPF = null;
+	
+	//--Visao
+	private VisaoPainelFormulas vPF = null;
+	
 	//Métodos
+	//--Construtor
+	public ModeloCanhao(ModeloAmbiente mA, ControlePainelInformacao cPI, 
+						ControlePainelFormulas cPF, VisaoPainelFormulas vPF) {
+		this.mA = mA;
+		this.cPI = cPI;
+		this.cPF = cPF;
+		this.vPF = vPF;
+	}
+	
 	//--Getters
 	public double getAnguloRotacao() {return anguloRotacao;}
 	public double getEnergia() {return energia;}
@@ -25,4 +49,14 @@ public class ModeloCanhao {
 	public int getTamanhoYPixC() {return tamanhoYPixC;}
 	public int getTamanhoXPixB() {return tamanhoXPixB;}
 	public int getTamanhoYPixB() {return tamanhoYPixB;}
+	
+	//--Setters
+	public void setAnguloRotacao(double anguloRotacao) {
+		this.anguloRotacao = anguloRotacao;
+		cPI.mudaValorAngulo(anguloRotacao);
+	}
+	public void setEnergia(double energia) {
+		this.energia = energia;
+		cPI.mudaValorEnergia(energia);
+	}
 }

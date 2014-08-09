@@ -52,7 +52,7 @@ public class VisaoEscala extends JPanel{
 			g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaInicioX(), mE.getEscalaInicioY() + 15);
 			g2d.drawLine(mE.getEscalaFimXPix(), mE.getEscalaFimYPix(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix() + 15);
 			
-			for (int i=0;i<=ModeloEscala.qtdMarcadores;i++) {
+			for (int i=0;i<ModeloEscala.qtdMarcadores;i++) {
 				int auxiliarX = mE.getEscalaInicioX() + ((i+1) * mE.getEspacamentoMarcadores());
 	
 				g2d.drawLine(auxiliarX, mE.getEscalaInicioY(), auxiliarX, mE.getEscalaInicioY() + 8);
