@@ -23,8 +23,7 @@ public class ModeloSuperficie {
 	//Variaveis
 	//--Double
 	private double coefAtritoSelecionado = atritoAsfalto;	
-	private double forcaAtrito;	
-	
+	private double forcaAtrito;
 	//Metodos
 	//--Setters
 	public void setCoefAtritoSelecionado(double coefAtritoSelecionado){

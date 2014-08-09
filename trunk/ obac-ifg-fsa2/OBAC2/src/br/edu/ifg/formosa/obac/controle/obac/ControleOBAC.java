@@ -133,15 +133,13 @@ public class ControleOBAC {
 			com = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mA.getmObs(), this); 
 			
 		//Controles do Painel de Configuração
-			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mA.getmP().getModeloMola(), com, this);
+			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mA.getmP(), com, this);
 			cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
 			new ControlePainelConfiguracaoExecucao(mA, vpc, mpc, cpca, cpced, cIS, cmm);
 			
 		//Controles - Escala/Ambiente
 			new ControleSimulacao(vpi, vPS, mA, vpc, mpc);
 			new ControleAmbiente(mA, vpc, mpc, this, vPS, cpca);
-			
-		vpc.getCsPropulsao().setSelectedIndex(1);
 			
 		//Repintar Applet
 			obac.repaint();

@@ -41,7 +41,7 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 			cfs.calculaEscala();//Escala
 			ma.getmO().setPosFinalXPix(UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(), ma.getmO().getPosFinalXMetros(), ma.getmEH().getEscalaFimXM()));//Ponto fina em Pixel
 			cfo.calculaTempo();//Tempo total de Simulação em segundos
-			ma.setTempoAtual(atrasoSPadrao);//Seta o tempo inicial na variável
+			ma.setTempoAtual(0);//Seta o tempo inicial na variável
 			//Repinta o painel de fórmulas
 			vpf.repaint();
 		

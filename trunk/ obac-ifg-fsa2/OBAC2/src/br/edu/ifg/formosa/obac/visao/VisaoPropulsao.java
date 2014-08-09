@@ -28,7 +28,7 @@ public class VisaoPropulsao extends JPanel {
 		this.setOpaque(true);
 		
 		this.mA = mA;
-		imagemPropulsao = mA.getmP().getModeloMola().getImagemMola();
+		imagemPropulsao = mA.getmP().getImagemPropulsao();
 	}
 	
 	//--Paint
@@ -37,7 +37,7 @@ public class VisaoPropulsao extends JPanel {
 
 		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
 		
-		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getModeloMola().getPosX(), mA.getmP().getModeloMola().getPosY(), this);
+		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getPosX(), mA.getmP().getPosY(), this);
 	}
 
 	//Get e Set

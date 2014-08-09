@@ -8,6 +8,7 @@ import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
+import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
@@ -24,7 +25,7 @@ public class ControleSimulacao {
 			public void actionPerformed(ActionEvent arg0) {
 				if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 0) { //Plano
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
-					mudaPosMola(mA.getmP().getModeloMola(), 30, 470);
+					mudaPosProp(mA.getmP(), 30, 470);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -32,7 +33,7 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 1) {//Subida
 					mudaModeloEscala(mA.getmEH(), -65, 500, 520, 500, -23.87, false);
-					mudaPosMola(mA.getmP().getModeloMola(), -165, 440);
+					mudaPosProp(mA.getmP(), -165, 440);
 					mudaPosObjeto(mA.getmO(), -65, 440);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -40,7 +41,7 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 2) {//Descida
 					mudaModeloEscala(mA.getmEH(), 214, 198, 799, 198, 23.87, false); 
-					mudaPosMola(mA.getmP().getModeloMola(), 114, 138);
+					mudaPosProp(mA.getmP(), 114, 138);
 					mudaPosObjeto(mA.getmO(), 214, 138);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -48,7 +49,7 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 				} else if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 3) {//Precipicio
 					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, 0, true); 
-					mudaPosMola(mA.getmP().getModeloMola(), 30, 166);
+					mudaPosProp(mA.getmP(), 30, 166);
 					mudaPosObjeto(mA.getmO(), 130, 166);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -100,9 +101,9 @@ public class ControleSimulacao {
 	}
 	
 	//--Altera os valores de posicionamento da propulsão-Mola
-	private void mudaPosMola(ModeloMola mM, int posX, int posY) {
-		mM.setPosX(posX);
-		mM.setPosY(posY);
+	private void mudaPosProp(ModeloPropulsao mP, int posX, int posY) {
+		mP.setPosX(posX);
+		mP.setPosY(posY);
 	}
 	
 	//--Altera os valores de posicionamento do objeto

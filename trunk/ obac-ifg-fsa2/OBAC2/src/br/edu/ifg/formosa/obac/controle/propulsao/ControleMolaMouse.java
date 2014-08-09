@@ -84,20 +84,20 @@ public class ControleMolaMouse {
 	private void reposicionaObjeto(int x, int y){
 		//Booleanas de controle - Verifica se a posição do mouse está em uma área válida
 			//Confirma se a posição em que o mouse está é permitida no eixo x(30px do epaço vazio e mais 20px para a mola não desaparecer)
-			restricaoHorizontal =((x>=(ma.getmP().getModeloMola().getPosX()+ma.getmP().getModeloMola().getTamanhoMolaMinimoPix())
-					  && x<=(ma.getmP().getModeloMola().getPosX()+ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
+			restricaoHorizontal =((x>=(ma.getmP().getPosX()+ma.getmP().getModeloMola().getTamanhoMolaMinimoPix())
+					  && x<=(ma.getmP().getPosX()+ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
 			//Confirma se a posição do mouse no eixo Y está correta
-			restricaoVetical=(y>=(ma.getmP().getModeloMola().getPosY()+this.ajusteV)
-					  && y<=(ma.getmP().getModeloMola().getPosY()+ma.getmO().alturaLargura+this.ajusteV));
+			restricaoVetical=(y>=(ma.getmP().getPosY()+this.ajusteV)
+					  && y<=(ma.getmP().getPosY()+ma.getmO().alturaLargura+this.ajusteV));
 			  
 		if(restricaoHorizontal && restricaoVetical){
 			//Move o objeto
 			ma.getmO().setPosicaoXPx(x);
 			//Passa o Tamanho da mola de pixel para metros
-			ma.getmP().getModeloMola().setTamanhoMolaAtualPix(x-ma.getmP().getModeloMola().getPosX());
+			ma.getmP().getModeloMola().setTamanhoMolaAtualPix(x-ma.getmP().getPosX());
 			ma.getmP().getModeloMola().setTamanhoMolaAtualM((UtilidadeConvercoesEscala.convertePixelMetro(ma.getmP().getModeloMola().getTamanhoMolaTotalM(), ma.getmP().getModeloMola().getTamanhoMolaAtualPix(), ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
 			//Altera o tamanho da imagem para ajustála a compressão
-			vp.setImagemPropulsao(new ImageIcon(ma.getmP().getModeloMola().getImagemMola().getImage().getScaledInstance(ma.getmP().getModeloMola().getTamanhoMolaAtualPix(), 30, Image.SCALE_DEFAULT)));
+			vp.setImagemPropulsao(new ImageIcon(ma.getmP().getImagemPropulsao().getImage().getScaledInstance(ma.getmP().getModeloMola().getTamanhoMolaAtualPix(), 30, Image.SCALE_DEFAULT)));
 			//Repinta o Painel de Repintar
 			cOBAC.repinta();
 			
