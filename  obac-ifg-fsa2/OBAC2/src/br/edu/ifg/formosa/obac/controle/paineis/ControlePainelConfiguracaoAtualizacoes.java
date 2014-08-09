@@ -12,6 +12,7 @@ import br.edu.ifg.formosa.obac.controle.obstaculo.ControleObstaculoMouse;
 import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
+import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
@@ -25,7 +26,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	private final VisaoPainelFormulas vpf;
 	private final VisaoPainelInformacao vpi;
 	private final VisaoPainelSimulacao vPS;
-	private final ModeloMola mm;
+	private final ModeloPropulsao mP;
 	private final ControleObstaculoMouse com;
 	private final ControleOBAC cOBAC;
 	
@@ -33,14 +34,14 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	public ControlePainelConfiguracaoAtualizacoes(
 		   VisaoPainelConfiguracao vpc, ModeloPainelConfiguracao mpc,
 		   VisaoPainelFormulas vpf, VisaoPainelInformacao vpi, VisaoPainelSimulacao vPS,
-		   ModeloMola mm, ControleObstaculoMouse com, ControleOBAC cOBAC)
+		   ModeloPropulsao mP, ControleObstaculoMouse com, ControleOBAC cOBAC)
 	{
 		this.vpc = vpc;
 		this.mpc = mpc;
 		this.vpf = vpf;
 		this.vpi = vpi;
 		this.vPS = vPS;
-		this.mm = mm;
+		this.mP = mP;
 		this.com = com;
 		this.cOBAC = cOBAC;
 		
@@ -68,7 +69,8 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Painel de Informações
 					vpi.setVisivelCanhao();
 					//Altera a imagem
-//					vp.setImagemPropulsao(null);
+					mP.trocaImagemProp(true);
+					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
 					//Método necessário para corrigir o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 				}
@@ -85,7 +87,8 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Painel de Informações
 					vpi.setVisivelMola();
 					//Altera a imagem
-					vPS.getVisaoPropulsao().setImagemPropulsao(mm.getImagemMola());
+					mP.trocaImagemProp(false);
+					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
 					//Método necessário para desfazer a correção o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 				} 
@@ -94,6 +97,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 						"Falha catastrófica no funcionamento do programa", 
 						"Aviso", JOptionPane.WARNING_MESSAGE, null);
 				}
+				cOBAC.repinta();
 			}
 		});
 	}

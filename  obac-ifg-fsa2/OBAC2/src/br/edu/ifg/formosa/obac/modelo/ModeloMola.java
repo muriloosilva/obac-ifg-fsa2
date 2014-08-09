@@ -1,7 +1,5 @@
 package br.edu.ifg.formosa.obac.modelo;
 
-import javax.swing.ImageIcon;
-
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
@@ -15,9 +13,6 @@ public class ModeloMola {
 	private ControlePainelInformacao cpi = null;
 	private ControlePainelFormulas cpf = null;
 	private VisaoPainelFormulas vpf = null;
-
-	//Imagem
-	private ImageIcon imagemMola = new ImageIcon(this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens/propulsaoObstaculo/mola100px.png"));
 
 	//Construtor
 	public ModeloMola(ModeloAmbiente ma, ControlePainelInformacao cpi,
@@ -39,10 +34,6 @@ public class ModeloMola {
 	private double x=0;
 	//Constante elástica(k)
 	private double kAtual;//Atual
-
-	//Posição da Mola - pixels
-	private int posX = 30;
-	private int posY = 470;
 
 
 	//Cálculo de avelocidade - V0 = (K+x^2/m)
@@ -72,9 +63,6 @@ public class ModeloMola {
 	public double getkAtual() {return kAtual;}
 	public int getTamanhoMolaTotalPix() {return tamanhoMolaTotalPix;}
 	public double getTamanhoMolaTotalM(){return tamanhoMolaTotalM;}
-	public ImageIcon getImagemMola(){return imagemMola;}
-	public int getPosX() {return posX;}
-	public int getPosY() {return posY;}
 	//Setters
 	public void setTamanhoMolaAtualPix(int tamanhoMolaAtualPix) {this.tamanhoMolaAtualPix = tamanhoMolaAtualPix;}
 	public void setTamanhoMolaTotalM(double tamanhoMolaTotalM) {this.tamanhoMolaTotalM = tamanhoMolaTotalM;}
@@ -83,8 +71,5 @@ public class ModeloMola {
 		this.kAtual = kAtual;
 		cpi.mudaValorConstanteElastica(kAtual);
 	}
-	public void setPosX(int posX) {this.posX = posX;}
-	public void setPosY(int posY) {this.posY = posY;}
 	
-	//Setter de modelo ambiente
 }

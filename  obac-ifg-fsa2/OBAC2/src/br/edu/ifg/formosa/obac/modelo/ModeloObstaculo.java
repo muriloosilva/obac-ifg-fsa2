@@ -18,24 +18,11 @@ public class ModeloObstaculo {
 			this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens/propulsaoObstaculo/obstaculo_colisao.png"));
 
 	//GETTERS E SETTERS
-	public int getPosicaoXPx() {
-		return posicaoXPx;
-	}
-
-	public void setPosicaoXPx(int posicaoXPx) {
-		this.posicaoXPx = posicaoXPx;
-	}
-
-	public int getPosicaoYPx() {
-		return posicaoYPx;
-	}
-
-	public void setPosicaoYPx(int posicaoYPx) {
-		this.posicaoYPx = posicaoYPx;
-	}
-
-	public ImageIcon getImagemObstaculo() {
-		return imagemObstaculo;
-	}
+	public int getPosicaoXPx() {return posicaoXPx;}
+	public int getPosicaoYPx() {return posicaoYPx;}
+	public ImageIcon getImagemObstaculo() {return imagemObstaculo;}
+	
+	public void setPosicaoYPx(int posicaoYPx) {this.posicaoYPx = posicaoYPx;}
+	public void setPosicaoXPx(int posicaoXPx) {this.posicaoXPx = posicaoXPx;}
 
 }
