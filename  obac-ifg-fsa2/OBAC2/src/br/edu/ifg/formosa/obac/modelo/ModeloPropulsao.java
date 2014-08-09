@@ -32,7 +32,6 @@ public class ModeloPropulsao {
 	public ModeloPropulsao(ModeloAmbiente ma, ControlePainelInformacao cpi,
 						   ControlePainelFormulas cpf, VisaoPainelFormulas vpf)
 	{
-		
 		mM = new ModeloMola(ma, cpi, cpf, vpf);
 		mC = new ModeloCanhao(ma, cpi, cpf, vpf);
 		trocaImagemProp(true);
