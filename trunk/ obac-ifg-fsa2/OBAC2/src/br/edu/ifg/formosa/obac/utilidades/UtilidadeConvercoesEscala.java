@@ -11,7 +11,7 @@ public class UtilidadeConvercoesEscala {
 	
 	//Método usado para converter METRO em PIXEL -> p'=m'*p/m 
 	public static int converteMetroEmPixelX(double pTotal, double mAtual, double mTotal){
-		int pAtual = (int)((mTotal*mAtual)/mTotal);
+		int pAtual = (int)((pTotal*mAtual)/mTotal);
 		return pAtual;
     }//Fim converteMetroEmPixelX
 	
