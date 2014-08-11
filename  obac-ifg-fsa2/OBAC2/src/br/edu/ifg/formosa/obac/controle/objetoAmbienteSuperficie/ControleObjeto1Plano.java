@@ -9,7 +9,7 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 	
 	//Constantes
 		private final int atrasoMS = 20;//Atraso da thread usado no Sleep (20 milisegundos)
-		private final double atrasoSPadrao = 0.4;//Valor do tempo que é incrementado a cada nova posição
+		private final double atrasoSPadrao = 0.04;//Valor do tempo que é incrementado a cada nova posição
 	//Variáveis
 		private boolean continuar = true;///Variável usada para pausar a simulação
 		private Thread t = null;//Thread
@@ -29,6 +29,7 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 								ControleFormulasObjeto cfo, ControleFormulasSuperficie cfs)
 	{
 		//Passagem das refetrencias
+			this.ma = ma;
 			this.cOBAC = cOBAC;
 			this.vpf = vpf;
 			this.cfo = cfo;
@@ -57,15 +58,19 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 		//Laço de repetição para a executar a movimentação do objeto
 		while (true) {
 			if (continuar) {
+				
 				if (cfo.paradaPlano()==false) {
+					
 					//Calcula nova posição em METROS
 					cfo.calculaNovaPosicao();
 					//Converte a posição em METROS para PIXEL para poder movimentar o objeto
-					ma.getmO().setPosicaoXPx(
+					ma.getmO().setPosicaoXPx(130 +
 							UtilidadeConvercoesEscala.converteMetroEmPixelX(
 									ma.getmEH().getComprimentoEscalaPx(),
 									ma.getmO().getPosicaoXMetros(),
 									ma.getmEH().getEscalaFimXM()));
+					
+					//System.out.println(ma.getmO().getPosicaoXPx());
 					//Repinta o painel para mostar o andamento da simulação
 					cOBAC.repinta();
 					vpf.repaint();
@@ -77,8 +82,9 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 					//Atualiza o tempo
 					ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
 					
-					System.out.println("PX M Atual: "+ma.getmO().getPosicaoXMetros());
+					//System.out.println("PX M Atual: "+ma.getmO().getPosicaoXMetros());
 				}
+				else {parar();}
 			}
 			else {parar();}
 		}

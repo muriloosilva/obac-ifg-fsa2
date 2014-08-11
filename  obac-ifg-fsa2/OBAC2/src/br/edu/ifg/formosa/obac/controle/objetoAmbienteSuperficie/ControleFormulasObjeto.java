@@ -32,7 +32,7 @@ public class ControleFormulasObjeto {
 	//Aceleração no Plano -> a = Fat/massa * -1
 	public void calculaAceleracaoPlano(){
 		ma.getmO().setAceleracao(
-			(ma.getmS().getCoefAtritoSelecionado()/ma.getmO().getMassa())
+			((ma.getmS().getForcaAtrito()/ma.getmO().getMassa() * (-1)))
 		);
 		//Manda para o painel de fórmulas
 		vpf.getAtAceleracao().setText(
@@ -135,7 +135,8 @@ public class ControleFormulasObjeto {
 	//Testes lógicos para definirem a parada do objeto de acordo com a simulação
 		//Plano
 		public boolean paradaPlano(){
-			if(ma.getmO().getPosicaoXMetros() >= ma.getmO().getPosFinalXMetros()) return true;
+			//System.out.println(ma.getmO().getPosicaoXPx() + " | "+(ma.getmO().getPosFinalXPix() + 130));
+			if(ma.getmO().getPosicaoXPx() >= (ma.getmO().getPosFinalXPix() + 130)) return true;
 			else return false;
 		}
 		//Plano e Precipício

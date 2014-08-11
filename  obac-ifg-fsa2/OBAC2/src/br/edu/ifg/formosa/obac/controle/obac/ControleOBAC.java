@@ -142,6 +142,7 @@ public class ControleOBAC {
 			new ControleAmbiente(mA, vpc, mpc, this, vPS, cpca);
 			
 		//Repintar Applet
+			vpc.getCsPropulsao().setSelectedIndex(1);
 			obac.repaint();
 	}
 	
