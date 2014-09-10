@@ -59,7 +59,7 @@ public class ControleMolaSoltura implements Runnable{
 			//Corrige o valor na variável do tamanho da mola localizado no modelo
 			ma.getmP().getModeloMola().setTamanhoMolaAtualPix((int)i);
 			//Move o objeto (valor de i+posição inicial do objeto+ 1 pixel para o objeto ficar na frente da mola)
-			ma.getmO().setPosicaoXPx((int)i+ma.getmP().getPosX()+1);
+			ma.getmO().setPosicaoXPx((int)i+ma.getmP().getPosXM()+1);
 			//Repaint
 			cOBAC.repinta();
 			//Sleep - pausas no carregamento

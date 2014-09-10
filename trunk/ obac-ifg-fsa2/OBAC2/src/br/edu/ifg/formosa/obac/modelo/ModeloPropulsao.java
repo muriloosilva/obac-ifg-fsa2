@@ -11,6 +11,14 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ModeloPropulsao {
 
+	//Constantes
+	//--Int	
+	public final int posXC = 30; //Posição do Canhão - pixels
+	public final int posYC = 470;	
+	
+	public final int posXM = 30; //Posição da Mola - pixels
+	public final int posYM = 470;
+	
 	//Variáveis
 	//--URL
 	private URL urlProp = this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens/propulsaoObstaculo/");
@@ -19,9 +27,9 @@ public class ModeloPropulsao {
 	//--Int
 	private int translaX = 30; //Variáveis utilizadas para rotacionar o canhão
 	private int translaY = 470;
-	//Posição da propulsão - pixels
-	private int posX = 30;
-	private int posY = 470;
+	
+	private int posXProp = posXM;
+	private int posYProp = posYM;
 	
 	//--Modelos
 	private ModeloMola mM = null;
@@ -39,13 +47,10 @@ public class ModeloPropulsao {
 	//--Troca de Imagens
 	public void trocaImagemProp(boolean canhao){
 		if (canhao) {//Imagem do canhão
-			posY=460;
 			imagemPropulsao = new ImageIcon(this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens/propulsaoObstaculo/canhao.png"));
 			imagemPropulsao = new ImageIcon(imagemPropulsao.getImage().getScaledInstance(100, 40, Image.SCALE_DEFAULT));
-		}else{//Imagem da mola
-			posY=470;
+		}else//Imagem da mola
 			imagemPropulsao = new ImageIcon(this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens/propulsaoObstaculo/mola100px.png"));
-		}
 	}
 	
 	//--Getters
@@ -54,9 +59,14 @@ public class ModeloPropulsao {
 	public ImageIcon getImagemPropulsao(){return imagemPropulsao;}
 	public int getTranslaX() {return translaX;}
 	public int getTranslaY() {return translaY;}
-	public int getPosX() {return posX;}
-	public int getPosY() {return posY;}
+	public int getPosXM() {return posXM;}
+	public int getPosYM() {return posYM;}
+	public int getPosXC() {return posXC;}
+	public int getPosYC() {return posYC;}
+	public int getPosXProp() {return posXProp;}
+	public int getPosYProp() {return posYProp;}
+	
 	//--Seters
-	public void setPosX(int posX) {this.posX = posX;}
-	public void setPosY(int posY) {this.posY = posY;}
+	public void setPosXProp(int posXProp) {this.posXProp = posXProp;}
+	public void setPosYProp(int posYProp) {this.posYProp = posYProp;}
 }
