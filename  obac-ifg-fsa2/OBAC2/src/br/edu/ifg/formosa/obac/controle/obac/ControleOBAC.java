@@ -142,7 +142,7 @@ public class ControleOBAC {
 			new ControleAmbiente(mA, vpc, mpc, this, vPS, cpca);
 			
 		//Repintar Applet
-			vpc.getCsPropulsao().setSelectedIndex(1);
+			vpc.getCsPropulsao().setSelectedIndex(1); //Quando mudar, mude tmb as variaveis d posicionamento em ModeloPropulsao
 			obac.repaint();
 	}
 	

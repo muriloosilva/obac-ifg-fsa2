@@ -18,16 +18,20 @@ public class VisaoPropulsao extends JPanel {
 	private ModeloAmbiente mA = null;
 	//--Imagem exibida
 	private ImageIcon imagemPropulsao = null;
+	//--VisaoPainelConfiguracao
+	private VisaoPainelConfiguracao vPC = null;
 	
 	//Metodos
 	//--Construtor
-	public VisaoPropulsao(ModeloAmbiente mA) {
+	public VisaoPropulsao(ModeloAmbiente mA, VisaoPainelConfiguracao vPC) {
 		super(null);
 		
 		this.setSize(750, 600);
 		this.setOpaque(true);
 		
 		this.mA = mA;
+		this.vPC = vPC;
+		
 		imagemPropulsao = mA.getmP().getImagemPropulsao();
 	}
 	
@@ -35,9 +39,9 @@ public class VisaoPropulsao extends JPanel {
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;		
 
-		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
+		//g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
 		
-		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getPosX(), mA.getmP().getPosY(), this);
+		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getPosXProp(), mA.getmP().getPosYProp(), this);
 	}
 
 	//Get e Set

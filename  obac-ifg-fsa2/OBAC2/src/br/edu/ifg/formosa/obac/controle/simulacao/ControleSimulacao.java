@@ -27,7 +27,6 @@ public class ControleSimulacao {
 				switch (vPC.getCsAmbienteSimulacao().getSelectedIndex()) {
 				case 0://Plano
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
-					mudaPosProp(mA.getmP(), 30, 470);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -35,18 +34,20 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 1: //Subida
-					mudaModeloEscala(mA.getmEH(), -65, 500, 520, 500, -23.87, false);
-					mudaPosProp(mA.getmP(), -165, 440);
-					mudaPosObjeto(mA.getmO(), -65, 440);
+					//mudaModeloEscala(mA.getmEH(), -65, 500, 520, 500, -23.87, false);
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
+					//mudaPosObjeto(mA.getmO(), -65, 440);
+					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 2: //Descida
-					mudaModeloEscala(mA.getmEH(), 214, 198, 799, 198, 23.87, false); 
-					mudaPosProp(mA.getmP(), 114, 138);
-					mudaPosObjeto(mA.getmO(), 214, 138);
+					//mudaModeloEscala(mA.getmEH(), 214, 198, 799, 198, 23.87, false); 
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
+					//mudaPosObjeto(mA.getmO(), 214, 138);
+					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
@@ -54,7 +55,6 @@ public class ControleSimulacao {
 					break;
 				case 3: //Precipicio
 					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, 0, true); 
-					mudaPosProp(mA.getmP(), 30, 166);
 					mudaPosObjeto(mA.getmO(), 130, 166);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -106,12 +106,6 @@ public class ControleSimulacao {
 		mE.setIsPEP(isPEP);
 		
 		ModeloAmbiente.anguloInclinacaoGraus = angulo;
-	}
-	
-	//--Altera os valores de posicionamento da propulsão-Mola
-	private void mudaPosProp(ModeloPropulsao mP, int posX, int posY) {
-		mP.setPosX(posX);
-		mP.setPosY(posY);
 	}
 	
 	//--Altera os valores de posicionamento do objeto

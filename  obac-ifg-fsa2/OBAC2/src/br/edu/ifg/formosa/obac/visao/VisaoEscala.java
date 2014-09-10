@@ -39,7 +39,7 @@ public class VisaoEscala extends JPanel{
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		g2d.rotate(Math.toRadians(mE.getAnguloRotacaoGraus()));
+		//g2d.rotate(Math.toRadians(mE.getAnguloRotacaoGraus()));
 				
 		g2d.setColor(ModeloAmbiente.cor);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());
