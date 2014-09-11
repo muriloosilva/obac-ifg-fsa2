@@ -33,7 +33,12 @@ public class VisaoObjeto extends JPanel {
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		//g2d.rotate(Math.toRadians(ModeloAmbiente.anguloInclinacaoGraus));
+		/*g2d.translate(mA.getTranslateX(), mA.getTranslateY());
+		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
+		g2d.translate(-mA.getTranslateX(), -mA.getTranslateY());*/
+		g2d.translate(700, 520);
+		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
+		g2d.translate(-700, -520);
 		
 		g2d.setColor(Color.blue);
 		g2d.fillRect(mA.getmO().getPosicaoXPx(), mA.getmO().getPosicaoYPx(), ModeloObjeto.alturaLargura, ModeloObjeto.alturaLargura);

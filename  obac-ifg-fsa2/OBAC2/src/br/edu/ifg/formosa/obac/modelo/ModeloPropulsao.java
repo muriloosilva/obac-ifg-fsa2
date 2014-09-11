@@ -14,7 +14,7 @@ public class ModeloPropulsao {
 	//Constantes
 	//--Int	
 	public final int posXC = 30; //Posição do Canhão - pixels
-	public final int posYC = 470;	
+	public final int posYC = 465;	
 	
 	public final int posXM = 30; //Posição da Mola - pixels
 	public final int posYM = 470;

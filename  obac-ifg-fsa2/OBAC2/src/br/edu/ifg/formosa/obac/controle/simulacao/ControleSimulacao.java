@@ -27,6 +27,7 @@ public class ControleSimulacao {
 				switch (vPC.getCsAmbienteSimulacao().getSelectedIndex()) {
 				case 0://Plano
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
+					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -34,9 +35,8 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 1: //Subida
-					//mudaModeloEscala(mA.getmEH(), -65, 500, 520, 500, -23.87, false);
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
-					//mudaPosObjeto(mA.getmO(), -65, 440);
+					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -44,9 +44,8 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 2: //Descida
-					//mudaModeloEscala(mA.getmEH(), 214, 198, 799, 198, 23.87, false); 
-					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
-					//mudaPosObjeto(mA.getmO(), 214, 138);
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 23.87, false);
+					mudaTranslate(mA, 700, 520);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -55,6 +54,7 @@ public class ControleSimulacao {
 					break;
 				case 3: //Precipicio
 					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, 0, true); 
+					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 130, 166);
 					mudaMarcadores(mA.getmEH(), 100);
 					
@@ -63,6 +63,7 @@ public class ControleSimulacao {
 					break;
 				case 4: //Queda
 					mudaModeloEscala(mA.getmEV(), 320, 104, 320, 499, 0, false);
+					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 361, 104);
 					mudaMarcadores(mA.getmEV(), 1000);
 					
@@ -72,6 +73,7 @@ public class ControleSimulacao {
 				default://Projétil
 					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, 0, false);	
 					mudaModeloEscala(mA.getmEV(), 70, 100, 70, 499, 0, false);
+					mudaTranslate(mA, 0, 0);
 					
 					mudaMarcadores(mA.getmEH(), 100);
 					mudaMarcadores(mA.getmEV(), 100);
@@ -94,6 +96,12 @@ public class ControleSimulacao {
 		 * Se o numero de marcadores for 1, a linha (escala) tera de ser dividida em duas partes (1 mar + 1 = 2 partes)
 		 * Se o numero de marcadores for 8, a linha (escala) tera de ser dividida em nove partes (8 mar + 1 = 9 partes)
 		 */
+	}
+	
+	//--Altera os valores do translate
+	private void mudaTranslate(ModeloAmbiente mA, int tX, int tY) {
+		mA.setTranslateX(tX);
+		mA.setTranslateX(tY);
 	}
 	
 	//--Altera os valores do ModeloEscala
