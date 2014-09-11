@@ -18,6 +18,10 @@ public class ModeloAmbiente {
 	public static final String modeloURL = "br/edu/ifg/formosa/obac/imagens/";
 	
 	//Variáveis
+	//--Inteiro	
+	private int translateX = 0;
+	private int translateY = 0;
+	
 	//--Double
 	public static double anguloInclinacaoGraus = 0;
 	private double gravSelecionada = gravidadeTerra; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
@@ -65,6 +69,8 @@ public class ModeloAmbiente {
 	}
 	
 	//--Getters
+	public int getTranslateX() {return translateX;}
+	public int getTranslateY() {return translateY;}
 	public double getGravSelecionada() {return gravSelecionada;}
 	public double getTempoAtual() {return tempoAtual;}
 	public double getTempoTotal() {return tempoTotal;}
@@ -79,6 +85,8 @@ public class ModeloAmbiente {
 	public URL getUrlGu() {return urlGu;}
 	
 	//--Setters
+	public void setTranslateX(int translateX) {this.translateX = translateX;}
+	public void setTranslateY(int translateY) {this.translateY = translateY;}
 	public void setUrlGr(String urlGr) {this.urlGr = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + urlGr + ".png");}
 	public void setUrlA(String urlA) {this.urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlA + ".png");}
 	public void setUrlGu(String urlGu) {this.urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlGu + ".png");}

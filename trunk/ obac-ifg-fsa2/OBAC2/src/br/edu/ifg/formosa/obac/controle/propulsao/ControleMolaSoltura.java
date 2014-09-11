@@ -14,6 +14,7 @@ public class ControleMolaSoltura implements Runnable{
 	private VisaoPropulsao vp = null;
 	private ModeloAmbiente ma = null;
 	private ControleOBAC cOBAC = null;
+	private ControleMolaMouse cMM = null;
 	private ControleInicioSimulacoes cIS =null;
 	private Thread t = null;
 	
@@ -22,22 +23,23 @@ public class ControleMolaSoltura implements Runnable{
 	
 	public ControleMolaSoltura(VisaoPropulsao vp,
 							   ModeloAmbiente ma, ControleOBAC cOBAC,
-							   ControleMolaMouse cmm, ControleInicioSimulacoes cIS)
+							   ControleMolaMouse cMM, ControleInicioSimulacoes cIS)
 	{
 		this.vp = vp;
 		this.ma = ma;
 		this.cOBAC = cOBAC;
+		this.cMM = cMM;
 		this.cIS = cIS;
 		
 		//É calculada a velocidade de lançamento do objeto
-		ma.getmP().getModeloMola().calculaVelocidadeLancamento();
+//		ma.getmP().getModeloMola().calculaVelocidadeLancamento();
 		
 		//Remoção dos mouse*listeners
-		cmm.desativaMolaMouse();
+		cMM.desativaMolaMouse();
 		
-		if (cmm.getAjusteVertica()==0) {reposicionaObjeto=0;}//Plano e P&P
-		else if (cmm.getAjusteVertica()==-25) {reposicionaObjeto=-10;}//Subida
-		else if (cmm.getAjusteVertica()==20) {reposicionaObjeto=10;}//Descida
+//		if (cmm.getAjusteVertica()==0) {reposicionaObjeto=0;}//Plano e P&P
+//		else if (cmm.getAjusteVertica()==-25) {reposicionaObjeto=-10;}//Subida
+//		else if (cmm.getAjusteVertica()==20) {reposicionaObjeto=10;}//Descida
 		
 		t = new Thread(this);
 		t.start();
@@ -81,7 +83,9 @@ public class ControleMolaSoltura implements Runnable{
 			cOBAC.repinta();
 		}
 		//Inicia a movimentação do objeto
-		cIS.iniciarSimulacao();
+//		cIS.iniciarSimulacao();
+		
+		cMM.ativaMolaMouse();
 		//Para esta Thrad
 		t.interrupt();
 		t.stop();

@@ -19,13 +19,14 @@ public class VisaoEscala extends JPanel{
 	
 	//Variaveis
 	//--Modelos
+	private ModeloAmbiente mA = null;
 	private ModeloEscala mE = null;
 	private ModeloObjeto mO = null;
 	private ModeloPropulsao mP = null;
 	
 	//Metodos
 	//--Construtor #01
-	public VisaoEscala(ModeloEscala mE, ModeloObjeto mO, ModeloPropulsao mP) {
+	public VisaoEscala(ModeloEscala mE, ModeloObjeto mO, ModeloPropulsao mP, ModeloAmbiente mA) {
 		super(null);		
 		this.setSize(750, 600);
 		this.setOpaque(true);
@@ -33,13 +34,19 @@ public class VisaoEscala extends JPanel{
 		this.mE = mE;
 		this.mO = mO;
 		this.mP = mP;
+		this.mA = mA;
 	}
 	
 	//--Paint
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		//g2d.rotate(Math.toRadians(mE.getAnguloRotacaoGraus()));
+		/*g2d.translate(mA.getTranslateX(), mA.getTranslateY());
+		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
+		g2d.translate(-mA.getTranslateX(), -mA.getTranslateY());*/
+		g2d.translate(700, 520);
+		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
+		g2d.translate(-700, -520);
 				
 		g2d.setColor(ModeloAmbiente.cor);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());

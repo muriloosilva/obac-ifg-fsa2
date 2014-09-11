@@ -29,7 +29,7 @@ public class ControleMolaMouse {
 	private boolean restricaoHorizontal = false;
 	private boolean restricaoVetical = false;
 	//Taxa de ajuste - Ajusta o objeto no eixo Y
-	private int ajusteV = 0;
+//	private int ajusteV = 0;
 	
 	//Mouse Listener
 	//-----Reação da mola/objeto quando o objeto é solto
@@ -59,24 +59,24 @@ public class ControleMolaMouse {
 		@Override
 		public void mouseDragged(MouseEvent e) {
 			//Correção no eixo Y
-			corrigeAreaPegavel();
+//			corrigeAreaPegavel();
 			reposicionaObjeto(e.getX(), e.getY());
 		}
 	};
 	
 	//Método usado para ralizar os ajustes nas variáveis que referen-se a área pegável da mola
-	public void corrigeAreaPegavel(){
-		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0
-			||vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){//Plano ou P&P 
-			ajusteV = 0;
-		}
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){//Subida
-			ajusteV = -25;
-		}
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){//Descida
-			ajusteV = 20;
-		}
-	}
+//	public void corrigeAreaPegavel(){
+//		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0
+//			||vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){//Plano ou P&P 
+//			ajusteV = 0;
+//		}
+//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){//Subida
+//			ajusteV = -25;
+//		}
+//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){//Descida
+//			ajusteV = 20;
+//		}
+//	}
 	
 	//Método utilizado para reposicionar o objeto e comprimir a mola
 	//Também indica quando ocorre a soltura do objeto, dando inicio a simulaçao 
@@ -84,11 +84,12 @@ public class ControleMolaMouse {
 	private void reposicionaObjeto(int x, int y){
 		//Booleanas de controle - Verifica se a posição do mouse está em uma área válida
 			//Confirma se a posição em que o mouse está é permitida no eixo x(30px do epaço vazio e mais 20px para a mola não desaparecer)
-			restricaoHorizontal =((x>=(ma.getmP().getPosXM()+ma.getmP().getModeloMola().getTamanhoMolaMinimoPix())
-					  && x<=(ma.getmP().getPosXM()+ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
+			restricaoHorizontal =(
+				(x>=(ma.getmP().getPosXProp()+ma.getmP().getModeloMola().getTamanhoMolaMinimoPix())
+				&& x<=(ma.getmP().getPosXProp()+ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
 			//Confirma se a posição do mouse no eixo Y está correta
-			restricaoVetical=(y>=(ma.getmP().getPosYM()+this.ajusteV)
-					  && y<=(ma.getmP().getPosYM()+ma.getmO().alturaLargura+this.ajusteV));
+			restricaoVetical=(y>=(ma.getmP().getPosYProp())
+					  && y<=(ma.getmP().getPosYProp()+ma.getmO().alturaLargura));
 			  
 		if(restricaoHorizontal && restricaoVetical){
 			//Move o objeto
@@ -108,7 +109,7 @@ public class ControleMolaMouse {
 			if (ma.getmP().getModeloMola().getTamanhoMolaAtualPix()<ma.getmP().getModeloMola().getTamanhoMolaTotalPix())
 			{
 				//A simulação também ocorre quando o usuário sai da área delimitada para a interação com a mola 
-				new ControleMolaSoltura(vp, ma, cOBAC, this, cIS);
+				new ControleMolaSoltura(vp, ma, cOBAC, ControleMolaMouse.this, cIS);
 			}
 		}
 	}
@@ -123,6 +124,7 @@ public class ControleMolaMouse {
 			this.vpc = vpc;
 			this.ma = ma;
 			this.cIS = cIS;
+			 ativaMolaMouse();
 		}
 
 		
@@ -141,5 +143,5 @@ public class ControleMolaMouse {
 			restricaoVetical = false;
 		}
 	//Get do ajuste feito para comprimir a mola
-		public int getAjusteVertica(){return ajusteV;}
+//		public int getAjusteVertica(){return ajusteV;}
 }
