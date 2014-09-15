@@ -73,7 +73,8 @@ public class ControleMolaListeners implements MouseListener, MouseMotionListener
 			mA.getmP().getModeloMola().setTamanhoMolaAtualPix(x-mA.getmP().getPosXM());
 			mA.getmP().getModeloMola().setTamanhoMolaAtualM((UtilidadeConvercoesEscala.convertePixelMetro(mA.getmP().getModeloMola().getTamanhoMolaTotalM(), mA.getmP().getModeloMola().getTamanhoMolaAtualPix(), mA.getmP().getModeloMola().getTamanhoMolaTotalPix())));
 			//Altera o tamanho da imagem para ajustála a compressão
-			vP.setImagemPropulsao(new ImageIcon(mA.getmP().getImagemPropulsao().getImage().getScaledInstance(mA.getmP().getModeloMola().getTamanhoMolaAtualPix(), 30, Image.SCALE_DEFAULT)));
+//			vP.setImagemPropulsao(new ImageIcon(mA.getmP().getImagemPropulsao().getImage().getScaledInstance(mA.getmP().getModeloMola().getTamanhoMolaAtualPix(), 30, Image.SCALE_DEFAULT)));
+			vP.getlProp().setIcon(new ImageIcon(mA.getmP().getImagemPropulsao().getImage().getScaledInstance((int)mA.getmP().getModeloMola().getTamanhoMolaAtualPix(), 30, Image.SCALE_DEFAULT)));
 			//Repinta o Painel de Repintar
 			cOBAC.repinta();
 			
