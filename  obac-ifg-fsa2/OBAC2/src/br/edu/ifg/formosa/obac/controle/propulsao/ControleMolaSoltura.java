@@ -84,8 +84,6 @@ public class ControleMolaSoltura implements Runnable{
 		}
 		//Inicia a movimentação do objeto
 //		cIS.iniciarSimulacao();
-		
-		cMM.ativaMolaMouse();
 		//Para esta Thrad
 		t.interrupt();
 		t.stop();

@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
@@ -17,9 +18,9 @@ public class VisaoPropulsao extends JPanel {
 	//--Modelos das propulsões
 	private ModeloAmbiente mA = null;
 	//--Imagem exibida
-	private ImageIcon imagemPropulsao = null;
+//	private ImageIcon imagemPropulsao = null;
+	private JLabel lProp = null;
 	//--VisaoPainelConfiguracao
-	private VisaoPainelConfiguracao vPC = null;
 	
 	//Metodos
 	//--Construtor
@@ -30,9 +31,11 @@ public class VisaoPropulsao extends JPanel {
 		this.setOpaque(true);
 		
 		this.mA = mA;
-		this.vPC = vPC;
+		lProp = new JLabel("txt",mA.getmP().getImagemPropulsao(), JLabel.CENTER);
+		lProp.setBounds(30, 470, 100, 30);
+		this.add(lProp);
 		
-		imagemPropulsao = mA.getmP().getImagemPropulsao();
+//		imagemPropulsao = mA.getmP().getImagemPropulsao();
 	}
 	
 	//--Paint
@@ -43,10 +46,11 @@ public class VisaoPropulsao extends JPanel {
 		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
 		g2d.translate(-700, -520);
 		
-		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getPosXProp(), mA.getmP().getPosYProp(), this);
+//		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getPosXProp(), mA.getmP().getPosYProp(), this);
 	}
 
 	//Get e Set
-	public ImageIcon getImagemPropulsao(){return imagemPropulsao;}
-	public void setImagemPropulsao(ImageIcon imagemPropulsao){this.imagemPropulsao = imagemPropulsao;}
+	public JLabel getlProp() {return lProp;}
+//	public ImageIcon getImagemPropulsao(){return imagemPropulsao;}
+//	public void setImagemPropulsao(ImageIcon imagemPropulsao){this.imagemPropulsao = imagemPropulsao;}
 }

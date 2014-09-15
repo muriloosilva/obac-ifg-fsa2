@@ -70,7 +70,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vpi.setVisivelCanhao();
 					//Altera a imagem
 					mP.trocaImagemProp(true);
-					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
+					vPS.getVisaoPropulsao().getlProp().setIcon(mP.getImagemPropulsao());
 					//Método necessário para corrigir o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 					//Altera o posicionamento
@@ -91,7 +91,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vpi.setVisivelMola();
 					//Altera a imagem
 					mP.trocaImagemProp(false);
-					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
+					vPS.getVisaoPropulsao().getlProp().setIcon(mP.getImagemPropulsao());
 					//Método necessário para desfazer a correção o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 					//Altera o posicionamento
