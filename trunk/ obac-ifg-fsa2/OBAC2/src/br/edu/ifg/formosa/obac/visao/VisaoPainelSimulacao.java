@@ -1,6 +1,11 @@
 package br.edu.ifg.formosa.obac.visao;
 
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 

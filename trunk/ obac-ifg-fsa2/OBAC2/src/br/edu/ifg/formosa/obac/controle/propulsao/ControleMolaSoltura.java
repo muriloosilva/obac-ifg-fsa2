@@ -14,7 +14,7 @@ public class ControleMolaSoltura implements Runnable{
 	private VisaoPropulsao vp = null;
 	private ModeloAmbiente ma = null;
 	private ControleOBAC cOBAC = null;
-	private ControleMolaMouse cMM = null;
+//	private ControleMolaMouse cMM = null;
 	private ControleInicioSimulacoes cIS =null;
 	private Thread t = null;
 	
@@ -23,19 +23,19 @@ public class ControleMolaSoltura implements Runnable{
 	
 	public ControleMolaSoltura(VisaoPropulsao vp,
 							   ModeloAmbiente ma, ControleOBAC cOBAC,
-							   ControleMolaMouse cMM, ControleInicioSimulacoes cIS)
+							   /*ControleMolaMouse cMM,*/ ControleInicioSimulacoes cIS)
 	{
 		this.vp = vp;
 		this.ma = ma;
 		this.cOBAC = cOBAC;
-		this.cMM = cMM;
+//		this.cMM = cMM;
 		this.cIS = cIS;
 		
 		//É calculada a velocidade de lançamento do objeto
 //		ma.getmP().getModeloMola().calculaVelocidadeLancamento();
 		
 		//Remoção dos mouse*listeners
-		cMM.desativaMolaMouse();
+//		cMM.desativaMolaMouse();
 		
 //		if (cmm.getAjusteVertica()==0) {reposicionaObjeto=0;}//Plano e P&P
 //		else if (cmm.getAjusteVertica()==-25) {reposicionaObjeto=-10;}//Subida
@@ -57,8 +57,7 @@ public class ControleMolaSoltura implements Runnable{
 			i+=cont)
 		{
 			//Altera o tamanho da imagem para ajustála a compressão
-//			vp.setImagemPropulsao(new ImageIcon(ma.getmP().getImagemPropulsao().getImage().getScaledInstance((int)i, 30, Image.SCALE_DEFAULT)));
-			vp.getlProp().setIcon(new ImageIcon(ma.getmP().getImagemPropulsao().getImage().getScaledInstance((int)i, 30, Image.SCALE_DEFAULT)));
+			vp.setImagemPropulsao(new ImageIcon(ma.getmP().getImagemPropulsao().getImage().getScaledInstance((int)i, 30, Image.SCALE_DEFAULT)));
 			//Corrige o valor na variável do tamanho da mola localizado no modelo
 			ma.getmP().getModeloMola().setTamanhoMolaAtualPix((int)i);
 			//Move o objeto (valor de i+posição inicial do objeto+ 1 pixel para o objeto ficar na frente da mola)
@@ -77,8 +76,7 @@ public class ControleMolaSoltura implements Runnable{
 		if(ma.getmP().getModeloMola().getTamanhoMolaAtualPix()<ma.getmP().getModeloMola().getTamanhoMolaTotalPix()){
 			//Retorna a mola para a posição original (primeiro no modelo depois na imagem)
 			ma.getmP().getModeloMola().setTamanhoMolaAtualPix(ma.getmP().getModeloMola().getTamanhoMolaTotalPix());
-//			vp.setImagemPropulsao(ma.getmP().getImagemPropulsao());
-			vp.getlProp().setIcon(ma.getmP().getImagemPropulsao());
+			vp.setImagemPropulsao(ma.getmP().getImagemPropulsao());
 			//Posiciona o Objeto na posição original
 			ma.getmO().setPosicaoXPx(130+reposicionaObjeto);
 			//Repaint
