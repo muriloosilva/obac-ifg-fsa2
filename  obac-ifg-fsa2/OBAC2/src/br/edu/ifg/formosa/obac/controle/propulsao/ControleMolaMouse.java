@@ -26,93 +26,93 @@ public class ControleMolaMouse {
 	private ControleInicioSimulacoes cIS = null;
 	
 //	//Booleana de controle - Só ativa o retorno da mola se ela foi arrastada na área permitida
-//	private boolean restricaoHorizontal = false;
-//	private boolean restricaoVetical = false;
+	private boolean restricaoHorizontal = false;
+	private boolean restricaoVetical = false;
 	//Taxa de ajuste - Ajusta o objeto no eixo Y
-//	private int ajusteV = 0;
+	private int ajusteV = 0;
 	
 	//Mouse Listener
 	private ControleMolaListeners cML = null;
 	//-----Reação da mola/objeto quando o objeto é solto
-//	private final MouseListener mListener = new MouseAdapter() {
-//		@Override
-//		public void mouseReleased(MouseEvent arg0) {
-//			super.mouseReleased(arg0);
-//			
-//			//Retorna a mola e o objeto para a posição inicial antes de dá início a simulação
-//			//-----É necessário repintar a mola(do tamanho total até o incial) e mover o objeto de acordo com a expanção da mola
-//			//-----Também é preciso que confirmar que a soltura da mola ocorreu com a mola comprimida 
-//			if(restricaoHorizontal && restricaoVetical &&
-//			   ma.getmP().getModeloMola().getTamanhoMolaAtualPix()<ma.getmP().getModeloMola().getTamanhoMolaTotalPix())
-//			{	
-//				//É iniciada a simulação
-//				new ControleMolaSoltura(vp, ma, cOBAC, ControleMolaMouse.this, cIS);
-//			}
-//		}
-//	};
+	private final MouseListener mListener = new MouseAdapter() {
+		@Override
+		public void mouseReleased(MouseEvent arg0) {
+			super.mouseReleased(arg0);
+			
+			//Retorna a mola e o objeto para a posição inicial antes de dá início a simulação
+			//-----É necessário repintar a mola(do tamanho total até o incial) e mover o objeto de acordo com a expanção da mola
+			//-----Também é preciso que confirmar que a soltura da mola ocorreu com a mola comprimida 
+			if(restricaoHorizontal && restricaoVetical &&
+			   ma.getmP().getModeloMola().getTamanhoMolaAtualPix()<ma.getmP().getModeloMola().getTamanhoMolaTotalPix())
+			{	
+				//É iniciada a simulação
+				new ControleMolaSoltura(vp, ma, cOBAC, ControleMolaMouse.this, cIS);
+			}
+		}
+	};
 	
 	
 	
 	//Mouse Motion Listener
 	//-----Realiza o puxar e arrastar do objeto, que implica na compressão da mola 
-//	private final MouseMotionListener mMotionListener = new MouseMotionAdapter() {
-//		@Override
-//		public void mouseDragged(MouseEvent e) {
-//			//Correção no eixo Y
-////			corrigeAreaPegavel();
-//			reposicionaObjeto(e.getX(), e.getY());
-//		}
-//	};
+	private final MouseMotionListener mMotionListener = new MouseMotionAdapter() {
+		@Override
+		public void mouseDragged(MouseEvent e) {
+			//Correção no eixo Y
+//			corrigeAreaPegavel();
+			reposicionaObjeto(e.getX(), e.getY());
+		}
+	};
 	
 	//Método usado para ralizar os ajustes nas variáveis que referen-se a área pegável da mola
-//	public void corrigeAreaPegavel(){
-//		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0
-//			||vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){//Plano ou P&P 
-//			ajusteV = 0;
-//		}
-//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){//Subida
-//			ajusteV = -25;
-//		}
-//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){//Descida
-//			ajusteV = 20;
-//		}
-//	}
+	public void corrigeAreaPegavel(){
+		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0
+			||vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){//Plano ou P&P 
+			ajusteV = 0;
+		}
+		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){//Subida
+			ajusteV = -25;
+		}
+		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){//Descida
+			ajusteV = 20;
+		}
+	}
 	
 //	//Método utilizado para reposicionar o objeto e comprimir a mola
 //	//Também indica quando ocorre a soltura do objeto, dando inicio a simulaçao 
-//	@SuppressWarnings("static-access")
-//	private void reposicionaObjeto(int x, int y){
-//		//Booleanas de controle - Verifica se a posição do mouse está em uma área válida
-//			//Confirma se a posição em que o mouse está é permitida no eixo x(30px do epaço vazio e mais 20px para a mola não desaparecer)
-//			restricaoHorizontal =(
-//				(x>=(ma.getmP().getPosXProp()+ma.getmP().getModeloMola().getTamanhoMolaMinimoPix())
-//				&& x<=(ma.getmP().getPosXProp()+ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
-//			//Confirma se a posição do mouse no eixo Y está correta
-//			restricaoVetical=(y>=(ma.getmP().getPosYProp())
-//					  && y<=(ma.getmP().getPosYProp()+ma.getmO().alturaLargura));
-//			  
-//		if(restricaoHorizontal && restricaoVetical){
-//			//Move o objeto
-//			ma.getmO().setPosicaoXPx(x);
-//			//Passa o Tamanho da mola de pixel para metros
-//			ma.getmP().getModeloMola().setTamanhoMolaAtualPix(x-ma.getmP().getPosXM());
-//			ma.getmP().getModeloMola().setTamanhoMolaAtualM((UtilidadeConvercoesEscala.convertePixelMetro(ma.getmP().getModeloMola().getTamanhoMolaTotalM(), ma.getmP().getModeloMola().getTamanhoMolaAtualPix(), ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
-//			//Altera o tamanho da imagem para ajustála a compressão
-//			vp.setImagemPropulsao(new ImageIcon(ma.getmP().getImagemPropulsao().getImage().getScaledInstance(ma.getmP().getModeloMola().getTamanhoMolaAtualPix(), 30, Image.SCALE_DEFAULT)));
-//			//Repinta o Painel de Repintar
-//			cOBAC.repinta();
-//			
-//			System.out.println("Velocidade: " +(ma.getmP().getModeloMola().getkAtual()+Math.pow(ma.getmP().getModeloMola().getX(), 2))/ma.getmO().getMassa());
-//		}
-//		else{
-//			//-----É preciso que confirmar que a soltura da mola ocorreu com a mola comprimida
-//			if (ma.getmP().getModeloMola().getTamanhoMolaAtualPix()<ma.getmP().getModeloMola().getTamanhoMolaTotalPix())
-//			{
-//				//A simulação também ocorre quando o usuário sai da área delimitada para a interação com a mola 
-//				new ControleMolaSoltura(vp, ma, cOBAC, ControleMolaMouse.this, cIS);
-//			}
-//		}
-//	}
+	@SuppressWarnings("static-access")
+	private void reposicionaObjeto(int x, int y){
+		//Booleanas de controle - Verifica se a posição do mouse está em uma área válida
+			//Confirma se a posição em que o mouse está é permitida no eixo x(30px do epaço vazio e mais 20px para a mola não desaparecer)
+			restricaoHorizontal =(
+				(x>=(ma.getmP().getPosXProp()+ma.getmP().getModeloMola().getTamanhoMolaMinimoPix())
+				&& x<=(ma.getmP().getPosXProp()+ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
+			//Confirma se a posição do mouse no eixo Y está correta
+			restricaoVetical=(y>=(ma.getmP().getPosYProp())
+					  && y<=(ma.getmP().getPosYProp()+ma.getmO().alturaLargura));
+			  
+		if(restricaoHorizontal && restricaoVetical){
+			//Move o objeto
+			ma.getmO().setPosicaoXPx(x);
+			//Passa o Tamanho da mola de pixel para metros
+			ma.getmP().getModeloMola().setTamanhoMolaAtualPix(x-ma.getmP().getPosXM());
+			ma.getmP().getModeloMola().setTamanhoMolaAtualM((UtilidadeConvercoesEscala.convertePixelMetro(ma.getmP().getModeloMola().getTamanhoMolaTotalM(), ma.getmP().getModeloMola().getTamanhoMolaAtualPix(), ma.getmP().getModeloMola().getTamanhoMolaTotalPix())));
+			//Altera o tamanho da imagem para ajustála a compressão
+			vp.setImagemPropulsao(new ImageIcon(ma.getmP().getImagemPropulsao().getImage().getScaledInstance(ma.getmP().getModeloMola().getTamanhoMolaAtualPix(), 30, Image.SCALE_DEFAULT)));
+			//Repinta o Painel de Repintar
+			cOBAC.repinta();
+			
+			System.out.println("Velocidade: " +(ma.getmP().getModeloMola().getkAtual()+Math.pow(ma.getmP().getModeloMola().getX(), 2))/ma.getmO().getMassa());
+		}
+		else{
+			//-----É preciso que confirmar que a soltura da mola ocorreu com a mola comprimida
+			if (ma.getmP().getModeloMola().getTamanhoMolaAtualPix()<ma.getmP().getModeloMola().getTamanhoMolaTotalPix())
+			{
+				//A simulação também ocorre quando o usuário sai da área delimitada para a interação com a mola 
+				new ControleMolaSoltura(vp, ma, cOBAC, ControleMolaMouse.this, cIS);
+			}
+		}
+	}
 	
 	//Construtor
 		public ControleMolaMouse(ControleOBAC cOBAC, VisaoPropulsao vp,
@@ -142,12 +142,12 @@ public class ControleMolaMouse {
 			vp.removeMouseListener(cML);
 			vp.removeMouseMotionListener(cML);
 			cML = null;
-//			vp.removeMouseMotionListener(mMotionListener);
-//			vp.removeMouseListener(mListener);
+			vp.removeMouseMotionListener(mMotionListener);
+			vp.removeMouseListener(mListener);
 			//E cancelamento da área legal da mola (Para previnir falhas)
 //			restricaoHorizontal = false;
 //			restricaoVetical = false;
 		}
 	//Get do ajuste feito para comprimir a mola
-//		public int getAjusteVertica(){return ajusteV;}
+		public int getAjusteVertica(){return ajusteV;}
 }
