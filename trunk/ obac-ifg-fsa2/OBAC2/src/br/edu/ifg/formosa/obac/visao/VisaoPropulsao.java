@@ -50,9 +50,9 @@ public class VisaoPropulsao extends JPanel {
 			pCompressor.setOpaque(true);
 			this.add(pCompressor);
 			//Rotulo
-			rotuloCompressao = new JLabel("100", JLabel.RIGHT);
+			rotuloCompressao = new JLabel("0%", JLabel.RIGHT);
 			rotuloCompressao.setSize(100, 30);
-			rotuloCompressao.setFont(new Font(null, 0, 30));
+			rotuloCompressao.setFont(new Font(null, 0, 20));
 			rotuloCompressao.setForeground(Color.BLACK);
 			pCompressor.add(rotuloCompressao);
 			//Deslizante
@@ -72,6 +72,7 @@ public class VisaoPropulsao extends JPanel {
 		g2d.rotate(Math.toRadians(mA.getmP().getAnguloRotacaoGraus()), mA.getTranslateX(), mA.getTranslateY());
 		
 		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getPosXProp(), mA.getmP().getPosYProp(), this);
+		
 	}
 
 	//Get e Set
