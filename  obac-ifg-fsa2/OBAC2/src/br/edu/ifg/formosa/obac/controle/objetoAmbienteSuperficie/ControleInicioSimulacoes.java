@@ -44,9 +44,9 @@ public class ControleInicioSimulacoes {
 		//Plano
 		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){new ControleObjeto1Plano(mA, vPF, cOBAC, cfo, cfs);}
 		//Subida
-//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){new ControleObjeto2Subida();}
+		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){new ControleObjeto2Subida(mA, vPF, cOBAC, cfo, cfs);}
 		//Descida
-//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){new ControleObjeto3Descida();}
+		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){new ControleObjeto3Descida(mA, vPF, cOBAC, cfo, cfs);}
 		//Queda Livre
 //		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto4PlanoPrecipicio();}
 		//Plano e Precipício

@@ -51,7 +51,7 @@ public class ControleFormulasObjeto {
 	public void calculaAceleracaoSubida(){
 		ma.getmO().setAceleracao(
 			((ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.anguloInclinacaoGraus)))
-			 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.anguloInclinacaoGraus)))
+			 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.anguloInclinacaoGraus))*-1)
 			)
 			
 		);
@@ -108,9 +108,6 @@ public class ControleFormulasObjeto {
 			(ma.getmO().getVelocidadeInicial()*ma.getTempoAtual())
 			+((ma.getmO().getAceleracao()*ma.getTempoAtual()*ma.getTempoAtual())/2)
 		);
-		System.out.println("ma.getmO().getVelocidadeInicial()" +ma.getmO().getVelocidadeInicial());
-		System.out.println("ma.getTempoAtual()" +ma.getTempoAtual());
-		System.out.println("ma.getmO().getAceleracao()" +ma.getmO().getAceleracao());
 		//Manda para o painel de fórmulas
 		vpf.getAtNovaPos().setText(
 				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempoAtual(), ma.getmO().getAceleracao()));
@@ -135,7 +132,6 @@ public class ControleFormulasObjeto {
 	//Testes lógicos para definirem a parada do objeto de acordo com a simulação
 		//Plano
 		public boolean paradaPlano(){
-			//System.out.println(ma.getmO().getPosicaoXPx() + " | "+(ma.getmO().getPosFinalXPix() + 130));
 			if(ma.getmO().getPosicaoXPx() >= (ma.getmO().getPosFinalXPix() + 130)) return true;
 			else return false;
 		}
@@ -161,16 +157,15 @@ public class ControleFormulasObjeto {
 			}
 			else{
 				//Este valor é repassado para o OBJETO com o fim de evitar que o objeto retorne
-				ma.getmO().setPosicaoXPx(ModeloObjeto.pontoFinalObjetoSubidaPix);
 				return true;
 			}
 		}
 		
 		//Descida
 		public boolean paradaDescida(){
-			if (ma.getmO().getPosicaoXPx() >= ModeloObjeto.pontoFinalObjetoDescidaPix) {
+			if (ma.getmO().getPosicaoXPx() >= ModeloObjeto.pontoFinalObjetoDescidaPix
+				|| ma.getmO().getPosicaoXPx()>=(ma.getmO().getPosFinalXPix()+130)) {
 				//Este valor é repassado para o OBJETO com o fim de evitar que o objeto retorne
-				ma.getmO().setPosicaoXPx(ModeloObjeto.pontoFinalObjetoDescidaPix);
 				return true;
 			}
 			else{return false;}
