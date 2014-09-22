@@ -22,7 +22,7 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 		private ControleFormulasObjeto cfo = null;
 	
 	
-	//Controle______________________________
+	//Construtor______________________________
 	public ControleObjeto1Plano(ModeloAmbiente ma,VisaoPainelFormulas vpf, 
 								ControleOBAC cOBAC,
 								ControleFormulasObjeto cfo, ControleFormulasSuperficie cfs)
@@ -57,7 +57,6 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 		//Laço de repetição para a executar a movimentação do objeto
 		while (true) {
 			if (continuar) {
-				
 				if (cfo.paradaPlano()==false) {
 					
 					//Calcula nova posição em METROS
@@ -69,10 +68,8 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 									ma.getmO().getPosicaoXMetros(),
 									ma.getmEH().getEscalaFimXM()));
 					
-					//System.out.println(ma.getmO().getPosicaoXPx());
 					//Repinta o painel para mostar o andamento da simulação
 					cOBAC.repinta();
-					vpf.repaint();
 					//Repinta o painel de fórmulas
 					vpf.repaint();
 					//Parada no carregamento para dar o realismo da simulação
@@ -80,8 +77,6 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 					catch (InterruptedException e) {}
 					//Atualiza o tempo
 					ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
-					
-					//System.out.println("PX M Atual: "+ma.getmO().getPosicaoXMetros());
 				}
 				else {parar();}
 			}
@@ -101,6 +96,6 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 	//Parar
 	@Override
 	@SuppressWarnings("deprecation")
-	public void parar() {pausar();	t.interrupt(); 	t.stop();}
+	public void parar() {cOBAC.repinta(); pausar();	t.interrupt(); 	t.stop();}
 	
 }
