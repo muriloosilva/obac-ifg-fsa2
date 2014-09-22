@@ -28,12 +28,12 @@ public class ModeloMola {
 	private final int tamanhoMolaMinimoPix = 25;//Tamanho mínimo em pixels que a mola pode assumir 
 	private final int tamanhoMolaTotalPix = 100;//tamanho inicial em pixels 
 	private int tamanhoMolaAtualPix=tamanhoMolaTotalPix;//tamanho final em pixels = Pos inicial do objeto
-	private double tamanhoMolaTotalM;//tamanho inicial em metros
+	private double tamanhoMolaTotalM=100;//tamanho inicial em metros
 	private double tamanhoMolaAtualM;//tamanho final em metros
 	//Taxa de deformação da mola
 	private double x=0;
 	//Constante elástica(k)
-	private double kAtual;//Atual
+	private double kAtual=30;//Atual
 
 
 	//Cálculo de avelocidade - V0 = (K+x^2/m)
@@ -65,7 +65,7 @@ public class ModeloMola {
 	public double getTamanhoMolaTotalM(){return tamanhoMolaTotalM;}
 	//Setters
 	public void setTamanhoMolaAtualPix(int tamanhoMolaAtualPix) {this.tamanhoMolaAtualPix = tamanhoMolaAtualPix;}
-	public void setTamanhoMolaTotalM(double tamanhoMolaTotalM) {this.tamanhoMolaTotalM = tamanhoMolaTotalM;}
+	public void setTamanhoMolaTotalM(double tamanhoMolaTotalM) {this.tamanhoMolaTotalM= tamanhoMolaTotalM;}
 	public void setTamanhoMolaAtualM(double tamanhoMolaAtualM) {this.tamanhoMolaAtualM = tamanhoMolaAtualM;}
 	public void setkAtual(double kAtual) {
 		this.kAtual = kAtual;
