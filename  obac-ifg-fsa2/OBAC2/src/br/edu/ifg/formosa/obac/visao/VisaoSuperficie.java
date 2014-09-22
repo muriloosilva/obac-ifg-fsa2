@@ -52,6 +52,7 @@ public class VisaoSuperficie extends JPanel {
 		
 		g2d.drawImage(gravidade.getImage(), 0, 0, this);
 		g2d.drawImage(andaime.getImage(), 0, 0, this);
+		
 		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) 
 			g2d.drawImage(guindaste.getImage(), 0, 0, this);
 	}

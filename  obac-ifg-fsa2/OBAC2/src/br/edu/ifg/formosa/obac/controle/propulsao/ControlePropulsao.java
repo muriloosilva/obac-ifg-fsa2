@@ -15,16 +15,6 @@ public class ControlePropulsao {
 	public ControlePropulsao(VisaoPainelInformacao vPI, VisaoPainelSimulacao vPS, final ModeloAmbiente mA,
 							 final VisaoPainelConfiguracao vPC, ModeloPainelConfiguracao mPC) {
 		
-		vPC.getCsPropulsao().addActionListener(new ActionListener() {			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				switch (vPC.getCsPropulsao().getSelectedIndex()) {
-				case 0:
-					break;
-				case 1:
-					break;
-				}
-			}
-		});
+		
 	}
 }

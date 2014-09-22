@@ -40,12 +40,13 @@ public class ControleFormulasSuperficie {
 		
 		//Passa o ponto final da escala para a escala real
 		ma.getmEH().setEscalaFimXM(pontoFinalEscala);
+		ma.getmEV().setEscalaFimXM(pontoFinalEscala);
 	}
 	
 	//Calcula escala Queda Livre
 	public void calculaEscalaQueda(){
 		long pontoFinalEscala=1000;//Esta escala possui o tamanho fixo de 1000 Metros
-		ma.getmEH().setEscalaFimYM(pontoFinalEscala);
+		ma.getmEV().setEscalaFimYM(pontoFinalEscala);
 		//Verificar o surface.setEscala() do OBAC original. Qual a utilidade dele
 	}
 	

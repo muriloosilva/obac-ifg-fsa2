@@ -43,6 +43,7 @@ public class ModeloAmbiente {
 	private ModeloSuperficie mS = null;
 	private ModeloPropulsao mP = null;
 	private ModeloObstaculo mObs = null;
+	private ModeloCanhao mC = null;
 	
 	//--Color
 	public static Color cor = Color.black; //Utilizado pra desenhar a escala de maneira que fique bem visivel nas simuações
@@ -66,6 +67,8 @@ public class ModeloAmbiente {
 		mP = new ModeloPropulsao(this, cpi, cpf, vpf);
 		//Modelo Obstaculo
 		mObs = new ModeloObstaculo();
+		//Modelo Canhão
+		mC = new ModeloCanhao(this, cpi, cpf, vpf);
 	}
 	
 	//--Getters
@@ -80,6 +83,7 @@ public class ModeloAmbiente {
 	public ModeloSuperficie getmS() {return mS;}
 	public ModeloPropulsao getmP(){return mP;}
 	public ModeloObstaculo getmObs(){return mObs;}
+	public ModeloCanhao getmC() {return mC;}
 	public URL getUrlGr() {return urlGr;}
 	public URL getUrlA() {return urlA;}
 	public URL getUrlGu() {return urlGu;}
