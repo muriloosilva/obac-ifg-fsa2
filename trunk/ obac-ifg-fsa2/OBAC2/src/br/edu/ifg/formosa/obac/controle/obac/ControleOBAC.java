@@ -18,7 +18,7 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleCanhaoMouse;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
-import br.edu.ifg.formosa.obac.controle.propulsao.MolaDeslisanteLitener;
+import br.edu.ifg.formosa.obac.controle.propulsao.MolaDeslizanteListener;
 import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
@@ -149,7 +149,7 @@ public class ControleOBAC {
 			new ControleAmbiente(mA, vpc, mpc, this, vPS, cpca);
 			
 		//Repintar Applet
-			new MolaDeslisanteLitener(vPS.getVisaoPropulsao(), mA, this, cIS);
+			new MolaDeslizanteListener(vPS.getVisaoPropulsao(), mA, this, cIS);
 			vpc.getCsPropulsao().setSelectedIndex(1); //Quando mudar, mude tmb as variaveis d posicionamento em ModeloPropulsao
 			obac.repaint();
 	}
