@@ -35,16 +35,17 @@ public class ModeloObjeto {
 	private double posicaoYMetros = 0;
 	
 	private double posFinalXMetros = 0;//Posição final do objeto em metros no eixo X
-	private int posFinalXPix = 0;//Posição final do objeto em Pixels no eixo X
 	private double posFinalYMetros = 0;//Posição final do objeto em metros no eixo Y
-	private int posFinalYPix = 0;//Posição final do objeto em Pixels no eixo Y 
 	
 	private double forcaNormal = 0;//Força normal agindo no objeto
 	
 	//--Int
 	//Posicao em Pixels
-	private int posicaoXPx = 130; 
+	private int posicaoXPx = 130;
 	private int posicaoYPx = 470;
+	
+	private int posFinalXPix = 0;//Posição final do objeto em Pixels no eixo X
+	private int posFinalYPix = 0;//Posição final do objeto em Pixels no eixo Y 
 	
 	//Metodos
 	//--Getters

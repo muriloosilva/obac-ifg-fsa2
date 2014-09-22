@@ -48,7 +48,7 @@ public class ControleMolaListeners implements MouseListener, MouseMotionListener
 		   mA.getmP().getModeloMola().getTamanhoMolaAtualPix()<mA.getmP().getModeloMola().getTamanhoMolaTotalPix())
 		{	
 			//É iniciada a simulação
-			new ControleMolaSoltura(vP, mA, cOBAC, cMM, cIS);
+			new ControleMolaSoltura(vP, mA, cOBAC, /*cMM,*/ cIS);
 		}
 		
 	}
@@ -84,7 +84,7 @@ public class ControleMolaListeners implements MouseListener, MouseMotionListener
 			if (mA.getmP().getModeloMola().getTamanhoMolaAtualPix()<mA.getmP().getModeloMola().getTamanhoMolaTotalPix())
 			{
 				//A simulação também ocorre quando o usuário sai da área delimitada para a interação com a mola 
-				new ControleMolaSoltura(vP, mA, cOBAC, cMM, cIS);
+				new ControleMolaSoltura(vP, mA, cOBAC, /*cMM,*/ cIS);
 			}
 		}
 	}

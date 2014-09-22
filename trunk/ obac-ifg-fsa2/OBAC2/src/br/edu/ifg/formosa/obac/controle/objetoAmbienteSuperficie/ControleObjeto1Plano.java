@@ -5,8 +5,7 @@ import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
-public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
-	
+public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{	
 	//Constantes
 		private final int atrasoMS = 20;//Atraso da thread usado no Sleep (20 milisegundos)
 		private final double atrasoSPadrao = 0.04;//Valor do tempo que é incrementado a cada nova posição

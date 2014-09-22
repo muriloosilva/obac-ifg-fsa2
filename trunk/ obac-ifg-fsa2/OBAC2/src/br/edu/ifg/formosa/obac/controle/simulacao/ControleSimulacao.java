@@ -3,12 +3,12 @@ package br.edu.ifg.formosa.obac.controle.simulacao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
+import br.edu.ifg.formosa.obac.controle.propulsao.ControleCanhaoListeners;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
-import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
-import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
@@ -17,7 +17,7 @@ public class ControleSimulacao {
 	//Metodos
 	//--Construtor
 	public ControleSimulacao(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps, final ModeloAmbiente mA, 
-			                 final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC) {		
+			                 final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC, final ControleOBAC cOBAC) {		
 
 		mudaMarcadores(mA.getmEH(), 100);
 		
@@ -26,7 +26,8 @@ public class ControleSimulacao {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (vPC.getCsAmbienteSimulacao().getSelectedIndex()) {
 				case 0://Plano
-					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false); 
+					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
@@ -35,7 +36,8 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 1: //Subida
-					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 0, false); 
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);
+					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
@@ -44,7 +46,8 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 2: //Descida
-					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, 23.87, false);
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);
+					mudaAngulo(mA, 23.87, false);
 					mudaTranslate(mA, 700, 520);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
@@ -53,7 +56,8 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 3: //Precipicio
-					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, 0, true); 
+					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, true);
+					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 130, 166);
 					mudaMarcadores(mA.getmEH(), 100);
@@ -62,7 +66,8 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 4: //Queda
-					mudaModeloEscala(mA.getmEV(), 320, 104, 320, 499, 0, false);
+					mudaModeloEscala(mA.getmEV(), 320, 104, 320, 499, false);
+					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 361, 104);
 					mudaMarcadores(mA.getmEV(), 1000);
@@ -71,9 +76,14 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
 					break;
 				default://Projétil
-					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, 0, false);	
-					mudaModeloEscala(mA.getmEV(), 70, 100, 70, 499, 0, false);
-					mudaTranslate(mA, 0, 0);
+					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, false);	
+					mudaModeloEscala(mA.getmEV(), 70, 100, 70, 499, false);
+					
+					mudaAngulo(mA, 0, true); //Ambos são necessários para não dar nenhum bug
+					mudaAngulo(mA, mA.getmP().getAnguloRotacaoGraus(), true);
+					
+					mudaTranslate(mA, 145, 485);
+					mudaPosObjeto(mA.getmO(), 130, 470);
 					
 					mudaMarcadores(mA.getmEH(), 100);
 					mudaMarcadores(mA.getmEV(), 100);
@@ -101,19 +111,24 @@ public class ControleSimulacao {
 	//--Altera os valores do translate
 	private void mudaTranslate(ModeloAmbiente mA, int tX, int tY) {
 		mA.setTranslateX(tX);
-		mA.setTranslateX(tY);
+		mA.setTranslateY(tY);
 	}
 	
 	//--Altera os valores do ModeloEscala
-	private void mudaModeloEscala(ModeloEscala mE, int eIX, int eIY, int eFX, int eFY, double angulo, boolean isPEP) {
+	private void mudaModeloEscala(ModeloEscala mE, int eIX, int eIY, int eFX, int eFY, boolean isPEP) {
 		mE.setEscalaFimXPix(eFX);
 		mE.setEscalaFimYPix(eFY);
 		mE.setEscalaInicioX(eIX);
 		mE.setEscalaInicioY(eIY);
-		mE.setAnguloRotacaoGraus(angulo);
-		mE.setIsPEP(isPEP);
-		
-		ModeloAmbiente.anguloInclinacaoGraus = angulo;
+		mE.setIsPEP(isPEP);				
+	}
+	
+	private void mudaAngulo(ModeloAmbiente mA, double angulo, boolean isProjetil) {
+		mA.getmP().setAnguloRotacaoGraus(angulo);
+		if (!isProjetil)
+			ModeloAmbiente.anguloInclinacaoGraus = angulo;
+		else
+			ModeloAmbiente.anguloInclinacaoGraus = 0;
 	}
 	
 	//--Altera os valores de posicionamento do objeto

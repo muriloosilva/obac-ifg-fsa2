@@ -13,17 +13,21 @@ public class ModeloPropulsao {
 
 	//Constantes
 	//--Int	
-	public final int posXC = 30; //Posição do Canhão - pixels
-	public final int posYC = 465;	
+	public final int posXC = 125; //Posição do Canhão - pixels
+	public final int posYC = 463;	
 	
 	public final int posXM = 30; //Posição da Mola - pixels
 	public final int posYM = 470;
+	
+	public final int posXB = 118; //Posição da base do Canhão - pixels
+	public final int posYB = 465;
 	
 	//Variáveis
 	//--URL
 	private URL urlProp = this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens/propulsaoObstaculo/");
 	//--Imagem
 	private ImageIcon imagemPropulsao = null;
+	private ImageIcon imagemBaseCanhao = null;
 	//--Int
 	private int translaX = 30; //Variáveis utilizadas para rotacionar o canhão
 	private int translaY = 470;
@@ -35,6 +39,12 @@ public class ModeloPropulsao {
 	private ModeloMola mM = null;
 	private ModeloCanhao mC = null;
 	
+	//--Controle
+	ControlePainelInformacao cPI = null;
+	
+	//--double
+	private double anguloRotacaoGraus = 0; // Utilizado para rotacionar as propulsoes, tanto mola quanto canhao;
+	
 	//Métodos
 	//--Construtor
 	public ModeloPropulsao(ModeloAmbiente ma, ControlePainelInformacao cpi,
@@ -42,6 +52,9 @@ public class ModeloPropulsao {
 	{
 		mM = new ModeloMola(ma, cpi, cpf, vpf);
 		mC = new ModeloCanhao(ma, cpi, cpf, vpf);
+		imagemBaseCanhao = new ImageIcon(this.getClass().getClassLoader().getResource("br/edu/ifg/formosa/obac/imagens/propulsaoObstaculo/base.png"));
+		imagemBaseCanhao = new ImageIcon(imagemBaseCanhao.getImage().getScaledInstance(54, 40, Image.SCALE_DEFAULT));
+		this.cPI = cpi;
 		trocaImagemProp(true);
 	}
 	//--Troca de Imagens
@@ -57,16 +70,24 @@ public class ModeloPropulsao {
 	public ModeloMola getModeloMola(){return mM;}
 	public ModeloCanhao getmC() {return mC;}
 	public ImageIcon getImagemPropulsao(){return imagemPropulsao;}
+	public ImageIcon getImagemBaseCanhao(){return imagemBaseCanhao;}
 	public int getTranslaX() {return translaX;}
 	public int getTranslaY() {return translaY;}
 	public int getPosXM() {return posXM;}
 	public int getPosYM() {return posYM;}
 	public int getPosXC() {return posXC;}
 	public int getPosYC() {return posYC;}
+	public int getPosXB() {return posXB;}
+	public int getPosYB() {return posYB;}
 	public int getPosXProp() {return posXProp;}
 	public int getPosYProp() {return posYProp;}
+	public double getAnguloRotacaoGraus() {return anguloRotacaoGraus;}
 	
 	//--Seters
 	public void setPosXProp(int posXProp) {this.posXProp = posXProp;}
 	public void setPosYProp(int posYProp) {this.posYProp = posYProp;}
+	public void setAnguloRotacaoGraus(double anguloRotacaoGraus) {
+		this.anguloRotacaoGraus = anguloRotacaoGraus;
+		cPI.mudaValorAngulo(-anguloRotacaoGraus);
+	}
 }

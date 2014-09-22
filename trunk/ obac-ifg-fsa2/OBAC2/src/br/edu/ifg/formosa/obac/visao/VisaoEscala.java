@@ -21,32 +21,26 @@ public class VisaoEscala extends JPanel{
 	//--Modelos
 	private ModeloAmbiente mA = null;
 	private ModeloEscala mE = null;
-	private ModeloObjeto mO = null;
-	private ModeloPropulsao mP = null;
+	//Visões
+	private VisaoPainelConfiguracao vPC = null;
 	
 	//Metodos
 	//--Construtor #01
-	public VisaoEscala(ModeloEscala mE, ModeloObjeto mO, ModeloPropulsao mP, ModeloAmbiente mA) {
-		super(null);		
+	public VisaoEscala(ModeloEscala mE, ModeloAmbiente mA, VisaoPainelConfiguracao vPC) {
+		super(null);
 		this.setSize(750, 600);
 		this.setOpaque(true);
 		
 		this.mE = mE;
-		this.mO = mO;
-		this.mP = mP;
 		this.mA = mA;
+		this.vPC = vPC;
 	}
 	
 	//--Paint
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		/*g2d.translate(mA.getTranslateX(), mA.getTranslateY());
-		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
-		g2d.translate(-mA.getTranslateX(), -mA.getTranslateY());*/
-		g2d.translate(700, 520);
-		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
-		g2d.translate(-700, -520);
+		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus), mA.getTranslateX(), mA.getTranslateY());
 				
 		g2d.setColor(ModeloAmbiente.cor);
 		g2d.drawLine(mE.getEscalaInicioX(), mE.getEscalaInicioY(), mE.getEscalaFimXPix(), mE.getEscalaFimYPix());
@@ -89,9 +83,9 @@ public class VisaoEscala extends JPanel{
 		if (mE.isPEP()) {
 			g2d.setColor(Color.yellow);
 			
-			if (mO.getPosicaoXPx() + 30 >= mE.getEscalaInicioX()) { //Colocar em uma Thread de modo que so atualize com essa condição
-				g2d.fillOval(mO.getPosicaoXPx() + 26, mE.getEscalaInicioY() - 4, 8, 8);
-				g2d.drawString(mO.getPosicaoXMetros() + "m", mO.getPosicaoXPx() + 20, mE.getEscalaInicioY() - 8);
+			if (mA.getmO().getPosicaoXPx() + 30 >= mE.getEscalaInicioX()) { //Colocar em uma Thread de modo que so atualize com essa condição
+				g2d.fillOval(mA.getmO().getPosicaoXPx() + 26, mE.getEscalaInicioY() - 4, 8, 8);
+				g2d.drawString(mA.getmO().getPosicaoXMetros() + "m", mA.getmO().getPosicaoXPx() + 20, mE.getEscalaInicioY() - 8);
 			}
 		}
 	}

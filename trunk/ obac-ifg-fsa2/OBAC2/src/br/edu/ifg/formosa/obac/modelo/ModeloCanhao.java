@@ -6,19 +6,22 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ModeloCanhao {
 	//Variáveis
+	
+	//--Angulação do canhao
+	//----Double
+	private double verAX = 0;
+    private double verAY = 0;
+    private double verBX = 0;
+    private double catOpo = 0;
+    private double catAd = 0;
+    private double hip = 0;
+    //----Double e final
+    private final double verBY = 478;
+    private final double verCX = 145;
+    private final double verCY = 478;
+    
 	//--Double
-	private double anguloRotacao = 0.0;
 	private double energia = 0;
-	
-	//--Int
-	private int posX = 0;
-	private int posY = 0;
-	
-	private int tamanhoXPixC = 0; //Posição do canhão
-	private int tamanhoYPixC = 0;
-
-	private int tamanhoXPixB = 0; //Posição da base
-	private int tamanhoYPixB = 0;
 	
 	//--Modelo
 	private ModeloAmbiente mA = null;
@@ -40,23 +43,32 @@ public class ModeloCanhao {
 		this.vPF = vPF;
 	}
 	
+	//--Calculo de velocidade
+	public void calculaVelocidade() {
+		
+	}
+	
 	//--Getters
-	public double getAnguloRotacao() {return anguloRotacao;}
 	public double getEnergia() {return energia;}
-	public int getPosX() {return posX;}
-	public int getPosY() {return posY;}
-	public int getTamanhoXPixC() {return tamanhoXPixC;}
-	public int getTamanhoYPixC() {return tamanhoYPixC;}
-	public int getTamanhoXPixB() {return tamanhoXPixB;}
-	public int getTamanhoYPixB() {return tamanhoYPixB;}
+	public double getVerAX() {return verAX;}
+	public double getVerAY() {return verAY;}
+	public double getVerBX() {return verBX;}
+	public double getVerBY() {return verBY;}
+	public double getVerCX() {return verCX;}
+	public double getVerCY() {return verCY;}
+	public double getCatOpo() {return catOpo;}
+	public double getCatAd() {return catAd;}
+	public double getHip() {return hip;}
 	
 	//--Setters
-	public void setAnguloRotacao(double anguloRotacao) {
-		this.anguloRotacao = anguloRotacao;
-		cPI.mudaValorAngulo(anguloRotacao);
-	}
 	public void setEnergia(double energia) {
 		this.energia = energia;
 		cPI.mudaValorEnergia(energia);
 	}
+	public void setVerAX(double verAX) {this.verAX = verAX;}
+	public void setVerAY(double verAY) {this.verAY = verAY;}
+	public void setVerBX(double verBX) {this.verBX = verBX;}
+	public void setCatOpo(double catOpo) {this.catOpo = catOpo;}
+	public void setCatAd(double catAd) {this.catAd = catAd;}
+	public void setHip(double hip) {this.hip = hip;}
 }

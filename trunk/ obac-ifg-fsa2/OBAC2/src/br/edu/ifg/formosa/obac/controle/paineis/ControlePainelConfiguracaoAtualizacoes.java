@@ -13,6 +13,7 @@ import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeArredondamento;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
@@ -153,7 +154,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vpc.getCtPropulsaoDado1().setEnabled(false);
 				}
 				else {
-					vpc.getCtPropulsaoDado1().setText(cacheTexto);
+					vpc.getCtPropulsaoDado1().setText("0");
 					vpc.getCtPropulsaoDado1().setEnabled(true);
 				}
 			//Fim 1º
@@ -173,17 +174,17 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			//Fim 2º
 		}
 		//Métodos usados por ajustesPConfig() para evitar a redundância e código
-		private void segundoAjuste(boolean anabled){
+		private void segundoAjuste(boolean enabled){
 			//Interação com os botões de opção da colisão
-			vpc.getBoColisaoNao().setEnabled(anabled);
-			vpc.getBoColisaoSim().setEnabled(anabled);
+			vpc.getBoColisaoNao().setEnabled(enabled);
+			vpc.getBoColisaoSim().setEnabled(enabled);
 		} 
-		private void terceiroAjuste(boolean anabled){
+		private void terceiroAjuste(boolean enabled){
 			//Interação dos Campos de Texto referentes aos dados
-			vpc.getCtPropulsaoDado1().setEnabled(anabled);
-			vpc.getCtPropulsaoDado2().setEnabled(anabled);
+			vpc.getCtPropulsaoDado1().setEnabled(enabled);
+			vpc.getCtPropulsaoDado2().setEnabled(enabled);
 			//Visibilidade do painel de propulsão
-			vPS.getVisaoPropulsao().setVisible(anabled);
+			vPS.getVisaoPropulsao().setVisible(enabled);
 		}
 		
 

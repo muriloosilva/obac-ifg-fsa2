@@ -26,6 +26,8 @@ public class VisaoPainelSimulacao extends JPanel {
 	//--Escala
 	private VisaoEscala vEH = null; //Visao Escala Horizontal - Utilizada em: Plano, Subida, Descida, P&P e Projétil
 	private VisaoEscala vEV = null; //Visao Escala Vertical - Utilizada em: Queda e Projétil
+	//--Auxiliar
+	private VisaoAuxiliar vA = null;
 	
 	//Metodos
 	//--Construtor
@@ -38,9 +40,11 @@ public class VisaoPainelSimulacao extends JPanel {
 		vO = new VisaoObjeto(mA);
 		vP = new VisaoPropulsao(mA, vPC);
 		vObs = new VisaoObstaculo(mA);
-		vEH = new VisaoEscala(mA.getmEH(), mA.getmO(), mA.getmP(), mA);
-		vEV = new VisaoEscala(mA.getmEV(), mA.getmO(), mA.getmP(), mA);
+		vEH = new VisaoEscala(mA.getmEH(), mA, vPC);
+		vEV = new VisaoEscala(mA.getmEV(), mA, vPC);
+		vA = new VisaoAuxiliar(mA, vPC);
 		
+		this.add(vA);
 		this.add(vObs);
 		this.add(vEH);
 		this.add(vEV);
@@ -58,4 +62,5 @@ public class VisaoPainelSimulacao extends JPanel {
 	public VisaoEscala getVisaoEscalaH() {return vEH;}
 	public VisaoEscala getVisaoEscalaV() {return vEV;}
 	public VisaoSuperficie getVisaoSuperficie() {return vS;}
+	public VisaoAuxiliar getVisaoAuxiliar() {return vA;}
 }

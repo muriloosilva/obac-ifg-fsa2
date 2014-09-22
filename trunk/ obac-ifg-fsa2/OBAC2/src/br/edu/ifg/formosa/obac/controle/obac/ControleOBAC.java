@@ -16,6 +16,7 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntrad
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoExecucao;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+import br.edu.ifg.formosa.obac.controle.propulsao.ControleCanhaoMouse;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.controle.propulsao.MolaDeslisanteLitener;
 import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
@@ -69,6 +70,8 @@ public class ControleOBAC {
 		private ControlePainelInformacao cpi = null;
 		//ControleInicioSimulacoes da Mola
 		private ControleMolaMouse cmm = null;
+		//ControleListenersCanhao
+		private ControleCanhaoMouse cCM = null;
 		//ControleObstáculoMouse
 		private ControleObstaculoMouse com = null;
 	
@@ -129,6 +132,9 @@ public class ControleOBAC {
 			
 		//Controle da propulsão por mola
 			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vpc, mA, cIS);
+			
+		//Controle Listeners Canhao
+			cCM = new ControleCanhaoMouse(mA, vPS, vpc, this);
 		
 		//ControleObstaculoMouse
 			com = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mA.getmObs(), this); 
@@ -139,7 +145,7 @@ public class ControleOBAC {
 			new ControlePainelConfiguracaoExecucao(mA, vpc, mpc, cpca, cpced, cIS, cmm);
 			
 		//Controles - Escala/Ambiente
-			new ControleSimulacao(vpi, vPS, mA, vpc, mpc);
+			new ControleSimulacao(vpi, vPS, mA, vpc, mpc, this);
 			new ControleAmbiente(mA, vpc, mpc, this, vPS, cpca);
 			
 		//Repintar Applet

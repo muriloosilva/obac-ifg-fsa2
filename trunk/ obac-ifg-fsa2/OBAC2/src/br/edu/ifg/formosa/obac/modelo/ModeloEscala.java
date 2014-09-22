@@ -22,9 +22,6 @@ public class ModeloEscala {
 	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)
 	
 	private int comprimentoEscalaPx = escalaFimXPix - escalaInicioX;
-		
-	//--Double
-	private double anguloRotacaoGraus = 0; //Utilizado somente na Escala Horizontal - subida e descida incluso
 	
 	public static final double marcadorInicial = 0.0; //É Constante, mas deixei aqui para um melhor entendimento
 	private double[] marcadoresEscala = new double[qtdMarcadores + 1]; //0-Menor / 4-Maior
@@ -46,7 +43,6 @@ public class ModeloEscala {
 	public int getComprimentoEscalaPx() {return comprimentoEscalaPx;}
 	public long getEscalaFimXM() {return escalaFimXM;}
 	public long getEscalaFimYM() {return escalaFimYM;}	
-	public double getAnguloRotacaoGraus() {return anguloRotacaoGraus;}
 	public double[] getMarcadoresEscala() {return marcadoresEscala;}
 	public boolean isPEP() {return isPEP;}
 	
@@ -58,6 +54,5 @@ public class ModeloEscala {
 	public void setEspacamentoMarcadores(int espacamentoMarcadores) {this.espacamentoMarcadores = espacamentoMarcadores;}
 	public void setEscalaFimXM(long escalaFimXM) {this.escalaFimXM = escalaFimXM;}
 	public void setEscalaFimYM(long escalaFimYM) {this.escalaFimYM = escalaFimYM;}
-	public void setAnguloRotacaoGraus(double anguloRotacaoGraus) {this.anguloRotacaoGraus = anguloRotacaoGraus;}
 	public void setIsPEP(boolean isPEP) {this.isPEP = isPEP;}
 }

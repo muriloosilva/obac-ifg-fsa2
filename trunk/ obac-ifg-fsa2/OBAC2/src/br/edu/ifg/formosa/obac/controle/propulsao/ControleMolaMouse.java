@@ -46,7 +46,7 @@ public class ControleMolaMouse {
 			   ma.getmP().getModeloMola().getTamanhoMolaAtualPix()<ma.getmP().getModeloMola().getTamanhoMolaTotalPix())
 			{	
 				//É iniciada a simulação
-				new ControleMolaSoltura(vp, ma, cOBAC, ControleMolaMouse.this, cIS);
+				new ControleMolaSoltura(vp, ma, cOBAC, /*ControleMolaMouse.this,*/ cIS);
 			}
 		}
 	};
@@ -109,7 +109,7 @@ public class ControleMolaMouse {
 			if (ma.getmP().getModeloMola().getTamanhoMolaAtualPix()<ma.getmP().getModeloMola().getTamanhoMolaTotalPix())
 			{
 				//A simulação também ocorre quando o usuário sai da área delimitada para a interação com a mola 
-				new ControleMolaSoltura(vp, ma, cOBAC, ControleMolaMouse.this, cIS);
+				new ControleMolaSoltura(vp, ma, cOBAC, /*ControleMolaMouse.this,*/ cIS);
 			}
 		}
 	}
