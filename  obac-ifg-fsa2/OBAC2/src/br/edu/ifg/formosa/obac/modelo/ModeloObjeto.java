@@ -22,7 +22,7 @@ public class ModeloObjeto {
 	
 	//Variaveis
 	//--Double	
-	private double massa;
+	private double massa=10;
 	private double coefRestituicao;
 	
 	private double velocidade;//Esta se torna desnecessária se a velocidade não mudar
