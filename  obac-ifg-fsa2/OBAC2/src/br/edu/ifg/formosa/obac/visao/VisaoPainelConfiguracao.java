@@ -17,7 +17,7 @@ import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
-import br.edu.ifg.formosa.obac.utilidades.UtilidadeMascaraNumeria;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeMascaraNumerica;
 
 public class VisaoPainelConfiguracao extends JPanel{
 
@@ -296,7 +296,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 			caixaTexto.setFont(fonte);
 			caixaTexto.setBorder(bordaCT);
 			caixaTexto.setFormatterFactory(fnd);
-			caixaTexto.setDocument(new UtilidadeMascaraNumeria());
+			caixaTexto.setDocument(new UtilidadeMascaraNumerica());
 			caixaTexto.setBounds(x0, y0, xF, yF);
 		}
 

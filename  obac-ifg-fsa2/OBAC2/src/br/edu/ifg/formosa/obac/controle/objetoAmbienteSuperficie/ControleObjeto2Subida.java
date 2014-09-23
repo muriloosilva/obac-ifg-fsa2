@@ -36,8 +36,8 @@ public class ControleObjeto2Subida implements ControleObjeto0Generico, Runnable{
 			cfs.calculaForcaAtritoPadrao();//Força de Atrito
 			cfo.calculaAceleracaoSubida();;//Aceleração
 			cfo.calculaPosFinalPadrao();//Posição Final
-			cfs.calculaEscala();//Escala
-			ma.getmO().setPosFinalXPix(UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(), ma.getmO().getPosFinalXMetros(), ma.getmEH().getEscalaFimXM()));//Ponto fina em Pixel
+			cfs.calculaEscalaPadrao();//Escala
+			ma.getmO().setPosFinalXPix(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(), ma.getmO().getPosFinalXMetros(), ma.getmEH().getEscalaFimXM()));//Ponto fina em Pixel
 			cfo.calculaTempo();//Tempo total de Simulação em segundos
 			ma.setTempoAtual(0);//Seta o tempo inicial na variável
 		
@@ -52,22 +52,18 @@ public class ControleObjeto2Subida implements ControleObjeto0Generico, Runnable{
 			if(continuar){
 				if(cfo.paradaSubida()==false){
 					//Calcula nova posição em METROS
-					cfo.calculaNovaPosicao();
+						cfo.calculaNovaPosicao();
 					//Converte a posição em METROS para PIXEL para poder movimentar o objeto
-					ma.getmO().setPosicaoXPx(130 +
-							UtilidadeConvercoesEscala.converteMetroEmPixelX(
-									ma.getmEH().getComprimentoEscalaPx(),
-									ma.getmO().getPosicaoXMetros(),
-									ma.getmEH().getEscalaFimXM()));
+						ma.getmO().setPosicaoXPx(130 +UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(),ma.getmO().getPosicaoXMetros(),ma.getmEH().getEscalaFimXM()));
 					//Repinta o painel para mostar o andamento da simulação
-					cOBAC.repinta();
+						cOBAC.repinta();
 					//Repinta o painel de fórmulas
-					vpf.repaint();
+						vpf.repaint();
 					//Parada no carregamento para dar o realismo da simulação
-					try {	t.sleep(atrasoMS);	}
-					catch (InterruptedException e) {}
+						try {	t.sleep(atrasoMS);	}
+						catch (InterruptedException e) {System.err.println("Erro na Thread!");}
 					//Atualiza o tempo
-					ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
+						ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
 				}
 				else{parar();}
 			}

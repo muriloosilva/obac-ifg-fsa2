@@ -43,7 +43,7 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {testeLogico();}
 	@Override
-	public void mouseExited(MouseEvent e) {testeLogico();}
+	public void mouseExited(MouseEvent e) {}
 	@Override
 	public void stateChanged(ChangeEvent e) {comandos();}
 	
@@ -82,7 +82,7 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 		if(this.vP.getDeslizanteMola().getValue()<this.vP.getDeslizanteMola().getMaximum()){
 			this.mousePressionando=false;
 			this.vP.getDeslizanteMola().setValue(this.vP.getDeslizanteMola().getMaximum());
-			this.vP.getRotuloCompressao().setText("" +100);
+			this.vP.getRotuloCompressao().setText("100%");
 		}
 	}
 	

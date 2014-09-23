@@ -23,7 +23,6 @@ public class UtilidadeRotuloTransparente extends JLabel{
 	
 	@Override
 	public void setBounds(int x, int y, int width, int height){
-		// 1wdsx 
 		super.setBounds(x, y, width, height);
 		this.width = width;
 		this.height = height;

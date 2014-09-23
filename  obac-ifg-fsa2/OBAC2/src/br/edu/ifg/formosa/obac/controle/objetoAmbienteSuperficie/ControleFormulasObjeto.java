@@ -132,8 +132,12 @@ public class ControleFormulasObjeto {
 	//Testes lógicos para definirem a parada do objeto de acordo com a simulação
 		//Plano
 		public boolean paradaPlano(){
-			if(ma.getmO().getPosicaoXPx() >= (ma.getmO().getPosFinalXPix() + 130)) return true;
-			else return false;
+			if(ma.getmO().getPosicaoXPx() >= (ma.getmO().getPosFinalXPix())){
+				//Este valor é repassado para o OBJETO com o fim de evitar que o objeto retorne
+				ma.getmO().setPosicaoXPx(ma.getmO().getPosFinalXPix());
+				ma.getmO().setPosicaoXMetros(ma.getmO().getPosFinalXMetros());
+				return true;
+			}else return false;
 		}
 		//Plano e Precipício
 		public boolean paradaPlanoPrecipicio(){
@@ -153,6 +157,9 @@ public class ControleFormulasObjeto {
 		//Subida
 		public boolean paradaSubida(){
 			if (ma.getmO().getPosicaoXPx() >= ModeloObjeto.pontoFinalObjetoSubidaPix) {
+				//Este valor é repassado para o OBJETO com o fim de evitar que o objeto retorne
+//				ma.getmO().setPosicaoXPx(ModeloObjeto.pontoFinalObjetoSubidaPix);
+//				ma.getmO().setPosicaoXMetros(ma.getmO().getPosFinalXMetros());
 				return false;
 			}
 			else{
@@ -163,9 +170,16 @@ public class ControleFormulasObjeto {
 		
 		//Descida
 		public boolean paradaDescida(){
+			/*Uma forma de fazer o objeto descer até o final seria testar
+			 * para ver se ele atingiu o ponto final, neste momento algum valor deveria ser multiplicado
+			 * por -1 para q o objeto continue a descer
+			 */
 			if (ma.getmO().getPosicaoXPx() >= ModeloObjeto.pontoFinalObjetoDescidaPix
-				|| ma.getmO().getPosicaoXPx()>=(ma.getmO().getPosFinalXPix()+130)) {
+				|| ma.getmO().getPosicaoXPx() >= ma.getmO().getPosFinalXPix()
+			){
 				//Este valor é repassado para o OBJETO com o fim de evitar que o objeto retorne
+//				ma.getmO().setPosicaoXPx(ModeloObjeto.pontoFinalObjetoDescidaPix);
+				ma.getmO().setPosicaoXMetros(ma.getmO().getPosFinalXMetros()*-1);
 				return true;
 			}
 			else{return false;}
