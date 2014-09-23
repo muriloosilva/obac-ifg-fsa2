@@ -35,13 +35,9 @@ public class ControleObjeto3Descida implements ControleObjeto0Generico, Runnable
 			cfo.calculaForcaNormal();//FOrça Normal
 			cfs.calculaForcaAtritoPadrao();//Força de Atrito
 			cfo.calculaAceleracaoDescida();;//Aceleração
-			cfo.calculaPosFinalDescida();;//Posição Final
-			cfs.calculaEscala();//Escala
-			ma.getmO().setPosFinalXPix(
-					UtilidadeConvercoesEscala.converteMetroEmPixelX(
-							ma.getmEH().getComprimentoEscalaPx(),
-							(ma.getmO().getPosFinalXMetros()*-1),
-							ma.getmEH().getEscalaFimXM()));//Ponto fina em Pixel
+			cfo.calculaPosFinalDescida();//Posição Final
+			cfs.calculaEscalaDescida();//Escala
+			ma.getmO().setPosFinalXPix(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(),(ma.getmO().getPosFinalXMetros()*-1),ma.getmEH().getEscalaFimXM()));//Ponto fina em Pixel
 			cfo.calculaTempo();//Tempo total de Simulação em segundos
 			ma.setTempoAtual(0);//Seta o tempo inicial na variável
 		
@@ -58,18 +54,14 @@ public class ControleObjeto3Descida implements ControleObjeto0Generico, Runnable
 					//Calcula nova posição em METROS
 					cfo.calculaNovaPosicao();
 					//Converte a posição em METROS para PIXEL para poder movimentar o objeto
-					ma.getmO().setPosicaoXPx(130+
-							UtilidadeConvercoesEscala.converteMetroEmPixelX(
-									ma.getmEH().getComprimentoEscalaPx(),
-									(ma.getmO().getPosicaoXMetros()*1),
-									ma.getmEH().getEscalaFimXM()));
+					ma.getmO().setPosicaoXPx(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(),ma.getmO().getPosicaoXMetros(),ma.getmEH().getEscalaFimXM()));
 					//Repinta o painel para mostar o andamento da simulação
 					cOBAC.repinta();
 					//Repinta o painel de fórmulas
 					vpf.repaint();
 					//Parada no carregamento para dar o realismo da simulação
 					try {	t.sleep(atrasoMS);	}
-					catch (InterruptedException e) {}
+					catch (InterruptedException e) {System.err.println("Erro na Thread!");}
 					//Atualiza o tempo
 					ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
 				}

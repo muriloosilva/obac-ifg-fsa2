@@ -10,55 +10,86 @@ import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 
 public class ControlePainelConfiguracaoExecucao {
-
+	
+	private ModeloAmbiente mA = null;
+	private VisaoPainelConfiguracao vPC = null;
+	
 	public ControlePainelConfiguracaoExecucao(
 			final ModeloAmbiente mA,
-			final VisaoPainelConfiguracao vpc, final ModeloPainelConfiguracao mpc,
+			final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mpc,
 			final ControlePainelConfiguracaoAtualizacoes cpca,
 			final ControlePainelConfiguracaoEntradaDeDados cpced,
 			final ControleInicioSimulacoes cIS, final ControleMolaMouse cMM)
 	{
+		this.mA = mA;
+		this.vPC = vPC;
 		
 		//Botão Iniciar/Pausar
-		vpc.getBaIniciaPausar().addActionListener(new ActionListener() {
+		vPC.getBaIniciaPausar().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				//Inicia simulação
-				if (vpc.getBaIniciaPausar().getText().equals(mpc.getBotaoIniciar())==true
+				if (vPC.getBaIniciaPausar().getText().equals(mpc.getBotaoIniciar())==true
 					&& cpced.verificaCampos()==true) {
-					cpca.desativaComponentes(false);//Desativar componentes
-					if (vpc.getCsPropulsao().getSelectedIndex()==0//Propulsão por canhão
-						||vpc.getCsAmbienteSimulacao().getSelectedIndex()==4)//Simulação da queda Livre
-					 {
-						cIS.iniciarSimulacao();
-					}
-					else {
-						//Tamanho da Mola
-						mA.getmP().getModeloMola().setTamanhoMolaTotalM(Double.parseDouble(vpc.getCtPropulsaoDado1().getText()));
-						//Constante elástica
-						mA.getmP().getModeloMola().setkAtual(
-								Double.parseDouble(vpc.getCtPropulsaoDado2().getText().replaceAll(",", "."))/100);
-						//Massa
-						mA.getmO().setMassa(Double.parseDouble(vpc.getCtObjetoMassa().getText().replaceAll(",", ".")));
-						//Listener da mola
-						cMM.ativaMolaMouse();
-					}
+					//Desativar componentes do Painel de Cofiguração
+						cpca.desativaComponentes(false);
+					//____________________________________________________
+					//Passagem do valor da massa para o ModeloObjeto
+						mA.getmO().setMassa(Double.parseDouble(vPC.getCtObjetoMassa().getText().replaceAll(",", ".")));
+					//____________________________________________________
+					//Início dos testes lógicos para executar
+					//--Propulsão por canhão
+						if (vPC.getCsPropulsao().getSelectedIndex()==0){exeCanhao();}
+					//--Execução da mola
+						else if (vPC.getCsPropulsao().getSelectedIndex()==1){exeMola();}
+					//--Execução Queda Livre
+						else{cIS.iniciarSimulacao();}
+					//____________________________________________________
+					//Troca do rótulo do painel
+					vPC.getBaIniciaPausar().setText(mpc.getBotaoPausar());
 				}
+				
 				//Pausa simulação
-				else if(vpc.getBaIniciaPausar().getText().equals(mpc.getBotaoPausar())){}
+				else if(vPC.getBaIniciaPausar().getText().equals(mpc.getBotaoPausar())){
+					
+					vPC.getBaIniciaPausar().setText(mpc.getBotaoIniciar());
+				}
+				
 				//Se vier para cá a simulação deu errado por uma falha no código
-				else{}
+				else{System.err.println("!!!Erro!!!");}
 			}
 		});
 		
 		/*Botão nova simulação - Para simulação retornando-a para seu estado original,
 		 *tornando possível a realização de uma nova simulação*/ 
-		vpc.getBaNovaSimulacao().addActionListener(new ActionListener() {
+		vPC.getBaNovaSimulacao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				cpca.desativaComponentes(true);//Ativar componentes
+				//Troca o rótulo do botão Para garantir que seja Iniciar Simulação
+					vPC.getBaIniciaPausar().setText(mpc.getBotaoIniciar());
+				//____________________________________________________
+				//Reativar componentes do painel de Configuração
+					cpca.desativaComponentes(true);
 			}
 		});
+	}
+	
+	private void exeCanhao(){
+		//Ângulo
+//		mA.getmP().getmC().set(Double.parseDouble(vPC.getCtPropulsaoDado1().getText()));
+		//Energia
+		mA.getmP().getmC().setEnergia(
+				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replaceAll(",", "."))/100);
+	}
+	
+	private void exeMola(){
+		//Tamanho da Mola
+		mA.getmP().getModeloMola().setTamanhoMolaTotalM(Double.parseDouble(vPC.getCtPropulsaoDado1().getText()));
+		//Constante elástica
+		mA.getmP().getModeloMola().setkAtual(
+				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replaceAll(",", "."))/100);
+		//Listener da mola
+//		cMM.ativaMolaMouse();
 	}
 	
 }

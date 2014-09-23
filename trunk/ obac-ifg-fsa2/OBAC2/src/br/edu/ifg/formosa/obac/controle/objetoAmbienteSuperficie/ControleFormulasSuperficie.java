@@ -22,27 +22,36 @@ public class ControleFormulasSuperficie {
 	//Atrito na Queda -> Fat = N * μ -> μ=0
 	public void calculaForcaAtritoQueda(){ma.getmS().setForcaAtrito(0);}
 	
+//Escalas
 	//Calcula escala Padrão
-	public void calculaEscala(){
-		long pontoFinalEscala=0;
+		public void calculaEscalaPadrao(){
+			long pontoFinalEscala=formulaEscala(ma.getmO().getPosFinalXMetros());
+			//Passa o ponto final da escala para a escala real
+				ma.getmEH().setEscalaFimXM(pontoFinalEscala);
+				ma.getmEV().setEscalaFimXM(pontoFinalEscala);
+		}
+	//Calcula escala Padrão
+		public void calculaEscalaDescida(){
+			long pontoFinalEscala=formulaEscala(ma.getmO().getPosFinalXMetros()*-1);
+			//Passa o ponto final da escala para a escala real
+				ma.getmEH().setEscalaFimXM(pontoFinalEscala);
+		}
+	//---Trecho de código que calcula a escala - Como método evita repetição de código
+		private long formulaEscala(double pfMetro){
+			long pontoFinalEscala=0;
+			//Laço de repetição que gera o tamanho da escala
+				for(int i = 1; i<=pfMetro; i*=10){pontoFinalEscala=i;}
+			//Uma ultima epansão no valor para dar mais dinamismo na simulação 
+				pontoFinalEscala*=10;
+			//Verificação realizada para que a escala não tenha um ponto final muito distante
+			//Se o objeto parar antes da metade da escala, a escala é reduzida pela metade
+				if(pontoFinalEscala > (2*ma.getmO().getPosFinalXMetros())){pontoFinalEscala = pontoFinalEscala/2;}
+			//Teste que impede a escala de ter um valor menor que o seu valor mínimo(100m)
+				if(pontoFinalEscala < 100){pontoFinalEscala = 100;}
+			//Retorno do ponto final da escala
+				return pontoFinalEscala;
+		}
 		
-		//Laço de repetição que gera o tamanho da escala
-		for(int i = 1; i<=ma.getmO().getPosFinalXMetros(); i*=10){pontoFinalEscala=i;}
-		//Uma ultima epansão no valor para dar mais dinamismo na simulação 
-		pontoFinalEscala*=10;
-		
-		//Verificação realizada para que a escala não tenha um ponto final muito distante
-		//Se o objeto parar antes da metade da escala, a escala é reduzida pela metade
-		if(pontoFinalEscala > (2*ma.getmO().getPosFinalXMetros())){pontoFinalEscala = pontoFinalEscala/2;}
-		
-		//Teste que impede a escala de ter um valor menor que o seu valor mínimo(100m)
-		if(pontoFinalEscala < 100){pontoFinalEscala = 100;}
-		
-		//Passa o ponto final da escala para a escala real
-		ma.getmEH().setEscalaFimXM(pontoFinalEscala);
-		ma.getmEV().setEscalaFimXM(pontoFinalEscala);
-	}
-	
 	//Calcula escala Queda Livre
 	public void calculaEscalaQueda(){
 		long pontoFinalEscala=1000;//Esta escala possui o tamanho fixo de 1000 Metros
@@ -51,7 +60,5 @@ public class ControleFormulasSuperficie {
 	}
 	
 	//Calcula Escala P&P
-	public void escalaPlanoPrecipicio(){
-		
-	}
+	public void escalaPlanoPrecipicio(){}
 }

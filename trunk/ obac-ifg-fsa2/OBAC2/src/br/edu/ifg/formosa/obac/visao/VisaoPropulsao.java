@@ -43,23 +43,20 @@ public class VisaoPropulsao extends JPanel {
 		//Deslizante da mola
 			//Painel
 			pCompressor = new JPanel(null);
-			pCompressor.setBounds(30, 565, 690, 30);
-			pCompressor.setBackground(Color.white);
-			pCompressor.setBorder(new LineBorder(Color.black));
-			pCompressor.setVisible(true);
-			pCompressor.setOpaque(true);
+				pCompressor.setBounds(30, 565, 690, 30);
+				pCompressor.setOpaque(false);
 			this.add(pCompressor);
 			//Rotulo
 			rotuloCompressao = new JLabel("0%", JLabel.RIGHT);
-			rotuloCompressao.setSize(100, 30);
-			rotuloCompressao.setFont(new Font(null, 0, 20));
-			rotuloCompressao.setForeground(Color.BLACK);
+				rotuloCompressao.setSize(100, 30);
+				rotuloCompressao.setFont(new Font(null, 0, 20));
+				rotuloCompressao.setForeground(Color.black);
 			pCompressor.add(rotuloCompressao);
 			//Deslizante
-			deslizanteMola = new JSlider(JSlider.HORIZONTAL, 30, 100, 100);
-			deslizanteMola.setBounds(100, 1, 589, 28);
+			deslizanteMola = new JSlider(JSlider.HORIZONTAL, 1, 100, 100);
+				deslizanteMola.setOpaque(false);
+				deslizanteMola.setBounds(100, 1, 589, 28);
 			pCompressor.add(deslizanteMola);
-			this.repaint();
 		//Fim Deslizante da mola
 		
 		imagemPropulsao = mA.getmP().getImagemPropulsao();
@@ -72,7 +69,6 @@ public class VisaoPropulsao extends JPanel {
 		g2d.rotate(Math.toRadians(mA.getmP().getAnguloRotacaoGraus()), mA.getTranslateX(), mA.getTranslateY());
 		
 		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getPosXProp(), mA.getmP().getPosYProp(), this);
-		
 	}
 
 	//Get e Set

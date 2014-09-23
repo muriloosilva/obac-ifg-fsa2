@@ -105,7 +105,10 @@ public class ModeloObjeto {
 	}
 	public void setPosFinalXMetros(double posFinalXMetros){
 		this.posFinalXMetros = posFinalXMetros;
-		cpi.mudaValorPosFinalX(this.posFinalXMetros);
+		if(this.posFinalXMetros<0)
+			cpi.mudaValorPosFinalX(this.posFinalXMetros*-1);
+		else
+			cpi.mudaValorPosFinalX(this.posFinalXMetros);
 	}
 	
 }
