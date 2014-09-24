@@ -66,7 +66,7 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 4: //Queda
-					mudaModeloEscala(mA.getmEV(), 320, 104, 320, 499, false);
+					mudaModeloEscala(mA.getmEV(), 320, 499, 320, 104, false);
 					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 361, 104);
@@ -77,7 +77,7 @@ public class ControleSimulacao {
 					break;
 				default://Projétil
 					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, false);	
-					mudaModeloEscala(mA.getmEV(), 70, 100, 70, 499, false);
+					mudaModeloEscala(mA.getmEV(), 70, 499, 70, 100, false);
 					
 					mudaAngulo(mA, 0, true); //Ambos são necessários para não dar nenhum bug
 					mudaAngulo(mA, mA.getmP().getAnguloRotacaoGraus(), true);

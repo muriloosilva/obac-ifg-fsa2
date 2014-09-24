@@ -31,12 +31,10 @@ public class ControleCanhaoMouse {
 				if(vPC.getCsAmbienteSimulacao().getSelectedIndex() == 5) {
 					vPS.getVisaoPropulsao().addMouseListener(cCML);
 					vPS.getVisaoPropulsao().addMouseMotionListener(cCML);
-					System.out.println("Chamando thread");
 					cCML.setRodaT(true);
 				} else {
 					vPS.getVisaoPropulsao().removeMouseListener(cCML);
 					vPS.getVisaoPropulsao().removeMouseMotionListener(cCML);
-					System.out.println("Chamando de novo thread");
 					cCML.setRodaT(false);
 				}					
 			}

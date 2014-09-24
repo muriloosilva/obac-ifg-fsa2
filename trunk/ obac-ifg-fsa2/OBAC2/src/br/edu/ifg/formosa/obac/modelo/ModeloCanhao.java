@@ -22,6 +22,8 @@ public class ModeloCanhao {
     
 	//--Double
 	private double energia = 0;
+	private double alcanceMaximo = 0;
+	private double alturaMaxima = 0;
 	
 	//--Modelo
 	private ModeloAmbiente mA = null;
@@ -44,8 +46,65 @@ public class ModeloCanhao {
 	}
 	
 	//--Calculo de velocidade
-	public void calculaVelocidade() {
-		
+	public void calculaVelocidade() {		
+		mA.getmO().setVelocidadeInicial(Math.sqrt((2 * energia) / mA.getmO().getMassa()));
+		/*				  _____________________
+		 * Velocidade = -/(2 * energia) / massa
+		 */
+	}
+	
+	//--Tempo total
+	public void tempoTotal() {
+		mA.setTempoTotal(
+					(2 * 
+					mA.getmO().getVelocidadeInicial() * 
+					Math.sin(Math.toRadians(mA.getmP().getAnguloRotacaoGraus())) / 
+					mA.getGravSelecionada()));
+		/*
+		 * TempoTotal = (2 * velocidade * sin(angulo)) / gravidade
+		 */
+	}
+	
+	//--Alcance máximo
+	public void alcanceMaximo() {
+		this.alcanceMaximo = (Math.pow(mA.getmO().getVelocidadeInicial(), 2) * 
+							  Math.sin(Math.toRadians(2 * mA.getmP().getAnguloRotacaoGraus())) / 
+							  mA.getGravSelecionada());
+		/*
+		 * AlcanceTotal = (Vo² * sin(2 * teta)) / gravidade
+		 */
+	}
+	
+	//--AlturaMaxima
+	public void alturaMaxima() {
+		this.alturaMaxima = (Math.pow(mA.getmO().getVelocidadeInicial() * 
+							Math.sin(Math.toRadians(mA.getmP().getAnguloRotacaoGraus())), 2)) / 
+							2 * mA.getGravSelecionada();
+		/*
+		 * AlturaMaxima = (Vo * sin(teta))² / 2 * gravidade
+		 */
+	}
+	
+	//--Novo X
+	public void novoX() {
+		mA.getmO().setPosicaoXMetros(mA.getmO().getPosicaoXMetros() + 
+									(mA.getmO().getVelocidadeInicial() * 
+									Math.cos(Math.toRadians(mA.getmP().getAnguloRotacaoGraus()) * 
+									mA.getTempoAtual())));
+		/*
+		 * Novo X = Vo * cos(teta) * tempo
+		 */
+	}
+	
+	//--Novo Y
+	public void novoY() {
+		mA.getmO().setPosicaoYMetros(mA.getmO().getPosicaoYMetros() + (
+									mA.getmO().getVelocidadeInicial() * 
+									Math.sin(Math.toRadians(mA.getmP().getAnguloRotacaoGraus())) * mA.getTempoAtual() - 
+									((mA.getGravSelecionada() / 2) * Math.pow(mA.getTempoAtual(), 2))));
+		/*
+		 * Novo Y = (Vo * sin(teta) * tempo - (grav / 2 * tempo²)
+		 */
 	}
 	
 	//--Getters
@@ -59,6 +118,8 @@ public class ModeloCanhao {
 	public double getCatOpo() {return catOpo;}
 	public double getCatAd() {return catAd;}
 	public double getHip() {return hip;}
+	public double getAlcanceMaximo() {return alcanceMaximo;}
+	public double getAlturaMaxima() {return alturaMaxima;}
 	
 	//--Setters
 	public void setEnergia(double energia) {
