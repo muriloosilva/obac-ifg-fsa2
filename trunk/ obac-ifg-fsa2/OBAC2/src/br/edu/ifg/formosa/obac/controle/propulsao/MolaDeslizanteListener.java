@@ -13,12 +13,13 @@ import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleInicioSimulacoes;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPropulsao;
 
 public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 
 	//Referencias
-	private final VisaoPropulsao vP;
+	private final VisaoPainelSimulacao vPS;
 	private final ModeloAmbiente mA;
 	private final ControleOBAC cOBAC;
 	private final ControleInicioSimulacoes cIS;
@@ -27,15 +28,15 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 	//Variável de controle
 	private boolean mousePressionando = true; 
 	
-	public MolaDeslizanteListener(VisaoPropulsao vP, ModeloAmbiente mA, ControleOBAC cOBAC, ControleInicioSimulacoes cIS) {
-		this.vP = vP;
+	public MolaDeslizanteListener(VisaoPainelSimulacao vPS, ModeloAmbiente mA, ControleOBAC cOBAC, ControleInicioSimulacoes cIS) {
+		this.vPS = vPS;
 		this.mA = mA;
 		this.cOBAC = cOBAC;
 		this.cIS = cIS;
 		
-		this.vP.getDeslizanteMola().setValue(this.vP.getDeslizanteMola().getMaximum());
-		this.vP.getDeslizanteMola().addChangeListener(this);
-		this.vP.getDeslizanteMola().addMouseListener(this);
+		this.vPS.getVisaoAuxiliar().getDeslizanteMola().setValue(this.vPS.getVisaoAuxiliar().getDeslizanteMola().getMaximum());
+		this.vPS.getVisaoAuxiliar().getDeslizanteMola().addChangeListener(this);
+		this.vPS.getVisaoAuxiliar().getDeslizanteMola().addMouseListener(this);
 	}
 	
 	@Override
@@ -52,11 +53,11 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 		if (mousePressionando==true) {
 			
 			//Atualiza a imagem da mola com o tamnho adequado
-			vP.setImagemPropulsao(new ImageIcon(mA.getmP().getImagemPropulsao().getImage().getScaledInstance(this.vP.getDeslizanteMola().getValue(), 30, Image.SCALE_DEFAULT)));
+			vPS.getVisaoPropulsao().setImagemPropulsao(new ImageIcon(mA.getmP().getImagemPropulsao().getImage().getScaledInstance(this.vPS.getVisaoAuxiliar().getDeslizanteMola().getValue(), 30, Image.SCALE_DEFAULT)));
 			//Move o objeto para que ele acompanhe os novos tamanhos da mola
-			mA.getmO().setPosicaoXPx(this.vP.getDeslizanteMola().getValue()+31);
+			mA.getmO().setPosicaoXPx(this.vPS.getVisaoAuxiliar().getDeslizanteMola().getValue()+31);
 			//Seta o tamnho atual em pixels da mola
-			mA.getmP().getModeloMola().setTamanhoMolaAtualPix(this.vP.getDeslizanteMola().getValue());
+			mA.getmP().getModeloMola().setTamanhoMolaAtualPix(this.vPS.getVisaoAuxiliar().getDeslizanteMola().getValue());
 			//Seta o tamnho atual em metros da mola
 			mA.getmP().getModeloMola().setTamanhoMolaAtualM(
 					(UtilidadeConvercoesEscala.convertePixelMetro(//COnversão de Pixel para Metros
@@ -65,24 +66,25 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 							mA.getmP().getModeloMola().getTamanhoMolaTotalPix())));//Tamanho Total Px
 
 			//Label que exibe o tamnho atual da mola
-			this.vP.getRotuloCompressao().setText(this.vP.getDeslizanteMola().getValue()+"%");
+			this.vPS.getVisaoAuxiliar().getRotuloCompressao().setText(this.vPS.getVisaoAuxiliar().getDeslizanteMola().getValue()+"%");
 			
-			this.vP.getDeslizanteMola().setBackground(Color.blue);
+			this.vPS.getVisaoAuxiliar().getDeslizanteMola().setBackground(Color.blue);
 		}
 		else{
-			this.vP.getDeslizanteMola().setBackground(Color.red);
-//			this.vP.getpCompressor().setVisible(false);
-			cMSD = new ControleMolaSolturaDeslizante(vP, mA, cOBAC, cIS);
+			this.vPS.getVisaoAuxiliar().getDeslizanteMola().setBackground(Color.red);
+			this.vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
+			this.vPS.getVisaoAuxiliar().getpCompressor().setEnabled(true);
+			cMSD = new ControleMolaSolturaDeslizante(vPS.getVisaoPropulsao(), mA, cOBAC, cIS);
 		}
 		this.cOBAC.repinta();
 		mousePressionando=true;
 	}
 	
 	private void testeLogico(){
-		if(this.vP.getDeslizanteMola().getValue()<this.vP.getDeslizanteMola().getMaximum()){
+		if(this.vPS.getVisaoAuxiliar().getDeslizanteMola().getValue()<this.vPS.getVisaoAuxiliar().getDeslizanteMola().getMaximum()){
 			this.mousePressionando=false;
-			this.vP.getDeslizanteMola().setValue(this.vP.getDeslizanteMola().getMaximum());
-			this.vP.getRotuloCompressao().setText("100%");
+			this.vPS.getVisaoAuxiliar().getDeslizanteMola().setValue(this.vPS.getVisaoAuxiliar().getDeslizanteMola().getMaximum());
+			this.vPS.getVisaoAuxiliar().getRotuloCompressao().setText("100%");
 		}
 	}
 	
