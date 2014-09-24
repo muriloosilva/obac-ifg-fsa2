@@ -142,7 +142,7 @@ public class ControleOBAC {
 		//Controles do Painel de Configuração
 			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mA.getmP(), com, this);
 			cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
-			new ControlePainelConfiguracaoExecucao(mA, vPS, vpc, mpc, cpca, cpced, cIS, cmm);
+			new ControlePainelConfiguracaoExecucao(mA, vPS, vpc, mpc, cpca, cpced, cIS, cmm, this);
 		
 		//Controles/Listeners da mola
 		MolaDeslizanteListener mDL = new MolaDeslizanteListener(vPS, mA, this, cIS);

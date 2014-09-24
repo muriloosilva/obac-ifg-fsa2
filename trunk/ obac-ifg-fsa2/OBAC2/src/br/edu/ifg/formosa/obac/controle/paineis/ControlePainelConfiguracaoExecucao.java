@@ -3,6 +3,7 @@ package br.edu.ifg.formosa.obac.controle.paineis;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleInicioSimulacoes;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
@@ -18,11 +19,12 @@ public class ControlePainelConfiguracaoExecucao {
 	private ControleInicioSimulacoes cIS = null;
 	
 	public ControlePainelConfiguracaoExecucao(
-			final ModeloAmbiente mA, VisaoPainelSimulacao vPS,
+			final ModeloAmbiente mA, final VisaoPainelSimulacao vPS,
 			final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mpc,
 			final ControlePainelConfiguracaoAtualizacoes cpca,
 			final ControlePainelConfiguracaoEntradaDeDados cpced,
-			final ControleInicioSimulacoes cIS, final ControleMolaMouse cMM)
+			final ControleInicioSimulacoes cIS, final ControleMolaMouse cMM,
+			final ControleOBAC cOBAC)
 	{
 		this.mA = mA;
 		this.vPC = vPC;
@@ -80,6 +82,10 @@ public class ControlePainelConfiguracaoExecucao {
 				//____________________________________________________
 				//Reativar componentes do painel de Configuração
 					cpca.desativaComponentes(true);
+				//Deixa o slider invisivel
+					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
+					vPS.getVisaoAuxiliar().getpCompressor().setEnabled(true);
+					cOBAC.repinta();
 			}
 		});
 	}

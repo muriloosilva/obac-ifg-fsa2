@@ -22,6 +22,8 @@ public class VisaoAuxiliar extends JPanel{
 		private JPanel pCompressor = null;
 		private JSlider deslizanteMola = null;
 		private JLabel rotuloCompressao = null;
+	//--Variável de posicionamento vertical do painel de compressão
+	private int posYCompressor = 505;
 	
 	//Métodos
 	//--Construtor
@@ -35,21 +37,22 @@ public class VisaoAuxiliar extends JPanel{
 		//Deslizante da mola
 			//Painel
 			pCompressor = new JPanel(null);
-				pCompressor.setBounds(30, 565, 690, 30);
+				pCompressor.setBounds(30, posYCompressor, 100, 50);
 				pCompressor.setBackground(Color.white);
 				pCompressor.setBorder(new LineBorder(Color.black, 1));
 				pCompressor.setVisible(false);
 			this.add(pCompressor);
 			//Rotulo
-			rotuloCompressao = new JLabel("0%", JLabel.RIGHT);
-				rotuloCompressao.setSize(100, 30);
+			rotuloCompressao = new JLabel("100%", JLabel.LEFT);
+				rotuloCompressao.setBounds(10, 25, 80, 20);
+//				rotuloCompressao.setSize(100, 30);
 				rotuloCompressao.setFont(new Font(null, 0, 20));
 				rotuloCompressao.setForeground(Color.black);
 			pCompressor.add(rotuloCompressao);
 			//Deslizante
 			deslizanteMola = new JSlider(JSlider.HORIZONTAL, 1, 100, 100);
 				deslizanteMola.setOpaque(false);
-				deslizanteMola.setBounds(100, 1, 589, 28);
+				deslizanteMola.setBounds(0, 0, 100, 30);
 			pCompressor.add(deslizanteMola);
 		//Fim Deslizante da mola
 	}
@@ -66,4 +69,5 @@ public class VisaoAuxiliar extends JPanel{
 	public JPanel getpCompressor() {return pCompressor;}
 	public JSlider getDeslizanteMola() {return deslizanteMola;}
 	public JLabel getRotuloCompressao() {return rotuloCompressao;}
+	public void setPosYCompressor(int posYCompressor){this.posYCompressor = posYCompressor;}
 }

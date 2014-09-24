@@ -84,7 +84,8 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Rótulos
 					vpc.getrPropulsaoDado1().setText(mpc.getDado1Mola());
 					vpc.getrPropulsaoDado2().setText(mpc.getDado2Mola());
-					//Caixa de seleção das simulações
+					//Caixas de seleção das simulações
+					vpc.getCsAmbienteSimulacao().setSelectedIndex(0);
 					if(vpc.getCsAmbienteSimulacao().getItemCount()==6)//Teste lógico para não remover uma linha desnecessária
 						vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo
 					//Painel de Fórmulas
@@ -142,20 +143,20 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			}
 		});
 	}
-	private String cacheTexto = "";  
+	private String cacheTexto = "0";  
 	//Série de ajustes feitos no Painel de Configuração durante a seleção de simulações
 		public void ajustesPConfig(){
 			//1º - Configura o segundo campo de dados referentes a propulsão no painel de configuração
 			//-----para que so possa ter seu valor editado caso seja a simulação de lançamento oblíquo.
+				cacheTexto = vpc.getCtPropulsaoDado1().getText();
 				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()!=5 
 					&& vpc.getCsPropulsao().getSelectedIndex()==0)
 				{//Inicio IF/ELSE 1
-					cacheTexto = vpc.getCtPropulsaoDado1().getText(); 
 					vpc.getCtPropulsaoDado1().setText("0");
 					vpc.getCtPropulsaoDado1().setEnabled(false);
 				}
 				else {
-					vpc.getCtPropulsaoDado1().setText("0");
+					vpc.getCtPropulsaoDado1().setText(cacheTexto);
 					vpc.getCtPropulsaoDado1().setEnabled(true);
 				}
 			//Fim 1º
