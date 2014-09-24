@@ -1,6 +1,8 @@
 package br.edu.ifg.formosa.obac.controle.paineis;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeArredondamento;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
@@ -18,6 +20,9 @@ public class ControlePainelFormulas {
 //Métodos relacionados as fórmulas dos paineis
 	//Propulção pela mola	
 		public String propulsaoMola(double k, double x, double m){
+			k = UtilidadeArredondamento.arredondamento(2, k);
+			x = UtilidadeArredondamento.arredondamento(2, x);
+			m = UtilidadeArredondamento.arredondamento(2, m);
 			//V0= (K+x^2/Massa)
 			String s = ModeloPainelFormulas.propMola +"\n";
 			s += "V0 = √(" +k +"*" +x+"²/" +m +")\n";
@@ -29,6 +34,8 @@ public class ControlePainelFormulas {
 
 		//Propulsão pelo canhão
 		public String propulsaoCanhao(double e, double m){
+			e = UtilidadeArredondamento.arredondamento(2, e);
+			m = UtilidadeArredondamento.arredondamento(2, m);
 			//V0 = (2 * energia * massa)
 			String s = ModeloPainelFormulas.propCanhao +"\n";
 			s += "V0 = 2 * "+e+" * "+m +"\n";
@@ -39,6 +46,8 @@ public class ControlePainelFormulas {
 
 		//Força normal
 		public String forcaNormal(double m, double g){
+			m = UtilidadeArredondamento.arredondamento(2, m);
+			g = UtilidadeArredondamento.arredondamento(2, g);
 			//N = m * g
 			String s = ModeloPainelFormulas.forcaNormal +"\n";
 			s += "N = " +m +" * " +g +"\n";
@@ -48,6 +57,8 @@ public class ControlePainelFormulas {
 
 		//Atrito
 		public String atrito(double fNormal, double coefAtr){
+			fNormal = UtilidadeArredondamento.arredondamento(2, fNormal);
+			coefAtr = UtilidadeArredondamento.arredondamento(2, coefAtr);
 			//Fat = N * µ
 			String s = ModeloPainelFormulas.atrito +"\n";
 			s += "Fat = " +fNormal +" * " +coefAtr +"\n";
@@ -57,6 +68,8 @@ public class ControlePainelFormulas {
 
 		//Aceleração no Plano
 		public String aceleracaoPlano(double fAtr, double m){
+			fAtr = UtilidadeArredondamento.arredondamento(2, fAtr);
+			m = UtilidadeArredondamento.arredondamento(2, m);
 			//a = Fat/m * (-1)
 			String s = ModeloPainelFormulas.aceleracaoPlano +"\n";
 			s += "a = " +fAtr +"/" +m +" * -1\n";
@@ -75,6 +88,9 @@ public class ControlePainelFormulas {
 		
 		//Aceleração descida
 		public String aceleracaoDescida(double g, double angulo, double coefAtr){
+			g = UtilidadeArredondamento.arredondamento(2, g);
+			angulo = UtilidadeArredondamento.arredondamento(2, angulo);
+			coefAtr = UtilidadeArredondamento.arredondamento(2, coefAtr);
 			//a = [(g * Sen(?)) + (µ * g * Cos(?))]
 			String s = ModeloPainelFormulas.aceleracaoDescida +"\n";
 			s += "a = [(" +g +" * Sen(" +angulo+")) + ("+coefAtr+" * "+g+" * Cos("+angulo+"))]\n";
@@ -87,6 +103,9 @@ public class ControlePainelFormulas {
 
 		//Aceleração Subida
 		public String aceleracaoSubida(double g, double angulo, double coefAtr){
+			g = UtilidadeArredondamento.arredondamento(2, g);
+			angulo = UtilidadeArredondamento.arredondamento(2, angulo);
+			coefAtr = UtilidadeArredondamento.arredondamento(2, coefAtr);
 			//a = [(g * Sen(?)) + (µ * g * Cos(?))] * (-1)
 			String s = ModeloPainelFormulas.aceleracaoSubida +"\n";
 			s += "a = [(" +g +" * Sen(" +angulo+")) + ("+coefAtr+" * "+g+" * Cos("+angulo+"))] * (-1)\n";
@@ -100,6 +119,8 @@ public class ControlePainelFormulas {
 
 		//Posição final na descida
 		public String posicaoFinalDescida(double v0, double a){
+			v0 = UtilidadeArredondamento.arredondamento(2, v0);
+			a = UtilidadeArredondamento.arredondamento(2, a);
 			//Sf = (V0^2 * -1)/(2 * a)
 			String s = ModeloPainelFormulas.posicaoFinalDescida +"\n";
 			s += "Sf = ("+v0+"² * -1)/(2 * "+a+")\n";
@@ -111,6 +132,8 @@ public class ControlePainelFormulas {
 		
 		//Posição final no plano
 		public String posicaoFinalPadrao(double v0, double a){
+			v0 = UtilidadeArredondamento.arredondamento(2, v0);
+			a = UtilidadeArredondamento.arredondamento(2, a);
 			//Sf = (V0^2 * -1)/(2 * a) * (-1)
 			String s = ModeloPainelFormulas.posicaoFinalPadrao +"\n";
 			s += "Sf = ("+v0+"² * -1)/(2 * "+a+") * (-1)\n";
@@ -123,6 +146,8 @@ public class ControlePainelFormulas {
 
 		//Tempo
 		public String tempo(double v0, double a){
+			v0 = UtilidadeArredondamento.arredondamento(2, v0);
+			a = UtilidadeArredondamento.arredondamento(2, a);
 			//t = (Vf - V0)/a
 			String s = ModeloPainelFormulas.tempo +"\n";
 			s += "t = (0 - " +v0+")/"+a+"\n";
@@ -133,6 +158,10 @@ public class ControlePainelFormulas {
 		
 		//Nova posição
 		public String novaPosicao(double s0, double v0, double t, double a){
+			s0 = UtilidadeArredondamento.arredondamento(2, s0);
+			v0 = UtilidadeArredondamento.arredondamento(2, v0);
+			t = UtilidadeArredondamento.arredondamento(2, t);
+			a = UtilidadeArredondamento.arredondamento(2, a);
 			//s=s0+v0*t+(a*t^2)/2
 			String s = ModeloPainelFormulas.equaHorariaAbscissa +"\n"; 
 			s += "s = "+s0+" + "+v0+" * "+t+" + ("+a+" * "+t+"²)/2 \n";
@@ -145,6 +174,10 @@ public class ControlePainelFormulas {
 
 		//Colisão
 		public String colisao(double va, double ma, double mb, double e){
+			va = UtilidadeArredondamento.arredondamento(2, va);
+			ma = UtilidadeArredondamento.arredondamento(2, ma);
+			mb = UtilidadeArredondamento.arredondamento(2, mb);
+			e = UtilidadeArredondamento.arredondamento(2, e);
 			//Va'=((Va*(Ma-Mb*e))/(Ma-Mb))
 			String s = ModeloPainelFormulas.colisao +"\n";
 			s += "Va'=((" +va +"*(" +ma +"-" +mb +"*" +e+"))/(" +ma +"-" +mb +"))\n";
@@ -157,6 +190,9 @@ public class ControlePainelFormulas {
 		
 		//Equação de Torricceli
 		public String equTorricceli(double v0, double a, double deltaS){
+			v0= UtilidadeArredondamento.arredondamento(2, v0);
+			a = UtilidadeArredondamento.arredondamento(2, a);
+			deltaS = UtilidadeArredondamento.arredondamento(2, deltaS);
 			//V = √(V0^2 + 2 * a * ΔS)
 			String s = ModeloPainelFormulas.equaTorricceli +"\n";
 			s += "V = " +"(" +v0 +"² + 2 *" +a +" * Δ" +deltaS +")\n";
@@ -168,6 +204,9 @@ public class ControlePainelFormulas {
 		
 		//Tempo Total Lançamento Oblíquo
 		public String tempoTotal(double v, double angulo, double g){
+			v = UtilidadeArredondamento.arredondamento(2, v);
+			angulo = UtilidadeArredondamento.arredondamento(2, angulo);
+			g = UtilidadeArredondamento.arredondamento(2, g);
 			//t=(2*v*sen(θ))/g)
 			String s = ModeloPainelFormulas.tempoTotal +"\n";
 			s += "t Total = ((2 * " +v +" * sen(" +angulo +"))/" +g+")\n";
@@ -180,6 +219,9 @@ public class ControlePainelFormulas {
 		
 		
 		public String movimentoHorizontal(double v, double angulo, double t){
+			t = UtilidadeArredondamento.arredondamento(2, t);
+			angulo = UtilidadeArredondamento.arredondamento(2, angulo);
+			t = UtilidadeArredondamento.arredondamento(2, t);
 			//Mov.Horiz.=v*cos(θ)*t
 			String s = ModeloPainelFormulas.movimentoHorizontal +"\n";
 			s += "Mov. Horiz. = " +v +" * cos(" +angulo +") * " +t +"\n";
@@ -190,6 +232,10 @@ public class ControlePainelFormulas {
 		}
 
 		public String movimentoVetical(double v, double angulo, double t, double g){
+			v = UtilidadeArredondamento.arredondamento(2, v);
+			angulo = UtilidadeArredondamento.arredondamento(2, angulo);
+			t = UtilidadeArredondamento.arredondamento(2, t);
+			g = UtilidadeArredondamento.arredondamento(2, g);
 			//Mov.Vert.=(v*sen(θ)*t)-((g*t)/2)
 			String s = ModeloPainelFormulas.movimentoVertical +"\n";
 			s += "Mov.Vert. = ( " +v +" * sen(" +angulo +") * " +t +") - ((" +g +" * " +t +")/2) \n";
@@ -201,6 +247,9 @@ public class ControlePainelFormulas {
 		}
 
 		public String alcanceTHorizontal(double v, double angulo, double g){
+			v = UtilidadeArredondamento.arredondamento(2, v);
+			angulo = UtilidadeArredondamento.arredondamento(2, angulo);
+			g = UtilidadeArredondamento.arredondamento(2, g);
 			//Alc.T.Horiz.=(v^2*sen(2*θ))/g
 			String s = ModeloPainelFormulas.alcanceHorizontal +"\n";
 			s += "Alc.T.Horiz. = ( " +v +"² * sen(2 * " +angulo +"))/" +g +"\n";
@@ -212,6 +261,9 @@ public class ControlePainelFormulas {
 		}
 
 		public String alturaTVertical(double v, double angulo, double g){
+			v = UtilidadeArredondamento.arredondamento(2, v);
+			angulo = UtilidadeArredondamento.arredondamento(2, angulo);
+			g = UtilidadeArredondamento.arredondamento(2, g);
 			//Alt.T.Vert.=(v*sen(θ))^2/(2*g)
 			String s = ModeloPainelFormulas.alturaVertical +"\n";
 			s += "Alt.T.Vert. = (" +v +" * sen(" +angulo +"))² / (2 * " +g+")\n";

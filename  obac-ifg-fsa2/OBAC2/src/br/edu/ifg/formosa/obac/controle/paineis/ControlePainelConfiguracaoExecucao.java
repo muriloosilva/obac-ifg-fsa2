@@ -14,10 +14,11 @@ public class ControlePainelConfiguracaoExecucao {
 	
 	private ModeloAmbiente mA = null;
 	private VisaoPainelConfiguracao vPC = null;
+	private VisaoPainelSimulacao vPS = null;
 	private ControleInicioSimulacoes cIS = null;
 	
 	public ControlePainelConfiguracaoExecucao(
-			final ModeloAmbiente mA,
+			final ModeloAmbiente mA, VisaoPainelSimulacao vPS,
 			final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mpc,
 			final ControlePainelConfiguracaoAtualizacoes cpca,
 			final ControlePainelConfiguracaoEntradaDeDados cpced,
@@ -25,6 +26,7 @@ public class ControlePainelConfiguracaoExecucao {
 	{
 		this.mA = mA;
 		this.vPC = vPC;
+		this.vPS = vPS;
 		this.cIS = cIS;
 		
 		//Botão Iniciar/Pausar
@@ -68,6 +70,11 @@ public class ControlePainelConfiguracaoExecucao {
 		vPC.getBaNovaSimulacao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//REserta os valores do PConfig
+				vPC.getCtPropulsaoDado1().setText("");
+				vPC.getCtPropulsaoDado2().setText("");
+				vPC.getCtObjetoMassa().setText("");
+				//____________________________________________________
 				//Troca o rótulo do botão Para garantir que seja Iniciar Simulação
 					vPC.getBaIniciaPausar().setText(mpc.getBotaoIniciar());
 				//____________________________________________________
@@ -97,6 +104,8 @@ public class ControlePainelConfiguracaoExecucao {
 		mA.getmP().getModeloMola().setkAtual(
 				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replaceAll(",", "."))/100);
 		//Listener da mola
+		vPS.getVisaoAuxiliar().getpCompressor().setVisible(true);
+		vPS.getVisaoAuxiliar().getpCompressor().setEnabled(false);
 //		cMM.ativaMolaMouse();
 	}
 	

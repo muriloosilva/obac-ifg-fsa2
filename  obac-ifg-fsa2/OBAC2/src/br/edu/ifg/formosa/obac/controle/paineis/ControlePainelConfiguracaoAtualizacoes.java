@@ -72,6 +72,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Altera a imagem
 					mP.trocaImagemProp(true);
 					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
+					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
 					//Método necessário para corrigir o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 					//Altera o posicionamento
