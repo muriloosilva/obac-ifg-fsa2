@@ -25,11 +25,6 @@ public class VisaoPropulsao extends JPanel {
 	private ImageIcon imagemPropulsao = null;
 	//--VisaoPainelConfiguracao
 	
-	//--Partes Deslisante
-	private JPanel pCompressor = null;
-	private JSlider deslizanteMola = null;
-	private JLabel rotuloCompressao = null;
-	
 	//Metodos
 	//--Construtor
 	public VisaoPropulsao(ModeloAmbiente mA, VisaoPainelConfiguracao vPC) {
@@ -39,26 +34,6 @@ public class VisaoPropulsao extends JPanel {
 		this.setOpaque(true);
 		
 		this.mA = mA;
-		
-		//Deslizante da mola
-			//Painel
-			pCompressor = new JPanel(null);
-				pCompressor.setBounds(30, 565, 690, 30);
-				pCompressor.setOpaque(false);
-			this.add(pCompressor);
-			//Rotulo
-			rotuloCompressao = new JLabel("0%", JLabel.RIGHT);
-				rotuloCompressao.setSize(100, 30);
-				rotuloCompressao.setFont(new Font(null, 0, 20));
-				rotuloCompressao.setForeground(Color.black);
-			pCompressor.add(rotuloCompressao);
-			//Deslizante
-			deslizanteMola = new JSlider(JSlider.HORIZONTAL, 1, 100, 100);
-				deslizanteMola.setOpaque(false);
-				deslizanteMola.setBounds(100, 1, 589, 28);
-			pCompressor.add(deslizanteMola);
-		//Fim Deslizante da mola
-		
 		imagemPropulsao = mA.getmP().getImagemPropulsao();
 	}
 	
@@ -74,9 +49,5 @@ public class VisaoPropulsao extends JPanel {
 	//Get e Set
 	public ImageIcon getImagemPropulsao(){return imagemPropulsao;}
 	public void setImagemPropulsao(ImageIcon imagemPropulsao){this.imagemPropulsao = imagemPropulsao;}
-
-	public JPanel getpCompressor() {return pCompressor;}
-	public JSlider getDeslizanteMola() {return deslizanteMola;}
-	public JLabel getRotuloCompressao() {return rotuloCompressao;}
 	
 }

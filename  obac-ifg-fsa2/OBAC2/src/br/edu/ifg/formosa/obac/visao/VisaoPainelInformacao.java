@@ -10,6 +10,8 @@ import java.awt.Insets;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.modelo.ModeloSuperficie;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeRotuloTransparente;
 
 public class VisaoPainelInformacao extends JPanel{
@@ -173,10 +175,10 @@ public class VisaoPainelInformacao extends JPanel{
 		//Valores
 			//Primeira Linha---------------------------------------
 				//Gravidade	
-				rGravidadeValor = new UtilidadeRotuloTransparente("0.0");
+				rGravidadeValor = new UtilidadeRotuloTransparente(""+ModeloAmbiente.gravidadeTerra);
 				addComponent(rGravidadeValor, 1, 1);
 				//Coeficiente de Atrito
-				rCoefAtritoValor = new UtilidadeRotuloTransparente("0.0");
+				rCoefAtritoValor = new UtilidadeRotuloTransparente(""+ModeloSuperficie.atritoAsfalto);
 				addComponent(rCoefAtritoValor, 1, 3);
 				//Acelereação
 				rAceleracaoValor = new UtilidadeRotuloTransparente("0.0");
