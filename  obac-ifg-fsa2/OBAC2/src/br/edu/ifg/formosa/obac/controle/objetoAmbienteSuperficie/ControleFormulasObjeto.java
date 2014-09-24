@@ -158,7 +158,7 @@ public class ControleFormulasObjeto {
 		public boolean paradaSubida(){
 			if (ma.getmO().getPosicaoXPx() >= ModeloObjeto.pontoFinalObjetoSubidaPix) {
 				//Este valor é repassado para o OBJETO com o fim de evitar que o objeto retorne
-//				ma.getmO().setPosicaoXPx(ModeloObjeto.pontoFinalObjetoSubidaPix);
+				ma.getmO().setPosicaoXPx(ModeloObjeto.pontoFinalObjetoSubidaPix+1);
 //				ma.getmO().setPosicaoXMetros(ma.getmO().getPosFinalXMetros());
 				return false;
 			}
