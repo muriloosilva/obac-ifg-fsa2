@@ -148,6 +148,8 @@ public class VisaoPainelConfiguracao extends JPanel{
 			//Caixas de Texto
 			ctPropulsaoDado1 = new JFormattedTextField();
 				configCaixasTexto(ctPropulsaoDado1, 10, 45, 210, 20);
+				ctPropulsaoDado1.setText("0");
+				ctPropulsaoDado1.setEnabled(false);
 			pPropulsao.add(ctPropulsaoDado1);
 		//Dado 2
 			//Rótulo
