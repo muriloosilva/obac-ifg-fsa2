@@ -32,8 +32,8 @@ public class ModeloPropulsao {
 	private int translaX = 30; //Variáveis utilizadas para rotacionar o canhão
 	private int translaY = 470;
 	
-	private int posXProp = posXM;
-	private int posYProp = posYM;
+	private int posXProp = posXC;
+	private int posYProp = posYC;
 	
 	//--Modelos
 	private ModeloMola mM = null;
