@@ -1,7 +1,9 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
+import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeArredondamento;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
@@ -36,10 +38,17 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 				this.cfo = cfo;
 			
 			//Cáclculos referentes a esta simulação
-				
-				ma.setTempoAtual(0);//Seta o tempo inicial na variável
-				//Repinta o painel de fórmulas
-				vpf.repaint();
+			ma.getmP().getmC().tempoTotal();
+			ma.getmP().getmC().alcanceMaximo();
+			ma.getmO().setPosFinalXMetros(ma.getmP().getmC().getAlcanceMaximo());
+			ma.getmP().getmC().alturaMaxima();
+			ma.setTempoAtual(0);//Seta o tempo inicial na variável
+			
+			ma.getmP().getmC().novoX();
+			ma.getmP().getmC().novoY();
+			
+			//Repinta o painel de fórmulas
+			vpf.repaint();
 			
 			//Início da thread
 			t = new Thread(this);
@@ -48,42 +57,46 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 		
 		//Rodar
 		@Override
-		public void run() {
-			
+		public void run() 
+		{
 			//Laço de repetição para a executar a movimentação do objeto
 			while (true) {
 				if (continuar) {
-					
-					if (cfo.paradaPlano()==false) {
+					if (ma.getTempoAtual() < ma.getTempoTotal()) {
+						ma.getmP().getmC().novoX();
+						ma.getmP().getmC().novoY();
 						
-						//Calcula nova posição em METROS
-						cfo.calculaNovaPosicao();
-						//Converte a posição em METROS para PIXEL para poder movimentar o objeto
-						ma.getmO().setPosicaoXPx(130 +
-								UtilidadeConvercoesEscala.converteMetroEmPixelX(
-										ma.getmEH().getComprimentoEscalaPx(),
-										ma.getmO().getPosicaoXMetros(),
-										ma.getmEH().getEscalaFimXM()));
+						System.out.println("X: " + ma.getmO().getPosicaoXMetros());
+						System.out.println("Y: " + ma.getmO().getPosicaoYMetros());
 						
-						//System.out.println(ma.getmO().getPosicaoXPx());
-						//Repinta o painel para mostar o andamento da simulação
+						System.out.println("X Px: " + ma.getmO().getPosicaoXPx());
+						System.out.println("Y Px: " + ma.getmO().getPosicaoYPx());
+						
+						//Atualizar pixels  
+						ma.getmO().setPosicaoXPx(
+								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
+						
+						ma.getmO().setPosicaoYPx(
+								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
+						
+						try {	
+							t.sleep(42);	
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						
 						cOBAC.repinta();
-						vpf.repaint();
-						//Repinta o painel de fórmulas
-						vpf.repaint();
-						//Parada no carregamento para dar o realismo da simulação
-						try {	t.sleep(atrasoMS);	}
-						catch (InterruptedException e) {}
-						//Atualiza o tempo
-						ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
 						
-						//System.out.println("PX M Atual: "+ma.getmO().getPosicaoXMetros());
+						//Atualiza o tempo
+						ma.setTempoAtual(ma.getTempoAtual() + atrasoSPadrao);
+						System.out.println("Tempo atual: " + ma.getTempoAtual());
+						System.out.println("--------------------------------------");
+					} else {
+						parar();
 					}
-					else {parar();}
-				}
-				else {parar();}
-			}
-			
+				} else 
+					parar();
+			}			
 		}
 		
 		//Continuar
@@ -97,5 +110,5 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 		//Parar
 		@Override
 		@SuppressWarnings("deprecation")
-		public void parar() {pausar();	t.interrupt(); 	t.stop();}
+		public void parar() {cOBAC.repinta(); pausar();	t.interrupt(); 	t.stop();}
 }

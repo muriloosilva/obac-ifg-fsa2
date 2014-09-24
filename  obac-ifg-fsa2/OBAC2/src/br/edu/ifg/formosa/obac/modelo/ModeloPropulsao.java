@@ -88,6 +88,6 @@ public class ModeloPropulsao {
 	public void setPosYProp(int posYProp) {this.posYProp = posYProp;}
 	public void setAnguloRotacaoGraus(double anguloRotacaoGraus) {
 		this.anguloRotacaoGraus = anguloRotacaoGraus;
-		cPI.mudaValorAngulo(-anguloRotacaoGraus);
+		cPI.mudaValorAngulo(anguloRotacaoGraus);
 	}
 }

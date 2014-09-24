@@ -8,11 +8,13 @@ import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
 public class ControlePainelConfiguracaoExecucao {
 	
 	private ModeloAmbiente mA = null;
 	private VisaoPainelConfiguracao vPC = null;
+	private ControleInicioSimulacoes cIS = null;
 	
 	public ControlePainelConfiguracaoExecucao(
 			final ModeloAmbiente mA,
@@ -23,6 +25,7 @@ public class ControlePainelConfiguracaoExecucao {
 	{
 		this.mA = mA;
 		this.vPC = vPC;
+		this.cIS = cIS;
 		
 		//Botão Iniciar/Pausar
 		vPC.getBaIniciaPausar().addActionListener(new ActionListener() {
@@ -76,10 +79,15 @@ public class ControlePainelConfiguracaoExecucao {
 	
 	private void exeCanhao(){
 		//Ângulo
-//		mA.getmP().getmC().set(Double.parseDouble(vPC.getCtPropulsaoDado1().getText()));
+		mA.getmP().setAnguloRotacaoGraus(
+				Double.parseDouble(vPC.getCtPropulsaoDado1().getText().replace(",", ".")));
 		//Energia
 		mA.getmP().getmC().setEnergia(
-				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replaceAll(",", "."))/100);
+				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replace(",", ".")));
+		
+		mA.getmP().getmC().calculaVelocidade(); //Velocidade do canhão
+		
+		cIS.iniciarSimulacao();
 	}
 	
 	private void exeMola(){

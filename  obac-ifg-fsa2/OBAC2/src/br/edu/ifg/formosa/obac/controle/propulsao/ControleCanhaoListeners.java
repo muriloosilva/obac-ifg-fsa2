@@ -42,39 +42,25 @@ public class ControleCanhaoListeners implements MouseListener, MouseMotionListen
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		mA.getmC().setVerAX(e.getX());
-		mA.getmC().setVerAY(e.getY());
-		mA.getmC().setVerBX(e.getX());
-		
-		mA.getmC().setCatOpo(mA.getmC().getVerBY() - mA.getmC().getVerAY());				
-		mA.getmC().setCatAd(mA.getmC().getVerBX() - mA.getmC().getVerCX());
-		mA.getmC().setHip(Math.sqrt(Math.pow(mA.getmC().getCatAd(), 2) + Math.pow(mA.getmC().getCatOpo(), 2)));
-		
-		double angulo = UtilidadeArredondamento.arredondamento(1, Math.toDegrees(Math.asin(mA.getmC().getCatOpo() / mA.getmC().getHip())));
-		
-		if (e.getX() < 145)
-			angulo = 90;
-		else if (angulo < 0)
-			angulo = 0;
-
-		String anguloS = angulo + "";
-		
-		vPC.getCtPropulsaoDado1().setText(anguloS.replace(".", ","));
-		mA.getmP().setAnguloRotacaoGraus(-angulo);
-		cOBAC.repinta();
+		redirecionaCanhao(e);
 	}
 	
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		mA.getmC().setVerAX(e.getX());
-		mA.getmC().setVerAY(e.getY());
-		mA.getmC().setVerBX(e.getX());
+		redirecionaCanhao(e);
+	}
+	
+	//Redirecionar canhão
+	private void redirecionaCanhao(MouseEvent e) {
+		mA.getmP().getmC().setVerAX(e.getX());
+		mA.getmP().getmC().setVerAY(e.getY());
+		mA.getmP().getmC().setVerBX(e.getX());
 		
-		mA.getmC().setCatOpo(mA.getmC().getVerBY() - mA.getmC().getVerAY());				
-		mA.getmC().setCatAd(mA.getmC().getVerBX() - mA.getmC().getVerCX());
-		mA.getmC().setHip(Math.sqrt(Math.pow(mA.getmC().getCatAd(), 2) + Math.pow(mA.getmC().getCatOpo(), 2)));
+		mA.getmP().getmC().setCatOpo(mA.getmP().getmC().getVerBY() - mA.getmP().getmC().getVerAY());				
+		mA.getmP().getmC().setCatAd(mA.getmP().getmC().getVerBX() - mA.getmP().getmC().getVerCX());
+		mA.getmP().getmC().setHip(Math.sqrt(Math.pow(mA.getmP().getmC().getCatAd(), 2) + Math.pow(mA.getmP().getmC().getCatOpo(), 2)));
 		
-		double angulo = UtilidadeArredondamento.arredondamento(1, Math.toDegrees(Math.asin(mA.getmC().getCatOpo() / mA.getmC().getHip())));
+		double angulo = UtilidadeArredondamento.arredondamento(1, Math.toDegrees(Math.asin(mA.getmP().getmC().getCatOpo() / mA.getmP().getmC().getHip())));
 		
 		if (e.getX() < 145)
 			angulo = 90;
@@ -84,8 +70,6 @@ public class ControleCanhaoListeners implements MouseListener, MouseMotionListen
 		String anguloS = angulo + "";
 		
 		vPC.getCtPropulsaoDado1().setText(anguloS.replace(".", ","));
-		mA.getmP().setAnguloRotacaoGraus(-angulo);
-		cOBAC.repinta();		
 	}
 
 	@Override

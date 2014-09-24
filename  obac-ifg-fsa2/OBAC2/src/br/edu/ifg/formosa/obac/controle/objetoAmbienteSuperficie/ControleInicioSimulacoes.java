@@ -52,7 +52,7 @@ public class ControleInicioSimulacoes {
 		//Plano e Precipício
 //		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==4){new ControleObjeto5QuedaLivre();}
 		//Lançamento Oblíquo
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==5){new ControleObjeto6LancamentoObliquo(mA, vPF, cOBAC, cfo, cfs);}
+ 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==5){new ControleObjeto6LancamentoObliquo(mA, vPF, cOBAC, cfo, cfs);}
 	}
 	
 }

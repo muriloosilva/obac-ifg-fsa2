@@ -21,7 +21,8 @@ public class ModeloEscala {
 	
 	private int espacamentoMarcadores = 0; //Espacamento entre os marcadores (px)
 	
-	private int comprimentoEscalaPx = escalaFimXPix - escalaInicioX;
+	private int comprimentoEscalaPX = escalaFimXPix - escalaInicioX;
+	private int comprimentoEscalaPY = escalaFimYPix - escalaInicioY;
 	
 	public static final double marcadorInicial = 0.0; //É Constante, mas deixei aqui para um melhor entendimento
 	private double[] marcadoresEscala = new double[qtdMarcadores + 1]; //0-Menor / 4-Maior
@@ -40,7 +41,8 @@ public class ModeloEscala {
 	public int getEscalaFimXPix() {return escalaFimXPix;}
 	public int getEscalaFimYPix() {return escalaFimYPix;}	
 	public int getEspacamentoMarcadores() {return espacamentoMarcadores;}
-	public int getComprimentoEscalaPx() {return comprimentoEscalaPx;}
+	public int getComprimentoEscalaPX() {return comprimentoEscalaPX;}
+	public int getComprimentoEscalaPY() {return comprimentoEscalaPY;}
 	public long getEscalaFimXM() {return escalaFimXM;}
 	public long getEscalaFimYM() {return escalaFimYM;}	
 	public double[] getMarcadoresEscala() {return marcadoresEscala;}

@@ -37,7 +37,7 @@ public class ControleObjeto3Descida implements ControleObjeto0Generico, Runnable
 			cfo.calculaAceleracaoDescida();;//Aceleração
 			cfo.calculaPosFinalDescida();//Posição Final
 			cfs.calculaEscalaDescida();//Escala
-			ma.getmO().setPosFinalXPix(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(),(ma.getmO().getPosFinalXMetros()*-1),ma.getmEH().getEscalaFimXM()));//Ponto fina em Pixel
+			ma.getmO().setPosFinalXPix(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPX(),(ma.getmO().getPosFinalXMetros()*-1),ma.getmEH().getEscalaFimXM()));//Ponto fina em Pixel
 			cfo.calculaTempo();//Tempo total de Simulação em segundos
 			ma.setTempoAtual(0);//Seta o tempo inicial na variável
 		
@@ -54,7 +54,7 @@ public class ControleObjeto3Descida implements ControleObjeto0Generico, Runnable
 					//Calcula nova posição em METROS
 					cfo.calculaNovaPosicao();
 					//Converte a posição em METROS para PIXEL para poder movimentar o objeto
-					ma.getmO().setPosicaoXPx(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPx(),ma.getmO().getPosicaoXMetros(),ma.getmEH().getEscalaFimXM()));
+					ma.getmO().setPosicaoXPx(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPX(),ma.getmO().getPosicaoXMetros(),ma.getmEH().getEscalaFimXM()));
 					//Repinta o painel para mostar o andamento da simulação
 					cOBAC.repinta();
 					//Repinta o painel de fórmulas

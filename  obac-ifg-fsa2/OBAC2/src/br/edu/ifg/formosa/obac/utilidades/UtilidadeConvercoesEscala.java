@@ -1,5 +1,7 @@
 package br.edu.ifg.formosa.obac.utilidades;
 
+import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
+
 public class UtilidadeConvercoesEscala {
 	
 	/*Legenda das variáveis utilizadas nos métodos abaixo:
@@ -13,8 +15,7 @@ public class UtilidadeConvercoesEscala {
 	public static int converteMetroEmPixelX(double pTotal, double mAtual, double mTotal){
 		int pAtual = (int)((pTotal*mAtual)/mTotal);
 		return pAtual;
-    }//Fim converteMetroEmPixelX
-	
+    }//Fim converteMetroEmPixelX	
 	
 	//Método usado para converter PIXEL em METRO -> m'=m*p'/p
 	public static int convertePixelMetro(double mTotal, double pAtual, double pTotal){
@@ -22,4 +23,17 @@ public class UtilidadeConvercoesEscala {
 		return mAtual;
 	}//Fim convertePixelMetro
 	
+	public static int metroParaPixelH(ModeloEscala mEH, double metro) {
+		return (int) ((metro * mEH.getComprimentoEscalaPX()) / mEH.getMarcadoresEscala()[mEH.qtdMarcadores] + mEH.getEscalaInicioX());
+	}
+	public static int pixelParaMetroH(ModeloEscala mEH, double pixel) {
+		return (int) (pixel * mEH.getMarcadoresEscala()[mEH.qtdMarcadores]) / mEH.getEscalaFimXPix();
+	}
+	
+	public static int metroParaPixelV(ModeloEscala mEV, double metro) {
+		return (int) ((metro * mEV.getComprimentoEscalaPY()) / mEV.getMarcadoresEscala()[mEV.qtdMarcadores] + mEV.getEscalaInicioY());
+	}
+	public static int pixelParaMetroV(ModeloEscala mEV, double pixel) {
+		return (int) (pixel * mEV.getMarcadoresEscala()[mEV.qtdMarcadores]) / mEV.getEscalaFimYPix();
+	}
 }
