@@ -142,15 +142,18 @@ public class ControleOBAC {
 		//Controles do Painel de Configuração
 			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mA.getmP(), com, this);
 			cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
-			new ControlePainelConfiguracaoExecucao(mA, vpc, mpc, cpca, cpced, cIS, cmm);
+			new ControlePainelConfiguracaoExecucao(mA, vPS, vpc, mpc, cpca, cpced, cIS, cmm);
+		
+		//Controles/Listeners da mola
+		MolaDeslizanteListener mDL = new MolaDeslizanteListener(vPS, mA, this, cIS);
+			vPS.getVisaoAuxiliar().getDeslizanteMola().addChangeListener(mDL);
+			vPS.getVisaoAuxiliar().getDeslizanteMola().addMouseListener(mDL);
 			
 		//Controles - Escala/Ambiente
 			new ControleSimulacao(vpi, vPS, mA, vpc, mpc, this);
 			new ControleAmbiente(mA, vpc, mpc, this, vPS, cpca);
 			
 		//Repintar Applet
-			new MolaDeslizanteListener(vPS.getVisaoPropulsao(), mA, this, cIS);
-			vpc.getCsPropulsao().setSelectedIndex(1); //Quando mudar, mude tmb as variaveis d posicionamento em ModeloPropulsao
 			obac.repaint();
 	}
 	
