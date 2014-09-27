@@ -9,11 +9,9 @@ import javax.swing.event.ChangeListener;
 
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.controle.obstaculo.ControleObstaculoMouse;
-import br.edu.ifg.formosa.obac.modelo.ModeloMola;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
-import br.edu.ifg.formosa.obac.utilidades.UtilidadeArredondamento;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
