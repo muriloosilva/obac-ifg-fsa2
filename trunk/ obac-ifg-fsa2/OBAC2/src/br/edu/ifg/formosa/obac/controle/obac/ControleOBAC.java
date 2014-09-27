@@ -125,7 +125,7 @@ public class ControleOBAC {
 			
 		//Controles de fórmulas
 			cFO = new ControleFormulasObjeto(mA, vpf, cpf);
-			cFS = new ControleFormulasSuperficie(mA);//Adicionar o vpf nesta classe para atualizar o pFormulas
+			cFS = new ControleFormulasSuperficie(mA, vpf, cpf);//Adicionar o vpf nesta classe para atualizar o pFormulas
 			//Instanciar o Controle de início das simulações
 		//Controle do início das simulações
 			cIS = new ControleInicioSimulacoes(mA, vpc, vpf, this, cFO, cFS, cpf);
