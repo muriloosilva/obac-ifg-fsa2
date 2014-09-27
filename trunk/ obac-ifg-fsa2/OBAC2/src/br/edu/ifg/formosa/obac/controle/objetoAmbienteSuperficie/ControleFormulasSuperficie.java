@@ -1,14 +1,21 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
+import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ControleFormulasSuperficie {
 
 	private ModeloAmbiente ma = null;
+	private VisaoPainelFormulas vPF = null;
+	private ControlePainelFormulas cPF=null;
 	
 	//Construtor
-	public ControleFormulasSuperficie(ModeloAmbiente ma) {
+	public ControleFormulasSuperficie(ModeloAmbiente ma,
+			VisaoPainelFormulas vPF, ControlePainelFormulas cPF) {
 		this.ma = ma;
+		this.cPF = cPF;
+		this.vPF = vPF;
 	}
 			
 	//Atrito Padrão -> Fat = N * μ
@@ -16,6 +23,9 @@ public class ControleFormulasSuperficie {
 		ma.getmS().setForcaAtrito((
 			ma.getmO().getForcaNormal()*ma.getmS().getCoefAtritoSelecionado()
 		));
+		//Passa para o painel de fórmulas
+		vPF.getAtAtrito().setText(
+				cPF.atrito(ma.getmO().getForcaNormal(), ma.getmS().getCoefAtritoSelecionado()));
 	}
 	
 	
