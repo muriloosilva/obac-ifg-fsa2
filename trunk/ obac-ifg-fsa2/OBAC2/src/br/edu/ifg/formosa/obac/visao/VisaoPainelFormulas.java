@@ -118,7 +118,7 @@ public class VisaoPainelFormulas extends JScrollPane{
 		
 		//Fontes
 		fonteTitulos = new Font("Arial", Font.BOLD, 15);
-		fonteFormulas = new Font("Arial", Font.BOLD, 13);
+		fonteFormulas = new Font("Arial", Font.BOLD, 11);
 		
 		//Velocidade Inicial
 		pVInicial = new JPanel(new BorderLayout());
