@@ -44,9 +44,6 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 			ma.getmP().getmC().alturaMaxima();
 			ma.setTempoAtual(0);//Seta o tempo inicial na variável
 			
-			ma.getmP().getmC().novoX();
-			ma.getmP().getmC().novoY();
-			
 			//Repinta o painel de fórmulas
 			vpf.repaint();
 			
@@ -66,21 +63,20 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 						ma.getmP().getmC().novoX();
 						ma.getmP().getmC().novoY();
 						
-						System.out.println("X: " + ma.getmO().getPosicaoXMetros());
-						System.out.println("Y: " + ma.getmO().getPosicaoYMetros());
-						
-						System.out.println("X Px: " + ma.getmO().getPosicaoXPx());
-						System.out.println("Y Px: " + ma.getmO().getPosicaoYPx());
+						System.out.println("\nX em Metros: " + ma.getmO().getPosicaoXMetros());
+						System.out.println("Y em Metros: " + ma.getmO().getPosicaoYMetros());
+						System.out.println("X em pixels: " + ma.getmO().getPosicaoXPx());
+						System.out.println("Y em pixels: " + ma.getmO().getPosicaoYPx());
 						
 						//Atualizar pixels  
 						ma.getmO().setPosicaoXPx(
 								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
 						
 						ma.getmO().setPosicaoYPx(
-								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
+								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) - 29);
 						
 						try {	
-							t.sleep(42);	
+							t.sleep(atrasoMS);	
 						} catch (InterruptedException e) {
 							e.printStackTrace();
 						}
@@ -89,8 +85,7 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 						
 						//Atualiza o tempo
 						ma.setTempoAtual(ma.getTempoAtual() + atrasoSPadrao);
-						System.out.println("Tempo atual: " + ma.getTempoAtual());
-						System.out.println("--------------------------------------");
+						
 					} else {
 						parar();
 					}

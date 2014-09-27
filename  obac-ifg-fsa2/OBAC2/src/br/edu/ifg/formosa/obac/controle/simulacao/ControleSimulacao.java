@@ -9,6 +9,8 @@ import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeArredondamento;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
@@ -47,7 +49,7 @@ public class ControleSimulacao {
 					break;
 				case 2: //Descida
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);
-					mudaAngulo(mA, 23.87, false);
+					mudaAngulo(mA, -23.87, false);
 					mudaTranslate(mA, 700, 520);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
@@ -76,7 +78,7 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
 					break;
 				default://Projétil
-					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, false);	
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);	
 					mudaModeloEscala(mA.getmEV(), 70, 499, 70, 100, false);
 					
 					mudaAngulo(mA, 0, true); //Ambos são necessários para não dar nenhum bug
@@ -87,7 +89,7 @@ public class ControleSimulacao {
 					
 					mudaMarcadores(mA.getmEH(), 100);
 					mudaMarcadores(mA.getmEV(), 100);
-					
+										
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível		
 					vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
 					break;

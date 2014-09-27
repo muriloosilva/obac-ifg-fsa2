@@ -24,14 +24,14 @@ public class UtilidadeConvercoesEscala {
 	}//Fim convertePixelMetro
 	
 	public static int metroParaPixelH(ModeloEscala mEH, double metro) {
-		return (int) ((metro * mEH.getComprimentoEscalaPX()) / mEH.getMarcadoresEscala()[mEH.qtdMarcadores] + mEH.getEscalaInicioX());
+		return (int) ((metro * mEH.getEscalaFimXPix() - mEH.getEscalaInicioX()) / mEH.getMarcadoresEscala()[mEH.qtdMarcadores] + mEH.getEscalaInicioX());
 	}
 	public static int pixelParaMetroH(ModeloEscala mEH, double pixel) {
 		return (int) (pixel * mEH.getMarcadoresEscala()[mEH.qtdMarcadores]) / mEH.getEscalaFimXPix();
 	}
 	
 	public static int metroParaPixelV(ModeloEscala mEV, double metro) {
-		return (int) ((metro * mEV.getComprimentoEscalaPY()) / mEV.getMarcadoresEscala()[mEV.qtdMarcadores] + mEV.getEscalaInicioY());
+		return (int) (((metro * (mEV.getEscalaFimYPix() - mEV.getEscalaInicioY())) / mEV.getMarcadoresEscala()[mEV.qtdMarcadores]) + mEV.getEscalaInicioY());
 	}
 	public static int pixelParaMetroV(ModeloEscala mEV, double pixel) {
 		return (int) (pixel * mEV.getMarcadoresEscala()[mEV.qtdMarcadores]) / mEV.getEscalaFimYPix();

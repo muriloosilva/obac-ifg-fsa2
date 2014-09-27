@@ -17,28 +17,31 @@ public class VisaoObjeto extends JPanel {
 	//Variáveis
 	//--ModeloAmbiente
 	private ModeloAmbiente mA = null;
+	//--Visao
+	private VisaoPainelConfiguracao vPC = null;
 	
 	//Metodos
 	//--Construtor
-	public VisaoObjeto(ModeloAmbiente mA) {
+	public VisaoObjeto(ModeloAmbiente mA, VisaoPainelConfiguracao vPC) {
 		super(null);
 		
 		this.setSize(750, 600);
 		this.setOpaque(true);
 		
 		this.mA = mA;
+		this.vPC = vPC;
 	}
 	
 	//--Paint
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		/*g2d.translate(mA.getTranslateX(), mA.getTranslateY());
-		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
-		g2d.translate(-mA.getTranslateX(), -mA.getTranslateY());*/
-		g2d.translate(700, 520);
-		g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus));
-		g2d.translate(-700, -520);
+		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 5)
+			g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus), 0, 0);
+		else
+			g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus), mA.getTranslateX(), mA.getTranslateY());			
+		
+		g2d.drawLine(130, 10, 130, 600);
 		
 		g2d.setColor(Color.blue);
 		g2d.fillRect(mA.getmO().getPosicaoXPx(), mA.getmO().getPosicaoYPx(), ModeloObjeto.alturaLargura, ModeloObjeto.alturaLargura);
