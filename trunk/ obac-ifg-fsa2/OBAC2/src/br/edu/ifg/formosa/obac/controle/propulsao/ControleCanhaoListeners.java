@@ -89,10 +89,10 @@ public class ControleCanhaoListeners implements MouseListener, MouseMotionListen
 						mA.getmP().setAnguloRotacaoGraus(0);
 						vPC.getCtPropulsaoDado1().setText("0");
 					} else if (d > 90) {
-						mA.getmP().setAnguloRotacaoGraus(-90);
+						mA.getmP().setAnguloRotacaoGraus(90);
 						vPC.getCtPropulsaoDado1().setText("90");
 					} else {
-						mA.getmP().setAnguloRotacaoGraus(-d);
+						mA.getmP().setAnguloRotacaoGraus(d);
 					}
 				} catch (NumberFormatException nFE) {
 					nFE.printStackTrace();

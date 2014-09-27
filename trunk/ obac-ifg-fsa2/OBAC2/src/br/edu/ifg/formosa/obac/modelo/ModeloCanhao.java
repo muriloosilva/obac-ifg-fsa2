@@ -56,8 +56,7 @@ public class ModeloCanhao {
 	//--Tempo total
 	public void tempoTotal() {
 		mA.setTempoTotal(
-					(2 * 
-					mA.getmO().getVelocidadeInicial() * 
+					(2 * mA.getmO().getVelocidadeInicial() * 
 					Math.sin(Math.toRadians(mA.getmP().getAnguloRotacaoGraus())) / 
 					mA.getGravSelecionada()));
 		/*
@@ -87,23 +86,22 @@ public class ModeloCanhao {
 	
 	//--Novo X
 	public void novoX() {
-		mA.getmO().setPosicaoXMetros(mA.getmO().getPosicaoXMetros() + 
-									(mA.getmO().getVelocidadeInicial() * 
-									Math.cos(Math.toRadians(mA.getmP().getAnguloRotacaoGraus()) * 
-									mA.getTempoAtual())));
+		mA.getmO().setPosicaoXMetros((mA.getmO().getVelocidadeInicial() * 
+									Math.cos(Math.toRadians(mA.getmP().getAnguloRotacaoGraus())) * 
+									mA.getTempoAtual()));
 		/*
-		 * Novo X = Vo * cos(teta) * tempo
+		 * Novo X = (Vo * cos(teta)) * tempo
 		 */
 	}
 	
 	//--Novo Y
 	public void novoY() {
-		mA.getmO().setPosicaoYMetros(mA.getmO().getPosicaoYMetros() + (
+		mA.getmO().setPosicaoYMetros((
 									mA.getmO().getVelocidadeInicial() * 
-									Math.sin(Math.toRadians(mA.getmP().getAnguloRotacaoGraus())) * mA.getTempoAtual() - 
-									((mA.getGravSelecionada() / 2) * Math.pow(mA.getTempoAtual(), 2))));
+									Math.sin(Math.toRadians(mA.getmP().getAnguloRotacaoGraus())) * mA.getTempoAtual()) - 
+									((mA.getGravSelecionada() / 2) * Math.pow(mA.getTempoAtual(), 2)));
 		/*
-		 * Novo Y = (Vo * sin(teta) * tempo - (grav / 2 * tempo²)
+		 * Novo Y = (Vo * sin(teta) * tempo) - (grav / 2 * tempo²)
 		 */
 	}
 	
