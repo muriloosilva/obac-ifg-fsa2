@@ -47,10 +47,10 @@ public class ControleInicioSimulacoes {
 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){new ControleObjeto2Subida(mA, vPF, cOBAC, cfo, cfs);}
 		//Descida
 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){new ControleObjeto3Descida(mA, vPF, cOBAC, cfo, cfs);}
-		//Queda Livre
-//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto4PlanoPrecipicio();}
 		//Plano e Precipício
-//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==4){new ControleObjeto5QuedaLivre();}
+		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto4PlanoPrecipicio(mA, vPF, cOBAC, cfo, cfs);}
+		//Queda Livre
+//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto5QuedaLivre();}
 		//Lançamento Oblíquo
  		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==5){new ControleObjeto6LancamentoObliquo(mA, vPF, cOBAC, cfo, cfs);}
 	}
