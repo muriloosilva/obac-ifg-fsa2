@@ -59,13 +59,15 @@ public class ControleSimulacao {
 					break;
 				case 3: //Precipicio
 					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, true);
+					mudaModeloEscala(mA.getmEV(), 70, 600, 70, 166, true);
 					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), 130, 166);
 					mudaMarcadores(mA.getmEH(), 100);
+					mudaMarcadores(mA.getmEV(), 1000);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
-					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
+					vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica invisivel
 					break;
 				case 4: //Queda
 					mudaModeloEscala(mA.getmEV(), 320, 499, 320, 104, false);

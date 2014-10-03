@@ -63,11 +63,6 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 						ma.getmP().getmC().novoX();
 						ma.getmP().getmC().novoY();
 						
-						System.out.println("\nX em Metros: " + ma.getmO().getPosicaoXMetros());
-						System.out.println("Y em Metros: " + ma.getmO().getPosicaoYMetros());
-						System.out.println("X em pixels: " + ma.getmO().getPosicaoXPx());
-						System.out.println("Y em pixels: " + ma.getmO().getPosicaoYPx());
-						
 						//Atualizar pixels  
 						ma.getmO().setPosicaoXPx(
 								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));

@@ -105,6 +105,18 @@ public class ModeloCanhao {
 		 */
 	}
 	
+	public double novoYPEP() {
+		return ((mA.getGravSelecionada() * Math.pow(mA.getTempoAtual(), 2)) / 2);
+		
+		/*
+		 * Novo Y = (grav * t²) / 2
+		 */
+	}
+	
+	public double novoXPEP() {
+		return mA.getmO().getVelocidadeInicial() * mA.getTempoAtual();
+	}
+	
 	//--Getters
 	public double getEnergia() {return energia;}
 	public double getVerAX() {return verAX;}
