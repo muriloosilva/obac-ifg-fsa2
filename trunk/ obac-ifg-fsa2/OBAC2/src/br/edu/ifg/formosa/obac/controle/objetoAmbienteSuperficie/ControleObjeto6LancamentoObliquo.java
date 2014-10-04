@@ -12,21 +12,24 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 	public ControleObjeto6LancamentoObliquo() {}
 	
 	//Constantes
-			private final int atrasoMS = 20; //Atraso da thread usado no Sleep (20 milisegundos)
-			private final double atrasoSPadrao = 0.04;//Valor do tempo que é incrementado a cada nova posição
-		//Variáveis
-			private boolean continuar = true; //Variável usada para pausar a simulação
-			private Thread t = null; //Thread
-		//Variáveis do OBAC
-			//-----Modelos
-			private ModeloAmbiente ma = null;
-			//-----Visões
-			private VisaoPainelFormulas vpf = null;
-			//-----Controles
-			private ControleOBAC cOBAC = null;
-			private ControleFormulasObjeto cfo = null;
-		
-		
+	//--Int
+	private final int atrasoMS = 20; //Atraso da thread usado no Sleep (20 milisegundos)
+	//--Double
+	private final double atrasoSPadrao = 0.04;//Valor do tempo que é incrementado a cada nova posição
+	//Variáveis
+	//--Boolean
+	private boolean continuar = true; //Variável usada para pausar a simulação
+	//--Threads
+	private Thread t = null; //Thread
+	//Variáveis do OBAC
+	//-----Modelos
+	private ModeloAmbiente ma = null;
+	//-----Visões
+	private VisaoPainelFormulas vpf = null;
+	//-----Controles
+	private ControleOBAC cOBAC = null;
+	private ControleFormulasObjeto cfo = null;
+	
 		//Controle______________________________
 		public ControleObjeto6LancamentoObliquo(ModeloAmbiente ma,VisaoPainelFormulas vpf, ControleOBAC cOBAC,
 									ControleFormulasObjeto cfo, ControleFormulasSuperficie cfs)

@@ -18,7 +18,24 @@ public class ModeloObjeto {
 	public static final int alturaLargura = 30; //Os valores de alt e larg sao para inicializar as variaveis
 	
 	public static final int pontoFinalObjetoDescidaPix = 518;
-	public static final int pontoFinalObjetoSubidaPix = 130;
+	public static final int pontoFinalObjetoSubidaPix = 130; 
+	
+	//--Int
+	public static final int pXPadPx = 130; //Posição X de quase todas as simulações
+	
+	public static final int pQueXPx = 361; //Posição X da QL
+	
+	public static final int pPlaYPx = 470; //Posição Y do plano
+
+	public static final int pSubYPx = 430; //Posição Y da subida
+
+	public static final int pDesYPx = 466; //Posição Y da descida
+
+	public static final int pPepYPx = 166; //Posição Y do PEP
+
+	public static final int pQueYPx = 104; //Posição Y da QL
+
+	public static final int pOblYPx = 470; //Posição Y do LO
 	
 	//Variaveis
 	//--Double	
@@ -49,6 +66,10 @@ public class ModeloObjeto {
 	
 	//Metodos
 	//--Getters
+	public int getPosFinalXPix(){return posFinalXPix;}
+	public int getPosFinalYPix(){return posFinalYPix;}
+	public int getPosicaoXPx() {return posicaoXPx;}
+	public int getPosicaoYPx() {return posicaoYPx;}
 	public double getMassa() {return massa;}
 	public double getCoefRestituicao() {return coefRestituicao;}
 	public double getVelocidade() {return velocidade;}
@@ -57,13 +78,9 @@ public class ModeloObjeto {
 	public double getAceleracaoY() {return aceleracaoY;}
 	public double getPosicaoXMetros() {return posicaoXMetros;}
 	public double getPosicaoYMetros() {return posicaoYMetros;}
-	public int getPosicaoXPx() {return posicaoXPx;}
-	public int getPosicaoYPx() {return posicaoYPx;}
 	public double getForcaNormal(){return forcaNormal;}
 	public double getPosFinalXMetros(){return posFinalXMetros;}
-	public int getPosFinalXPix(){return posFinalXPix;}
 	public double getPosFinalYMetros(){return posFinalYMetros;}
-	public int getPosFinalYPix(){return posFinalYPix;}
 	
 	//Setters
 	public void setMassa(double massa) {this.massa = massa;}
@@ -105,10 +122,10 @@ public class ModeloObjeto {
 	}
 	public void setPosFinalXMetros(double posFinalXMetros){
 		this.posFinalXMetros = posFinalXMetros;
+		
 		if(this.posFinalXMetros<0)
 			cpi.mudaValorPosFinalX(this.posFinalXMetros*-1);
 		else
 			cpi.mudaValorPosFinalX(this.posFinalXMetros);
-	}
-	
+	}	
 }
