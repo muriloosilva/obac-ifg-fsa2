@@ -19,55 +19,77 @@ public class ControlePropulsao {
 		vPC.getCsAmbienteSimulacao().addActionListener(new ActionListener() {			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				switch (vPC.getCsAmbienteSimulacao().getSelectedIndex()) {
-				case 0: //Plano
-					if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
-						mA.getmP().setPosYProp(mA.getmP().getPosYC());
-						
-						mA.getmP().setPosYBase(mA.getmP().getPosYB());
-						mA.getmP().setPosXBase(mA.getmP().getPosXB());
-					} else {
-						mA.getmP().setPosYProp(mA.getmP().getPosYM());						
-					}
-					break;
-				case 1: //Subida
-					if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
-						mA.getmP().setPosYProp(mA.getmP().getPosYC() - 41);
-						
-						mA.getmP().setPosYBase(mA.getmP().getPosYB() - 33);
-						mA.getmP().setPosXBase(mA.getmP().getPosXB() - 25);				
-					} else {
-						mA.getmP().setPosYProp(mA.getmP().getPosYM() - 40);					
-					}					
-					break;
-				case 2: //Descida
-					if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
-						mA.getmP().setPosYProp(mA.getmP().getPosYC() - 6);
-						
-						mA.getmP().setPosYBase(mA.getmP().getPosYB() - 237);
-						mA.getmP().setPosXBase(mA.getmP().getPosXB() + 80);			
-					} else {
-						mA.getmP().setPosYProp(mA.getmP().getPosYM() - 3);					
-					}
-					break;
-				case 3: //Precipício
-					if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
-						mA.getmP().setPosYProp(mA.getmP().getPosYC() - 307);
-						
-						mA.getmP().setPosYBase(mA.getmP().getPosYB() - 307);	
-						mA.getmP().setPosXBase(mA.getmP().getPosXB());			
-					} else {
-						mA.getmP().setPosYProp(mA.getmP().getPosYM() - 304);					
-					}
-					break;
-				case 5: //Oblíquo
-					mA.getmP().setPosYProp(mA.getmP().getPosYC());
-					mA.getmP().setPosYBase(mA.getmP().getPosYB());
-					mA.getmP().setPosXBase(mA.getmP().getPosXB());	
-					break;
-				}
-				cOBAC.repinta();
+				mudaPosProp(vPC, mA, cOBAC);
 			}
 		});
+		
+		vPC.getCsPropulsao().addActionListener(new ActionListener() {		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mudaPosProp(vPC, mA, cOBAC);
+			}
+		});
+	}
+	 //Muda o posicionamento da propulsão
+	private void mudaPosProp(VisaoPainelConfiguracao vPC, ModeloAmbiente mA, ControleOBAC cOBAC) {
+		switch (vPC.getCsAmbienteSimulacao().getSelectedIndex()) {
+		case 0: //Plano
+			if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
+				mA.getmP().setPosXProp(mA.getmP().getPosXC());
+				mA.getmP().setPosYProp(mA.getmP().getPosYC());
+
+				mA.getmP().setPosXBase(mA.getmP().getPosXB());
+				mA.getmP().setPosYBase(mA.getmP().getPosYB());
+			} else {
+				mA.getmP().setPosXProp(mA.getmP().getPosXM());
+				mA.getmP().setPosYProp(mA.getmP().getPosYM());						
+			}
+			break;
+		case 1: //Subida
+			if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
+				mA.getmP().setPosXProp(mA.getmP().getPosXC());
+				mA.getmP().setPosYProp(mA.getmP().getPosYC() - 41);
+				
+				mA.getmP().setPosYBase(mA.getmP().getPosYB() - 33);
+				mA.getmP().setPosXBase(mA.getmP().getPosXB() - 25);				
+			} else {
+				mA.getmP().setPosXProp(mA.getmP().getPosXM());		
+				mA.getmP().setPosYProp(mA.getmP().getPosYM() - 40);					
+			}					
+			break;
+		case 2: //Descida
+			if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
+				mA.getmP().setPosXProp(mA.getmP().getPosXC());
+				mA.getmP().setPosYProp(mA.getmP().getPosYC() - 6);
+				
+				mA.getmP().setPosYBase(mA.getmP().getPosYB() - 237);
+				mA.getmP().setPosXBase(mA.getmP().getPosXB() + 80);			
+			} else {
+				mA.getmP().setPosXProp(mA.getmP().getPosXM());
+				mA.getmP().setPosYProp(mA.getmP().getPosYM() - 3);					
+			}
+			break;
+		case 3: //Precipício
+			if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
+				mA.getmP().setPosXProp(mA.getmP().getPosXC());
+				mA.getmP().setPosYProp(mA.getmP().getPosYC() - 307);
+				
+				mA.getmP().setPosYBase(mA.getmP().getPosYB() - 307);	
+				mA.getmP().setPosXBase(mA.getmP().getPosXB());			
+			} else {
+				mA.getmP().setPosXProp(mA.getmP().getPosXM());
+				mA.getmP().setPosYProp(mA.getmP().getPosYM() - 304);					
+			}
+			break;
+		case 5: //Oblíquo
+			mA.getmP().setPosXProp(mA.getmP().getPosXC());
+			mA.getmP().setPosYProp(mA.getmP().getPosYC());
+			
+			mA.getmP().setPosXBase(mA.getmP().getPosXB());	
+			mA.getmP().setPosYBase(mA.getmP().getPosYB());
+			
+			break;
+		}
+		cOBAC.repinta();
 	}
 }

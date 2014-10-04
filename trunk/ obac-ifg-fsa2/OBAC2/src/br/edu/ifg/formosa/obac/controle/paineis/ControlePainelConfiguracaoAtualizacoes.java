@@ -73,9 +73,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
 					//Método necessário para corrigir o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
-					//Altera o posicionamento
-					mP.setPosXProp(mP.posXC);
-					mP.setPosYProp(mP.posYC);
 				}
 				//Propulsão pela mola
 				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getMola())){
@@ -94,9 +91,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
 					//Método necessário para desfazer a correção o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
-					//Altera o posicionamento
-					mP.setPosXProp(mP.posXM);
-					mP.setPosYProp(mP.posYM);
 				} 
 				else{
 					JOptionPane.showMessageDialog(null,
