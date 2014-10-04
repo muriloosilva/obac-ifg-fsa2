@@ -81,7 +81,7 @@ public class ControlePropulsao {
 				mA.getmP().setPosYProp(mA.getmP().getPosYM() - 304);					
 			}
 			break;
-		case 5: //Oblíquo
+		case 4: //Oblíquo
 			mA.getmP().setPosXProp(mA.getmP().getPosXC());
 			mA.getmP().setPosYProp(mA.getmP().getPosYC());
 			

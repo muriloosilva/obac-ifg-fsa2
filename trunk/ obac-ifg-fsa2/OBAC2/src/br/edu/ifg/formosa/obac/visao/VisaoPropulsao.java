@@ -44,7 +44,7 @@ public class VisaoPropulsao extends JPanel {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 
-		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 5)
+		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4)
 			g2d.rotate(Math.toRadians(mA.getmP().getAnguloRotacaoGraus() * (-1)), mA.getTranslateX(), mA.getTranslateY());
 		else
 			g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus), mA.getTranslateX(), mA.getTranslateY());
