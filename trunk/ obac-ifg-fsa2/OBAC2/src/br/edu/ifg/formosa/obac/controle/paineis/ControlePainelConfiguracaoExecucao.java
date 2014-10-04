@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleInicioSimulacoes;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
+import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
@@ -51,7 +52,8 @@ public class ControlePainelConfiguracaoExecucao {
 						else if (vPC.getCsPropulsao().getSelectedIndex()==1){exeMola();}
 					//--Execução Queda Livre
 						else{
-							mA.getmO().setCoefRestituicao(Double.parseDouble(vPC.getrObjetoAtualCoefRest().getText().replaceAll(",", ".")));
+							mA.getmEV().setEscalaFimYM(Integer.parseInt(vPC.getCtPropulsaoDado1().getText()));
+							ControleSimulacao.mudaMarcadores(mA.getmEV(), (int)mA.getmEV().getEscalaFimYM());
 							cIS.iniciarSimulacao();
 						}
 					//____________________________________________________
@@ -89,9 +91,13 @@ public class ControlePainelConfiguracaoExecucao {
 					vPS.getVisaoAuxiliar().getpCompressor().setEnabled(true);
 				//Ajustes de acordo co a simulação
 					if(vPC.getCsPropulsao().getSelectedIndex()==0
-					   && vPC.getCsAmbienteSimulacao().getSelectedIndex()!=5){
+					   && vPC.getCsAmbienteSimulacao().getSelectedIndex()!=4){
 						vPC.getCtPropulsaoDado1().setEnabled(false);
 						vPC.getCtPropulsaoDado1().setText("0");
+					}
+					else if(vPC.getCsPropulsao().getSelectedIndex()==2){
+						vPC.getCtPropulsaoDado2().setEnabled(false);
+						vPC.getCtPropulsaoDado2().setText("0");
 					}
 					else{
 						vPC.getCtPropulsaoDado1().setEnabled(true);

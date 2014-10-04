@@ -39,7 +39,7 @@ public class ControleInicioSimulacoes {
 	
 	public void iniciarSimulacao(){
 		//Mudan�a no painel de f�rmulas
-//		cpf.alteraTipoPainel();
+		cpf.alteraTipoPainel();
 		
 		//Plano
 		if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==0){new ControleObjeto1Plano(mA, vPF, cOBAC, cfo, cfs);}
@@ -49,10 +49,10 @@ public class ControleInicioSimulacoes {
 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){new ControleObjeto3Descida(mA, vPF, cOBAC, cfo, cfs);}
 		//Plano e Precip�cio
 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto4PlanoPrecipicio(mA, vPF, cOBAC, cfo, cfs);}
-		//Queda Livre
-		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==4){new ControleObjeto5QuedaLivre(mA, vPF, cOBAC, cfo, cfs);}
 		//Lan�amento Obl�quo
- 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==5){new ControleObjeto6LancamentoObliquo(mA, vPF, cOBAC, cfo, cfs);}
+ 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==4){new ControleObjeto6LancamentoObliquo(mA, vPF, cOBAC, cfo, cfs);}
+		//Queda Livre
+		else{new ControleObjeto5QuedaLivre(mA, vPF, cOBAC, cfo, cfs);}
 	}
 	
 }

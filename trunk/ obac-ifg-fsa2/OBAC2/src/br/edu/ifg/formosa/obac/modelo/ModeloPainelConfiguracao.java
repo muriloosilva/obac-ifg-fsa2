@@ -4,10 +4,10 @@ package br.edu.ifg.formosa.obac.modelo;
 public class ModeloPainelConfiguracao {
 	
 	//Array de String usado nos tipos de propulsão 
-	private final String [] propulsoes = {"Canhão", "Mola"};
+	private final String [] propulsoes = {"Canhão", "Mola", "Queda Livre"};
 	
 	//Array de String usado nos tipos de simulação
-	private final String [] simulacoesPadrao = {"Plano", "Subida", "Descida", "Plano e Precipício", "Queda Livre"};
+	private final String [] simulacoesPadrao = {"Plano", "Subida", "Descida", "Plano e Precipício", };
 	//String que completa o array acima quando a propulsão canhão é selecionada, sendo també utilizada em ControlePainelConfiguracaoAtualizacoes
 	private final String lancamentoObliquo = "Lançamento Oblíquo";
 	
@@ -24,58 +24,34 @@ public class ModeloPainelConfiguracao {
 	//Strings utilizadas em uma codição de ControlePainelConfiguracaoAtualizacoes
 	private final String canhao = "Canhão";
 	private final String mola = "Mola";
+	private final String qL = "Queda Livre";
 	
 	//Strings usadas em rótulos que são alterados no painel de informações
 	private final String dado1Canhao = "Ângulo (°)"; 
 	private final String dado2Canhao = "Energia (J)";
 	private final String dado1Mola = "Tamaho da Mola(cm)";
 	private final String dado2Mola = "Constante Elástica (N/m)";
+	private final String dado1QL = "Altura da Queda(m)";
+	private final String dado2QL = "";
 	
 //Getters
-	public String getCanhao() {
-		return canhao;
-	}
-	public String getMola() {
-		return mola;
-	}
-	public String getDado1Canhao() {
-		return dado1Canhao;
-	}
-	public String getDado2Canhao() {
-		return dado2Canhao;
-	}
-	public String getDado1Mola() {
-		return dado1Mola;
-	}
-	public String getDado2Mola() {
-		return dado2Mola;
-	}
-	public String[] getSimulacoesPadrao() {
-		return simulacoesPadrao;
-	}
-	public String getLancamentoObliquo() {
-		return lancamentoObliquo;
-	}
-	public String[] getAtritos() {
-		return atritos;
-	}
-	public String[] getGravidade() {
-		return gravidade;
-	}
-	public String[] getPropulsoes() {
-		return propulsoes;
-	}
-	public String getBotaoIniciar() {
-		return botaoIniciar;
-	}
-	public void setBotaoIniciar(String botaoIniciar) {
-		this.botaoIniciar = botaoIniciar;
-	}
-	public String getBotaoPausar() {
-		return botaoPausar;
-	}
-	public void setBotaoPausar(String botaoPausar) {
-		this.botaoPausar = botaoPausar;
-	}
+	public String getCanhao() {return canhao;}
+	public String getMola() {return mola;}
+	public String getQL() {return qL;}
+	public String getDado1Canhao() {return dado1Canhao;}
+	public String getDado2Canhao() {return dado2Canhao;}
+	public String getDado1Mola() {return dado1Mola;}
+	public String getDado2Mola() {return dado2Mola;}
+	public String getDado1QL() {return dado1QL;}
+	public String getDado2QL() {return dado2QL;}
+	public String[] getSimulacoesPadrao() {return simulacoesPadrao;}
+	public String getLancamentoObliquo() {return lancamentoObliquo;}
+	public String[] getAtritos() {return atritos;}
+	public String[] getGravidade() {return gravidade;}
+	public String[] getPropulsoes() {return propulsoes;}
+	public String getBotaoIniciar() {return botaoIniciar;}
+	public void setBotaoIniciar(String botaoIniciar) {this.botaoIniciar = botaoIniciar;}
+	public String getBotaoPausar() {return botaoPausar;}
+	public void setBotaoPausar(String botaoPausar) {this.botaoPausar = botaoPausar;}
 	
 }

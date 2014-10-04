@@ -1,13 +1,11 @@
 package br.edu.ifg.formosa.obac.visao;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 
@@ -53,7 +51,7 @@ public class VisaoSuperficie extends JPanel {
 		g2d.drawImage(gravidade.getImage(), 0, 0, this);
 		g2d.drawImage(andaime.getImage(), 0, 0, this);
 		
-		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) 
+		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 5) 
 			g2d.drawImage(guindaste.getImage(), 0, 0, this);
 	}
 	

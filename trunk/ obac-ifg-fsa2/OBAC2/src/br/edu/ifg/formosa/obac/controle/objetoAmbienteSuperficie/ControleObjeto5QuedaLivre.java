@@ -36,26 +36,18 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 		cfo.calculaForcaNormal();
 		cfs.calculaForcaAtritoQueda();
 		cfo.calculaAceleracaoQueda();
-		cfs.calculaEscalaQueda();
+//		cfs.calculaEscalaQueda();
 
-		//Repinta o painel de fï¿½rmulas
+		//Repinta o painel de fórmulas
 		vpf.repaint();
 		
-		
-		ma.getmEV().setEscalaFimYM(1000);
-		ma.getmO().setCoefRestituicao(0.0);
-		escala = 1000 / 470;
+		escala = ma.getmEV().getEscalaFimYM()/ 470;
 		
 		System.out.println("Escala: "+escala);
-		System.out.println("Coeficiente de Restituiï¿½ï¿½o: "+ma.getmO().getCoefRestituicao());
+		System.out.println("Coeficiente de Restituição: "+ma.getmO().getCoefRestituicao());
 		System.out.println("Fim da escala Pixel: "+ma.getmEV().getEscalaFimYPix());
-		
-		/*OBS.: O coeficiente de restituiï¿½ï¿½o nï¿½o estï¿½ sendo passado
-		 * para a variï¿½vel, o que acarreta em um coeficiente igual a 0
-		 * 
-		 */
 
-		//Inï¿½cio da thread
+		//Início da thread
 		t = new Thread(this);
 		t.start();
 
@@ -77,33 +69,33 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 			if(continuar){
 				
 				double velocidadeFinal1;
-				
+				//1ª Queda Livre
 				if(ma.getmO().getPosicaoYPx() >= 470){
 					System.out.println("soma: "+soma);
+					//Inverte o valor da aceleração
 					if(ma.getmO().getAceleracao() < 0){
 						ma.getmO().setAceleracao(ma.getmO().getAceleracao() *  (-1));
 					}
 					
 					ma.getmO().setPosicaoYPx(470);
-					
 					int velocidadeFinal2 = 0;
 					
-					if(soma >= 0 && !queda){
+					if(soma>=0 && !queda){
 						System.out.println("Primeiro");
 						velocidadeFinal2 = (int)(0 + 2 * ma.getmO().getAceleracao() * (soma * escala));
 					}
 					else{
 						System.out.println("SEGUNDA");
 						velocidadeFinal2 = (int)((ma.getmO().getVelocidadeInicial() * ma.getmO().getVelocidadeInicial()) + 
-								2 * ma.getmO().getAceleracao() * (1000 ));
+								2 * ma.getmO().getAceleracao() * (ma.getmEV().getEscalaFimYM()));
 																//Variaï¿½ï¿½o de espaï¿½o
 					}
 					
 					soma = 0;
 					double vf = Math.sqrt(velocidadeFinal2);
 					
-					
-					velocidadeFinal1 = vf*(ma.getmO().getMassa()- 1000000000 *ma.getmO().getCoefRestituicao())/
+					velocidadeFinal1 =
+							vf*(ma.getmO().getMassa()- 1000000000 *ma.getmO().getCoefRestituicao())/
 							(ma.getmO().getMassa() + 1000000000)*(-1);
 					
 					if(velocidadeFinal1 <=0)
@@ -129,15 +121,10 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 					
                 	//novaPosicï¿½o ï¿½ igual ao solo - posicaoAtualYPixel
                 	double novaPosicao = 470 - ma.getmO().getPosicaoYMetros() / escala;
-     
-                	
                 	//- (environment.getObjeto().getPosicaoAtualY()/environment.getSurface().getEscala())
-           
-	                if(novaPosicao <= (ma.getmO().getPosicaoYPx())){
-	           
+	                if(novaPosicao <= (ma.getmO().getPosicaoYPx())){	           
 	                	soma = (ma.getmO().getPosicaoYMetros() / escala);
 	                }
-	                
 	                ma.getmO().setPosicaoYPx((int)novaPosicao);	
 	                
 				}
