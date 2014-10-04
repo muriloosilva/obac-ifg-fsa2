@@ -122,7 +122,8 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
                 	//novaPosic�o � igual ao solo - posicaoAtualYPixel
                 	double novaPosicao = 470 - ma.getmO().getPosicaoYMetros() / escala;
                 	//- (environment.getObjeto().getPosicaoAtualY()/environment.getSurface().getEscala())
-	                if(novaPosicao <= (ma.getmO().getPosicaoYPx())){	           
+	                if(novaPosicao <= (ma.getmO().getPosicaoYPx())){
+	                	System.out.println("PY: "+ma.getmO().getPosicaoYMetros());
 	                	soma = (ma.getmO().getPosicaoYMetros() / escala);
 	                }
 	                ma.getmO().setPosicaoYPx((int)novaPosicao);	

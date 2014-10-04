@@ -177,20 +177,24 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			}
 		});
 	}
-	private String cacheTexto = "0";  
+	private String cacheTexto1 = "0";
+	private String cacheTexto2 = "0";
 	//Série de ajustes feitos no Painel de Configuração durante a seleção de simulações
 		public void ajustesPConfig(){
 			//1º - Configura o segundo campo de dados referentes a propulsão no painel de configuração
 			//-----para que so possa ter seu valor editado caso seja a simulação de lançamento oblíquo.
-				cacheTexto = vpc.getCtPropulsaoDado1().getText();
+				cacheTexto1 = vpc.getCtPropulsaoDado1().getText();
+				cacheTexto2 = vpc.getCtPropulsaoDado2().getText();
 				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()!=4 
 					&& vpc.getCsPropulsao().getSelectedIndex()==0)
 				{//Inicio IF/ELSE 1
 					vpc.getCtPropulsaoDado1().setText("0");
 					vpc.getCtPropulsaoDado1().setEnabled(false);
+					vpc.getCtPropulsaoDado2().setText(cacheTexto2);
 				}
 				else {
-					vpc.getCtPropulsaoDado1().setText(cacheTexto);
+					vpc.getCtPropulsaoDado1().setText(cacheTexto1);
+					vpc.getCtPropulsaoDado2().setText(cacheTexto2);
 					vpc.getCtPropulsaoDado1().setEnabled(true);
 				}
 			//Fim 1º
@@ -226,20 +230,22 @@ public class ControlePainelConfiguracaoAtualizacoes {
 
 	//Método usado na execução para que a interação com os componentes seja removida
 	public void desativaComponentes(boolean ativado){
+		
 		//Ajustes de acordo co a simulação
 		if(vpc.getCsPropulsao().getSelectedIndex()==0
 		   && vpc.getCsAmbienteSimulacao().getSelectedIndex()!=4){
-			vpc.getCtPropulsaoDado1().setEnabled(false);
-			vpc.getCtPropulsaoDado1().setText("0");
+			vpc.getCtPropulsaoDado1().setEnabled(true);
+			if(ativado){vpc.getCtPropulsaoDado1().setText("0");}
 		}
 		else if(vpc.getCsPropulsao().getSelectedIndex()==2){
-			vpc.getCtPropulsaoDado2().setEnabled(false);
-			vpc.getCtPropulsaoDado2().setText("0");
+			vpc.getCtPropulsaoDado2().setEnabled(true);
+			if(ativado){vpc.getCtPropulsaoDado2().setText("0");}
 		}
 		else{
 			vpc.getCtPropulsaoDado1().setEnabled(true);
-			vpc.getCtPropulsaoDado1().setText("");
+			if(ativado){vpc.getCtPropulsaoDado1().setText("");}
 		}
+		
 		vpc.getCtPropulsaoDado1().setEnabled(ativado);
 		vpc.getCtPropulsaoDado2().setEnabled(ativado);
 		vpc.getCsAmbienteSimulacao().setEnabled(ativado);

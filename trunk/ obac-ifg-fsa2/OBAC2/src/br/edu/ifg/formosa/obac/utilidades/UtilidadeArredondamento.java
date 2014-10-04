@@ -11,4 +11,10 @@ public class UtilidadeArredondamento {
 		return new BigDecimal(valor).setScale(casas, RoundingMode.HALF_DOWN).doubleValue();
 	}
 	
+	public static String notacaoCientifica(double valor){
+		int cont;
+		for(cont=0; valor>10; cont++){	valor = valor/10;		}
+		valor = arredondamento(2, valor);
+		return (valor+"E"+cont);
+	}
 }
