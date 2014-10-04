@@ -61,13 +61,18 @@ public class VisaoAuxiliar extends JPanel{
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		
-		//Base do canhao - Só é desenhada aqui, pois ela não pode rotacionar, como rotaciona o VisaoPropulsao.
+		//Base do canhao
 		if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
-			g2d.drawImage(mA.getmP().getImagemBaseCanhao().getImage(), mA.getmP().getPosXB(), mA.getmP().getPosYB(), this);
+			g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus), mA.getmP().getPosXBase(), mA.getmP().getPosYBase());
+			
+			g2d.drawImage(mA.getmP().getImagemBaseCanhao().getImage(), mA.getmP().getPosXBase(), mA.getmP().getPosYBase(), this);
 		}
 	}
+	
+	//--Getters
 	public JPanel getpCompressor() {return pCompressor;}
 	public JSlider getDeslizanteMola() {return deslizanteMola;}
 	public JLabel getRotuloCompressao() {return rotuloCompressao;}
-	public void setPosYCompressor(int posYCompressor){this.posYCompressor = posYCompressor;}
+	//--Setters
+	public void setPosYCompressor(int posYCompressor) {this.posYCompressor = posYCompressor;}
 }

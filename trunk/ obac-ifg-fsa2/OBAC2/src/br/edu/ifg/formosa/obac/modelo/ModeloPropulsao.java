@@ -32,8 +32,11 @@ public class ModeloPropulsao {
 	private int translaX = 30; //Variáveis utilizadas para rotacionar o canhão
 	private int translaY = 470;
 	
-	private int posXProp = posXC;
+	private int posXProp = posXC; //Variáveis de posicionamento da propulsão
 	private int posYProp = posYC;
+	
+	private int posXBase = posXB; //Variáveis de posicionamento da Base do canhão
+	private int posYBase = posYB;
 	
 	//--Modelos
 	private ModeloMola mM = null;
@@ -81,6 +84,8 @@ public class ModeloPropulsao {
 	public int getPosYB() {return posYB;}
 	public int getPosXProp() {return posXProp;}
 	public int getPosYProp() {return posYProp;}
+	public int getPosXBase() {return posXBase;}
+	public int getPosYBase() {return posYBase;}
 	public double getAnguloRotacaoGraus() {return anguloRotacaoGraus;}
 	
 	//--Seters
@@ -90,4 +95,6 @@ public class ModeloPropulsao {
 		this.anguloRotacaoGraus = anguloRotacaoGraus;
 		cPI.mudaValorAngulo(anguloRotacaoGraus);
 	}
+	public void setPosXBase(int posXBase) {this.posXBase = posXBase;}
+	public void setPosYBase(int posYBase) {this.posYBase = posYBase;}
 }

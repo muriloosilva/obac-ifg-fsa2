@@ -11,6 +11,7 @@ import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeArredondamento;
 
 public class VisaoEscala extends JPanel{
 	//Constantes
@@ -84,8 +85,8 @@ public class VisaoEscala extends JPanel{
 			g2d.setColor(Color.yellow);
 			
 			if (mA.getmO().getPosicaoXPx() + 30 >= mE.getEscalaInicioX()) { //Colocar em uma Thread de modo que so atualize com essa condição
-				g2d.fillOval(mA.getmO().getPosicaoXPx() + 26, mE.getEscalaInicioY() - 4, 8, 8);
-				g2d.drawString(mA.getmO().getPosicaoXMetros() + "m", mA.getmO().getPosicaoXPx() + 20, mE.getEscalaInicioY() - 8);
+				g2d.fillOval(mA.getmO().getPosicaoXPx() - 4, mE.getEscalaInicioY() - 4, 8, 8);
+				g2d.drawString(UtilidadeArredondamento.arredondamento(2, mA.getmO().getPosicaoXMetros()) + "m", mA.getmO().getPosicaoXPx() + 8, mE.getEscalaInicioY() - 8);
 			}
 		}
 	}

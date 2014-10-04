@@ -24,6 +24,7 @@ public class VisaoPropulsao extends JPanel {
 	//--Imagem exibida
 	private ImageIcon imagemPropulsao = null;
 	//--VisaoPainelConfiguracao
+	VisaoPainelConfiguracao vPC = null;
 	
 	//Metodos
 	//--Construtor
@@ -35,13 +36,18 @@ public class VisaoPropulsao extends JPanel {
 		
 		this.mA = mA;
 		imagemPropulsao = mA.getmP().getImagemPropulsao();
+		
+		this.vPC = vPC;
 	}
 	
 	//--Paint
 	public void paintComponent(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 
-		g2d.rotate(Math.toRadians(mA.getmP().getAnguloRotacaoGraus() * (-1)), mA.getTranslateX(), mA.getTranslateY());
+		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 5)
+			g2d.rotate(Math.toRadians(mA.getmP().getAnguloRotacaoGraus() * (-1)), mA.getTranslateX(), mA.getTranslateY());
+		else
+			g2d.rotate(Math.toRadians(mA.getmP().getAnguloRotacaoGraus()), mA.getTranslateX(), mA.getTranslateY());
 		
 		g2d.drawImage(imagemPropulsao.getImage(), mA.getmP().getPosXProp(), mA.getmP().getPosYProp(), this);
 	}
