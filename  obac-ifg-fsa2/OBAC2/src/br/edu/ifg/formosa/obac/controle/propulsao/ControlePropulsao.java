@@ -30,7 +30,7 @@ public class ControlePropulsao {
 			}
 		});
 	}
-	 //Muda o posicionamento da propulsão
+	 //--Muda o posicionamento da propulsão
 	private void mudaPosProp(VisaoPainelConfiguracao vPC, ModeloAmbiente mA, ControleOBAC cOBAC) {
 		switch (vPC.getCsAmbienteSimulacao().getSelectedIndex()) {
 		case 0: //Plano
