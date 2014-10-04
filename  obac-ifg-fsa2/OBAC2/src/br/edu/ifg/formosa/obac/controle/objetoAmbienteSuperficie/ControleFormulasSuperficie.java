@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
+import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
@@ -39,6 +40,8 @@ public class ControleFormulasSuperficie {
 			//Passa o ponto final da escala para a escala real
 				ma.getmEH().setEscalaFimXM(pontoFinalEscala);
 				ma.getmEV().setEscalaFimXM(pontoFinalEscala);
+				ControleSimulacao.mudaMarcadores(ma.getmEH(), (int)pontoFinalEscala);
+				ControleSimulacao.mudaMarcadores(ma.getmEV(), (int)pontoFinalEscala);
 		}
 	//Calcula escala Padrão
 		public void calculaEscalaDescida(){
