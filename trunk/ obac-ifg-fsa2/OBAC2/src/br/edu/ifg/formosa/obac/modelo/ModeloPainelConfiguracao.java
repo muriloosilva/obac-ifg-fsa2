@@ -20,6 +20,7 @@ public class ModeloPainelConfiguracao {
 	//Strings utilizadas no botão bIniciarPausa em VisaoPainelConfiguracao e em ControlePainelConfiguracaoExecucao
 	private String botaoIniciar = "Iniciar Simulação";
 	private String botaoPausar = "Pausar Simulação";
+	private String botaoContinuar = "Continuar Simulação";
 	
 	//Strings utilizadas em uma codição de ControlePainelConfiguracaoAtualizacoes
 	private final String canhao = "Canhão";
@@ -50,8 +51,7 @@ public class ModeloPainelConfiguracao {
 	public String[] getGravidade() {return gravidade;}
 	public String[] getPropulsoes() {return propulsoes;}
 	public String getBotaoIniciar() {return botaoIniciar;}
-	public void setBotaoIniciar(String botaoIniciar) {this.botaoIniciar = botaoIniciar;}
 	public String getBotaoPausar() {return botaoPausar;}
-	public void setBotaoPausar(String botaoPausar) {this.botaoPausar = botaoPausar;}
+	public String getBotaoContinuar() {return botaoContinuar;}
 	
 }

@@ -56,7 +56,7 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 		
 		//Laço de repetição para a executar a movimentação do objeto
 		while (true) {
-			if (continuar) {
+			if (continuar==true) {
 				if (cfo.paradaPlano()==false) {
 					
 					//Calcula nova posição em METROS
@@ -67,15 +67,15 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 					cOBAC.repinta();
 					//Repinta o painel de fórmulas
 					vpf.repaint();
-					//Parada no carregamento para dar o realismo da simulação
-					try {	t.sleep(atrasoMS);	}
-					catch (InterruptedException e) {System.err.println("Erro na Thread!");}
 					//Atualiza o tempo
 					ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
 				}
 				else {parar();}
 			}
-			else {parar();}
+			//Parada no carregamento para dar o realismo da simulação
+			//Esta ocorre no final para possibilitar a pausa da simulação
+				try {	t.sleep(atrasoMS);	}
+				catch (InterruptedException e) {System.err.println("Erro na Thread!");}
 		}
 		
 	}
