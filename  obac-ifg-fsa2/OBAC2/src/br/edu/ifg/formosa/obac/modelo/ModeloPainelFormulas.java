@@ -5,7 +5,7 @@ public class ModeloPainelFormulas {
 	//Fórmulas com variáveis
 		//Propulsões
 		public static String propMola = "V0 = √(K*x²/m)";//Mola
-		public static String propCanhao = "V0 = (2 * e * m)";//Canhão
+		public static String propCanhao = "V0 = √((2 * energia) * massa)";//Canhão
 		//Força Normal
 		public static String forcaNormal = "N = m * g";
 		//Atrito

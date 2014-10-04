@@ -85,7 +85,8 @@ public class ControlePainelConfiguracaoExecucao {
 					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
 					vPS.getVisaoAuxiliar().getpCompressor().setEnabled(true);
 				//Ajustes de acordo co a simulação
-					if(vPC.getCsPropulsao().getSelectedIndex()==0){
+					if(vPC.getCsPropulsao().getSelectedIndex()==0
+					   && vPC.getCsAmbienteSimulacao().getSelectedIndex()!=5){
 						vPC.getCtPropulsaoDado1().setEnabled(false);
 						vPC.getCtPropulsaoDado1().setText("0");
 					}

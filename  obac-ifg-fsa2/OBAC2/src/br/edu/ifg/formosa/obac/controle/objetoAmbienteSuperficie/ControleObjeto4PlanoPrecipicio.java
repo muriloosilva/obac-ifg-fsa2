@@ -66,10 +66,10 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 						//Calcula nova posição em METROS
 						cfo.calculaNovaPosicao();
 						
-						System.out.println("\nX em Metros: " + ma.getmO().getPosicaoXMetros());
-						System.out.println("Y em Metros: " + ma.getmO().getPosicaoYMetros());
-						System.out.println("X em pixels: " + ma.getmO().getPosicaoXPx());
-						System.out.println("Y em pixels: " + ma.getmO().getPosicaoYPx());
+//						System.out.println("\nX em Metros: " + ma.getmO().getPosicaoXMetros());
+//						System.out.println("Y em Metros: " + ma.getmO().getPosicaoYMetros());
+//						System.out.println("X em pixels: " + ma.getmO().getPosicaoXPx());
+//						System.out.println("Y em pixels: " + ma.getmO().getPosicaoYPx());
 						//Converte a posição em METROS para PIXEL para poder movimentar o objeto
 						//ma.getmO().setPosicaoXPx(130 +UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPX(),ma.getmO().getPosicaoXMetros(),ma.getmEH().getEscalaFimXM()));
 						ma.getmO().setPosicaoXPx(UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
