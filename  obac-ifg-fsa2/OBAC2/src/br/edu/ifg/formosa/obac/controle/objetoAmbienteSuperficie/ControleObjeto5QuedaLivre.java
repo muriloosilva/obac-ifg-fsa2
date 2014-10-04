@@ -136,16 +136,13 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 				//Repinta o painel de fï¿½rmulas
 				vpf.repaint();
 				
-				try {
-					t.sleep(ATRASO_MS);	
-				}
-				catch (InterruptedException e) {
-					System.err.println("Execuï¿½ï¿½o Interrompida: "+e.getMessage());
-				}
 				//Atualiza o tempo
 				ma.setTempoAtual(ma.getTempoAtual()+ATRASO_PADRAO);
 			}
-			else{parar();}
+			//Parada no carregamento para dar o realismo da simulação
+			//Esta ocorre no final para possibilitar a pausa da simulação
+				try {	t.sleep(ATRASO_MS);	}
+				catch (InterruptedException e) {System.err.println("Erro na Thread!");}
 		}
 	}
 

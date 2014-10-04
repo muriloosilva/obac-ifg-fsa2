@@ -54,7 +54,7 @@ public class ControlePainelConfiguracaoExecucao {
 						else{
 							mA.getmEV().setEscalaFimYM(Integer.parseInt(vPC.getCtPropulsaoDado1().getText()));
 							ControleSimulacao.mudaMarcadores(mA.getmEV(), (int)mA.getmEV().getEscalaFimYM());
-							cIS.iniciarSimulacao();
+							
 						}
 					//____________________________________________________
 					//Troca do rótulo do painel
@@ -63,8 +63,14 @@ public class ControlePainelConfiguracaoExecucao {
 				
 				//Pausa simulação
 				else if(vPC.getBaIniciaPausar().getText().equals(mpc.getBotaoPausar())){
-					
-					vPC.getBaIniciaPausar().setText(mpc.getBotaoIniciar());
+					cIS.getCObjeto().pausar();
+					//Troca do rótulo do painel
+					vPC.getBaIniciaPausar().setText(mpc.getBotaoContinuar());
+				}
+				else if(vPC.getBaIniciaPausar().getText().equals(mpc.getBotaoContinuar())){
+					cIS.getCObjeto().continuar();
+					//Troca do rótulo do painel
+					vPC.getBaIniciaPausar().setText(mpc.getBotaoPausar());
 				}
 				
 				//Se vier para cá a simulação deu errado por uma falha no código
@@ -77,6 +83,8 @@ public class ControlePainelConfiguracaoExecucao {
 		vPC.getBaNovaSimulacao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//Para a simulação
+				cIS.getCObjeto().parar();
 				//Reserta os valores do PConfig
 				vPC.getCtPropulsaoDado2().setText("");
 				vPC.getCtObjetoMassa().setText("");

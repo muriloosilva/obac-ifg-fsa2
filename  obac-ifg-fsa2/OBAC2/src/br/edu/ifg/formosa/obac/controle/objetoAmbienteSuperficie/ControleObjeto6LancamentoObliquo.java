@@ -72,13 +72,7 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 						
 						ma.getmO().setPosicaoYPx(
 								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) - 29);
-						
-						try {	
-							t.sleep(atrasoMS);	
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-						
+												
 						cOBAC.repinta();
 						
 						//Atualiza o tempo
@@ -87,8 +81,11 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 					} else {
 						parar();
 					}
-				} else 
-					parar();
+				}
+				//Parada no carregamento para dar o realismo da simulação
+				//Esta ocorre no final para possibilitar a pausa da simulação
+					try {	t.sleep(atrasoMS);	}
+					catch (InterruptedException e) {System.err.println("Erro na Thread!");}
 			}			
 		}
 		
