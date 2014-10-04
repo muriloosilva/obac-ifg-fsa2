@@ -50,7 +50,10 @@ public class ControlePainelConfiguracaoExecucao {
 					//--Execução da mola
 						else if (vPC.getCsPropulsao().getSelectedIndex()==1){exeMola();}
 					//--Execução Queda Livre
-						else{cIS.iniciarSimulacao();}
+						else{
+							mA.getmO().setCoefRestituicao(Double.parseDouble(vPC.getrObjetoAtualCoefRest().getText().replaceAll(",", ".")));
+							cIS.iniciarSimulacao();
+						}
 					//____________________________________________________
 					//Troca do rótulo do painel
 					vPC.getBaIniciaPausar().setText(mpc.getBotaoPausar());
