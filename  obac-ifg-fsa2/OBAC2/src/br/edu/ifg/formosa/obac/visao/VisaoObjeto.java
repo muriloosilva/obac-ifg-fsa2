@@ -39,9 +39,7 @@ public class VisaoObjeto extends JPanel {
 		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 5)
 			g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus), 0, 0);
 		else
-			g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus), mA.getTranslateX(), mA.getTranslateY());			
-		
-		g2d.drawLine(330, 10, 330, 600);
+			g2d.rotate(Math.toRadians(mA.anguloInclinacaoGraus), mA.getTranslateX(), mA.getTranslateY());
 		
 		g2d.setColor(Color.blue);
 		g2d.fillRect(mA.getmO().getPosicaoXPx(), mA.getmO().getPosicaoYPx(), ModeloObjeto.alturaLargura, ModeloObjeto.alturaLargura);

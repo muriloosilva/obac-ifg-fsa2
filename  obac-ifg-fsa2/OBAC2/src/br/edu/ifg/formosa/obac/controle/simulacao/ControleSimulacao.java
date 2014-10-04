@@ -38,10 +38,10 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 1: //Subida
-					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);
-					mudaAngulo(mA, 0, false);
-					mudaTranslate(mA, 0, 0);
-					mudaPosObjeto(mA.getmO(), 130, 470);
+					mudaModeloEscala(mA.getmEH(), 130, 490, 700, 490, false);
+					mudaAngulo(mA, -23.87, false);
+					mudaTranslate(mA, 130, 490);
+					mudaPosObjeto(mA.getmO(), 130, 430);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
@@ -49,7 +49,7 @@ public class ControleSimulacao {
 					break;
 				case 2: //Descida
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);
-					mudaAngulo(mA, -23.87, false);
+					mudaAngulo(mA, 23.87, false);
 					mudaTranslate(mA, 700, 520);
 					mudaPosObjeto(mA.getmO(), 130, 470);
 					mudaMarcadores(mA.getmEH(), 100);
@@ -58,7 +58,7 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 3: //Precipicio
-					mudaModeloEscala(mA.getmEH(), 160, 520, 700, 520, true);
+					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, true);
 					mudaModeloEscala(mA.getmEV(), 70, 600, 70, 166, true);
 					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
@@ -67,7 +67,7 @@ public class ControleSimulacao {
 					mudaMarcadores(mA.getmEV(), 1000);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
-					vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica invisivel
+					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
 				case 4: //Queda
 					mudaModeloEscala(mA.getmEV(), 320, 499, 320, 104, false);
@@ -127,6 +127,7 @@ public class ControleSimulacao {
 		mE.setIsPEP(isPEP);				
 	}
 	
+	//Altera o valor do angulo
 	private void mudaAngulo(ModeloAmbiente mA, double angulo, boolean isProjetil) {
 		mA.getmP().setAnguloRotacaoGraus(angulo);
 		if (!isProjetil)
@@ -147,6 +148,6 @@ public class ControleSimulacao {
 		mE.getMarcadoresEscala()[1] = valorFinal * 0.4;
 		mE.getMarcadoresEscala()[2] = valorFinal * 0.6;
 		mE.getMarcadoresEscala()[3] = valorFinal * 0.8;
-		mE.getMarcadoresEscala()[4] = valorFinal * 1.0;
+		mE.getMarcadoresEscala()[4] = valorFinal;
 	}
 }

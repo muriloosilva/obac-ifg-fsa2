@@ -18,6 +18,7 @@ import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleCanhaoMouse;
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
+import br.edu.ifg.formosa.obac.controle.propulsao.ControlePropulsao;
 import br.edu.ifg.formosa.obac.controle.propulsao.MolaDeslizanteListener;
 import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
@@ -40,15 +41,15 @@ public class ControleOBAC {
 	
 	//Modelos
 		//Modelo Painel de Configuração - Contém os arrays de string utilizados e as strings que são modificadas durante o código
-		private ModeloPainelConfiguracao mpc = null;
+		private ModeloPainelConfiguracao mPC = null;
 		//Modelo do Ambiente
 		private ModeloAmbiente mA = null;
 		
 	//Visão
 		//Painel de Configuração
-		private VisaoPainelConfiguracao vpc = null;
+		private VisaoPainelConfiguracao vPC = null;
 		//Painel de Informações
-		private VisaoPainelInformacao vpi = null;
+		private VisaoPainelInformacao vPI = null;
 		//Painel de Fórmulas
 		private VisaoPainelFormulas vpf = null;
 		//Painel de Simulação
@@ -64,16 +65,18 @@ public class ControleOBAC {
 		//Controle Inicio Simulações
 		private ControleInicioSimulacoes cIS = null;
 		//Controles do Painel de Configuração
-		private ControlePainelConfiguracaoEntradaDeDados cpced = null;
-		private ControlePainelConfiguracaoAtualizacoes cpca = null;
+		private ControlePainelConfiguracaoEntradaDeDados cPCED = null;
+		private ControlePainelConfiguracaoAtualizacoes cPCA = null;
 		//ControleInicioSimulacoes Painel de Informação
 		private ControlePainelInformacao cpi = null;
 		//ControleInicioSimulacoes da Mola
-		private ControleMolaMouse cmm = null;
+		private ControleMolaMouse cMM = null;
 		//ControleListenersCanhao
 		private ControleCanhaoMouse cCM = null;
 		//ControleObstáculoMouse
-		private ControleObstaculoMouse com = null;
+		private ControleObstaculoMouse cOM = null;
+		//ControlePropulsão
+		private ControlePropulsao cP = null;
 	
 	public ControleOBAC(OBAC obac) {
 		
@@ -97,30 +100,30 @@ public class ControleOBAC {
 		
 		
 		//Painel de Informações
-			vpi = new VisaoPainelInformacao();
-			painelDeRepintar.add(vpi);
+			vPI = new VisaoPainelInformacao();
+			painelDeRepintar.add(vPI);
 		//ControleInicioSimulacoes do painel de informações
-			cpi = new ControlePainelInformacao(vpi);
+			cpi = new ControlePainelInformacao(vPI);
 		//Painel de Configuração
 			//Modelo Painel de Configuração
-			mpc = new ModeloPainelConfiguracao();
+			mPC = new ModeloPainelConfiguracao();
 			//Visão Painel de Configuração
-			vpc = new VisaoPainelConfiguracao(mpc);
-			painelAbas.add(vpc, "Configuração");
+			vPC = new VisaoPainelConfiguracao(mPC);
+			painelAbas.add(vPC, "Configuração");
 			
 		//Painel de Fórmulas
 			//Visão Painel de Fórmulas
 			vpf = new VisaoPainelFormulas();
 			painelAbas.add(vpf, "Fórmulas");
 			//Controle painel de fórmulas
-			cpf = new ControlePainelFormulas(vpf, vpc);
+			cpf = new ControlePainelFormulas(vpf, vPC);
 			
 		//Modelos das Simulações
 			//Modelo Escala
 			mA = new ModeloAmbiente(cpi, vpf, cpf);
 			
 		//Painel de Simulação
-			vPS = new VisaoPainelSimulacao(mA, vpc);
+			vPS = new VisaoPainelSimulacao(mA, vPC);
 			painelDeRepintar.add(vPS);
 			
 		//Controles de fórmulas
@@ -128,21 +131,21 @@ public class ControleOBAC {
 			cFS = new ControleFormulasSuperficie(mA, vpf, cpf);//Adicionar o vpf nesta classe para atualizar o pFormulas
 			//Instanciar o Controle de início das simulações
 		//Controle do início das simulações
-			cIS = new ControleInicioSimulacoes(mA, vpc, vpf, this, cFO, cFS, cpf);
+			cIS = new ControleInicioSimulacoes(mA, vPC, vpf, this, cFO, cFS, cpf);
 			
 		//Controle da propulsão por mola
-			cmm = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vpc, mA, cIS);
+			cMM = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPC, mA, cIS);
 			
 		//Controle Listeners Canhao
-			cCM = new ControleCanhaoMouse(mA, vPS, vpc, this);
+			cCM = new ControleCanhaoMouse(mA, vPS, vPC, this);
 		
 		//ControleObstaculoMouse
-			com = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mA.getmObs(), this); 
+			cOM = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mA.getmObs(), this); 
 			
 		//Controles do Painel de Configuração
-			cpca = new ControlePainelConfiguracaoAtualizacoes(vpc, mpc, vpf, vpi, vPS,mA.getmP(), com, this);
-			cpced = new ControlePainelConfiguracaoEntradaDeDados(vpc);
-			new ControlePainelConfiguracaoExecucao(mA, vPS, vpc, mpc, cpca, cpced, cIS, cmm, this);
+			cPCA = new ControlePainelConfiguracaoAtualizacoes(vPC, mPC, vpf, vPI, vPS,mA.getmP(), cOM, this);
+			cPCED = new ControlePainelConfiguracaoEntradaDeDados(vPC);
+			new ControlePainelConfiguracaoExecucao(mA, vPS, vPC, mPC, cPCA, cPCED, cIS, cMM, this);
 		
 		//Controles/Listeners da mola
 		MolaDeslizanteListener mDL = new MolaDeslizanteListener(vPS, mA, this, cIS);
@@ -150,8 +153,11 @@ public class ControleOBAC {
 			vPS.getVisaoAuxiliar().getDeslizanteMola().addMouseListener(mDL);
 			
 		//Controles - Escala/Ambiente
-			new ControleSimulacao(vpi, vPS, mA, vpc, mpc, this);
-			new ControleAmbiente(mA, vpc, mpc, this, vPS, cpca);
+			new ControleSimulacao(vPI, vPS, mA, vPC, mPC, this);
+			new ControleAmbiente(mA, vPC, mPC, this, vPS, cPCA);
+			
+		//Controle Propulsão
+			cP = new ControlePropulsao(vPI, vPS, mA, vPC, mPC, this);
 			
 		//Repintar Applet
 			obac.repaint();
