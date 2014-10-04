@@ -4,7 +4,7 @@ public class ModeloEscala {
 	
 	//Constantes
 	//--Inteiro
-	public final int tamanhoPrecipicioPix = 286;//Este valor é usado porque assim é considerado que 50% + 1pix do tamanho do objeto estará por cima do plano, de forma que o equilíbrio dele seja mantido(Tamnho_do_plano(330)-Tamho_do_objeto(30)-50%+1_do_Objeto_Pix(16))
+	public final int tamanhoPrecipicioPix = 330;//Este valor é usado porque assim é considerado que 50% + 1pix do tamanho do objeto estará por cima do plano, de forma que o equilíbrio dele seja mantido(Tamnho_do_plano(330)-Tamho_do_objeto(30)-50%+1_do_Objeto_Pix(16))
 	public final int fimAmbienteYPix = 600;
 	public final static int qtdMarcadores = 4; //Numero de marcadores existentes nas escalas
 	

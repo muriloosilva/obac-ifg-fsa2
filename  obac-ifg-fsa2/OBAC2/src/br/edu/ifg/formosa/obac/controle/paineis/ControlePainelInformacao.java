@@ -42,7 +42,16 @@ public class ControlePainelInformacao {
 		//Taxa de Deformação
 		public void mudaValorTaxaDeDeformacao(double valor){vpi.getrXValor().setText("" + UtilidadeArredondamento.arredondamento(1, valor));}
 		//Energia
-		public void mudaValorEnergia(double valor){vpi.getrJValor().setText("" + UtilidadeArredondamento.arredondamento(1, valor));}
+		public void mudaValorEnergia(double valor){
+			String v = valor+"";
+			if(v.length()>3){
+				vpi.getrJValor().setText(UtilidadeArredondamento.notacaoCientifica(valor));
+			}
+			else{
+				vpi.getrJValor().setText("" + UtilidadeArredondamento.arredondamento(1, valor));
+			}
+			vpi.getrXValor().setText("");
+		}
 		//Ângulo
 		public void mudaValorAngulo(double valor){vpi.getrAValor().setText("" + UtilidadeArredondamento.arredondamento(1, valor));}
 		//Velocidade Pós Colisão
