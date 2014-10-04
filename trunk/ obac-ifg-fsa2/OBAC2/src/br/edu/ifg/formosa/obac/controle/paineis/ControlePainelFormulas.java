@@ -27,7 +27,9 @@ public class ControlePainelFormulas {
 			s += "V0 = √(" +k +"*" +x+"²/" +m +")\n";
 			s += "V0 = √(" +k +"*" +Math.pow(x, 2) +"/" +m +")\n";
 			s += "V0 = √(" +(k*Math.pow(x, 2)) +"/" +m +")\n";
-			double num1 = UtilidadeArredondamento.arredondamento(2, (Math.sqrt(k*Math.pow(x, 2) )/m));
+			double num1 = UtilidadeArredondamento.arredondamento(2, (Math.sqrt(k*Math.pow(x, 2))));
+			s += "V0 = √(" +(k*Math.pow(x, 2)/m) +")\n";
+			num1 = UtilidadeArredondamento.arredondamento(2, (num1/m));
 			s += "V0 = " +num1;
 			return s;
 		}
@@ -177,10 +179,10 @@ public class ControlePainelFormulas {
 			
 			s += "s = "+s0+" + "+v0+" * "+t+" + ("+a+" * "+t+"²)/2 \n";
 				double num1 = UtilidadeArredondamento.arredondamento(2, (Math.pow(t,2)));
-				
-			s += "s = "+s0+" + "+(v0*t)+" + ("+a+" * "+num1+")/2 \n";
+				double num2 = UtilidadeArredondamento.arredondamento(2, (v0*t));
+			s += "s = "+s0+" + "+num2+" + ("+a+" * "+num1+")/2 \n";
 				num1 = UtilidadeArredondamento.arredondamento(2, (a*num1));
-				double num2 = UtilidadeArredondamento.arredondamento(2, (s0+(v0*t)));
+				num2 = UtilidadeArredondamento.arredondamento(2, (s0+num2));
 			
 			s += "s = "+num2+" + ("+num1+")/2 \n";
 				num1 = UtilidadeArredondamento.arredondamento(2, (num1/2));
@@ -298,8 +300,9 @@ public class ControlePainelFormulas {
 	public void alteraTipoPainel(){//Ativado quando é dado inicio a simulação
 		//Normal
 		if(vpc.getBoColisaoNao().isSelected()==true)  configuracaoNormal();
-		//Colisão
-		else if(vpc.getBoColisaoSim().isSelected()==true)  configuracaoColisao();
+		//Colisão e QL
+		else if(vpc.getBoColisaoSim().isSelected()==true)	configuracaoColisao();
+		else if(vpc.getCsPropulsao().getSelectedIndex()==2){configuracaoQuedaLivre();}  
 		//Lançamento Obliquo
 		else  if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==6)configuracaoLancamentoObliquo();
 	}
@@ -358,6 +361,24 @@ public class ControlePainelFormulas {
 		vpf.setpMovimentoVertical(true);
 		
 		vpf.modificaPTempo(true);
+		vpf.repaint();
+	}
+	private void configuracaoQuedaLivre(){
+		vpf.setPVInicial(true);
+		vpf.setPFNormal(true);
+		vpf.setPAtrito(true);
+		vpf.setPAceleracao(true);
+		vpf.setPPosFinal(true);
+		vpf.setPTempo(true);
+		vpf.setPNovaPos(true);
+		vpf.setPColisao(true);
+		vpf.setPNovaPosColisao(true);
+		vpf.setpAlcanceTotalHorizontal(false);
+		vpf.setpAlcanceTotalVertical(false);
+		vpf.setpMovimentoHorizontal(false);
+		vpf.setpMovimentoVertical(false);
+		
+		vpf.modificaPTempo(false);
 		vpf.repaint();
 	}
 }
