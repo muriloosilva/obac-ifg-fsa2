@@ -28,7 +28,7 @@ public class ControleSimulacao {
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false); 
 					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
-					mudaPosObjeto(mA.getmO(), 130, 470);
+					mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pPlaYPx);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
@@ -38,7 +38,7 @@ public class ControleSimulacao {
 					mudaModeloEscala(mA.getmEH(), 130, 490, 700, 490, false);
 					mudaAngulo(mA, -23.87, false);
 					mudaTranslate(mA, 130, 490);
-					mudaPosObjeto(mA.getmO(), 130, 430);
+					mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pSubYPx);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
@@ -48,7 +48,7 @@ public class ControleSimulacao {
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);
 					mudaAngulo(mA, 23.87, false);
 					mudaTranslate(mA, 700, 520);
-					mudaPosObjeto(mA.getmO(), 130, 466);
+					mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pDesYPx);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
@@ -59,7 +59,7 @@ public class ControleSimulacao {
 					mudaModeloEscala(mA.getmEV(), 70, 600, 70, 166, true);
 					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
-					mudaPosObjeto(mA.getmO(), 130, 166);
+					mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pPepYPx);
 					mudaMarcadores(mA.getmEH(), 100);
 					mudaMarcadores(mA.getmEV(), 1000);
 					
@@ -70,7 +70,7 @@ public class ControleSimulacao {
 					mudaModeloEscala(mA.getmEV(), 320, 499, 320, 104, false);
 					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
-					mudaPosObjeto(mA.getmO(), 361, 104);
+					mudaPosObjeto(mA.getmO(), ModeloObjeto.pQueXPx, ModeloObjeto.pQueYPx);
 					mudaMarcadores(mA.getmEV(), 1000);
 					
 					vps.getVisaoEscalaH().setVisible(false); //Escala Horizontal fica invisível
@@ -84,7 +84,7 @@ public class ControleSimulacao {
 					mudaAngulo(mA, mA.getmP().getAnguloRotacaoGraus(), true);
 					
 					mudaTranslate(mA, 145, 485);
-					mudaPosObjeto(mA.getmO(), 130, 470);
+					mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pOblYPx);
 					
 					mudaMarcadores(mA.getmEH(), 100);
 					mudaMarcadores(mA.getmEV(), 100);
