@@ -34,13 +34,17 @@ public class ControlePainelFormulas {
 
 		//Propulsão pelo canhão
 		public String propulsaoCanhao(double e, double m){
+			/*				  _____________________
+			 * Velocidade = -/(2 * energia) / massa
+			 */
 			e = UtilidadeArredondamento.arredondamento(2, e);
 			m = UtilidadeArredondamento.arredondamento(2, m);
-			//V0 = (2 * energia * massa)
+			//V0 = √((2 * energia) * massa)
 			String s = ModeloPainelFormulas.propCanhao +"\n";
-			s += "V0 = 2 * "+e+" * "+m +"\n";
-			s += "V0 = 2 * "+(e*m) +"\n";
-			s += "V0 = "+(2*e*m);
+			s += "V0 = √(2 * "+e+") / "+m +")\n";
+			s += "V0 = √("+(2*e) +"/" +m +")\n";
+			s += "V0 = √"+(2*e/m)+"\n";
+			s += "V0 = "+Math.sqrt((2*e/m));
 			return s;
 		}
 

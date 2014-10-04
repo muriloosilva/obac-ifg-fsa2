@@ -51,6 +51,7 @@ public class ModeloCanhao {
 		/*				  _____________________
 		 * Velocidade = -/(2 * energia) / massa
 		 */
+		vPF.getAtVInicial().setText(cPF.propulsaoCanhao(energia, mA.getmO().getMassa()));
 	}
 	
 	//--Tempo total
@@ -62,6 +63,7 @@ public class ModeloCanhao {
 		/*
 		 * TempoTotal = (2 * velocidade * sin(angulo)) / gravidade
 		 */
+		vPF.getAtTempo().setText(cPF.tempoTotal(mA.getmO().getVelocidadeInicial(), mA.getmP().getAnguloRotacaoGraus(), mA.getGravSelecionada()));
 	}
 	
 	//--Alcance máximo
@@ -72,6 +74,8 @@ public class ModeloCanhao {
 		/*
 		 * AlcanceTotal = (Vo² * sin(2 * teta)) / gravidade
 		 */
+		vPF.getAtAlcanceTotalHorizontal().setText(
+			cPF.alcanceTHorizontal(mA.getmO().getVelocidadeInicial(), mA.getmP().getAnguloRotacaoGraus(), mA.getGravSelecionada()));
 	}
 	
 	//--AlturaMaxima
@@ -82,6 +86,8 @@ public class ModeloCanhao {
 		/*
 		 * AlturaMaxima = (Vo * sin(teta))² / 2 * gravidade
 		 */
+		vPF.getAtAlcanceTotalVertical().setText(
+			cPF.alturaTVertical(mA.getmO().getVelocidadeInicial(), mA.getmP().getAnguloRotacaoGraus(), mA.getGravSelecionada()));
 	}
 	
 	//--Novo X
@@ -92,6 +98,8 @@ public class ModeloCanhao {
 		/*
 		 * Novo X = (Vo * cos(teta)) * tempo
 		 */
+		vPF.getAtMovimentoHorizontal().setText(
+				cPF.movimentoHorizontal(mA.getmO().getVelocidadeInicial(), mA.getmP().getAnguloRotacaoGraus(), mA.getGravSelecionada()));
 	}
 	
 	//--Novo Y
@@ -103,6 +111,8 @@ public class ModeloCanhao {
 		/*
 		 * Novo Y = (Vo * sin(teta) * tempo) - (grav / 2 * tempo²)
 		 */
+		vPF.getAtMovimentoVertical().setText(
+				cPF.movimentoVetical(mA.getmO().getVelocidadeInicial(), mA.getmP().getAnguloRotacaoGraus(), mA.getTempoAtual(), mA.getGravSelecionada()));
 	}
 	
 	public double novoYPEP() {

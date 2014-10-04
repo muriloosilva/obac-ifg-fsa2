@@ -148,7 +148,7 @@ public class VisaoPainelFormulas extends JScrollPane{
 		pPosFinal = new JPanel(new BorderLayout());
 		rPosFinal = new JLabel("Posição Final");
 		atPosFinal = new JTextArea(ModeloPainelFormulas.posicaoFinalPadrao);
-		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloAcafrao, 6, true);
+		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloAcafrao, 7, true);
 		
 		//Tempo
 		pTempo = new JPanel(new BorderLayout());
