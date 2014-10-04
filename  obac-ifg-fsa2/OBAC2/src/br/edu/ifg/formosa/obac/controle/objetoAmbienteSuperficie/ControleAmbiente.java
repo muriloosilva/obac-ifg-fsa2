@@ -89,14 +89,53 @@ public class ControleAmbiente {
 						break;
 						
 				}
+				mudaAtritoImagem();
+				mudaImagem(cO, vPS.getVisaoSuperficie(), mA);
+			}
+		});
+		
+		vPC.getCsAmbienteAtrito().addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mudaAtritoImagem();
 				mudaImagem(cO, vPS.getVisaoSuperficie(), mA);
 			}
 		});
 	}
+		
+	private void mudaAtritoImagem() {
+		switch(vPC.getCsAmbienteAtrito().getSelectedIndex()) {
+		case 0:
+			mA.setUrlS("Asfalto - " + simulacaoAtiva());
+			break;
+		case 1:
+			mA.setUrlS("Aluminio - " + simulacaoAtiva());
+			break;
+		case 2:
+			mA.setUrlS("Madeira - " + simulacaoAtiva());
+			break;					
+		}
+	}
+	
+	//--Verifica a simulação ativa (Utilizado para mudar a imagem da superficie
+	private String simulacaoAtiva() {
+		switch (vPC.getCsAmbienteSimulacao().getSelectedIndex()) {
+		case 0:
+			return "Plano";
+		case 1:
+			return "Subida";
+		case 2:
+			return "Descida";
+		case 3:
+			return "Precipicio";
+		default:
+			return "Plano";
+		}
+	}
 	
 	//--Muda imagem fundo
 	public void mudaImagem(ControleOBAC cO, VisaoSuperficie vS, ModeloAmbiente mA) {
-		vS.novasImagens(mA.getUrlGr(), mA.getUrlA(), mA.getUrlGu());
+		vS.novasImagens(mA.getUrlGr(), mA.getUrlA(), mA.getUrlGu(), mA.getUrlS());
 		cO.repinta();
 	}
 	

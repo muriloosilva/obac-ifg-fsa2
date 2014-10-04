@@ -32,6 +32,7 @@ public class ModeloAmbiente {
 	private URL urlGr = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + "terra" + ".png"); //gravidade
 	private URL urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + "plano" + ".png"); //andaime
 	private URL urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + "guindasteF" + ".png"); //guindaste
+	private URL urlS = this.getClass().getClassLoader().getResource(modeloURL + "superficie/" + "Asfalto - Plano" + ".png"); //Superfície
 	
 	//--ControleInicioSimulacoes Painel de Configuração - atualizar dados referente ao ambiente
 	private static ControlePainelInformacao cpi = null;
@@ -84,6 +85,7 @@ public class ModeloAmbiente {
 	public URL getUrlGr() {return urlGr;}
 	public URL getUrlA() {return urlA;}
 	public URL getUrlGu() {return urlGu;}
+	public URL getUrlS() {return urlS;}
 	
 	//--Setters
 	public void setTranslateX(int translateX) {this.translateX = translateX;}
@@ -91,6 +93,7 @@ public class ModeloAmbiente {
 	public void setUrlGr(String urlGr) {this.urlGr = this.getClass().getClassLoader().getResource(modeloURL + "ambiente/" + urlGr + ".png");}
 	public void setUrlA(String urlA) {this.urlA = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlA + ".png");}
 	public void setUrlGu(String urlGu) {this.urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlGu + ".png");}
+	public void setUrlS(String urlS) {this.urlS = this.getClass().getClassLoader().getResource(modeloURL + "superficie/" + urlS + ".png");}
 	public void setTempoAtual(double tempoAtual) {this.tempoAtual = tempoAtual;}
 	
 	//--Setters relacionados ao Painel de Informação

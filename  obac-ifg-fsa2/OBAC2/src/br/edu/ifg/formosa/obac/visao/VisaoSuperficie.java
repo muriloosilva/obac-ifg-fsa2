@@ -42,6 +42,7 @@ public class VisaoSuperficie extends JPanel {
 		gravidade = new ImageIcon(mA.getUrlGr());
 		andaime = new ImageIcon(mA.getUrlA());
 		guindaste = new ImageIcon(mA.getUrlGu());
+		superficie = new ImageIcon(mA.getUrlS());
 	}
 	
 	//--Paint
@@ -50,15 +51,17 @@ public class VisaoSuperficie extends JPanel {
 		
 		g2d.drawImage(gravidade.getImage(), 0, 0, this);
 		g2d.drawImage(andaime.getImage(), 0, 0, this);
+		g2d.drawImage(superficie.getImage(), 0, 0, this);
 		
 		if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 5) 
 			g2d.drawImage(guindaste.getImage(), 0, 0, this);
 	}
 	
 	//--Reconstroi as imagens com as novas URLs
-	public void novasImagens(URL gr, URL a, URL gu) {
+	public void novasImagens(URL gr, URL a, URL gu, URL s) {
 		gravidade = new ImageIcon(gr);
 		andaime = new ImageIcon(a);
 		guindaste = new ImageIcon(gu);
+		superficie = new ImageIcon(s);
 	}
 }
