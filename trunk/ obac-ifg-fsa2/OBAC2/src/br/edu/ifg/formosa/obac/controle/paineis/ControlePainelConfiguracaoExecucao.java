@@ -72,8 +72,7 @@ public class ControlePainelConfiguracaoExecucao {
 		vPC.getBaNovaSimulacao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//REserta os valores do PConfig
-				vPC.getCtPropulsaoDado1().setText("");
+				//Reserta os valores do PConfig
 				vPC.getCtPropulsaoDado2().setText("");
 				vPC.getCtObjetoMassa().setText("");
 				//____________________________________________________
@@ -85,6 +84,18 @@ public class ControlePainelConfiguracaoExecucao {
 				//Deixa o slider invisivel
 					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
 					vPS.getVisaoAuxiliar().getpCompressor().setEnabled(true);
+				//Ajustes de acordo co a simulação
+					if(vPC.getCsPropulsao().getSelectedIndex()==0){
+						vPC.getCtPropulsaoDado1().setEnabled(false);
+						vPC.getCtPropulsaoDado1().setText("0");
+					}
+					else{
+						vPC.getCtPropulsaoDado1().setEnabled(true);
+						vPC.getCtPropulsaoDado1().setText("");
+					}
+				//Reposiciona o objeto
+					mA.getmO().setPosicaoXPx(130);
+				//Repinta
 					cOBAC.repinta();
 			}
 		});
