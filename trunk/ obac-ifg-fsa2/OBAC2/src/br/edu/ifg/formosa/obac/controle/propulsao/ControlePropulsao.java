@@ -42,25 +42,28 @@ public class ControlePropulsao {
 					break;
 				case 2: //Descida
 					if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
-						mA.getmP().setPosYProp(mA.getmP().getPosYC() - 10);
+						mA.getmP().setPosYProp(mA.getmP().getPosYC() - 6);
 						
-						mA.getmP().setPosYBase(mA.getmP().getPosYB() - 10);
-						mA.getmP().setPosXBase(mA.getmP().getPosXB() - 10);			
+						mA.getmP().setPosYBase(mA.getmP().getPosYB() - 237);
+						mA.getmP().setPosXBase(mA.getmP().getPosXB() + 80);			
 					} else {
-						mA.getmP().setPosYProp(mA.getmP().getPosYM() - 10);					
+						mA.getmP().setPosYProp(mA.getmP().getPosYM() - 3);					
 					}
 					break;
 				case 3: //Precipício
 					if (vPC.getCsPropulsao().getSelectedIndex() == 0) {
 						mA.getmP().setPosYProp(mA.getmP().getPosYC() - 307);
-						mA.getmP().setPosYBase(mA.getmP().getPosYB() - 307);				
+						
+						mA.getmP().setPosYBase(mA.getmP().getPosYB() - 307);	
+						mA.getmP().setPosXBase(mA.getmP().getPosXB());			
 					} else {
-						mA.getmP().setPosYProp(mA.getmP().getPosYM() - 307);					
+						mA.getmP().setPosYProp(mA.getmP().getPosYM() - 304);					
 					}
 					break;
 				case 5: //Oblíquo
 					mA.getmP().setPosYProp(mA.getmP().getPosYC());
 					mA.getmP().setPosYBase(mA.getmP().getPosYB());
+					mA.getmP().setPosXBase(mA.getmP().getPosXB());	
 					break;
 				}
 				cOBAC.repinta();

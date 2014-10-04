@@ -51,7 +51,7 @@ public class ControleSimulacao {
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);
 					mudaAngulo(mA, 23.87, false);
 					mudaTranslate(mA, 700, 520);
-					mudaPosObjeto(mA.getmO(), 130, 470);
+					mudaPosObjeto(mA.getmO(), 130, 466);
 					mudaMarcadores(mA.getmEH(), 100);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
