@@ -9,6 +9,7 @@ import javax.swing.event.ChangeListener;
 
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.controle.obstaculo.ControleObstaculoMouse;
+import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloPropulsao;
@@ -20,6 +21,7 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 public class ControlePainelConfiguracaoAtualizacoes {
 	
 	//Constantes
+	private final ModeloAmbiente mA;
 	private final VisaoPainelConfiguracao vpc;
 	private final ModeloPainelConfiguracao mpc;
 	private final VisaoPainelFormulas vpf;
@@ -31,10 +33,12 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	
 	//Construtor
 	public ControlePainelConfiguracaoAtualizacoes(
+		   ModeloAmbiente mA,
 		   VisaoPainelConfiguracao vpc, ModeloPainelConfiguracao mpc,
 		   VisaoPainelFormulas vpf, VisaoPainelInformacao vpi, VisaoPainelSimulacao vPS,
 		   ModeloPropulsao mP, ControleObstaculoMouse com, ControleOBAC cOBAC)
 	{
+		this.mA = mA;
 		this.vpc = vpc;
 		this.mpc = mpc;
 		this.vpf = vpf;
@@ -60,9 +64,14 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Rótulos
 					vpc.getrPropulsaoDado1().setText(mpc.getDado1Canhao());
 					vpc.getrPropulsaoDado2().setText(mpc.getDado2Canhao());
+					vpc.getCtPropulsaoDado2().setEnabled(true);
 					//Caixa de seleção das simulações
-					if(vpc.getCsAmbienteSimulacao().getItemCount()==5)//Teste lógico para que adicione apenas uma vez
-						vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), vpc.getCsAmbienteSimulacao().getItemCount());
+						//Teste lógico para não remover linha do QO
+						if(vpc.getCsAmbienteSimulacao().getItemCount()==6)
+							vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de QL
+						//Teste lógico para que adicione apenas uma vez o LO
+						if(vpc.getCsAmbienteSimulacao().getItemCount()==4)
+							vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), vpc.getCsAmbienteSimulacao().getItemCount());
 					//Painel de Fórmulas
 					vpf.getAtVInicial().setText(ModeloPainelFormulas.propCanhao);
 					//Painel de Informações
@@ -71,6 +80,9 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					mP.trocaImagemProp(true);
 					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
 					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
+					//Defazendo as edições específicas da QL 
+					vPS.getVisaoPropulsao().setVisible(true);
+					vpc.getCsAmbienteSimulacao().setEnabled(true);
 					//Método necessário para corrigir o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 				}
@@ -79,9 +91,14 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Rótulos
 					vpc.getrPropulsaoDado1().setText(mpc.getDado1Mola());
 					vpc.getrPropulsaoDado2().setText(mpc.getDado2Mola());
+					vpc.getCtPropulsaoDado2().setEnabled(true);
 					//Caixas de seleção das simulações
-					if(vpc.getCsAmbienteSimulacao().getItemCount()==6)//Teste lógico para não remover uma linha desnecessária
-						vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo
+						//Teste lógico para não remover linha do LO
+						if(vpc.getCsAmbienteSimulacao().getItemCount()==6)
+							vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo
+						//Teste lógico para não remover linha do LO||QL
+						if(vpc.getCsAmbienteSimulacao().getItemCount()==5)
+							vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo
 					//Painel de Fórmulas
 					vpf.getAtVInicial().setText(ModeloPainelFormulas.propMola);
 					//Painel de Informações
@@ -89,9 +106,33 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Altera a imagem
 					mP.trocaImagemProp(false);
 					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
+					//Defazendo as edições específicas da QL 
+					vPS.getVisaoPropulsao().setVisible(true);
+					vpc.getCsAmbienteSimulacao().setEnabled(true);
 					//Método necessário para desfazer a correção o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
-				} 
+				}
+				//Queda Livre
+				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getQL())){
+					//Retira as propulsões normais
+					vPS.getVisaoPropulsao().setVisible(false);
+					//Insere a opção QL na caixa de seleção da simulação
+					if(vpc.getCsAmbienteSimulacao().getItemCount()==5){//Canhão
+						vpc.getCsAmbienteSimulacao().addItem(mpc.getQL());
+					}else if(vpc.getCsAmbienteSimulacao().getItemCount()==4){//Mola
+						vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), 4);
+						vpc.getCsAmbienteSimulacao().addItem(mpc.getQL());
+					}
+					//BLoqueia a caixa de simulação
+					vpc.getCsAmbienteSimulacao().setSelectedIndex(vpc.getCsAmbienteSimulacao().getItemCount()-1);
+					vpc.getCsAmbienteSimulacao().setEnabled(false);
+					//Troca dos rótulos e Campos de Texto
+						vpc.getrPropulsaoDado1().setText(mpc.getDado1QL());
+						vpc.getrPropulsaoDado2().setText(mpc.getDado2QL());
+						vpc.getCtPropulsaoDado1().setText("1000");
+						vpc.getCtPropulsaoDado2().setText("0");
+						vpc.getCtPropulsaoDado2().setEnabled(false);
+				}
 				else{
 					JOptionPane.showMessageDialog(null,
 						"Falha catastrófica no funcionamento do programa", 
@@ -108,8 +149,10 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			@Override
 			public void stateChanged(ChangeEvent arg0) {
 				vpc.getrObjetoAtualCoefRest().setText(""+(vpc.getdObjetoCoeficienteRestituicao().getValue()/100.0));
+				mA.getmO().setCoefRestituicao(vpc.getdObjetoCoeficienteRestituicao().getValue()/100.0);
 				//O valor do Deslizante (JSlider) é pego e dividido por 100
-				//Em seguida é passado para um rótulo (JLabel), a fim do usuário saber o valor que a simulação usará
+				//Em seguida é passado para um rótulo (JLabel),
+				//a fim do usuário saber o valor que a simulação usará
 			}
 		});
 	}
@@ -140,7 +183,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			//1º - Configura o segundo campo de dados referentes a propulsão no painel de configuração
 			//-----para que so possa ter seu valor editado caso seja a simulação de lançamento oblíquo.
 				cacheTexto = vpc.getCtPropulsaoDado1().getText();
-				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()!=5 
+				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()!=4 
 					&& vpc.getCsPropulsao().getSelectedIndex()==0)
 				{//Inicio IF/ELSE 1
 					vpc.getCtPropulsaoDado1().setText("0");
@@ -183,7 +226,21 @@ public class ControlePainelConfiguracaoAtualizacoes {
 
 	//Método usado na execução para que a interação com os componentes seja removida
 	public void desativaComponentes(boolean ativado){
-		vpc.getCsPropulsao().setEnabled(ativado);
+		//Ajustes de acordo co a simulação
+		if(vpc.getCsPropulsao().getSelectedIndex()==0
+		   && vpc.getCsAmbienteSimulacao().getSelectedIndex()!=4){
+			vpc.getCtPropulsaoDado1().setEnabled(false);
+			vpc.getCtPropulsaoDado1().setText("0");
+		}
+		else if(vpc.getCsPropulsao().getSelectedIndex()==2){
+			vpc.getCtPropulsaoDado2().setEnabled(false);
+			vpc.getCtPropulsaoDado2().setText("0");
+		}
+		else{
+			vpc.getCtPropulsaoDado1().setEnabled(true);
+			vpc.getCtPropulsaoDado1().setText("");
+		}
+		vpc.getCtPropulsaoDado1().setEnabled(ativado);
 		vpc.getCtPropulsaoDado2().setEnabled(ativado);
 		vpc.getCsAmbienteSimulacao().setEnabled(ativado);
 		vpc.getCsAmbienteAtrito().setEnabled(ativado);

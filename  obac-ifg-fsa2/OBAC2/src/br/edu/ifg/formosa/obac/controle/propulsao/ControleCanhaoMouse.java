@@ -28,7 +28,7 @@ public class ControleCanhaoMouse {
 		vPC.getCsAmbienteSimulacao().addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) { 
-				if(vPC.getCsAmbienteSimulacao().getSelectedIndex() == 5) {
+				if(vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {
 					vPS.getVisaoPropulsao().addMouseListener(cCML);
 					vPS.getVisaoPropulsao().addMouseMotionListener(cCML);
 					cCML.setRodaT(true);

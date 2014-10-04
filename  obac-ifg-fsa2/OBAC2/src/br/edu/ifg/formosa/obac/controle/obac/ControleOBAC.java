@@ -143,7 +143,7 @@ public class ControleOBAC {
 			cOM = new ControleObstaculoMouse(vPS.getVisaoObstaculo(), mA.getmObs(), this); 
 			
 		//Controles do Painel de Configuração
-			cPCA = new ControlePainelConfiguracaoAtualizacoes(vPC, mPC, vpf, vPI, vPS,mA.getmP(), cOM, this);
+			cPCA = new ControlePainelConfiguracaoAtualizacoes(mA, vPC, mPC, vpf, vPI, vPS,mA.getmP(), cOM, this);
 			cPCED = new ControlePainelConfiguracaoEntradaDeDados(vPC);
 			new ControlePainelConfiguracaoExecucao(mA, vPS, vPC, mPC, cPCA, cPCED, cIS, cMM, this);
 		

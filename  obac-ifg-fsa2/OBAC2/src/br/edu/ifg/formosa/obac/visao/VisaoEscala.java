@@ -83,7 +83,7 @@ public class VisaoEscala extends JPanel{
 		}
 		//Marcador dinâmico para indicar a posição do objeto no P&P
 		if (mE.isPEP()) {
-			g2d.setColor(Color.yellow);
+			g2d.setColor(Color.white);
 			
 			if (mA.getmO().getPosicaoXPx() + 30 >= mE.getEscalaInicioX()) { //Colocar em uma Thread de modo que so atualize com essa condição
 				g2d.fillOval(UtilidadeConvercoesEscala.metroParaPixelH(mA.getmEH(), mA.getmO().getPosicaoXMetros()), mE.getEscalaInicioY() - 4, 8, 8);

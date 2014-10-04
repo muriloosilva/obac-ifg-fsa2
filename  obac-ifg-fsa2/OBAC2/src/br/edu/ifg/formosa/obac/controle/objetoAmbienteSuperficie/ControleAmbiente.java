@@ -15,8 +15,8 @@ import br.edu.ifg.formosa.obac.visao.VisaoSuperficie;
 public class ControleAmbiente {
 	
 	//Constante do painel de configuração
+	private final ModeloAmbiente mA;
 	private final VisaoPainelConfiguracao vPC;
-	private final VisaoPainelSimulacao vPS;
 	private final ControlePainelConfiguracaoAtualizacoes cPCA;
 	
 	//Métodos
@@ -24,8 +24,8 @@ public class ControleAmbiente {
 	public ControleAmbiente(final ModeloAmbiente mA, final VisaoPainelConfiguracao vPC,
 			final ModeloPainelConfiguracao mPC, final ControleOBAC cO, final VisaoPainelSimulacao vPS,
 			final ControlePainelConfiguracaoAtualizacoes cPCA) {
+		this.mA = mA;
 		this.vPC = vPC;
-		this.vPS = vPS;
 		this.cPCA = cPCA;
 		
 		vPC.getCsAmbienteGravidade().addActionListener(new ActionListener() {
@@ -75,19 +75,19 @@ public class ControleAmbiente {
 						cPCA.ajustesPConfig();
 						mA.setUrlA("precipicio");
 						break;
-					case 4: //Queda
+					case 4: //Projétil
 						cPCA.ajustesPConfig();
 						mA.setUrlA("plano");
-						
+						break;
+					case 5: //Queda
+						cPCA.ajustesPConfig();
+						mA.setUrlA("plano");
 						if (!vPC.getBaNovaSimulacao().isVisible()) 
 							mA.setUrlGu("guindasteF");
 						else
 							mA.setUrlGu("guindasteA");
 						break;
-					case 5: //Projétil
-						cPCA.ajustesPConfig();
-						mA.setUrlA("plano");
-						break;
+						
 				}
 				mudaImagem(cO, vPS.getVisaoSuperficie(), mA);
 			}

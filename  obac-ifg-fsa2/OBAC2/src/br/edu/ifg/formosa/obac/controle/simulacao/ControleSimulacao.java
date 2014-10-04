@@ -12,12 +12,12 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
-public class ControleSimulacao {	
+public class ControleSimulacao {
+	
 	//Metodos
 	//--Construtor
 	public ControleSimulacao(final VisaoPainelInformacao vpi, final VisaoPainelSimulacao vps, final ModeloAmbiente mA, 
-			                 final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC, final ControleOBAC cOBAC) {		
-
+			                 final VisaoPainelConfiguracao vPC, final ModeloPainelConfiguracao mPC, final ControleOBAC cOBAC) {
 		mudaMarcadores(mA.getmEH(), 100);
 		
 		vPC.getCsAmbienteSimulacao().addActionListener(new ActionListener() {			
@@ -66,33 +66,34 @@ public class ControleSimulacao {
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
 					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
 					break;
-				case 4: //Queda
-					mudaModeloEscala(mA.getmEV(), 320, 499, 320, 104, false);
-					mudaAngulo(mA, 0, false);
-					mudaTranslate(mA, 0, 0);
-					mudaPosObjeto(mA.getmO(), ModeloObjeto.pQueXPx, ModeloObjeto.pQueYPx);
-					mudaMarcadores(mA.getmEV(), 1000);
-					
-					vps.getVisaoEscalaH().setVisible(false); //Escala Horizontal fica invisível
-					vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
+				case 4: //Projétil
+						mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);	
+						mudaModeloEscala(mA.getmEV(), 70, 499, 70, 100, false);
+						
+						mudaAngulo(mA, 0, true); //Ambos são necessários para não dar nenhum bug
+						mudaAngulo(mA, mA.getmP().getAnguloRotacaoGraus(), true);
+						
+						mudaTranslate(mA, 145, 485);
+						mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pOblYPx);
+						
+						mudaMarcadores(mA.getmEH(), 100);
+						mudaMarcadores(mA.getmEV(), 100);
+											
+						vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível		
+						vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
 					break;
-				default://Projétil
-					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);	
-					mudaModeloEscala(mA.getmEV(), 70, 499, 70, 100, false);
-					
-					mudaAngulo(mA, 0, true); //Ambos são necessários para não dar nenhum bug
-					mudaAngulo(mA, mA.getmP().getAnguloRotacaoGraus(), true);
-					
-					mudaTranslate(mA, 145, 485);
-					mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pOblYPx);
-					
-					mudaMarcadores(mA.getmEH(), 100);
-					mudaMarcadores(mA.getmEV(), 100);
-										
-					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível		
-					vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
+				case 5://Queda
+						mudaModeloEscala(mA.getmEV(), 320, 499, 320, 104, false);
+						mudaAngulo(mA, 0, false);
+						mudaTranslate(mA, 0, 0);
+						mudaPosObjeto(mA.getmO(), ModeloObjeto.pQueXPx, ModeloObjeto.pQueYPx);
+						mudaMarcadores(mA.getmEV(), 1000);
+						
+						vps.getVisaoEscalaH().setVisible(false); //Escala Horizontal fica invisível
+						vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
 					break;
 				}
+				
 				vpi.repaint();
 				vps.repaint();
 			}
