@@ -42,7 +42,7 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 			ma.getmP().getmC().alcanceMaximo();
 			ma.getmO().setPosFinalXMetros(ma.getmP().getmC().getAlcanceMaximo());
 			ma.getmP().getmC().alturaMaxima();
-			ma.setTempoAtual(0);//Seta o tempo inicial na variável
+			ma.setTempoAtual(0);
 			
 			//Repinta o painel de fórmulas
 			vpf.repaint();
