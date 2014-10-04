@@ -4,13 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
-import br.edu.ifg.formosa.obac.controle.propulsao.ControleCanhaoListeners;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
-import br.edu.ifg.formosa.obac.utilidades.UtilidadeArredondamento;
-import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelInformacao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
