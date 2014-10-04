@@ -113,6 +113,18 @@ public class ControleFormulasObjeto {
 				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempoAtual(), ma.getmO().getAceleracao()));
 	}
 	
+	//Calcula Novas posições Y do objeto - s=s0+v0*t+(a*t^2)/2
+	public void calculaNovaPosicaoY(){
+		ma.getmO().setPosicaoYMetros(
+				//S0 = 0
+				(ma.getmO().getVelocidadeInicial()*ma.getTempoAtual())
+				+((ma.getmO().getAceleracao()*ma.getTempoAtual()*ma.getTempoAtual())/2)
+				);
+		//Manda para o painel de fórmulas
+		vpf.getAtNovaPos().setText(
+				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempoAtual(), ma.getmO().getAceleracao()));
+	}
+	
 	//Velocidade após colisão do objeto - V²=V02+2*a*ΔS
 	public void calculaVelocidadePosColisao(){
 		ma.getmO().setVelocidade(Math.sqrt(

@@ -8,10 +8,10 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ControleInicioSimulacoes {
 	
-	//Referências necessárias
+	//Referï¿½ncias necessï¿½rias
 	//-----Modelos
 	private ModeloAmbiente mA = null;
-	//-----Visões
+	//-----Visï¿½es
 	private VisaoPainelConfiguracao vpc = null;
 	private VisaoPainelFormulas vPF = null;
 	//-----Controles
@@ -25,7 +25,7 @@ public class ControleInicioSimulacoes {
 					ControleOBAC cOBAC, ControleFormulasObjeto cfo,
 					ControleFormulasSuperficie cfs, ControlePainelFormulas cpf)
 	{
-		//Passagem das referências
+		//Passagem das referï¿½ncias
 		this.mA = mA;
 		this.vpc = vpc;
 		this.vPF = vPF;
@@ -38,7 +38,7 @@ public class ControleInicioSimulacoes {
 	
 	
 	public void iniciarSimulacao(){
-		//Mudança no painel de fórmulas
+		//Mudanï¿½a no painel de fï¿½rmulas
 //		cpf.alteraTipoPainel();
 		
 		//Plano
@@ -47,11 +47,11 @@ public class ControleInicioSimulacoes {
 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==1){new ControleObjeto2Subida(mA, vPF, cOBAC, cfo, cfs);}
 		//Descida
 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==2){new ControleObjeto3Descida(mA, vPF, cOBAC, cfo, cfs);}
-		//Plano e Precipício
+		//Plano e Precipï¿½cio
 		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto4PlanoPrecipicio(mA, vPF, cOBAC, cfo, cfs);}
 		//Queda Livre
-//		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==3){new ControleObjeto5QuedaLivre();}
-		//Lançamento Oblíquo
+		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==4){new ControleObjeto5QuedaLivre(mA, vPF, cOBAC, cfo, cfs);}
+		//Lanï¿½amento Oblï¿½quo
  		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==5){new ControleObjeto6LancamentoObliquo(mA, vPF, cOBAC, cfo, cfs);}
 	}
 	
