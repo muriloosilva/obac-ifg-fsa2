@@ -83,7 +83,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vpc.getrPropulsaoDado1().setText(mpc.getDado1Mola());
 					vpc.getrPropulsaoDado2().setText(mpc.getDado2Mola());
 					//Caixas de seleção das simulações
-					vpc.getCsAmbienteSimulacao().setSelectedIndex(0);
 					if(vpc.getCsAmbienteSimulacao().getItemCount()==6)//Teste lógico para não remover uma linha desnecessária
 						vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de lançamento oblíquo
 					//Painel de Fórmulas
@@ -191,7 +190,6 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	//Método usado na execução para que a interação com os componentes seja removida
 	public void desativaComponentes(boolean ativado){
 		vpc.getCsPropulsao().setEnabled(ativado);
-		vpc.getCtPropulsaoDado1().setEnabled(ativado);
 		vpc.getCtPropulsaoDado2().setEnabled(ativado);
 		vpc.getCsAmbienteSimulacao().setEnabled(ativado);
 		vpc.getCsAmbienteAtrito().setEnabled(ativado);

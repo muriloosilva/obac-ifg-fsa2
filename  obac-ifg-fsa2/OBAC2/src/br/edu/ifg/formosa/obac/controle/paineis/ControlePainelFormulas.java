@@ -142,7 +142,7 @@ public class ControlePainelFormulas {
 				num1 = UtilidadeArredondamento.arredondamento(2, (num1 * -1));
 			s += "Sf = "+num1+"/"+(2*a) +" * (-1)\n";
 				num1 = UtilidadeArredondamento.arredondamento(2, (num1/(2*a)));
-			s += "Sf = "+num1 +"\n";
+			s += "Sf = "+num1 +" * (-1)\n";
 				num1 = UtilidadeArredondamento.arredondamento(2, (num1 * -1));
 			s += "Sf = "+num1;
 			return s;
@@ -167,17 +167,23 @@ public class ControlePainelFormulas {
 			v0 = UtilidadeArredondamento.arredondamento(2, v0);
 			t = UtilidadeArredondamento.arredondamento(2, t);
 			a = UtilidadeArredondamento.arredondamento(2, a);
+			
 			//s=s0+v0*t+(a*t^2)/2
 			String s = ModeloPainelFormulas.equaHorariaAbscissa +"\n"; 
+			
 			s += "s = "+s0+" + "+v0+" * "+t+" + ("+a+" * "+t+"²)/2 \n";
 				double num1 = UtilidadeArredondamento.arredondamento(2, (Math.pow(t,2)));
+				
 			s += "s = "+s0+" + "+(v0*t)+" + ("+a+" * "+num1+")/2 \n";
 				num1 = UtilidadeArredondamento.arredondamento(2, (a*num1));
 				double num2 = UtilidadeArredondamento.arredondamento(2, (s0+(v0*t)));
+			
 			s += "s = "+num2+" + ("+num1+")/2 \n";
 				num1 = UtilidadeArredondamento.arredondamento(2, (num1/2));
+			
 			s += "s = "+num2+" + ("+num1+")\n";
 				num1 = UtilidadeArredondamento.arredondamento(2, (num2+num1));
+				
 			s += "s = "+num1;
 			return s;
 		}
