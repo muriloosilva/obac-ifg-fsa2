@@ -241,6 +241,7 @@ public class VisaoPainelConfiguracao extends JPanel{
 				dObjetoCoeficienteRestituicao.setBackground(Color.WHITE);
 				dObjetoCoeficienteRestituicao.setBounds(0, 0, 210, 20);
 				dObjetoCoeficienteRestituicao.setMajorTickSpacing(25);
+				dObjetoCoeficienteRestituicao.setEnabled(false);
 			pObjetoDeslizante.add(dObjetoCoeficienteRestituicao);
 			//Rotulo do deslizante
 			rObjetoAtualCoefRest = new JLabel("0.0");

@@ -66,9 +66,10 @@ public class ControleFormulasSuperficie {
 		}
 		
 	//Calcula escala Queda Livre
-	public void calculaEscalaQueda(){
+	public void calculaEscalaVerticalPadrao(){
 		long pontoFinalEscala=1000;//Esta escala possui o tamanho fixo de 1000 Metros
 		ma.getmEV().setEscalaFimYM(pontoFinalEscala);
+		ControleSimulacao.mudaMarcadores(ma.getmEV(), (int)pontoFinalEscala);
 		//Verificar o surface.setEscala() do OBAC original. Qual a utilidade dele
 	}
 	

@@ -124,7 +124,7 @@ public class VisaoPainelFormulas extends JScrollPane{
 		pVInicial = new JPanel(new BorderLayout());
 		rVInicial = new JLabel("Velocidade Inicial");//Rótulo
 		atVInicial = new JTextArea(ModeloPainelFormulas.propCanhao);//Área de Texto
-		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro, 5, true);
+		addComponentes(pVInicial, rVInicial, prVInicial, atVInicial, UtilidadeCores.azulNaval, UtilidadeCores.amareloClaro, 6, true);
 		
 		//Força Normal
 		pFNormal = new JPanel(new BorderLayout());

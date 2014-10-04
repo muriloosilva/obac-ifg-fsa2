@@ -40,7 +40,8 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 			cfo.calculaAceleracaoPlano();//Aceleração
 			cfo.calculaPosFinalPadrao();//Posição final em Metros
 			cfs.calculaEscalaPadrao();//Escala
-			ma.getmO().setPosFinalXPix(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPX(), ma.getmO().getPosFinalXMetros(), ma.getmEH().getEscalaFimXM()));//Ponto fina em Pixel
+			cfs.calculaEscalaVerticalPadrao();//Escala Vertical - 1000m
+			ma.getmO().setPosFinalXPix(130+UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPX(), ma.getmO().getPosFinalXMetros(), ma.getmEH().getEscalaFimXM()));//Ponto final em Pixel
 			cfo.calculaTempo();//Tempo total de Simulação em segundos
 			ma.setTempoAtual(0);//Seta o tempo inicial na variável
 			//Repinta o painel de fórmulas
@@ -66,10 +67,11 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 						//Calcula nova posição em METROS
 						cfo.calculaNovaPosicao();
 						
-//						System.out.println("\nX em Metros: " + ma.getmO().getPosicaoXMetros());
-//						System.out.println("Y em Metros: " + ma.getmO().getPosicaoYMetros());
-//						System.out.println("X em pixels: " + ma.getmO().getPosicaoXPx());
-//						System.out.println("Y em pixels: " + ma.getmO().getPosicaoYPx());
+						System.out.println("\nX em Metros: " + ma.getmO().getPosicaoXMetros());
+						System.out.println("Y em Metros: " + ma.getmO().getPosicaoYMetros());
+						System.out.println("X em pixels: " + ma.getmO().getPosicaoXPx());
+						System.out.println("---X em pixels Final: " + ma.getmO().getPosFinalXPix());
+						System.out.println("Y em pixels: " + ma.getmO().getPosicaoYPx());
 						//Converte a posição em METROS para PIXEL para poder movimentar o objeto
 						//ma.getmO().setPosicaoXPx(130 +UtilidadeConvercoesEscala.converteMetroEmPixelX(ma.getmEH().getComprimentoEscalaPX(),ma.getmO().getPosicaoXMetros(),ma.getmEH().getEscalaFimXM()));
 						ma.getmO().setPosicaoXPx(UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
