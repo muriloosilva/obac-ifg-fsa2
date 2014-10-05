@@ -10,6 +10,7 @@ import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleAmbient
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleFormulasObjeto;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleFormulasSuperficie;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleInicioSimulacoes;
+import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleSuperficie;
 import br.edu.ifg.formosa.obac.controle.obstaculo.ControleObstaculoMouse;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoAtualizacoes;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelConfiguracaoEntradaDeDados;
@@ -64,6 +65,8 @@ public class ControleOBAC {
 		private ControleFormulasSuperficie cFS = null;
 		//Controle Inicio Simulações
 		private ControleInicioSimulacoes cIS = null;
+		//Controle das Superfícies
+		private ControleSuperficie cS = null;
 		//Controles do Painel de Configuração
 		private ControlePainelConfiguracaoEntradaDeDados cPCED = null;
 		private ControlePainelConfiguracaoAtualizacoes cPCA = null;
@@ -132,7 +135,10 @@ public class ControleOBAC {
 			//Instanciar o Controle de início das simulações
 		//Controle do início das simulações
 			cIS = new ControleInicioSimulacoes(mA, vPC, vpf, this, cFO, cFS, cpf);
-			
+		
+		//Controle das Superfícies
+			cS = new ControleSuperficie(mA.getmS(), vPC, mPC, this);
+		
 		//Controle da propulsão por mola
 			cMM = new ControleMolaMouse(this, vPS.getVisaoPropulsao(), vPC, mA, cIS);
 			
