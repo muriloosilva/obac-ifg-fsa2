@@ -9,6 +9,7 @@ import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
@@ -56,7 +57,12 @@ public class ControlePainelConfiguracaoExecucao {
 							ControleSimulacao.mudaMarcadores(mA.getmEV(), (int)mA.getmEV().getEscalaFimYM());
 							
 						}
-					//____________________________________________________
+					//Retira os listeners case seja LO
+						if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {
+							vPS.getVisaoPropulsao().removeMouseListener(cOBAC.getcCM().getcCML());
+							vPS.getVisaoPropulsao().removeMouseMotionListener(cOBAC.getcCM().getcCML());						
+						}
+					//_________________________________________________
 					//Troca do rótulo do painel
 					vPC.getBaIniciaPausar().setText(mpc.getBotaoPausar());
 				}
@@ -113,6 +119,17 @@ public class ControlePainelConfiguracaoExecucao {
 					}
 				//Reposiciona o objeto
 					mA.getmO().setPosicaoXPx(130);
+					if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4)
+						mA.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(mA.getmEV(), 0));
+					
+				//Readiciona o listener do canhao case seja LO
+					if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {
+						vPS.getVisaoPropulsao().addMouseListener(cOBAC.getcCM().getcCML());
+						vPS.getVisaoPropulsao().addMouseMotionListener(cOBAC.getcCM().getcCML());
+					} else {
+						vPS.getVisaoPropulsao().removeMouseListener(cOBAC.getcCM().getcCML());
+						vPS.getVisaoPropulsao().removeMouseMotionListener(cOBAC.getcCM().getcCML());						
+					}
 				//Repinta
 					cOBAC.repinta();
 			}

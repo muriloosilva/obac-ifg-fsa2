@@ -49,13 +49,33 @@ public class ControleFormulasSuperficie {
 			//Passa o ponto final da escala para a escala real
 				ma.getmEH().setEscalaFimXM(pontoFinalEscala);
 		}
+		
+	//--Calcula a escala LO
+		public void calculaEscalaLO() {
+			double i1 = ma.getmP().getmC().getAlcanceMaximo();
+			double i2 = ma.getmP().getmC().getAlturaMaxima();
+			long pontoFinalEscala;
+			
+			if (i1 >= i2) {
+				pontoFinalEscala = formulaEscala(i1);
+			} else {
+				pontoFinalEscala = formulaEscala(i2);
+			}
+			
+			ma.getmEH().setEscalaFimXM(pontoFinalEscala);
+			ma.getmEV().setEscalaFimXM(pontoFinalEscala);
+			ControleSimulacao.mudaMarcadores(ma.getmEH(), (int)pontoFinalEscala);
+			ControleSimulacao.mudaMarcadores(ma.getmEV(), (int)pontoFinalEscala);			
+		}
+		
 	//---Trecho de código que calcula a escala - Como método evita repetição de código
 		private long formulaEscala(double pfMetro){
 			long pontoFinalEscala=0;
 			//Laço de repetição que gera o tamanho da escala
 				for(int i = 1; i<=pfMetro; i*=10){pontoFinalEscala=i;}
 			//Uma ultima epansão no valor para dar mais dinamismo na simulação 
-				pontoFinalEscala*=10;
+				//pontoFinalEscala*=10;
+				System.out.println("Metros: " + ma.getmO().getPosFinalXMetros());
 			//Verificação realizada para que a escala não tenha um ponto final muito distante
 			//Se o objeto parar antes da metade da escala, a escala é reduzida pela metade
 				if(pontoFinalEscala > (2*ma.getmO().getPosFinalXMetros())){pontoFinalEscala = pontoFinalEscala/2;}

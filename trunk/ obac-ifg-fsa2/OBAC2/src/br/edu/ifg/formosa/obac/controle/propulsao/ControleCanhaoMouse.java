@@ -18,6 +18,8 @@ public class ControleCanhaoMouse {
 	//--MouseListener, MouseMotionListener
 	private ControleCanhaoListeners cCML = null;
 	
+	//Métodos
+	//--Construtor
 	public ControleCanhaoMouse(ModeloAmbiente mA, final VisaoPainelSimulacao vPS, final VisaoPainelConfiguracao vPC, ControleOBAC cOBAC) {
 		this.mA = mA;
 		this.vPS = vPS;
@@ -41,4 +43,6 @@ public class ControleCanhaoMouse {
 		});
 	}
 	
+	//--Getters
+	public ControleCanhaoListeners getcCML() {return cCML;}
 }

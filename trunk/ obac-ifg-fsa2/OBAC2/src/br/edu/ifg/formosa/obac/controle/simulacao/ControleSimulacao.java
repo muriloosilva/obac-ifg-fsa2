@@ -56,7 +56,7 @@ public class ControleSimulacao {
 					break;
 				case 3: //Precipicio
 					mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, true);
-					mudaModeloEscala(mA.getmEV(), 70, 600, 70, 166, true);
+					mudaModeloEscala(mA.getmEV(), 70, 600, 70, 163, true);
 					mudaAngulo(mA, 0, false);
 					mudaTranslate(mA, 0, 0);
 					mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pPepYPx);
@@ -68,7 +68,7 @@ public class ControleSimulacao {
 					break;
 				case 4: //Projétil
 						mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);	
-						mudaModeloEscala(mA.getmEV(), 70, 499, 70, 100, false);
+						mudaModeloEscala(mA.getmEV(), 70, 496, 70, 100, false);
 						
 						mudaAngulo(mA, 0, true); //Ambos são necessários para não dar nenhum bug
 						mudaAngulo(mA, mA.getmP().getAnguloRotacaoGraus(), true);
@@ -83,7 +83,7 @@ public class ControleSimulacao {
 						vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
 					break;
 				case 5://Queda
-						mudaModeloEscala(mA.getmEV(), 320, 499, 320, 104, false);
+						mudaModeloEscala(mA.getmEV(), 320, 496, 320, 104, false);
 						mudaAngulo(mA, 0, false);
 						mudaTranslate(mA, 0, 0);
 						mudaPosObjeto(mA.getmO(), ModeloObjeto.pQueXPx, ModeloObjeto.pQueYPx);
