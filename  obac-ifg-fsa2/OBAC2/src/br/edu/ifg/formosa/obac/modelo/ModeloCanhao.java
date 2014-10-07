@@ -104,12 +104,12 @@ public class ModeloCanhao {
 	
 	//--Novo Y
 	public void novoY() {
-		mA.getmO().setPosicaoYMetros((
+		mA.getmO().setPosicaoYMetros(((
 									mA.getmO().getVelocidadeInicial() * 
-									Math.sin(Math.toRadians(mA.getmP().getAnguloRotacaoGraus())) * mA.getTempoAtual()) - 
+									Math.sin(Math.toRadians(mA.getmP().getAnguloRotacaoGraus()))) * mA.getTempoAtual()) - 
 									((mA.getGravSelecionada() / 2) * Math.pow(mA.getTempoAtual(), 2)));
 		/*
-		 * Novo Y = (Vo * sin(teta) * tempo) - (grav / 2 * tempo²)
+		 * Novo Y = ((Vo * sin(teta)) * tempo) - (grav / 2 * tempo²)
 		 */
 		vPF.getAtMovimentoVertical().setText(
 				cPF.movimentoVetical(mA.getmO().getVelocidadeInicial(), mA.getmP().getAnguloRotacaoGraus(), mA.getTempoAtual(), mA.getGravSelecionada()));
@@ -121,10 +121,6 @@ public class ModeloCanhao {
 		/*
 		 * Novo Y = (grav * t²) / 2
 		 */
-	}
-	
-	public double novoXPEP() {
-		return mA.getmO().getVelocidadeInicial() * mA.getTempoAtual();
 	}
 	
 	//--Getters

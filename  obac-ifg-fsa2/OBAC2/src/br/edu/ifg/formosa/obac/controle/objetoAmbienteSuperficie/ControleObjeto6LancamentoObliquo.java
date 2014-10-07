@@ -45,7 +45,9 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 			ma.getmP().getmC().alcanceMaximo();
 			ma.getmO().setPosFinalXMetros(ma.getmP().getmC().getAlcanceMaximo());
 			ma.getmP().getmC().alturaMaxima();
+			cfs.calculaEscalaLO();
 			ma.setTempoAtual(0);
+			cOBAC.repinta();
 			
 			//Repinta o painel de fórmulas
 			vpf.repaint();
@@ -62,16 +64,16 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 			//Laço de repetição para a executar a movimentação do objeto
 			while (true) {
 				if (continuar) {
-					if (ma.getTempoAtual() < ma.getTempoTotal()) {
+					if (cfo.paradaLO()) {
 						ma.getmP().getmC().novoX();
 						ma.getmP().getmC().novoY();
 						
 						//Atualizar pixels  
 						ma.getmO().setPosicaoXPx(
-								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
+								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()) + 15);
 						
 						ma.getmO().setPosicaoYPx(
-								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) - 29);
+								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) - 15);
 												
 						cOBAC.repinta();
 						

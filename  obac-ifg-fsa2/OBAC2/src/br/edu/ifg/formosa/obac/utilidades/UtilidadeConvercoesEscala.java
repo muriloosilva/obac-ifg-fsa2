@@ -31,7 +31,7 @@ public class UtilidadeConvercoesEscala {
 	}
 	
 	public static int metroParaPixelV(ModeloEscala mEV, double metro) {
-		return (int) (((metro * (mEV.getEscalaFimYPix() - mEV.getEscalaInicioY())) / mEV.getMarcadoresEscala()[mEV.qtdMarcadores]) + mEV.getEscalaInicioY());
+		return (int) (((metro * (mEV.getEscalaFimYPix() - mEV.getEscalaInicioY())) / mEV.getMarcadoresEscala()[mEV.qtdMarcadores]) + mEV.getEscalaInicioY() - 30);
 	}
 	public static int pixelParaMetroV(ModeloEscala mEV, double pixel) {
 		return (int) (pixel * mEV.getMarcadoresEscala()[mEV.qtdMarcadores]) / mEV.getEscalaFimYPix();

@@ -196,4 +196,13 @@ public class ControleFormulasObjeto {
 			}
 			else{return false;}
 		}
+		
+		//LO
+		public boolean paradaLO() {
+			if (ma.getTempoAtual() <= ma.getTempoTotal()) {
+				return true;
+			} else
+				ma.getmO().setPosicaoYMetros(0);
+				return false;
+		}
 }

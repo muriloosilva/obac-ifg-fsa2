@@ -173,4 +173,7 @@ public class ControleOBAC {
 	public void repinta() {
 		this.painelPrincipal.repaint();
 	}
+	
+	//--Getters
+	public ControleCanhaoMouse getcCM() {return cCM;}
 }
