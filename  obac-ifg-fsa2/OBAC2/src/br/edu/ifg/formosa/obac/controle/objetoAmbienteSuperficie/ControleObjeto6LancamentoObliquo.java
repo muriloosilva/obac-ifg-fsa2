@@ -73,7 +73,7 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()) + 15);
 						
 						ma.getmO().setPosicaoYPx(
-								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) - 15);
+								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) - 30);
 												
 						cOBAC.repinta();
 						
@@ -88,6 +88,8 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 				//Esta ocorre no final para possibilitar a pausa da simulação
 					try {	t.sleep(atrasoMS);	}
 					catch (InterruptedException e) {System.err.println("Erro na Thread!");}
+					
+					cOBAC.repinta();
 			}			
 		}
 		

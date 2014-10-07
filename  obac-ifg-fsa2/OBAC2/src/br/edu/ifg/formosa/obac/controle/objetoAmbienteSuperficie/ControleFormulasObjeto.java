@@ -3,6 +3,7 @@ package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ControleFormulasObjeto {
@@ -206,7 +207,8 @@ public class ControleFormulasObjeto {
 			if (ma.getTempoAtual() <= ma.getTempoTotal()) {
 				return true;
 			} else
-				ma.getmO().setPosicaoYMetros(0);
+				ma.getmO().setPosicaoYMetros(0);			
+				ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), 0) - 29);
 				return false;
 		}
 }
