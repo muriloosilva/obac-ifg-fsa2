@@ -55,7 +55,7 @@ public class ControlePainelConfiguracaoExecucao {
 						else{
 							mA.getmEV().setEscalaFimYM(Integer.parseInt(vPC.getCtPropulsaoDado1().getText()));
 							ControleSimulacao.mudaMarcadores(mA.getmEV(), (int)mA.getmEV().getEscalaFimYM());
-							
+							cIS.iniciarSimulacao();
 						}
 					//Retira os listeners case seja LO
 						if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {
@@ -89,6 +89,7 @@ public class ControlePainelConfiguracaoExecucao {
 		vPC.getBaNovaSimulacao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				vPC.getBaIniciaPausar().setText(mpc.getBotaoIniciar());
 				//Para a simulação
 				cIS.getCObjeto().parar();
 				//Reserta os valores do PConfig
@@ -110,7 +111,9 @@ public class ControlePainelConfiguracaoExecucao {
 						vPC.getCtPropulsaoDado1().setText("0");
 					}
 					else if(vPC.getCsPropulsao().getSelectedIndex()==2){
+						vPC.getCtPropulsaoDado1().setEnabled(false);
 						vPC.getCtPropulsaoDado2().setEnabled(false);
+						vPC.getdObjetoCoeficienteRestituicao().setEnabled(true);
 						vPC.getCtPropulsaoDado2().setText("0");
 					}
 					else{

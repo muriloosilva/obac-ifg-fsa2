@@ -253,38 +253,38 @@ public class VisaoPainelConfiguracao extends JPanel{
 	//Responsável pela criação do subpainel relacionado as configurações da COLISÃO
 	private void configPainelColisao(){
 		//Título
-			rTituloColisao = new JLabel("Colisão");
-				configRotulos(rTituloColisao, 10, 430, 230, 20);
-			this.add(rTituloColisao);
+//			rTituloColisao = new JLabel("Colisão");
+//				configRotulos(rTituloColisao, 10, 430, 230, 20);
+//			this.add(rTituloColisao);
 		//Painel
-			pObstaculo = new JPanel(null);
-				pObstaculo.setBackground(Color.GRAY);
-				pObstaculo.setBounds(10, 450, 230, 45);
-			this.add(pObstaculo);
+//			pObstaculo = new JPanel(null);
+//				pObstaculo.setBackground(Color.GRAY);
+//				pObstaculo.setBounds(10, 450, 230, 45);
+//			this.add(pObstaculo);
 		//Rótulo
-			rColisaoObstaculo = new JLabel("Deseja colocar um obstaculo?");
-				configRotulos(rColisaoObstaculo, 10, 0, 210, 20);
-			pObstaculo.add(rColisaoObstaculo);
+//			rColisaoObstaculo = new JLabel("Deseja colocar um obstaculo?");
+//				configRotulos(rColisaoObstaculo, 10, 0, 210, 20);
+//			pObstaculo.add(rColisaoObstaculo);
 		//Botões de Opção
 			//Sim
 			boColisaoSim = new JRadioButton("Sim");
-				boColisaoSim.setFont(fonte);
-				boColisaoSim.setForeground(Color.WHITE);
-				boColisaoSim.setBackground(Color.GRAY);
-				boColisaoSim.setBounds(10, 20, 100, 20);
-			pObstaculo.add(boColisaoSim);
+//				boColisaoSim.setFont(fonte);
+//				boColisaoSim.setForeground(Color.WHITE);
+//				boColisaoSim.setBackground(Color.GRAY);
+//				boColisaoSim.setBounds(10, 20, 100, 20);
+//			pObstaculo.add(boColisaoSim);
 			//Não
 			boColisaoNao = new JRadioButton("Não");
-				boColisaoNao.setFont(fonte);
-				boColisaoNao.setForeground(Color.WHITE);
-				boColisaoNao.setBackground(Color.GRAY);
+//				boColisaoNao.setFont(fonte);
+//				boColisaoNao.setForeground(Color.WHITE);
+//				boColisaoNao.setBackground(Color.GRAY);
 				boColisaoNao.setSelected(true);
-				boColisaoNao.setBounds(105, 20, 105, 20);
-			pObstaculo.add(boColisaoNao);
+//				boColisaoNao.setBounds(105, 20, 105, 20);
+//			pObstaculo.add(boColisaoNao);
 		//Grupo de Botões
-			gbColisaoSN = new ButtonGroup();
-				gbColisaoSN.add(boColisaoSim);
-				gbColisaoSN.add(boColisaoNao);
+//			gbColisaoSN = new ButtonGroup();
+//				gbColisaoSN.add(boColisaoSim);
+//				gbColisaoSN.add(boColisaoNao);
 	}
 	
 	//Utilizada internamente no posicionamento e configurações adicionais dos RÓTULOS

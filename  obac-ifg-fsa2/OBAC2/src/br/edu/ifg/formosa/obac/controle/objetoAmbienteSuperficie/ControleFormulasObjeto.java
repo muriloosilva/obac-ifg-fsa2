@@ -126,9 +126,13 @@ public class ControleFormulasObjeto {
 	}
 	
 	//Velocidade após colisão do objeto - V²=V02+2*a*ΔS
-	public void calculaVelocidadePosColisao(){
+	public void calculaVelocidadeTorricelli(){
+		System.out.println("V: " +ma.getmO().getVelocidade());
+		System.out.println("A: " +ma.getmO().getAceleracao());
+		System.out.println("Pos x M: " +ma.getmO().getPosicaoXMetros());
 		ma.getmO().setVelocidade(Math.sqrt(
-			((ma.getmO().getVelocidadeInicial()*2)
+			((ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())
+//				((ma.getmO().getVelocidade()*2)
 			+(2*ma.getmO().getAceleracao()*ma.getmO().getPosicaoXMetros()))
 		));
 		//Manda para o painel de fórmulas

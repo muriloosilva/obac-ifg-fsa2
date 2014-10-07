@@ -267,8 +267,8 @@ public class VisaoPainelInformacao extends JPanel{
 		//Tona as variáveis relacionadas a MOLA visível
 		rK.setVisible(true);
 		rKValor.setVisible(true);
+		rKValor.setText("0.0");
 		rX.setVisible(true);
-		addComponent(rKValor, 3, 5);
 		rXValor.setVisible(true);
 		rXValor.setText("0.0");
 		//Tona as variáveis relacionadas ao CANHÃO invisíveis
@@ -288,6 +288,7 @@ public class VisaoPainelInformacao extends JPanel{
 		rK.setVisible(false);
 		rKValor.setVisible(false);
 		rX.setVisible(false);
+		rXValor.setVisible(false);
 	}
 	
 	public void setVisivelColisao(boolean colisao){

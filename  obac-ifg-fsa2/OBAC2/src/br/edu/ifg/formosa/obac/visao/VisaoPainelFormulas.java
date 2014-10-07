@@ -142,13 +142,13 @@ public class VisaoPainelFormulas extends JScrollPane{
 		pAceleracao = new JPanel(new BorderLayout());
 		rAceleracao = new JLabel("Aceleração");
 		atAceleracao = new JTextArea(ModeloPainelFormulas.aceleracaoDescida);
-		addComponentes(pAceleracao, rAceleracao, prAceleracao, atAceleracao, UtilidadeCores.azul, UtilidadeCores.amarelo, 7, true);
+		addComponentes(pAceleracao, rAceleracao, prAceleracao, atAceleracao, UtilidadeCores.azul, UtilidadeCores.amarelo, 8, true);
 		
 		//Posição final
 		pPosFinal = new JPanel(new BorderLayout());
 		rPosFinal = new JLabel("Posição Final");
 		atPosFinal = new JTextArea(ModeloPainelFormulas.posicaoFinalPadrao);
-		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloAcafrao, 7, true);
+		addComponentes(pPosFinal, rPosFinal, prPosFinal, atPosFinal, UtilidadeCores.azulCobalto, UtilidadeCores.amareloAcafrao, 6, true);
 		
 		//Tempo
 		pTempo = new JPanel(new BorderLayout());

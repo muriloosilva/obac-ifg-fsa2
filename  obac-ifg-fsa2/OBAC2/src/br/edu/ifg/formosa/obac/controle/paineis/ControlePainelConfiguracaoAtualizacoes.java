@@ -66,7 +66,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					vpc.getrPropulsaoDado2().setText(mpc.getDado2Canhao());
 					vpc.getCtPropulsaoDado2().setEnabled(true);
 					//Caixa de seleção das simulações
-						//Teste lógico para não remover linha do QO
+						//Teste lógico para remover linha do QL
 						if(vpc.getCsAmbienteSimulacao().getItemCount()==6)
 							vpc.getCsAmbienteSimulacao().removeItemAt(vpc.getCsAmbienteSimulacao().getItemCount()-1);//Remove a opção de QL
 						//Teste lógico para que adicione apenas uma vez o LO
@@ -135,6 +135,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 						vpc.getCtPropulsaoDado1().setText("1000");
 						vpc.getCtPropulsaoDado2().setText("0");
 						vpc.getCtPropulsaoDado2().setEnabled(false);
+						vpc.getCtPropulsaoDado1().setEnabled(false);
 				}
 				else{
 					JOptionPane.showMessageDialog(null,
@@ -161,26 +162,26 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	}
 	
 	private void acaoExibirColisao(){		
-		vpc.getBoColisaoNao().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				terceiroAjuste(false, true);
-				vPS.getVisaoObstaculo().setVisible(false);
-				com.setListener(false);
-				vpi.setVisivelColisao(false);
-				cOBAC.repinta();
-			}
-		});
-		vpc.getBoColisaoSim().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				terceiroAjuste(true, false);
-				vPS.getVisaoObstaculo().setVisible(true);
-				com.setListener(true);
-				vpi.setVisivelColisao(true);
-				cOBAC.repinta();
-			}
-		});
+//		vpc.getBoColisaoNao().addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				terceiroAjuste(false, true);
+//				vPS.getVisaoObstaculo().setVisible(false);
+//				com.setListener(false);
+//				vpi.setVisivelColisao(false);
+//				cOBAC.repinta();
+//			}
+//		});
+//		vpc.getBoColisaoSim().addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				terceiroAjuste(true, false);
+//				vPS.getVisaoObstaculo().setVisible(true);
+//				com.setListener(true);
+//				vpi.setVisivelColisao(true);
+//				cOBAC.repinta();
+//			}
+//		});
 	}
 	private String cacheTexto1 = "0";
 	private String cacheTexto2 = "0";
@@ -234,6 +235,8 @@ public class ControlePainelConfiguracaoAtualizacoes {
 
 	//Método usado na execução para que a interação com os componentes seja removida
 	public void desativaComponentes(boolean ativado){
+		vpc.getCtPropulsaoDado1().setEnabled(ativado);
+		vpc.getCtPropulsaoDado2().setEnabled(ativado);
 		
 		//Ajustes de acordo co a simulação
 		if(vpc.getCsPropulsao().getSelectedIndex()==0
@@ -248,19 +251,15 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			vpc.getdObjetoCoeficienteRestituicao().setEnabled(false);
 		}
 		else{//Queda
-			vpc.getCtPropulsaoDado1().setEnabled(true);
 			if(ativado){vpc.getCtPropulsaoDado1().setText("");}
 			vpc.getdObjetoCoeficienteRestituicao().setEnabled(true);
 		}
-		
-		vpc.getCtPropulsaoDado1().setEnabled(ativado);
-		vpc.getCtPropulsaoDado2().setEnabled(ativado);
 		vpc.getCsAmbienteSimulacao().setEnabled(ativado);
 		vpc.getCsAmbienteAtrito().setEnabled(ativado);
 		vpc.getCsAmbienteGravidade().setEnabled(ativado);
 		vpc.getCtObjetoMassa().setEnabled(ativado);
-		vpc.getBoColisaoSim().setEnabled(ativado);
-		vpc.getBoColisaoNao().setEnabled(ativado);
+//		vpc.getBoColisaoSim().setEnabled(ativado);
+//		vpc.getBoColisaoNao().setEnabled(ativado);
 		vpc.getBaNovaSimulacao().setVisible(!ativado);
 	}
 }

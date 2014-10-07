@@ -111,6 +111,8 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 						cOBAC.repinta();
 						//Repinta o painel de fórmulas
 						vpf.repaint();
+					//Atualiza a velocidade
+						cfo.calculaVelocidadeTorricelli();
 				}
 				else {parar();}
 			}
