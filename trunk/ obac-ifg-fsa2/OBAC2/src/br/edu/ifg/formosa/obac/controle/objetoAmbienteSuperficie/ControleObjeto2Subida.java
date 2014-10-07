@@ -61,6 +61,8 @@ public class ControleObjeto2Subida implements ControleObjeto0Generico, Runnable{
 						vpf.repaint();
 					//Atualiza o tempo
 						ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
+					//Atualiza a velocidade
+						cfo.calculaVelocidadeTorricelli();
 				}
 				else{parar();}
 			}

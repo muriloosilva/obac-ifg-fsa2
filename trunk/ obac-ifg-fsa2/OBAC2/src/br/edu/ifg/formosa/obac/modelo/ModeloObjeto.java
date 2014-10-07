@@ -98,7 +98,8 @@ public class ModeloObjeto {
 	}
 	public void setVelocidade(double velocidade) {
 		this.velocidade = velocidade;
-		cpi.mudaValorVelocidadePosColisao(velocidade);
+//		cpi.mudaValorVelocidadePosColisao(velocidade);
+		cpi.mudaValorVelocidade(velocidade);
 	}
 	public void setVelocidadeInicial(double velocidadeInicial) {
 		this.velocidadeInicial = velocidadeInicial;

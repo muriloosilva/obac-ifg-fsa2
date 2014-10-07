@@ -53,7 +53,7 @@ public class ControleInicioSimulacoes {
 		//Lan�amento Obl�quo
  		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==4){cObjeto=new ControleObjeto6LancamentoObliquo(mA, vPF, cOBAC, cfo, cfs);}
 		//Queda Livre
-		else{cObjeto=new ControleObjeto5QuedaLivre(mA, vPF, cOBAC, cfo, cfs);}
+		else if(vpc.getCsAmbienteSimulacao().getSelectedIndex()==5){cObjeto=new ControleObjeto5QuedaLivre(mA, vPF, cOBAC, cfo, cfs);}
 	}
 	
 	public ControleObjeto0Generico getCObjeto(){return cObjeto;}
