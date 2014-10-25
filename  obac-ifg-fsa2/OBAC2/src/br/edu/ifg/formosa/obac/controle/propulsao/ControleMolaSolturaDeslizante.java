@@ -7,30 +7,33 @@ import javax.swing.ImageIcon;
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleInicioSimulacoes;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPropulsao;
 
 public class ControleMolaSolturaDeslizante implements Runnable{
 
 	private VisaoPropulsao vp = null;
+	private VisaoPainelConfiguracao vPC = null;
 	private ModeloAmbiente ma = null;
 	private ControleOBAC cOBAC = null;
 //	private ControleMolaMouse cMM = null;
 	private ControleInicioSimulacoes cIS =null;
 	private Thread t = null;
 	
-	//Variável para o reposicionamento do objeto
-	private int reposicionaObjeto = 0;
-	
 	public ControleMolaSolturaDeslizante(VisaoPropulsao vp,ModeloAmbiente ma,
-										 ControleOBAC cOBAC, ControleInicioSimulacoes cIS)
+										 ControleOBAC cOBAC, ControleInicioSimulacoes cIS, VisaoPainelConfiguracao vPC)
 	{
 		this.vp = vp;
 		this.ma = ma;
 		this.cOBAC = cOBAC;
 		this.cIS = cIS;
+		this.vPC = vPC;
 		
 		//É calculada a velocidade de lançamento do objeto
 		ma.getmP().getModeloMola().calculaVelocidadeLancamento();
+		
+		//Torna visível o botão de nova simulação
+		vPC.getBaNovaSimulacao().setVisible(true);
 		
 		t = new Thread(this);
 		t.start();
@@ -69,9 +72,12 @@ public class ControleMolaSolturaDeslizante implements Runnable{
 			ma.getmP().getModeloMola().setTamanhoMolaAtualPix(ma.getmP().getModeloMola().getTamanhoMolaTotalPix());
 			vp.setImagemPropulsao(ma.getmP().getImagemPropulsao());
 			//Posiciona o Objeto na posição original
-			ma.getmO().setPosicaoXPx(130+reposicionaObjeto);
+			ma.getmO().setPosicaoXPx(130);
 			//Repaint
 			cOBAC.repinta();
+		}
+		if(ma.getmO().getPosFinalXPix()!=130){
+			ma.getmO().setPosicaoXPx(130);
 		}
 		//Inicia a movimentação do objeto
 		cIS.iniciarSimulacao();
