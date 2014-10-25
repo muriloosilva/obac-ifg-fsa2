@@ -36,11 +36,12 @@ public class ModeloMola {
 	private double kAtual=30;//Atual
 
 
-	//Cálculo de avelocidade - V0 = (K+x^2/m)
+	//Cálculo de avelocidade - V0 = (K*x^2/m)
 	public void calculaVelocidadeLancamento(){
 		calculaX();
 		ma.getmO().setVelocidadeInicial(
-			Math.sqrt((kAtual*Math.pow(x, 2))/ma.getmO().getMassa())
+			Math.sqrt(
+				((kAtual*Math.pow(x, 2))/ma.getmO().getMassa()))
 		);
 
 		//Manda para o painel de fórmulas

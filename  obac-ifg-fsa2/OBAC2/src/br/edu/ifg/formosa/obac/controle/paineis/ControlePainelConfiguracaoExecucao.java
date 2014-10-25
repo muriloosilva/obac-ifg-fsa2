@@ -8,6 +8,7 @@ import br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie.ControleInicioS
 import br.edu.ifg.formosa.obac.controle.propulsao.ControleMolaMouse;
 import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
+import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
@@ -48,9 +49,9 @@ public class ControlePainelConfiguracaoExecucao {
 					//____________________________________________________
 					//Início dos testes lógicos para executar
 					//--Propulsão por canhão
-						if (vPC.getCsPropulsao().getSelectedIndex()==0){exeCanhao();}
+						if (vPC.getCsPropulsao().getSelectedIndex()==0){exeCanhao(); cOBAC.getPainelAbas().setSelectedIndex(1);}
 					//--Execução da mola
-						else if (vPC.getCsPropulsao().getSelectedIndex()==1){exeMola();}
+						else if (vPC.getCsPropulsao().getSelectedIndex()==1){exeMola(); cOBAC.getPainelAbas().setSelectedIndex(1);}
 					//--Execução Queda Livre
 						else{
 							mA.getmEV().setEscalaFimYM(Integer.parseInt(vPC.getCtPropulsaoDado1().getText()));
@@ -90,6 +91,9 @@ public class ControlePainelConfiguracaoExecucao {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				vPC.getBaIniciaPausar().setText(mpc.getBotaoIniciar());
+				//Deixa o slider invisivel
+					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
+					vPS.getVisaoAuxiliar().getpCompressor().setEnabled(false);
 				//Para a simulação
 				cIS.getCObjeto().parar();
 				//Reserta os valores do PConfig
@@ -101,9 +105,6 @@ public class ControlePainelConfiguracaoExecucao {
 				//____________________________________________________
 				//Reativar componentes do painel de Configuração
 					cpca.desativaComponentes(true);
-				//Deixa o slider invisivel
-					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
-					vPS.getVisaoAuxiliar().getpCompressor().setEnabled(true);
 				//Ajustes de acordo co a simulação
 					if(vPC.getCsPropulsao().getSelectedIndex()==0
 					   && vPC.getCsAmbienteSimulacao().getSelectedIndex()!=4){
@@ -121,19 +122,27 @@ public class ControlePainelConfiguracaoExecucao {
 						vPC.getCtPropulsaoDado1().setText("");
 					}
 				//Reposiciona o objeto
-					mA.getmO().setPosicaoXPx(130);
+					mA.getmO().setPosicaoXPx(129);
 					if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4)
 						mA.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(mA.getmEV(), 0));
+					else if (vPC.getCsPropulsao().getSelectedIndex() == 2) {
+						mA.getmO().setPosicaoXPx(ModeloObjeto.pQueXPx);
+						mA.getmO().setPosicaoYPx(ModeloObjeto.pQueYPx);
+					}
 					
 				//Readiciona o listener do canhao case seja LO
 					if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {
 						vPS.getVisaoPropulsao().addMouseListener(cOBAC.getcCM().getcCML());
 						vPS.getVisaoPropulsao().addMouseMotionListener(cOBAC.getcCM().getcCML());
+						mA.getmO().setPosicaoYPx(ModeloObjeto.pOblYPx);
 					} else {
 						vPS.getVisaoPropulsao().removeMouseListener(cOBAC.getcCM().getcCML());
 						vPS.getVisaoPropulsao().removeMouseMotionListener(cOBAC.getcCM().getcCML());						
 					}
 				//Repinta
+					zeraModelos();
+					mA.getmEH().setEscalaFimXM(100);
+					ControleSimulacao.mudaMarcadores(mA.getmEH(), 100);
 					cOBAC.repinta();
 			}
 		});
@@ -148,6 +157,7 @@ public class ControlePainelConfiguracaoExecucao {
 				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replace(",", ".")));
 		
 		mA.getmP().getmC().calculaVelocidade(); //Velocidade do canhão
+		vPC.getBaNovaSimulacao().setVisible(true);
 		
 		cIS.iniciarSimulacao();
 	}
@@ -158,10 +168,44 @@ public class ControlePainelConfiguracaoExecucao {
 		//Constante elástica
 		mA.getmP().getModeloMola().setkAtual(
 				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replaceAll(",", "."))/100);
+		
 		//Listener da mola
 		vPS.getVisaoAuxiliar().getpCompressor().setVisible(true);
 		vPS.getVisaoAuxiliar().getpCompressor().setEnabled(false);
 //		cMM.ativaMolaMouse();
+	}
+	
+	private void zeraModelos(){
+		mA.setTempoAtual(0);
+		mA.setTempoAY(0);
+		mA.setTempoTotal(0);
+		mA.getmEH().setEscalaFimXM(0);
+		mA.getmEH().setEscalaFimYM(0);
+		mA.getmEV().setEscalaFimXM(0);
+		mA.getmEH().setEscalaFimYM(0);
+		mA.getmO().setAceleracao(0);
+		mA.getmO().setAceleracaoY(0);
+		mA.getmO().setCoefRestituicao(0);
+		mA.getmO().setForcaNormal(0);
+		mA.getmO().setMassa(0);
+		mA.getmO().setPosFinalXMetros(0);
+		mA.getmO().setPosFinalYMetros(0);
+		mA.getmO().setVelocidade(0);
+		mA.getmO().setVelocidadeInicial(0);
+		mA.getmP().setAnguloRotacaoGraus(0);
+		mA.getmP().getmC().setAlturaMaxima(0);
+		mA.getmP().getmC().setCatAd(0);
+		mA.getmP().getmC().setCatOpo(0);
+		mA.getmP().getmC().setEnergia(0);
+		mA.getmP().getmC().setHip(0);
+		mA.getmP().getmC().setVerAX(0);
+		mA.getmP().getmC().setVerAY(0);
+		mA.getmP().getmC().setVerBX(0);
+		mA.getmP().getModeloMola().setkAtual(0);
+		mA.getmP().getModeloMola().setTamanhoMolaAtualM(0);
+		mA.getmP().getModeloMola().setTamanhoMolaAtualPix(0);
+		mA.getmP().getModeloMola().setTamanhoMolaTotalM(0);
+		mA.getmS().setForcaAtrito(0);
 	}
 	
 }

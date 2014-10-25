@@ -25,11 +25,17 @@ public class ControlePainelFormulas {
 			//V0= (K+x^2/Massa)
 			String s = ModeloPainelFormulas.propMola +"\n";
 			s += "V0 = √(" +k +"*" +x+"²/" +m +")\n";
-			s += "V0 = √(" +k +"*" +Math.pow(x, 2) +"/" +m +")\n";
-			s += "V0 = √(" +(k*Math.pow(x, 2)) +"/" +m +")\n";
-			double num1 = UtilidadeArredondamento.arredondamento(2, (Math.sqrt(k*Math.pow(x, 2))));
-			s += "V0 = √(" +(k*Math.pow(x, 2)/m) +")\n";
+			double num1 = UtilidadeArredondamento.arredondamento(2, (Math.pow(x, 2)));
+			
+			s += "V0 = √(" +k +"*" +num1 +"/" +m +")\n";
+			num1 = UtilidadeArredondamento.arredondamento(2, (k*num1));
+			
+			s += "V0 = √(" +(num1) +"/" +m +")\n";
 			num1 = UtilidadeArredondamento.arredondamento(2, (num1/m));
+			
+			s += "V0 = √(" +(num1) +")\n";
+			num1 = UtilidadeArredondamento.arredondamento(2, (Math.sqrt(num1)));
+			
 			s += "V0 = " +num1;
 			return s;
 		}

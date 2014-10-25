@@ -26,6 +26,7 @@ public class ModeloAmbiente {
 	public static double anguloInclinacaoGraus = 0;
 	private double gravSelecionada = gravidadeTerra; // Recebe ou a gravidade da Terra, da Lua ou de Marte	
 	private double tempoAtual; //OBAC1
+	private double tempoAY;
 	private double tempoTotal; //OBAC1
 	
 	//--URL
@@ -76,6 +77,7 @@ public class ModeloAmbiente {
 	public double getGravSelecionada() {return gravSelecionada;}
 	public double getTempoAtual() {return tempoAtual;}
 	public double getTempoTotal() {return tempoTotal;}
+	public double getTempoAY() {return tempoAY;}
 	public ModeloEscala getmEH() {return mEH;}
 	public ModeloEscala getmEV() {return mEV;}
 	public ModeloObjeto getmO() {return mO;}
@@ -95,6 +97,7 @@ public class ModeloAmbiente {
 	public void setUrlGu(String urlGu) {this.urlGu = this.getClass().getClassLoader().getResource(modeloURL + "andaimes/" + urlGu + ".png");}
 	public void setUrlS(String urlS) {this.urlS = this.getClass().getClassLoader().getResource(modeloURL + "superficie/" + urlS + ".png");}
 	public void setTempoAtual(double tempoAtual) {this.tempoAtual = tempoAtual;}
+	public void setTempoAY(double tempoAY) {this.tempoAY = tempoAY;}
 	
 	//--Setters relacionados ao Painel de Informação
 	public void setGravSelecionada(double gravSelecionada) {

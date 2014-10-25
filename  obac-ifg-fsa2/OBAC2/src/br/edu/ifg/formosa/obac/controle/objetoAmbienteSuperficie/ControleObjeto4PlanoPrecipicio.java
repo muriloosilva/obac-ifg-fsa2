@@ -26,7 +26,8 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 	//Construtor______________________________
 	public ControleObjeto4PlanoPrecipicio(ModeloAmbiente ma,VisaoPainelFormulas vpf, 
 								ControleOBAC cOBAC,
-								ControleFormulasObjeto cfo, ControleFormulasSuperficie cfs)
+								ControleFormulasObjeto cfo, ControleFormulasSuperficie cfs
+								)
 	{
 		//Passagem das refetrencias
 			this.ma = ma;
@@ -35,6 +36,7 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 			this.cfo = cfo;
 			
 		//Cáclculos referentes a parte plana desta simulação
+			ma.setTempoAY(0);
 			cfo.calculaForcaNormal();//Força normal
 			cfs.calculaForcaAtritoPadrao();//Força de Atrito
 			cfo.calculaAceleracaoPlano();//Aceleração
@@ -55,6 +57,7 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 	}
 	
 	//Rodar
+	private boolean torriceli = false;
 	@Override
 	public void run() {
 		
@@ -64,55 +67,55 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 				if (cfo.paradaPlanoPrecipicio()==false) {
 					//Movimento na parte do plano
 					if(ma.getmO().getPosicaoXPx()<=329){
+						if(torriceli)
+							//Atualiza a velocidade
+							cfo.calculaVelocidadeTorricelli();
 						//Calcula nova posição em METROS
 						cfo.calculaNovaPosicao();
-						
-						/*System.out.println("\nX em Metros: " + ma.getmO().getPosicaoXMetros());
-						System.out.println("Y em Metros: " + ma.getmO().getPosicaoYMetros());
-						System.out.println("X em pixels: " + ma.getmO().getPosicaoXPx());
-						System.out.println("---X em pixels Final: " + ma.getmO().getPosFinalXPix());
-						System.out.println("Y em pixels: " + ma.getmO().getPosicaoYPx());*/
 						//Converte a posição em METROS para PIXEL para poder movimentar o objeto
 						ma.getmO().setPosicaoXPx(UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
 						//Atualiza o tempo
 						ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
+						torriceli = true;
+						
 					}
 					// Movimento na parte do precipício
 					else{
-						ma.getmP().getmC().novoX();
-						ma.getmO().setPosicaoYMetros(ma.getmO().getPosicaoYMetros() - 
-													 ma.getmP().getmC().novoYPEP());
+						//0int finalPlanoMetros = UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), 330);
+						//ma.getmO().setPosFinalXMetros(finalPlanoMetros);
+						ma.getmO().setAceleracao(0);
+						//System.out.println("Tempo++:" + ma.getTempoAtual());						
+						//cfo.calculaNovaPosicao();
 						
-						/*System.out.println("\nX em Metros: " + ma.getmO().getPosicaoXMetros());
-						System.out.println("Y em Metros: " + ma.getmO().getPosicaoYMetros());
-						System.out.println("X em pixels: " + ma.getmO().getPosicaoXPx());
-						System.out.println("Y em pixels: " + ma.getmO().getPosicaoYPx());*/
+						ma.getmP().getmC().novoXPEP();
+						//ma.getmO().setVelocidadeInicial(ma.getmO().getVelocidade());
+						
+						System.out.println("XMetros: " + ma.getmO().getPosicaoXMetros());
+						
+						ma.getmO().setPosicaoYMetros(ma.getmO().getPosicaoYMetros() - 
+								ma.getmP().getmC().novoYPEP());
 						
 						//Atualizar pixels  
-						ma.getmO().setPosicaoXPx(
-								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
-						
-						ma.getmO().setPosicaoYPx(
-								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) + 30);
-						
-						try {	
-							t.sleep(atrasoMS);	
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+						if(ma.getmP().getmC().getEnergia()!=0){
+							ma.getmO().setPosicaoXPx(
+								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()) - 118);
+						} else {
+							ma.getmO().setPosicaoXPx(
+									UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()) - 128);
 						}
+						ma.getmO().setPosicaoYPx(
+								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) + 3);
 						
 						cOBAC.repinta();
 						
 						//Atualiza o tempo
-						ma.setTempoAtual(ma.getTempoAtual() + atrasoSPadrao);						
+						ma.setTempoAY(ma.getTempoAY() + atrasoSPadrao);
 					}
 					//Comandos abaixo ficam fora das condições pois pertencem a ambas
 						//Repinta o painel para mostar o andamento da simulação
 						cOBAC.repinta();
 						//Repinta o painel de fórmulas
 						vpf.repaint();
-					//Atualiza a velocidade
-						cfo.calculaVelocidadeTorricelli();
 				}
 				else {parar();}
 			}

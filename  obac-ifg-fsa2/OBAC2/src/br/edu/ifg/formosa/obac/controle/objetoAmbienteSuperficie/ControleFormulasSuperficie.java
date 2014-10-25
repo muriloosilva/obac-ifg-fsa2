@@ -39,7 +39,7 @@ public class ControleFormulasSuperficie {
 			long pontoFinalEscala=formulaEscala(ma.getmO().getPosFinalXMetros());
 			//Passa o ponto final da escala para a escala real
 				ma.getmEH().setEscalaFimXM(pontoFinalEscala);
-				ma.getmEV().setEscalaFimXM(pontoFinalEscala);
+				ma.getmEV().setEscalaFimYM(pontoFinalEscala);
 				ControleSimulacao.mudaMarcadores(ma.getmEH(), (int)pontoFinalEscala);
 				ControleSimulacao.mudaMarcadores(ma.getmEV(), (int)pontoFinalEscala);
 		}
@@ -48,24 +48,15 @@ public class ControleFormulasSuperficie {
 			long pontoFinalEscala=formulaEscala(ma.getmO().getPosFinalXMetros()*-1);
 			//Passa o ponto final da escala para a escala real
 				ma.getmEH().setEscalaFimXM(pontoFinalEscala);
+				ControleSimulacao.mudaMarcadores(ma.getmEH(), (int)pontoFinalEscala);
 		}
 		
 	//--Calcula a escala LO
 		public void calculaEscalaLO() {
-			double i1 = ma.getmP().getmC().getAlcanceMaximo();
-			double i2 = ma.getmP().getmC().getAlturaMaxima();
-			long pontoFinalEscala;
-			
-			if (i1 >= i2) {
-				pontoFinalEscala = formulaEscala(i1);
-			} else {
-				pontoFinalEscala = formulaEscala(i2);
-			}
-			
-			ma.getmEH().setEscalaFimXM(pontoFinalEscala);
-			ma.getmEV().setEscalaFimXM(pontoFinalEscala);
-			ControleSimulacao.mudaMarcadores(ma.getmEH(), (int)pontoFinalEscala);
-			ControleSimulacao.mudaMarcadores(ma.getmEV(), (int)pontoFinalEscala);			
+			ma.getmEH().setEscalaFimXM(400);
+			ma.getmEV().setEscalaFimYM(400);
+			ControleSimulacao.mudaMarcadores(ma.getmEH(), 400);
+			ControleSimulacao.mudaMarcadores(ma.getmEV(), 400);						
 		}
 		
 	//---Trecho de código que calcula a escala - Como método evita repetição de código
@@ -74,7 +65,7 @@ public class ControleFormulasSuperficie {
 			//Laço de repetição que gera o tamanho da escala
 				for(int i = 1; i<=pfMetro; i*=10){pontoFinalEscala=i;}
 			//Uma ultima epansão no valor para dar mais dinamismo na simulação 
-				//pontoFinalEscala*=10;
+				pontoFinalEscala*=10;
 				System.out.println("Metros: " + ma.getmO().getPosFinalXMetros());
 			//Verificação realizada para que a escala não tenha um ponto final muito distante
 			//Se o objeto parar antes da metade da escala, a escala é reduzida pela metade
