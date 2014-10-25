@@ -75,9 +75,14 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 			this.vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
 			this.vPS.getVisaoAuxiliar().getpCompressor().setEnabled(true);
 			cMSD = new ControleMolaSolturaDeslizante(vPS.getVisaoPropulsao(), mA, cOBAC, cIS);
+			mousePressionando=true;
 		}
 		this.cOBAC.repinta();
-		mousePressionando=true;
+//		mousePressionando=true;
+		System.out.println("Mola Metros: "+mA.getmP().getModeloMola().getTamanhoMolaTotalM());
+		System.out.println("Mola Metros Atual: "+mA.getmP().getModeloMola().getTamanhoMolaAtualM());
+		System.out.println("Mola Pixels: "+mA.getmP().getModeloMola().getTamanhoMolaTotalPix());
+		System.out.println("Mola Pixels Atual: "+mA.getmP().getModeloMola().getTamanhoMolaAtualPix());
 	}
 	
 	private void testeLogico(){
