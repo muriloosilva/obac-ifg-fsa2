@@ -2,6 +2,7 @@ package br.edu.ifg.formosa.obac.modelo;
 
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelFormulas;
 import br.edu.ifg.formosa.obac.controle.paineis.ControlePainelInformacao;
+import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 
 public class ModeloCanhao {
@@ -116,11 +117,15 @@ public class ModeloCanhao {
 	}
 	
 	public double novoYPEP() {
-		return ((mA.getGravSelecionada() * Math.pow(mA.getTempoAtual(), 2)) / 2);
+		return ((mA.getGravSelecionada() * Math.pow(mA.getTempoAY(), 2)) / 2);
 		
 		/*
 		 * Novo Y = (grav * t²) / 2
 		 */
+	}
+	
+	public void novoXPEP() {
+		mA.getmO().setPosicaoXMetros(UtilidadeConvercoesEscala.pixelParaMetroH(mA.getmEH(), 330) + (mA.getmO().getVelocidadeInicial() * mA.getTempoAY()));
 	}
 	
 	//--Getters
@@ -148,4 +153,5 @@ public class ModeloCanhao {
 	public void setCatOpo(double catOpo) {this.catOpo = catOpo;}
 	public void setCatAd(double catAd) {this.catAd = catAd;}
 	public void setHip(double hip) {this.hip = hip;}
+	public void setAlturaMaxima(double alturaMaxima) {this.alturaMaxima = alturaMaxima;}
 }

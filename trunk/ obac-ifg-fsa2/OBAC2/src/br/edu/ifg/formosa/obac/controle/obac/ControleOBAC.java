@@ -154,7 +154,7 @@ public class ControleOBAC {
 			new ControlePainelConfiguracaoExecucao(mA, vPS, vPC, mPC, cPCA, cPCED, cIS, cMM, this);
 		
 		//Controles/Listeners da mola
-		MolaDeslizanteListener mDL = new MolaDeslizanteListener(vPS, mA, this, cIS);
+		MolaDeslizanteListener mDL = new MolaDeslizanteListener(vPS, mA, this, cIS, vPC);
 			vPS.getVisaoAuxiliar().getDeslizanteMola().addChangeListener(mDL);
 			vPS.getVisaoAuxiliar().getDeslizanteMola().addMouseListener(mDL);
 			
@@ -176,4 +176,5 @@ public class ControleOBAC {
 	
 	//--Getters
 	public ControleCanhaoMouse getcCM() {return cCM;}
+	public JTabbedPane getPainelAbas(){return painelAbas;}
 }

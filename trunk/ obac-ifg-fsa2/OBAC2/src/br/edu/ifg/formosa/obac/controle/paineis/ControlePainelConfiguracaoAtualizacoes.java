@@ -235,15 +235,17 @@ public class ControlePainelConfiguracaoAtualizacoes {
 
 	//Método usado na execução para que a interação com os componentes seja removida
 	public void desativaComponentes(boolean ativado){
+		vpc.getCsPropulsao().setEnabled(ativado);
 		vpc.getCtPropulsaoDado1().setEnabled(ativado);
 		vpc.getCtPropulsaoDado2().setEnabled(ativado);
 		
 		//Ajustes de acordo co a simulação
 		if(vpc.getCsPropulsao().getSelectedIndex()==0
 		   && vpc.getCsAmbienteSimulacao().getSelectedIndex()!=4){//Canhão
-			vpc.getCtPropulsaoDado1().setEnabled(true);
+			vpc.getCtPropulsaoDado1().setEnabled(false);
 			if(ativado){vpc.getCtPropulsaoDado1().setText("0");}
 			vpc.getdObjetoCoeficienteRestituicao().setEnabled(false);
+			
 		}
 		else if(vpc.getCsPropulsao().getSelectedIndex()==2){//Mola
 			vpc.getCtPropulsaoDado2().setEnabled(true);
@@ -260,6 +262,5 @@ public class ControlePainelConfiguracaoAtualizacoes {
 		vpc.getCtObjetoMassa().setEnabled(ativado);
 //		vpc.getBoColisaoSim().setEnabled(ativado);
 //		vpc.getBoColisaoNao().setEnabled(ativado);
-		vpc.getBaNovaSimulacao().setVisible(!ativado);
 	}
 }
