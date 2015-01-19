@@ -70,7 +70,7 @@ public class ControleObjeto6LancamentoObliquo implements ControleObjeto0Generico
 						
 						//Atualizar pixels  
 						ma.getmO().setPosicaoXPx(
-								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()) + 15);
+								UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()) - 18);
 						
 						ma.getmO().setPosicaoYPx(
 								UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()) - 30);

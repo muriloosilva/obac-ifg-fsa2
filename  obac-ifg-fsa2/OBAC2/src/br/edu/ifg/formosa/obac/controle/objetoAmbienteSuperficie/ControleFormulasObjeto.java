@@ -128,9 +128,6 @@ public class ControleFormulasObjeto {
 	
 	//Velocidade após colisão do objeto - V²=V02+2*a*ΔS
 	public void calculaVelocidadeTorricelli(){
-		System.out.println("V: " +ma.getmO().getVelocidade());
-		System.out.println("A: " +ma.getmO().getAceleracao());
-		System.out.println("Pos x M: " +ma.getmO().getPosicaoXMetros());
 		ma.getmO().setVelocidade(Math.sqrt(
 			((ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())
 //				((ma.getmO().getVelocidade()*2)
@@ -164,7 +161,7 @@ public class ControleFormulasObjeto {
 				return true;
 			}
 			//Condição de para caso o objeto caia
-			else if(ma.getmO().getPosicaoYPx() >= ma.getmEH().fimAmbienteYPix){
+			else if(ma.getmO().getPosicaoYPx() >= ma.getmEV().fimAmbienteYPix){
 				return true;
 			}
 			//Exceção - O bojeto ainda se movimenta

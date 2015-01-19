@@ -81,14 +81,5 @@ public class VisaoEscala extends JPanel{
 			g2d.drawString(ModeloEscala.marcadorInicial + "m", mE.getEscalaInicioX() - 50, mE.getEscalaInicioY() - 1);
 			g2d.drawString(mE.getMarcadoresEscala()[4] + "m", mE.getEscalaFimXPix() - 50, mE.getEscalaFimYPix() - 1);
 		}
-		//Marcador dinâmico para indicar a posição do objeto no P&P
-		if (mE.isPEP()) {
-			g2d.setColor(Color.white);
-			
-			if (mA.getmO().getPosicaoXPx() + 30 >= mE.getEscalaInicioX()) { //Colocar em uma Thread de modo que so atualize com essa condição
-				g2d.fillOval(UtilidadeConvercoesEscala.metroParaPixelH(mA.getmEH(), mA.getmO().getPosicaoXMetros()), mE.getEscalaInicioY() - 4, 8, 8);
-				g2d.drawString(UtilidadeArredondamento.arredondamento(2, mA.getmO().getPosicaoXMetros()) + "m", mA.getmO().getPosicaoXPx() + 8, mE.getEscalaInicioY() - 8);
-			}
-		}
 	}
 }

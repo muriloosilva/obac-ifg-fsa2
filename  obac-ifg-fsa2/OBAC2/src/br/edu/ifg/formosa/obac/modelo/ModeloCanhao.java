@@ -116,16 +116,13 @@ public class ModeloCanhao {
 				cPF.movimentoVetical(mA.getmO().getVelocidadeInicial(), mA.getmP().getAnguloRotacaoGraus(), mA.getTempoAtual(), mA.getGravSelecionada()));
 	}
 	
-	public double novoYPEP() {
-		return ((mA.getGravSelecionada() * Math.pow(mA.getTempoAY(), 2)) / 2);
-		
+	public void encontrarAngulo(){		
+		double angulo = Math.asin((mA.getGravSelecionada() * mA.getTempoAtual())/(mA.getmO().getVelocidade()));
 		/*
-		 * Novo Y = (grav * t²) / 2
-		 */
-	}
-	
-	public void novoXPEP() {
-		mA.getmO().setPosicaoXMetros(UtilidadeConvercoesEscala.pixelParaMetroH(mA.getmEH(), 330) + (mA.getmO().getVelocidadeInicial() * mA.getTempoAY()));
+		 * Formula resultante da manipulação do posicionamento em Y com o Tempo total do movimento
+		 */		
+		
+		mA.getmP().setAnguloRotacaoGraus(Math.toDegrees(angulo));
 	}
 	
 	//--Getters

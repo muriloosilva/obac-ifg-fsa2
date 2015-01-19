@@ -82,10 +82,10 @@ public class ControlePropulsao {
 			}
 			break;
 		case 4: //Oblíquo
-			mA.getmP().setPosXProp(mA.getmP().getPosXC());
+			mA.getmP().setPosXProp(mA.getmP().getPosXC() -65);
 			mA.getmP().setPosYProp(mA.getmP().getPosYC());
 			
-			mA.getmP().setPosXBase(mA.getmP().getPosXB());	
+			mA.getmP().setPosXBase(mA.getmP().getPosXB() - 65);	
 			mA.getmP().setPosYBase(mA.getmP().getPosYB());
 			
 			break;

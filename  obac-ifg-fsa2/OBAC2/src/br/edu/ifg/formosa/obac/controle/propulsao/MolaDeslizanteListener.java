@@ -74,7 +74,7 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 			this.vPS.getVisaoAuxiliar().getDeslizanteMola().setBackground(Color.red);
 			this.vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
 			this.vPS.getVisaoAuxiliar().getpCompressor().setEnabled(true);
-			cMSD = new ControleMolaSolturaDeslizante(vPS.getVisaoPropulsao(), mA, cOBAC, cIS);
+			cMSD = new ControleMolaSolturaDeslizante(vPS.getVisaoPropulsao(), mA, cOBAC, cIS, null);
 			mousePressionando=true;
 		}
 		this.cOBAC.repinta();
