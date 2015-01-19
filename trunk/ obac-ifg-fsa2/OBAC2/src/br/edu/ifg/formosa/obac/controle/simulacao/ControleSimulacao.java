@@ -64,17 +64,17 @@ public class ControleSimulacao {
 					mudaMarcadores(mA.getmEV(), 1000);
 					
 					vps.getVisaoEscalaH().setVisible(true); //Escala Horizontal fica visível
-					vps.getVisaoEscalaV().setVisible(false); //Escala Vertical fica invisivel
+					vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica invisivel
 					break;
 				case 4: //Projétil
-						mudaModeloEscala(mA.getmEH(), 130, 520, 700, 520, false);	
-						mudaModeloEscala(mA.getmEV(), 70, 496, 70, 100, false);
+						mudaModeloEscala(mA.getmEH(), 80, 497, 700, 497, false);	
+						mudaModeloEscala(mA.getmEV(), 80, 497, 80, 100, false);
 						
 						mudaAngulo(mA, 0, true); //Ambos são necessários para não dar nenhum bug
 						mudaAngulo(mA, mA.getmP().getAnguloRotacaoGraus(), true);
 						
-						mudaTranslate(mA, 145, 485);
-						mudaPosObjeto(mA.getmO(), ModeloObjeto.pXPadPx, ModeloObjeto.pOblYPx);
+						mudaTranslate(mA, 80, 485);
+						mudaPosObjeto(mA.getmO(), ModeloObjeto.pOblXPx, ModeloObjeto.pOblYPx);
 						
 						mudaMarcadores(mA.getmEH(), 100);
 						mudaMarcadores(mA.getmEV(), 100);

@@ -122,12 +122,31 @@ public class ControlePainelConfiguracaoExecucao {
 						vPC.getCtPropulsaoDado1().setText("");
 					}
 				//Reposiciona o objeto
-					mA.getmO().setPosicaoXPx(129);
-					if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4)
-						mA.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(mA.getmEV(), 0));
-					else if (vPC.getCsPropulsao().getSelectedIndex() == 2) {
-						mA.getmO().setPosicaoXPx(ModeloObjeto.pQueXPx);
+					switch(vPC.getCsAmbienteSimulacao().getSelectedIndex()){
+					case 0:
+						mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
+						mA.getmO().setPosicaoYPx(ModeloObjeto.pPlaYPx);
+						break;
+					case 1:	
+						mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
+						mA.getmO().setPosicaoYPx(ModeloObjeto.pSubYPx);
+						break;
+					case 2:	
+						mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
+						mA.getmO().setPosicaoYPx(ModeloObjeto.pDesYPx);
+						break;
+					case 3:	
+						mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
+						mA.getmO().setPosicaoYPx(ModeloObjeto.pPepYPx);
+						break;
+					case 4:	
+						mA.getmO().setPosicaoXPx(ModeloObjeto.pOblXPx);
 						mA.getmO().setPosicaoYPx(ModeloObjeto.pQueYPx);
+						break;	
+					case 5:	
+						mA.getmO().setPosicaoXPx(ModeloObjeto.pQueXPx);
+						mA.getmO().setPosicaoYPx(ModeloObjeto.pOblYPx);
+						break;
 					}
 					
 				//Readiciona o listener do canhao case seja LO
@@ -177,7 +196,6 @@ public class ControlePainelConfiguracaoExecucao {
 	
 	private void zeraModelos(){
 		mA.setTempoAtual(0);
-		mA.setTempoAY(0);
 		mA.setTempoTotal(0);
 		mA.getmEH().setEscalaFimXM(0);
 		mA.getmEH().setEscalaFimYM(0);

@@ -25,6 +25,8 @@ public class ModeloObjeto {
 	
 	public static final int pQueXPx = 361; //Posição X da QL
 	
+	public static final int pOblXPx = 65; //Posição X do LO
+	
 	public static final int pPlaYPx = 470; //Posição Y do plano
 
 	public static final int pSubYPx = 430; //Posição Y da subida
