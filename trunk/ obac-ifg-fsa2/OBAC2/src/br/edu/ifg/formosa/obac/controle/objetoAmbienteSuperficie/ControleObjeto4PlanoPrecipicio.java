@@ -9,10 +9,12 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, Runnable{	
 	//Constantes
 	private final int atrasoMS = 20;//Atraso da thread usado no Sleep (20 milisegundos)
-	private final double atrasoSPadrao = 0.04;//Valor do tempo que é incrementado a cada nova posição		
+	private final double atrasoSPadrao = 0.04;//Valor do tempo que é incrementado a cada nova posição
+	
 	//Variáveis
 	private boolean iniciouPrecipicio = false;
 	private boolean continuar = true;///Variável usada para pausar a simulação
+	private double velX = 0;
 	private Thread t = null;//Thread
 	//Variáveis do OBAC
 	//-----Modelos
@@ -82,15 +84,15 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 					else{
 						if(!iniciouPrecipicio){
 							ma.getmO().setPosicaoXPx(331);
-							ma.getmP().getmC().encontrarAngulo();
 							iniciouPrecipicio = true;
 						}
 						
-						ma.getmP().getmC().novoX();
-						ma.getmP().getmC().novoY();
+						
+						
+						//ma.getmP().getmC().novoY();
 						
 						ma.getmO().setPosicaoXPx(UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
-						ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
+						//ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
 						
 						cOBAC.repinta();
 						
