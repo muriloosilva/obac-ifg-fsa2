@@ -28,7 +28,7 @@ public class ModeloMola {
 	private final int tamanhoMolaMinimoPix = 25;//Tamanho mínimo em pixels que a mola pode assumir 
 	private final int tamanhoMolaTotalPix = 100;//tamanho inicial em pixels 
 	private int tamanhoMolaAtualPix=tamanhoMolaTotalPix;//tamanho final em pixels = Pos inicial do objeto
-	private double tamanhoMolaTotalM=100;//tamanho inicial em metros
+	private double tamanhoMolaTotalM;//tamanho inicial em metros
 	private double tamanhoMolaAtualM;//tamanho final em metros
 	//Taxa de deformação da mola
 	private double x=0;
@@ -54,6 +54,10 @@ public class ModeloMola {
 	public void calculaX(){
 		this.x = (tamanhoMolaTotalM-tamanhoMolaAtualM);
 		cpi.mudaValorTaxaDeDeformacao(x);
+		
+		System.out.println("X________________: "+x);
+		System.out.println("tamanhoMolaTotalM: "+tamanhoMolaTotalM);
+		System.out.println("tamanhoMolaAtualM: "+tamanhoMolaAtualM);
 	}
 
 	//Getters
