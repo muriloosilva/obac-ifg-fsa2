@@ -32,7 +32,6 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 			this.cOBAC = cOBAC;
 			this.vpf = vpf;
 			this.cfo = cfo;
-		
 		//Cáclculos referentes a esta simulação
 			cfo.calculaForcaNormal();//Força normal
 			cfs.calculaForcaAtritoPadrao();//Força de Atrito
