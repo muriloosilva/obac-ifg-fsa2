@@ -13,7 +13,6 @@ import br.edu.ifg.formosa.obac.visao.VisaoPropulsao;
 public class ControleMolaSolturaDeslizante implements Runnable{
 
 	private VisaoPropulsao vp = null;
-	private VisaoPainelConfiguracao vPC = null;
 	private ModeloAmbiente ma = null;
 	private ControleOBAC cOBAC = null;
 //	private ControleMolaMouse cMM = null;
@@ -27,14 +26,12 @@ public class ControleMolaSolturaDeslizante implements Runnable{
 		this.ma = ma;
 		this.cOBAC = cOBAC;
 		this.cIS = cIS;
-		this.vPC = vPC;
 		
 		//É calculada a velocidade de lançamento do objeto
 		ma.getmP().getModeloMola().calculaVelocidadeLancamento();
 		
 		//Torna visível o botão de nova simulação
 		vPC.getBaNovaSimulacao().setVisible(true);
-		
 		t = new Thread(this);
 		t.start();
 	}
