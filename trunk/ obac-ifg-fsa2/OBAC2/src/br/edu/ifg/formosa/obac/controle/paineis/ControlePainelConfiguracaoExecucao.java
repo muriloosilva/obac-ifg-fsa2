@@ -182,11 +182,14 @@ public class ControlePainelConfiguracaoExecucao {
 	}
 	
 	private void exeMola(){
+		this.vPS.getVisaoAuxiliar().getDeslizanteMola().setValue(this.vPS.getVisaoAuxiliar().getDeslizanteMola().getMaximum());
+		this.vPS.getVisaoAuxiliar().getRotuloCompressao().setText("100%");
 		//Tamanho da Mola
-		mA.getmP().getModeloMola().setTamanhoMolaTotalM(Double.parseDouble(vPC.getCtPropulsaoDado1().getText().replaceAll(",", ".")));
+		mA.getmP().getModeloMola().setTamanhoMolaTotalM(
+				Double.parseDouble(vPC.getCtPropulsaoDado1().getText().replaceAll(",", "."))/100);
 		//Constante elástica
 		mA.getmP().getModeloMola().setkAtual(
-				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replaceAll(",", "."))/100);
+				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replaceAll(",", ".")));
 		
 		//Listener da mola
 		vPS.getVisaoAuxiliar().getpCompressor().setVisible(true);
