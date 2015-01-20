@@ -31,9 +31,6 @@ public class ModeloEscala {
 	 * não conta os das extremidades, por isso o '+1' devido ao inicial ser uma constante
 	 */
 	
-	//--Boolean
-	private boolean isPEP = false;
-	
 	//Metodos
 	//--Getters
 	public int getEscalaInicioX() {return escalaInicioX;}
@@ -46,7 +43,6 @@ public class ModeloEscala {
 	public long getEscalaFimXM() {return escalaFimXM;}
 	public long getEscalaFimYM() {return escalaFimYM;}	
 	public double[] getMarcadoresEscala() {return marcadoresEscala;}
-	public boolean isPEP() {return isPEP;}
 	
 	//--Setters
 	public void setEscalaInicioX(int escalaInicioX) {this.escalaInicioX = escalaInicioX;}
@@ -56,5 +52,4 @@ public class ModeloEscala {
 	public void setEspacamentoMarcadores(int espacamentoMarcadores) {this.espacamentoMarcadores = espacamentoMarcadores;}
 	public void setEscalaFimXM(long escalaFimXM) {this.escalaFimXM = escalaFimXM;}
 	public void setEscalaFimYM(long escalaFimYM) {this.escalaFimYM = escalaFimYM;}
-	public void setIsPEP(boolean isPEP) {this.isPEP = isPEP;}
 }

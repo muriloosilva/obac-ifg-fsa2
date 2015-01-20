@@ -116,14 +116,16 @@ public class ModeloCanhao {
 				cPF.movimentoVetical(mA.getmO().getVelocidadeInicial(), mA.getmP().getAnguloRotacaoGraus(), mA.getTempoAtual(), mA.getGravSelecionada()));
 	}
 	
-	public void encontrarAngulo(){		
-		double angulo = Math.asin((mA.getGravSelecionada() * mA.getTempoAtual())/(mA.getmO().getVelocidade()));
-		/*
-		 * Formula resultante da manipulação do posicionamento em Y com o Tempo total do movimento
-		 */		
-		
-		mA.getmP().setAnguloRotacaoGraus(Math.toDegrees(angulo));
-	}
+	/*public void encontrarAngulo(){		
+		double angulo = Math.asin(Math.sqrt(2 * mA.getGravSelecionada() * UtilidadeConvercoesEscala.pixelParaMetroV(mA.getmEV(), mA.getmEV().getEscalaFimYPix())) / mA.getmO().getVelocidade());
+		/*					  _________
+		 * angulo = arcsin( -/2 * y * g' / Vo )
+		 */
+		/*System.out.println("Seno: " + Math.sqrt(2 * mA.getGravSelecionada() * UtilidadeConvercoesEscala.pixelParaMetroV(mA.getmEV(), mA.getmEV().getEscalaFimYPix())) / mA.getmO().getVelocidade());
+		System.out.println("Angulo Radianos: " + angulo);
+		System.out.println("Angulo Graus: " + Math.toDegrees(angulo));
+		//mA.getmP().setAnguloRotacaoGraus(Math.toDegrees(angulo));
+	}*/
 	
 	//--Getters
 	public double getEnergia() {return energia;}
