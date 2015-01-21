@@ -62,7 +62,7 @@ public class ControleObjeto3Descida implements ControleObjeto0Generico, Runnable
 					//Atualiza o tempo
 					ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
 					//Atualiza a velocidade
-					cfo.calculaVelocidadeTorricelli();
+					cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoXMetros());
 				}
 				else{parar();}
 			}

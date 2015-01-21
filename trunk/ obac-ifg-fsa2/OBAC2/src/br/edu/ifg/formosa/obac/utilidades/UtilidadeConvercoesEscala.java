@@ -23,6 +23,8 @@ public class UtilidadeConvercoesEscala {
 		return mAtual;
 	}//Fim convertePixelMetro
 	
+	
+	
 	public static int metroParaPixelH(ModeloEscala mEH, double metro) {
 		return (int) ((metro * mEH.getEscalaFimXPix() - mEH.getEscalaInicioX()) / mEH.getMarcadoresEscala()[mEH.qtdMarcadores] + mEH.getEscalaInicioX());
 	}
