@@ -69,7 +69,7 @@ public class ControleObjeto1Plano implements ControleObjeto0Generico, Runnable{
 					//Atualiza o tempo
 					ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
 					
-					cfo.calculaVelocidadeTorricelli();
+					cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoXMetros());
 				}
 				else {parar();}
 			}

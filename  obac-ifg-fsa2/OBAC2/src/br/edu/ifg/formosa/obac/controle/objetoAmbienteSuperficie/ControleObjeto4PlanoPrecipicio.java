@@ -71,7 +71,7 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 					if(ma.getmO().getPosicaoXPx()<=329){
 						if(torriceli)
 							//Atualiza a velocidade
-							cfo.calculaVelocidadeTorricelli();
+							cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoXMetros());
 						//Calcula nova posição em METROS
 						cfo.calculaNovaPosicao();
 						//Converte a posição em METROS para PIXEL para poder movimentar o objeto

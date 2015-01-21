@@ -20,7 +20,7 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 	private ControleOBAC cOBAC;
 	private ControleFormulasObjeto cfo;
 	private ControleFormulasSuperficie cfs;
-	//VARIï¿½VEL DA THREAD
+	//VARIÁVEL DA THREAD
 	private Thread t;
 
 
@@ -69,33 +69,36 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 			if(continuar){
 				
 				double velocidadeFinal1;
-				//1ª Queda Livre
-				if(ma.getmO().getPosicaoYPx() >= 470){
+				//Início do momento de colisão
+				if(ma.getmO().getPosicaoYPx() >= 470){//Só entra aqui quando ocorre a colisão com o solo
 					System.out.println("soma: "+soma);
 					//Inverte o valor da aceleração
-					if(ma.getmO().getAceleracao() < 0){
+					if(ma.getmO().getAceleracao() < 0){//Adequa a aceleraação para a subida
 						ma.getmO().setAceleracao(ma.getmO().getAceleracao() *  (-1));
 					}
 					
-					ma.getmO().setPosicaoYPx(470);
-					int velocidadeFinal2 = 0;
+					ma.getmO().setPosicaoYPx(470);//Corrige a posição em px
+					int velocidadeFinal2 = 0;//= velocidade final ^2
 					
 					if(soma>=0 && !queda){
-						System.out.println("Primeiro");
-						velocidadeFinal2 = (int)(0 + 2 * ma.getmO().getAceleracao() * (soma * escala));
+						System.out.println("SEGUNDA");
+						ma.getmO().setVelocidadeInicial(0);
+						System.out.println("soma * escala: " +(soma * escala));
+						cfo.calculaVelocidadeTorricelli(soma * escala);
+//						velocidadeFinal2 = (int)(0 + 2 * ma.getmO().getAceleracao() * (soma * escala));
 					}
 					else{
-						System.out.println("SEGUNDA");
-						velocidadeFinal2 = (int)((ma.getmO().getVelocidadeInicial() * ma.getmO().getVelocidadeInicial()) + 
-								2 * ma.getmO().getAceleracao() * (ma.getmEV().getEscalaFimYM()));
+						System.out.println("Primeiro");
+						cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoYMetros());
+//						velocidadeFinal2 = (int)((ma.getmO().getVelocidadeInicial() * ma.getmO().getVelocidadeInicial()) +2 * ma.getmO().getAceleracao() * (ma.getmEV().getEscalaFimYM()));
 																//Variaï¿½ï¿½o de espaï¿½o
 					}
 					
 					soma = 0;
-					double vf = Math.sqrt(velocidadeFinal2);
 					
+					//Fórmula da velocidade pós colisão
 					velocidadeFinal1 =
-							vf*(ma.getmO().getMassa()- 1000000000 *ma.getmO().getCoefRestituicao())/
+							ma.getmO().getVelocidade()*(ma.getmO().getMassa()- 1000000000 *ma.getmO().getCoefRestituicao())/
 							(ma.getmO().getMassa() + 1000000000)*(-1);
 					
 					if(velocidadeFinal1 <=0)
@@ -103,24 +106,24 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 					
 					ma.getmO().setVelocidadeInicial(velocidadeFinal1);
 					ma.getmO().setAceleracao(ma.getmO().getAceleracao() * (-1));
-					ma.setTempoAtual(0.04);
+					ma.setTempoAtual(this.ATRASO_PADRAO);
 					queda = false;			
 					
-				}
+				}//Fim do momento de colisão
 				
-				if(queda){
+				if(queda){//Inicio da primeira queda livre
 					
 					cfo.calculaNovaPosicaoY();
 					
 					ma.getmO().setPosicaoYPx(604 -
 							UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
 					
-				}
-				else{
+				}//Fim da primeira QL
+				else{//Movimento de subida e descida depois da primeira queda
 					cfo.calculaNovaPosicaoY();
 					
                 	//novaPosicï¿½o ï¿½ igual ao solo - posicaoAtualYPixel
-                	double novaPosicao = 470 - ma.getmO().getPosicaoYMetros() / escala;
+                	double novaPosicao = 470 - (ma.getmO().getPosicaoYMetros() / escala);
                 	//- (environment.getObjeto().getPosicaoAtualY()/environment.getSurface().getEscala())
 	                if(novaPosicao <= (ma.getmO().getPosicaoYPx())){
 	                	System.out.println("PY: "+ma.getmO().getPosicaoYMetros());
@@ -128,7 +131,7 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 	                }
 	                ma.getmO().setPosicaoYPx((int)novaPosicao);	
 	                
-				}
+				}//Fim do movimento de subida e descida depois da primeira queda
 				
 				//Repinta o painel para mostar o andamento da simulaï¿½ï¿½o
 				cOBAC.repinta();
