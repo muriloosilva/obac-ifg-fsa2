@@ -23,7 +23,8 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 	private final ModeloAmbiente mA;
 	private final ControleOBAC cOBAC;
 	private final ControleInicioSimulacoes cIS;
-	private ControleMolaSolturaDeslizante cMSD = null;
+	@SuppressWarnings("unused")
+	private ControleMolaSolturaDeslizante cMSD = null;//Economiza espaço na alocação de memórias
 	
 	//Variável de controle
 	private boolean mousePressionando = true; 
@@ -49,6 +50,9 @@ public class MolaDeslizanteListener implements ChangeListener, MouseListener{
 	
 	
 	private void comandos(){
+		System.out.println("+ Mola em M: "+mA.getmP().getModeloMola().getTamanhoMolaTotalM());
+		System.out.println("+ Mola em M Atual: "+mA.getmP().getModeloMola().getTamanhoMolaAtualM());
+		System.out.println("+-----------------------------------");
 		if (mousePressionando==true) {
 			
 			//Atualiza a imagem da mola com o tamnho adequado

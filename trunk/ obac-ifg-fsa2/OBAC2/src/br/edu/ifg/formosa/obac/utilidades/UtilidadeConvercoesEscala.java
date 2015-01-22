@@ -18,24 +18,24 @@ public class UtilidadeConvercoesEscala {
     }//Fim converteMetroEmPixelX	
 	
 	//Método usado para converter PIXEL em METRO -> m'=m*p'/p
-	public static int convertePixelMetro(double mTotal, double pAtual, double pTotal){
-		int mAtual = (int)(mTotal*pAtual/pTotal);
+	public static double convertePixelMetro(double mTotal, double pAtual, double pTotal){
+		double mAtual = (mTotal*pAtual/pTotal);
 		return mAtual;
 	}//Fim convertePixelMetro
 	
 	
 	
 	public static int metroParaPixelH(ModeloEscala mEH, double metro) {
-		return (int) ((metro * mEH.getEscalaFimXPix() - mEH.getEscalaInicioX()) / mEH.getMarcadoresEscala()[mEH.qtdMarcadores] + mEH.getEscalaInicioX());
+		return (int) ((metro * mEH.getEscalaFimXPix() - mEH.getEscalaInicioX()) / mEH.getMarcadoresEscala()[ModeloEscala.qtdMarcadores] + mEH.getEscalaInicioX());
 	}
 	public static int pixelParaMetroH(ModeloEscala mEH, double pixel) {
-		return (int) (pixel * mEH.getMarcadoresEscala()[mEH.qtdMarcadores]) / mEH.getEscalaFimXPix();
+		return (int) (pixel * mEH.getMarcadoresEscala()[ModeloEscala.qtdMarcadores]) / mEH.getEscalaFimXPix();
 	}
 	
 	public static int metroParaPixelV(ModeloEscala mEV, double metro) {
-		return (int) (((metro * (mEV.getEscalaFimYPix() - mEV.getEscalaInicioY())) / mEV.getMarcadoresEscala()[mEV.qtdMarcadores]) + mEV.getEscalaInicioY());
+		return (int) (((metro * (mEV.getEscalaFimYPix() - mEV.getEscalaInicioY())) / mEV.getMarcadoresEscala()[ModeloEscala.qtdMarcadores]) + mEV.getEscalaInicioY());
 	}
 	public static int pixelParaMetroV(ModeloEscala mEV, double pixel) {
-		return (int) (pixel * mEV.getMarcadoresEscala()[mEV.qtdMarcadores]) / mEV.getEscalaFimYPix();
+		return (int) (pixel * mEV.getMarcadoresEscala()[ModeloEscala.qtdMarcadores]) / mEV.getEscalaFimYPix();
 	}
 }

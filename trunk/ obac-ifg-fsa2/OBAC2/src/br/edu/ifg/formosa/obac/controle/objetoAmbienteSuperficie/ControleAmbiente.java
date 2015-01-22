@@ -17,7 +17,6 @@ public class ControleAmbiente {
 	//Constante do painel de configuração
 	private final ModeloAmbiente mA;
 	private final VisaoPainelConfiguracao vPC;
-	private final ControlePainelConfiguracaoAtualizacoes cPCA;
 	
 	//Métodos
 	//--Construtor
@@ -26,7 +25,6 @@ public class ControleAmbiente {
 			final ControlePainelConfiguracaoAtualizacoes cPCA) {
 		this.mA = mA;
 		this.vPC = vPC;
-		this.cPCA = cPCA;
 		
 		vPC.getCsAmbienteGravidade().addActionListener(new ActionListener() {
 			@Override
@@ -34,21 +32,21 @@ public class ControleAmbiente {
 				switch (vPC.getCsAmbienteGravidade().getSelectedIndex()) { //Determina qual a imagem de fundo
 					case 0:
 						mA.setUrlGr("terra");
-						mA.cor = Color.black;
+						ModeloAmbiente.cor = Color.black;
 						
-						mA.setGravSelecionada(mA.gravidadeTerra);
+						mA.setGravSelecionada(ModeloAmbiente.gravidadeTerra);
 						break;
 					case 1:
 						mA.setUrlGr("lua");
-						mA.cor = Color.white;
+						ModeloAmbiente.cor = Color.white;
 						
-						mA.setGravSelecionada(mA.gravidadeLua);
+						mA.setGravSelecionada(ModeloAmbiente.gravidadeLua);
 						break;
 					case 2:
 						mA.setUrlGr("marte");
-						mA.cor = Color.white;
+						ModeloAmbiente.cor = Color.white;
 						
-						mA.setGravSelecionada(mA.gravidadeMarte);
+						mA.setGravSelecionada(ModeloAmbiente.gravidadeMarte);
 						break;
 				}
 				mudaImagem(cO, vPS.getVisaoSuperficie(), mA);

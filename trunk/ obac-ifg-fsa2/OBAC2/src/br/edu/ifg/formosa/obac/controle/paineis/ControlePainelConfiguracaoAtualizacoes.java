@@ -28,7 +28,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 	private final VisaoPainelInformacao vpi;
 	private final VisaoPainelSimulacao vPS;
 	private final ModeloPropulsao mP;
-	private final ControleObstaculoMouse com;
+//	private final ControleObstaculoMouse com;
 	private final ControleOBAC cOBAC;
 	
 	//Construtor
@@ -45,7 +45,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 		this.vpi = vpi;
 		this.vPS = vPS;
 		this.mP = mP;
-		this.com = com;
+//		this.com = com;
 		this.cOBAC = cOBAC;
 		
 		acaoPropulsoes();
@@ -59,7 +59,9 @@ public class ControlePainelConfiguracaoAtualizacoes {
 		vpc.getCsPropulsao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//Propulsão pelo canhão
+				//Volta para a primeir posição da ComboBox de Simulações
+				vpc.getCsAmbienteSimulacao().setSelectedIndex(0);
+				//Propulsão pelo canhão++++++++++++++++++++++++++++++++++++++++
 				if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getCanhao())){
 					//Rótulos
 					vpc.getrPropulsaoDado1().setText(mpc.getDado1Canhao());
@@ -77,17 +79,17 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Painel de Informações
 					vpi.setVisivelCanhao();
 					//Altera a imagem
-					mP.trocaImagemProp(true);
-					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
-					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
+					mP.trocaImagemProp(true);//Troca em Modelo Propulsão
+					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());//Passagem da imagem para Visão Propulsão
 					//Defazendo as edições específicas da QL 
 					vPS.getVisaoPropulsao().setVisible(true);
 					vpc.getCsAmbienteSimulacao().setEnabled(true);
-					terceiroAjuste(false, true);
+					vpc.getCsAmbienteAtrito().setEnabled(true);
+					ajusteCoefRest(false, true);
 					//Método necessário para corrigir o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 				}
-				//Propulsão pela mola
+				//Propulsão pela mola++++++++++++++++++++++++++++++++++++++++++
 				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getMola())){
 					//Rótulos
 					vpc.getrPropulsaoDado1().setText(mpc.getDado1Mola());
@@ -105,30 +107,31 @@ public class ControlePainelConfiguracaoAtualizacoes {
 					//Painel de Informações
 					vpi.setVisivelMola();
 					//Altera a imagem
-					mP.trocaImagemProp(false);
-					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());
+					mP.trocaImagemProp(false);//TRoca imagem no moddelo
+					vPS.getVisaoPropulsao().setImagemPropulsao(mP.getImagemPropulsao());//Passa imagem para a visão
 					//Defazendo as edições específicas da QL 
 					vPS.getVisaoPropulsao().setVisible(true);
 					vpc.getCsAmbienteSimulacao().setEnabled(true);
-					terceiroAjuste(false, true);
+					vpc.getCsAmbienteAtrito().setEnabled(true);
+					ajusteCoefRest(false, true);
 					//Método necessário para desfazer a correção o campo de dado 1 da propulsão por canhão
 					ajustesPConfig();
 				}
-				//Queda Livre
+				//Queda Livre++++++++++++++++++++++++++++++++++++++++++++++++++
 				else if(vpc.getCsPropulsao().getSelectedItem().equals(mpc.getQL())){
 					//Retira as propulsões normais
 					vPS.getVisaoPropulsao().setVisible(false);
 					//Insere a opção QL na caixa de seleção da simulação
-					if(vpc.getCsAmbienteSimulacao().getItemCount()==5){//Canhão
-						vpc.getCsAmbienteSimulacao().addItem(mpc.getQL());
-					}else if(vpc.getCsAmbienteSimulacao().getItemCount()==4){//Mola
-						vpc.getCsAmbienteSimulacao().insertItemAt(mpc.getLancamentoObliquo(), 4);
-						vpc.getCsAmbienteSimulacao().addItem(mpc.getQL());
+					if(vpc.getCsAmbienteSimulacao().getItemCount()==4){//Mola
+						vpc.getCsAmbienteSimulacao().addItem(mpc.getLancamentoObliquo());
 					}
-					//BLoqueia a caixa de simulação
+					vpc.getCsAmbienteSimulacao().addItem(mpc.getQL());
+					//Bloqueia a caixa de simulação
 					vpc.getCsAmbienteSimulacao().setSelectedIndex(vpc.getCsAmbienteSimulacao().getItemCount()-1);
 					vpc.getCsAmbienteSimulacao().setEnabled(false);
-					terceiroAjuste(true, false);
+					//Bloqueia a caixa de Atrito
+					vpc.getCsAmbienteAtrito().setEnabled(false);
+					ajusteCoefRest(true, false);
 					//Troca dos rótulos e Campos de Texto
 						vpc.getrPropulsaoDado1().setText(mpc.getDado1QL());
 						vpc.getrPropulsaoDado2().setText(mpc.getDado2QL());
@@ -183,6 +186,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 //			}
 //		});
 	}
+	
 	private String cacheTexto1 = "0";
 	private String cacheTexto2 = "0";
 	//Série de ajustes feitos no Painel de Configuração durante a seleção de simulações
@@ -193,12 +197,11 @@ public class ControlePainelConfiguracaoAtualizacoes {
 				cacheTexto2 = vpc.getCtPropulsaoDado2().getText();
 				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()!=4 
 					&& vpc.getCsPropulsao().getSelectedIndex()==0)
-				{//Inicio IF/ELSE 1
+				{//Canhão
 					vpc.getCtPropulsaoDado1().setText("0");
 					vpc.getCtPropulsaoDado1().setEnabled(false);
 					vpc.getCtPropulsaoDado2().setText(cacheTexto2);
-				}
-				else {
+				}else{//Todas as outras simulações
 					vpc.getCtPropulsaoDado1().setText(cacheTexto1);
 					vpc.getCtPropulsaoDado2().setText(cacheTexto2);
 					vpc.getCtPropulsaoDado1().setEnabled(true);
@@ -206,26 +209,26 @@ public class ControlePainelConfiguracaoAtualizacoes {
 			//Fim 1º
 			
 			//2º - (Des)Abilitação do obstáculo de acordo com o tipo de simulação
-				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()==0//Plano
-					||vpc.getCsAmbienteSimulacao().getSelectedIndex()==1//Subida
-					||vpc.getCsAmbienteSimulacao().getSelectedIndex()==2//Descida
-				){
-					vpc.getBoColisaoNao().setSelected(vpc.getBoColisaoNao().isSelected());
-					segundoAjuste(true);
-				}
-				else {//Simulações que não suportam a colisão: P&P, QL e LO
-					vpc.getBoColisaoNao().setSelected(true);
-					segundoAjuste(false);
-				}
+//				if (vpc.getCsAmbienteSimulacao().getSelectedIndex()==0//Plano
+//					||vpc.getCsAmbienteSimulacao().getSelectedIndex()==1//Subida
+//					||vpc.getCsAmbienteSimulacao().getSelectedIndex()==2//Descida
+//				){
+//					vpc.getBoColisaoNao().setSelected(vpc.getBoColisaoNao().isSelected());
+//					segundoAjuste(true);
+//				}
+//				else {//Simulações que não suportam a colisão: P&P, QL e LO
+//					vpc.getBoColisaoNao().setSelected(true);
+//					segundoAjuste(false);//Metódo abaixo deste
+//				}
 			//Fim 2º
 		}
 		//Métodos usados por ajustesPConfig() para evitar a redundância e código
-		private void segundoAjuste(boolean enabled){
-			//Interação com os botões de opção da colisão
-			vpc.getBoColisaoNao().setEnabled(enabled);
-			vpc.getBoColisaoSim().setEnabled(enabled);
-		} 
-		private void terceiroAjuste(boolean enabled, boolean apaga){
+//		private void segundoAjuste(boolean enabled){
+//			//Interação com os botões de opção da colisão
+//			vpc.getBoColisaoNao().setEnabled(enabled);
+//			vpc.getBoColisaoSim().setEnabled(enabled);
+//		} 
+		private void ajusteCoefRest(boolean enabled, boolean apaga){
 			//funcionamento do slider
 			vpc.getdObjetoCoeficienteRestituicao().setEnabled(enabled);
 			if(apaga)
@@ -238,29 +241,33 @@ public class ControlePainelConfiguracaoAtualizacoes {
 		vpc.getCsPropulsao().setEnabled(ativado);
 		vpc.getCtPropulsaoDado1().setEnabled(ativado);
 		vpc.getCtPropulsaoDado2().setEnabled(ativado);
-		
-		//Ajustes de acordo co a simulação
-		if(vpc.getCsPropulsao().getSelectedIndex()==0
-		   && vpc.getCsAmbienteSimulacao().getSelectedIndex()!=4){//Canhão
-			vpc.getCtPropulsaoDado1().setEnabled(false);
-			if(ativado){vpc.getCtPropulsaoDado1().setText("0");}
-			vpc.getdObjetoCoeficienteRestituicao().setEnabled(false);
-			
-		}
-		else if(vpc.getCsPropulsao().getSelectedIndex()==2){//Mola
-			vpc.getCtPropulsaoDado2().setEnabled(true);
-			if(ativado){vpc.getCtPropulsaoDado2().setText("0");}
-			vpc.getdObjetoCoeficienteRestituicao().setEnabled(false);
-		}
-		else{//Queda
-			if(ativado){vpc.getCtPropulsaoDado1().setText("");}
-			vpc.getdObjetoCoeficienteRestituicao().setEnabled(true);
-		}
+		vpc.getdObjetoCoeficienteRestituicao().setEnabled(false);
 		vpc.getCsAmbienteSimulacao().setEnabled(ativado);
 		vpc.getCsAmbienteAtrito().setEnabled(ativado);
 		vpc.getCsAmbienteGravidade().setEnabled(ativado);
 		vpc.getCtObjetoMassa().setEnabled(ativado);
 //		vpc.getBoColisaoSim().setEnabled(ativado);
 //		vpc.getBoColisaoNao().setEnabled(ativado);
+		
+		//Ajustes de acordo co a simulação
+		if(vpc.getCsPropulsao().getSelectedIndex()==0
+		   && vpc.getCsAmbienteSimulacao().getSelectedIndex()!=4){//Canhão
+			vpc.getCtPropulsaoDado1().setEnabled(false);
+			vpc.getCtPropulsaoDado1().setText("0");
+			
+		}
+		else if(vpc.getCsPropulsao().getSelectedIndex()==2){//Queda
+			if(ativado){
+				vpc.getdObjetoCoeficienteRestituicao().setEnabled(ativado);
+				vpc.getCsAmbienteAtrito().setEnabled(!ativado);
+				vpc.getCsAmbienteSimulacao().setEnabled(!ativado);
+			}
+		}
+		else{//Mola e Lançamento Oblíquo 
+			if(ativado){
+				vpc.getCtPropulsaoDado1().setText("0");
+				vpc.getCtPropulsaoDado2().setText("");
+			}
+		}
 	}
 }
