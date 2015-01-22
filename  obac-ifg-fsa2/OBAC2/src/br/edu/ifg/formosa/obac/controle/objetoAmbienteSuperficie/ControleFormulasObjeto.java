@@ -51,8 +51,8 @@ public class ControleFormulasObjeto {
 	//Aceleração na Subida -> a = [(g * Sen(θ)) + (μ * g * Cos(θ))]*(-1)
 	public void calculaAceleracaoSubida(){
 		ma.getmO().setAceleracao(
-			((ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.anguloInclinacaoGraus)))
-			 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.anguloInclinacaoGraus))*-1)
+			((ma.getGravSelecionada()*Math.sin(Math.toRadians(ModeloAmbiente.anguloInclinacaoGraus)))
+			 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ModeloAmbiente.anguloInclinacaoGraus))*-1)
 			)
 			
 		);
@@ -64,8 +64,8 @@ public class ControleFormulasObjeto {
 	//Aceleração na Descida -> a = [(g * Sen(θ)) + (μ * g * Cos(θ))]
 	public void calculaAceleracaoDescida(){
 		ma.getmO().setAceleracao(((
-		 (ma.getGravSelecionada()*Math.sin(Math.toRadians(ma.anguloInclinacaoGraus)))
-		 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ma.anguloInclinacaoGraus))*(-1))
+		 (ma.getGravSelecionada()*Math.sin(Math.toRadians(ModeloAmbiente.anguloInclinacaoGraus)))
+		 + (ma.getmS().getCoefAtritoSelecionado()*ma.getGravSelecionada()*Math.cos(Math.toRadians(ModeloAmbiente.anguloInclinacaoGraus))*(-1))
 		)));
 		//Manda para o painel de fórmulas
 		vpf.getAtAceleracao().setText(
@@ -137,8 +137,8 @@ public class ControleFormulasObjeto {
 		));
 		//Manda para o painel de fórmulas
 //Criar esquema para ser usado em dois paineis (normal e pos colisão)
-		vpf.getAtNovaPos().setText(
-				cpf.equTorricceli(ma.getmO().getVelocidadeInicial(), ma.getmO().getVelocidadeInicial(), ma.getmO().getPosicaoXMetros()));
+		vpf.getAtNovaV().setText(
+				cpf.equTorricceli(ma.getmO().getVelocidadeInicial(), ma.getmO().getAceleracao(), ma.getmO().getPosicaoXMetros()));
 	}
 	
 	//Calcula coeficiente de restituição

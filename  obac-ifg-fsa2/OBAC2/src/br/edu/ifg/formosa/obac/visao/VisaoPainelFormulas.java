@@ -29,11 +29,12 @@ public class VisaoPainelFormulas extends JScrollPane{
 		private JPanel pAceleracao = null;
 		private JPanel pPosFinal = null;
 		private JPanel pTempo = null;
+		private JPanel pNovaV = null;
 		private JPanel pNovaPos = null;
 		//Simulações normais - Com a colisão
-		private JPanel pColisao = null;
-		private JPanel pVelocidadePosColisao = null;
-		private JPanel pNovaPosColisao = null;
+//		private JPanel pColisao = null;
+//		private JPanel pVelocidadePosColisao = null;
+//		private JPanel pNovaPosColisao = null;
 		//Específicas dos lançamento obliquo
 		private JPanel pMovimentoHorizontal = null;
 		private JPanel pMovimentoVertical = null;
@@ -48,11 +49,12 @@ public class VisaoPainelFormulas extends JScrollPane{
 		private JLabel rAceleracao = null;
 		private JLabel rPosFinal = null;
 		private JLabel rTempo = null;
+		private JLabel rNovaV = null;
 		private JLabel rNovaPos = null;
 		//Simulações normais - Com a colisão
-		private JLabel rColisao = null;
-		private JLabel rVelocidadePosColisao = null;
-		private JLabel rNovaPosColisao = null;
+//		private JLabel rColisao = null;
+//		private JLabel rVelocidadePosColisao = null;
+//		private JLabel rNovaPosColisao = null;
 		//Específicas dos lançamento obliquo
 		private JLabel rMovimentoHorizontal = null;
 		private JLabel rMovimentoVertical = null;
@@ -67,11 +69,12 @@ public class VisaoPainelFormulas extends JScrollPane{
 		private JScrollPane prAceleracao = null;
 		private JScrollPane prPosFinal = null;
 		private JScrollPane prTempo = null;
+		private JScrollPane prNovaV = null;
 		private JScrollPane prNovaPos = null;
 		//Simulações normais - Com a colisão
-		private JScrollPane prColisao = null;
-		private JScrollPane prVelocidadePosColisao = null;
-		private JScrollPane prNovaPosColisao = null;
+//		private JScrollPane prColisao = null;
+//		private JScrollPane prVelocidadePosColisao = null;
+//		private JScrollPane prNovaPosColisao = null;
 		//Específicas dos lançamento obliquo
 		private JScrollPane prMovimentoHorizontal = null;
 		private JScrollPane prMovimentoVertical = null;
@@ -86,11 +89,12 @@ public class VisaoPainelFormulas extends JScrollPane{
 		private JTextArea atAceleracao = null;
 		private JTextArea atPosFinal = null;
 		private JTextArea atTempo = null;
+		private JTextArea atNovaV = null;
 		private JTextArea atNovaPos = null;
 		//Simulações normais - Com a colisão
-		private JTextArea atColisao = null;
-		private JTextArea atVelocidadePosColisao = null;
-		private JTextArea atNovaPosColisao = null;
+//		private JTextArea atColisao = null;
+//		private JTextArea atVelocidadePosColisao = null;
+//		private JTextArea atNovaPosColisao = null;
 		//Específicas dos lançamento obliquo
 		private JTextArea atMovimentoHorizontal = null;
 		private JTextArea atMovimentoVertical = null;
@@ -156,33 +160,40 @@ public class VisaoPainelFormulas extends JScrollPane{
 		atTempo = new JTextArea(ModeloPainelFormulas.tempo);
 		addComponentes(pTempo, rTempo, prTempo, atTempo, UtilidadeCores.azulMetalico, UtilidadeCores.amareloOuro, 6, true);
 		
+		//Nova Velocidade
+		pNovaV = new JPanel(new BorderLayout());
+		rNovaV = new JLabel("Nova Velocidade (Torricceli)");
+		rNovaV.setToolTipText("Equação horária das abscissas");
+		atNovaV = new JTextArea(ModeloPainelFormulas.equaTorricceli);
+		addComponentes(pNovaV, rNovaV, prNovaV, atNovaV, UtilidadeCores.azulMedio, UtilidadeCores.amareloQueimado, 6, true);
+				
 		//Nova Posição
 		pNovaPos = new JPanel(new BorderLayout());
 		rNovaPos = new JLabel("Nova Posição");
 		rNovaPos.setToolTipText("Equação horária das abscissas");
 		atNovaPos = new JTextArea(ModeloPainelFormulas.equaHorariaAbscissa);
-		addComponentes(pNovaPos, rNovaPos, prNovaPos, atNovaPos, UtilidadeCores.azulMedio, UtilidadeCores.amareloQueimado, 6, true);
+		addComponentes(pNovaPos, rNovaPos, prNovaPos, atNovaPos, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 6, true);
 		
 		//Colisão
 			//Colisão
-			pColisao = new JPanel(new BorderLayout());
-			rColisao = new JLabel("Colisão");
-			atColisao = new JTextArea(ModeloPainelFormulas.colisao);
-			addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulNeon, UtilidadeCores.laranja, 6, false);
+//			pColisao = new JPanel(new BorderLayout());
+//			rColisao = new JLabel("Colisão");
+//			atColisao = new JTextArea(ModeloPainelFormulas.colisao);
+//			addComponentes(pColisao, rColisao, prColisao, atColisao, UtilidadeCores.azulNeon, UtilidadeCores.laranja, 6, false);
 			
 			//Velocidade pós Colosão - Criar os componentes e refazer o esquema de cores
-			pVelocidadePosColisao = new JPanel(new BorderLayout());
-			rVelocidadePosColisao = new JLabel("Velocidade Após Colisão");
-			rVelocidadePosColisao.setToolTipText("Equação de Torricceli");
-			atVelocidadePosColisao = new JTextArea(ModeloPainelFormulas.equaTorricceli);
-			addComponentes(pVelocidadePosColisao, rVelocidadePosColisao, prVelocidadePosColisao, atVelocidadePosColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 6, false);
+//			pVelocidadePosColisao = new JPanel(new BorderLayout());
+//			rVelocidadePosColisao = new JLabel("Velocidade Após Colisão");
+//			rVelocidadePosColisao.setToolTipText("Equação de Torricceli");
+//			atVelocidadePosColisao = new JTextArea(ModeloPainelFormulas.equaTorricceli);
+//			addComponentes(pVelocidadePosColisao, rVelocidadePosColisao, prVelocidadePosColisao, atVelocidadePosColisao, UtilidadeCores.azulCeu, UtilidadeCores.laranjaAvermelhado, 6, false);
 			
 			//Nova Posição Após Colisão
-			pNovaPosColisao= new JPanel(new BorderLayout());
-			rNovaPosColisao = new JLabel("Nova Posição Após Colisão");
-			rNovaPosColisao.setToolTipText("Equação horária das abscissas");
-			atNovaPosColisao = new JTextArea(ModeloPainelFormulas.equaHorariaAbscissa);
-			addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6, false);
+//			pNovaPosColisao= new JPanel(new BorderLayout());
+//			rNovaPosColisao = new JLabel("Nova Posição Após Colisão");
+//			rNovaPosColisao.setToolTipText("Equação horária das abscissas");
+//			atNovaPosColisao = new JTextArea(ModeloPainelFormulas.equaHorariaAbscissa);
+//			addComponentes(pNovaPosColisao, rNovaPosColisao, prNovaPosColisao, atNovaPosColisao, UtilidadeCores.azulClaro, UtilidadeCores.vermelho, 6, false);
 		
 		
 		//Lançamento Oblíquo
@@ -248,9 +259,10 @@ public class VisaoPainelFormulas extends JScrollPane{
 	public JTextArea getAtAceleracao() {return atAceleracao;}
 	public JTextArea getAtPosFinal() {return atPosFinal;}
 	public JTextArea getAtTempo() {return atTempo;}
+	public JTextArea getAtNovaV() {return atNovaV;}
 	public JTextArea getAtNovaPos() {return atNovaPos;}
-	public JTextArea getAtColisao() {return atColisao;}
-	public JTextArea getAtNovaPosColisao() {return atNovaPosColisao;}
+//	public JTextArea getAtColisao() {return atColisao;}
+//	public JTextArea getAtNovaPosColisao() {return atNovaPosColisao;}
 	public JTextArea getAtMovimentoHorizontal() {return atMovimentoHorizontal;}
 	public JTextArea getAtMovimentoVertical() {return atMovimentoVertical;}
 	public JTextArea getAtAlcanceTotalHorizontal() {return atAlcanceTotalHorizontal;}
@@ -258,16 +270,16 @@ public class VisaoPainelFormulas extends JScrollPane{
 
 //Setter dos Paineis de Rolagem_______________________________________________
 	//dependendo da simulação estes paineis podem ou não aparecer
-	public void setPVInicial(boolean visivel) {System.out.println("Visível: " +visivel);
-		pVInicial.setVisible(visivel);}
+	public void setPVInicial(boolean visivel) {pVInicial.setVisible(visivel);}
 	public void setPFNormal(boolean visivel) {pFNormal.setVisible(visivel);}
 	public void setPAtrito(boolean visivel) {pAtrito.setVisible(visivel);}
 	public void setPAceleracao(boolean visivel) {pAceleracao.setVisible(visivel);}
 	public void setPPosFinal(boolean visivel) {pPosFinal.setVisible(visivel);}
 	public void setPTempo(boolean visivel) {pTempo.setVisible(visivel);}
+	public void setPNovaV(boolean visivel) {pNovaV.setVisible(visivel);}
 	public void setPNovaPos(boolean visivel) {pNovaPos.setVisible(visivel);}
-	public void setPColisao(boolean visivel) {pColisao.setVisible(visivel);}
-	public void setPNovaPosColisao(boolean visivel) {pNovaPosColisao.setVisible(visivel);}
+//	public void setPColisao(boolean visivel) {pColisao.setVisible(visivel);}
+//	public void setPNovaPosColisao(boolean visivel) {pNovaPosColisao.setVisible(visivel);}
 	public void setpMovimentoHorizontal(boolean visivel) {pMovimentoHorizontal.setVisible(visivel);}
 	public void setpMovimentoVertical(boolean visivel) {pMovimentoVertical.setVisible(visivel);}
 	public void setpAlcanceTotalHorizontal(boolean visivel) {pAlcanceTotalHorizontal.setVisible(visivel);}

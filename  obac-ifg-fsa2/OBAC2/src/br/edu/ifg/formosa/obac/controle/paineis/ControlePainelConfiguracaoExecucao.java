@@ -10,7 +10,6 @@ import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloObjeto;
 import br.edu.ifg.formosa.obac.modelo.ModeloPainelConfiguracao;
-import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelConfiguracao;
 import br.edu.ifg.formosa.obac.visao.VisaoPainelSimulacao;
 
@@ -38,9 +37,8 @@ public class ControlePainelConfiguracaoExecucao {
 		vPC.getBaIniciaPausar().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//Inicia simulação
-				if (vPC.getBaIniciaPausar().getText().equals(mpc.getBotaoIniciar())==true
-					&& cpced.verificaCampos()==true) {
+				//Inicia simulação+++++++++++++++++++++++++++++++++++++++++++++
+				if (vPC.getBaIniciaPausar().getText().equals(mpc.getBotaoIniciar())==true && cpced.verificaCampos()==true) {
 					//Desativar componentes do Painel de Cofiguração
 						cpca.desativaComponentes(false);
 					//____________________________________________________
@@ -49,31 +47,34 @@ public class ControlePainelConfiguracaoExecucao {
 					//____________________________________________________
 					//Início dos testes lógicos para executar
 					//--Propulsão por canhão
-						if (vPC.getCsPropulsao().getSelectedIndex()==0){exeCanhao(); cOBAC.getPainelAbas().setSelectedIndex(1);}
+						if (vPC.getCsPropulsao().getSelectedIndex()==0){
+							exeCanhao();
+							//Retira os listeners case seja LO
+							if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {
+								vPS.getVisaoPropulsao().removeMouseListener(cOBAC.getcCM().getcCML());
+								vPS.getVisaoPropulsao().removeMouseMotionListener(cOBAC.getcCM().getcCML());						
+							}
+						}
 					//--Execução da mola
-						else if (vPC.getCsPropulsao().getSelectedIndex()==1){exeMola(); cOBAC.getPainelAbas().setSelectedIndex(1);}
+						else if (vPC.getCsPropulsao().getSelectedIndex()==1){exeMola();}
 					//--Execução Queda Livre
 						else{
-							mA.getmEV().setEscalaFimYM(Integer.parseInt(vPC.getCtPropulsaoDado1().getText()));
+//							mA.getmEV().setEscalaFimYM(Integer.parseInt(vPC.getCtPropulsaoDado1().getText()));
 							ControleSimulacao.mudaMarcadores(mA.getmEV(), (int)mA.getmEV().getEscalaFimYM());
 							cIS.iniciarSimulacao();
 						}
-					//Retira os listeners case seja LO
-						if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {
-							vPS.getVisaoPropulsao().removeMouseListener(cOBAC.getcCM().getcCML());
-							vPS.getVisaoPropulsao().removeMouseMotionListener(cOBAC.getcCM().getcCML());						
-						}
 					//_________________________________________________
-					//Troca do rótulo do painel
+					//Troca do rótulo deste botão
 					vPC.getBaIniciaPausar().setText(mpc.getBotaoPausar());
 				}
 				
-				//Pausa simulação
+				//Pausa simulação++++++++++++++++++++++++++++++++++++++++++++++
 				else if(vPC.getBaIniciaPausar().getText().equals(mpc.getBotaoPausar())){
 					cIS.getCObjeto().pausar();
 					//Troca do rótulo do painel
 					vPC.getBaIniciaPausar().setText(mpc.getBotaoContinuar());
 				}
+				//Continuar simulação++++++++++++++++++++++++++++++++++++++++++
 				else if(vPC.getBaIniciaPausar().getText().equals(mpc.getBotaoContinuar())){
 					cIS.getCObjeto().continuar();
 					//Troca do rótulo do painel
@@ -81,7 +82,7 @@ public class ControlePainelConfiguracaoExecucao {
 				}
 				
 				//Se vier para cá a simulação deu errado por uma falha no código
-				else{System.err.println("!!!Erro!!!");}
+				else{System.err.println("Erro do botão iniciar/pausar!");}
 			}
 		});
 		
@@ -90,64 +91,24 @@ public class ControlePainelConfiguracaoExecucao {
 		vPC.getBaNovaSimulacao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				//Troca o texto do botão Iniciar/Pausar
+				//Troca o rótulo do botão Para garantir que seja Iniciar Simulação
 				vPC.getBaIniciaPausar().setText(mpc.getBotaoIniciar());
-				//Deixa o slider invisivel
+				//Deixa o slider da mola invisivel
 					vPS.getVisaoAuxiliar().getpCompressor().setVisible(false);
 					vPS.getVisaoAuxiliar().getpCompressor().setEnabled(false);
 				//Para a simulação
 				cIS.getCObjeto().parar();
 				//Reserta os valores do PConfig
+				vPC.getCtPropulsaoDado1().setText("");
 				vPC.getCtPropulsaoDado2().setText("");
-				vPC.getCtObjetoMassa().setText("");
+				vPC.getCtObjetoMassa().setText("");	
 				//____________________________________________________
-				//Troca o rótulo do botão Para garantir que seja Iniciar Simulação
-					vPC.getBaIniciaPausar().setText(mpc.getBotaoIniciar());
-				//____________________________________________________
-				//Reativar componentes do painel de Configuração
+				//Reativar componentes do painel de Configuração, ajustando de acordo com a simulação
 					cpca.desativaComponentes(true);
-				//Ajustes de acordo co a simulação
-					if(vPC.getCsPropulsao().getSelectedIndex()==0
-					   && vPC.getCsAmbienteSimulacao().getSelectedIndex()!=4){
-						vPC.getCtPropulsaoDado1().setEnabled(false);
-						vPC.getCtPropulsaoDado1().setText("0");
-					}
-					else if(vPC.getCsPropulsao().getSelectedIndex()==2){
-						vPC.getCtPropulsaoDado1().setEnabled(false);
-						vPC.getCtPropulsaoDado2().setEnabled(false);
-						vPC.getdObjetoCoeficienteRestituicao().setEnabled(true);
-						vPC.getCtPropulsaoDado2().setText("0");
-					}
-					else{
-						vPC.getCtPropulsaoDado1().setEnabled(true);
-						vPC.getCtPropulsaoDado1().setText("");
-					}
-				//Reposiciona o objeto
-					switch(vPC.getCsAmbienteSimulacao().getSelectedIndex()){
-					case 0:
-						mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
-						mA.getmO().setPosicaoYPx(ModeloObjeto.pPlaYPx);
-						break;
-					case 1:	
-						mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
-						mA.getmO().setPosicaoYPx(ModeloObjeto.pSubYPx);
-						break;
-					case 2:	
-						mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
-						mA.getmO().setPosicaoYPx(ModeloObjeto.pDesYPx);
-						break;
-					case 3:	
-						mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
-						mA.getmO().setPosicaoYPx(ModeloObjeto.pPepYPx);
-						break;
-					case 4:	
-						mA.getmO().setPosicaoXPx(ModeloObjeto.pOblXPx);
-						mA.getmO().setPosicaoYPx(ModeloObjeto.pQueYPx);
-						break;	
-					case 5:	
-						mA.getmO().setPosicaoXPx(ModeloObjeto.pQueXPx);
-						mA.getmO().setPosicaoYPx(ModeloObjeto.pOblYPx);
-						break;
-					}
+					
+				//Reposicionamento do objeto
+					reposicionaObjetos();
 					
 				//Readiciona o listener do canhao case seja LO
 					if (vPC.getCsAmbienteSimulacao().getSelectedIndex() == 4) {
@@ -158,6 +119,9 @@ public class ControlePainelConfiguracaoExecucao {
 						vPS.getVisaoPropulsao().removeMouseListener(cOBAC.getcCM().getcCML());
 						vPS.getVisaoPropulsao().removeMouseMotionListener(cOBAC.getcCM().getcCML());						
 					}
+					
+				//Deixa este botão invisível
+					vPC.getBaNovaSimulacao().setVisible(false);
 				//Repinta
 					zeraModelos();
 					mA.getmEH().setEscalaFimXM(100);
@@ -176,7 +140,6 @@ public class ControlePainelConfiguracaoExecucao {
 				Double.parseDouble(vPC.getCtPropulsaoDado2().getText().replace(",", ".")));
 		
 		mA.getmP().getmC().calculaVelocidade(); //Velocidade do canhão
-		vPC.getBaNovaSimulacao().setVisible(true);
 		
 		cIS.iniciarSimulacao();
 	}
@@ -229,4 +192,33 @@ public class ControlePainelConfiguracaoExecucao {
 		mA.getmS().setForcaAtrito(0);
 	}
 	
+	//Reposiciona o objeto
+	private void reposicionaObjetos(){
+		switch(vPC.getCsAmbienteSimulacao().getSelectedIndex()){
+		case 0:
+			mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
+			mA.getmO().setPosicaoYPx(ModeloObjeto.pPlaYPx);
+			break;
+		case 1:	
+			mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
+			mA.getmO().setPosicaoYPx(ModeloObjeto.pSubYPx);
+			break;
+		case 2:	
+			mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
+			mA.getmO().setPosicaoYPx(ModeloObjeto.pDesYPx);
+			break;
+		case 3:	
+			mA.getmO().setPosicaoXPx(ModeloObjeto.pXPadPx);
+			mA.getmO().setPosicaoYPx(ModeloObjeto.pPepYPx);
+			break;
+		case 4:	
+			mA.getmO().setPosicaoXPx(ModeloObjeto.pOblXPx);
+			mA.getmO().setPosicaoYPx(ModeloObjeto.pQueYPx);
+			break;	
+		case 5:	
+			mA.getmO().setPosicaoXPx(ModeloObjeto.pQueXPx);
+			mA.getmO().setPosicaoYPx(ModeloObjeto.pOblYPx);
+			break;
+		}
+	}
 }

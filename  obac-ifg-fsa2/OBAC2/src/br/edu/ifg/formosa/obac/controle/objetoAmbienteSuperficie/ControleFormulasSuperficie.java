@@ -76,7 +76,7 @@ public class ControleFormulasSuperficie {
 				return pontoFinalEscala;
 		}
 		
-	//Calcula escala Queda Livre
+	//Calcula escala Queda Livre e do Plano e Precipício
 	public void calculaEscalaVerticalPadrao(){
 		long pontoFinalEscala=1000;//Esta escala possui o tamanho fixo de 1000 Metros
 		ma.getmEV().setEscalaFimYM(pontoFinalEscala);

@@ -83,7 +83,7 @@ public class ControleSimulacao {
 						vps.getVisaoEscalaV().setVisible(true); //Escala Vertical fica visivel
 					break;
 				case 5://Queda
-						mudaModeloEscala(mA.getmEV(), 320, 496, 320, 104);
+						mudaModeloEscala(mA.getmEV(), 320, 496, 320, 134);
 						mudaAngulo(mA, 0, false);
 						mudaTranslate(mA, 0, 0);
 						mudaPosObjeto(mA.getmO(), ModeloObjeto.pQueXPx, ModeloObjeto.pQueYPx);

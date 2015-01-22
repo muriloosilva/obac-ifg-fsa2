@@ -21,13 +21,13 @@ public class ControleSuperficie {
 			public void actionPerformed(ActionEvent e) {
 				switch(vPC.getCsAmbienteAtrito().getSelectedIndex()) {
 					case 0:
-						mS.setCoefAtritoSelecionado(mS.atritoAsfalto);
+						mS.setCoefAtritoSelecionado(ModeloSuperficie.atritoAsfalto);
 						break;
 					case 1:
-						mS.setCoefAtritoSelecionado(mS.atritoAluminio);
+						mS.setCoefAtritoSelecionado(ModeloSuperficie.atritoAluminio);
 						break;
 					case 2:
-						mS.setCoefAtritoSelecionado(mS.atritoMadeira);
+						mS.setCoefAtritoSelecionado(ModeloSuperficie.atritoMadeira);
 						
 				}
 				cOBAC.repinta();

@@ -30,8 +30,7 @@ public class ControleMolaSolturaDeslizante implements Runnable{
 		//É calculada a velocidade de lançamento do objeto
 		ma.getmP().getModeloMola().calculaVelocidadeLancamento();
 		
-		//Torna visível o botão de nova simulação
-		vPC.getBaNovaSimulacao().setVisible(true);
+		//Iniciar a thread de retorno da mola
 		t = new Thread(this);
 		t.start();
 	}
