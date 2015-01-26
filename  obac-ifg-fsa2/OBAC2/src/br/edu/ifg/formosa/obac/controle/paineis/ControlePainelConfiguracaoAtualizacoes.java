@@ -258,6 +258,9 @@ public class ControlePainelConfiguracaoAtualizacoes {
 		}
 		else if(vpc.getCsPropulsao().getSelectedIndex()==2){//Queda
 			if(ativado){
+				vpc.getCtPropulsaoDado1().setEnabled(!ativado);
+				vpc.getCtPropulsaoDado1().setText("1000");
+				vpc.getCtPropulsaoDado2().setEnabled(!ativado);
 				vpc.getdObjetoCoeficienteRestituicao().setEnabled(ativado);
 				vpc.getCsAmbienteAtrito().setEnabled(!ativado);
 				vpc.getCsAmbienteSimulacao().setEnabled(!ativado);
