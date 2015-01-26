@@ -261,6 +261,7 @@ public class ControlePainelConfiguracaoAtualizacoes {
 				vpc.getCtPropulsaoDado1().setEnabled(!ativado);
 				vpc.getCtPropulsaoDado1().setText("1000");
 				vpc.getCtPropulsaoDado2().setEnabled(!ativado);
+				vpc.getCtPropulsaoDado2().setText("0");
 				vpc.getdObjetoCoeficienteRestituicao().setEnabled(ativado);
 				vpc.getCsAmbienteAtrito().setEnabled(!ativado);
 				vpc.getCsAmbienteSimulacao().setEnabled(!ativado);

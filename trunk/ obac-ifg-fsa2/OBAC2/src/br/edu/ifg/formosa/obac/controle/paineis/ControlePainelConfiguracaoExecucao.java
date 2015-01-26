@@ -168,7 +168,7 @@ public class ControlePainelConfiguracaoExecucao {
 		mA.getmEV().setEscalaFimXM(0);
 		mA.getmEH().setEscalaFimYM(0);
 		mA.getmO().setAceleracao(0);
-		mA.getmO().setAceleracaoY(0);
+//		mA.getmO().setAceleracaoY(0);
 		mA.getmO().setCoefRestituicao(0);
 		mA.getmO().setForcaNormal(0);
 		mA.getmO().setMassa(0);
