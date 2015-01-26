@@ -13,8 +13,8 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 	private boolean continuar = true;///Variï¿½vel usada para pausar a simulaï¿½ï¿½o
 	private boolean subida = false;
 	private boolean primeiraQueda = true;
-	private double soma = 0.0;
-	private double tempoLocal = 0.0;
+//	private double soma = 0.0;
+//	private double tempoLocal = 0.0;
 	double escala = 0.0;
 
 	private ModeloAmbiente ma;
@@ -72,9 +72,9 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 		while(true){
 			
 			if(continuar){
-				//Aceleração>0 = Queda no final (bateu)
+				//Aceleração>0 = Final da queda (bateu)
 				if(ma.getmO().getAceleracao()>0 && bateu()){
-					System.out.println("Here");
+					System.out.println("Here|Inicio subida");
 					ma.getmO().setVelocidadeInicial(ma.getmO().getCoefRestituicao()*ma.getmO().getVelocidade());//V0=V*CoefR.
 					ma.getmO().setPosicaoInicialYM(0);
 					ma.getmO().setPosicaoYMetros(0);
@@ -85,23 +85,32 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 					
 					if(velocidadeZero())break;
 				}
-				//Aceleração<0 = Subida no final (caiu de novo)
+				//Aceleração<0 = Final da Subida (caiu de novo)
 				if(ma.getmO().getAceleracao()<0 && velocidadeZero()){
-					System.out.println("There");
+					System.out.println("There|Inico da queda");
 					ma.getmO().setVelocidadeInicial(0);//V0=0
+					ma.getmO().setVelocidade(0);
 					ma.getmO().setPosicaoInicialYM(ma.getmO().getPosicaoYMetros());
 					acoesInversas();
 				}
+				
+				//Systens
+				System.out.println("getPosicaoYMetros(): " +ma.getmO().getPosicaoYMetros());
+				System.out.println("getVelocidade(): " +ma.getmO().getVelocidade());
+				System.out.println("getVelocidadeInicial(): " +ma.getmO().getVelocidadeInicial());
+				System.out.println("getTempoAtual(): " +ma.getTempoAtual());
+				System.out.println("getTempoTotal(): " +ma.getTempoTotal());
+				System.out.println("________________________________________");
 				
 				//Movimentação do objeto
 				ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
 				ma.getmO().setVelocidade(ma.getmO().getVelocidadeInicial()+ma.getmO().getAceleracao()*ma.getTempoAtual());
 					
 //				cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoYMetros());
-				if(!subida){
-					cfo.calculaNovaPosicaoY(1000);//Queda
-				}else	{
-					cfo.calculaNovaPosicaoY(0);//Subida
+				if(!subida){//Queda
+					cfo.calculaNovaPosicaoY(1000);
+				}else{//Subida
+					cfo.calculaNovaPosicaoY(0);
 					ma.getmO().setPosicaoYMetros(ma.getmO().getPosicaoYMetros() * (-1));
 				}
 				
@@ -129,7 +138,7 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 	//---Verifica o momento do impacto do objeto
 	private boolean bateu(){
 		if(ma.getmO().getPosicaoYPx()>(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), 0) - 30)){
-			System.out.println("Hitted");
+			System.out.println("Hitted|Bateu");
 			return true;
 		}
 		return false;
@@ -137,7 +146,7 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 	//---Verifica o ponto máximo da subida (ou a aprada total do objeto) 
 	private boolean velocidadeZero(){
 		if(ma.getmO().getVelocidade()<=0){
-			System.out.println("Zero");
+			System.out.println("Zero|V<=0");
 			return true;
 		}
 		return false;
@@ -146,12 +155,13 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 	//-----em que as partes da simulação vão se inverter de queda para impacto e vice-versa
 	//-----deve ser chamado após  o set da nova velocidade
 	private void acoesInversas(){
-		System.out.println("Change");
+		System.out.println("Change|Ações inversas");
 		ma.getmO().setAceleracao(ma.getmO().getAceleracao()*(-1));//A=-A
 		ma.getmO().setVelocidade(ma.getmO().getVelocidadeInicial());//V=V0
 		ma.setTempoTotal(ma.getTempoTotal()+ma.getTempoAtual());//TempoT+=TempoA
-		ma.setTempoAtual(0);//TempoA=0
+		ma.setTempoAtual(atrasoSPadrao);//TempoA=0
 		subida=!subida;
+//		this.primeiraQueda=false;
 	}
 
 	//Continuar
