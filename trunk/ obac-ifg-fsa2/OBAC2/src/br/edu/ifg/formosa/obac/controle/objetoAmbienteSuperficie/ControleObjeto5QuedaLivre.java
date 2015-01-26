@@ -1,7 +1,5 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
-import javax.swing.JOptionPane;
-
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
@@ -14,7 +12,7 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 	private final double atrasoSPadrao = 0.04;//Valor do tempo que ï¿½ incrementado a cada nova posiï¿½ï¿½o
 	private boolean continuar = true;///Variï¿½vel usada para pausar a simulaï¿½ï¿½o
 	private boolean subida = false;
-	private boolean descida = true;
+	private boolean primeiraQueda = true;
 	private double soma = 0.0;
 	private double tempoLocal = 0.0;
 	double escala = 0.0;
@@ -41,6 +39,8 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 		cfs.calculaForcaAtritoQueda();
 		cfo.calculaAceleracaoQueda();
 		cfs.calculaEscalaVerticalPadrao();
+		
+		this.primeiraQueda=true;
 		
 		//Repinta o painel de fórmulas
 		vpf.repaint();
@@ -98,8 +98,9 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 				ma.getmO().setVelocidade(ma.getmO().getVelocidadeInicial()+ma.getmO().getAceleracao()*ma.getTempoAtual());
 					
 //				cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoYMetros());
-				if(!subida) cfo.calculaNovaPosicaoY(1000);//Queda
-				else	{
+				if(!subida){
+					cfo.calculaNovaPosicaoY(1000);//Queda
+				}else	{
 					cfo.calculaNovaPosicaoY(0);//Subida
 					ma.getmO().setPosicaoYMetros(ma.getmO().getPosicaoYMetros() * (-1));
 				}
@@ -125,8 +126,6 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 	}
 	
 	//Métodos privados
-	//---Movimento feito pelo objeto
-	private void movimenta(){}
 	//---Verifica o momento do impacto do objeto
 	private boolean bateu(){
 		if(ma.getmO().getPosicaoYPx()>(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), 0) - 30)){
