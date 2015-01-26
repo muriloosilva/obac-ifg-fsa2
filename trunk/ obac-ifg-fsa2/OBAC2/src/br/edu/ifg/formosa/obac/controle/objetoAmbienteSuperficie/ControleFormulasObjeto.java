@@ -128,13 +128,13 @@ public class ControleFormulasObjeto {
 	
 	//Velocidade após colisão do objeto - V²=V0^2+2*a*ΔS
 	public void calculaVelocidadeTorricelli(double posicaoM){
-		ma.getmO().setVelocidade(Math.sqrt(
-			(
-				(ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())
-//				((ma.getmO().getVelocidade()*2)
-				+(2*ma.getmO().getAceleracao()*posicaoM)//ma.getmO().getPosicaoXMetros()
-			)
-		));
+		double v;
+		try{
+			v=Math.sqrt(((ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())+(2*ma.getmO().getAceleracao()*posicaoM)));
+		}catch(NumberFormatException e){
+			v=0;
+		}
+		ma.getmO().setVelocidade(v);
 		//Manda para o painel de fórmulas
 //Criar esquema para ser usado em dois paineis (normal e pos colisão)
 		vpf.getAtNovaV().setText(
