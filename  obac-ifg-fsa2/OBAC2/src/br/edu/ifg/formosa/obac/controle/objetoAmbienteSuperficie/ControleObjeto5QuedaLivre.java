@@ -10,8 +10,8 @@ import br.edu.ifg.formosa.obac.visao.VisaoPainelFormulas;
 public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runnable{
 
 	//CONSTANTES
-	private final int ATRASO_MS = 20;//Atraso da thread usado no Sleep (20 milisegundos)
-	private final double ATRASO_PADRAO = 0.04;//Valor do tempo que ï¿½ incrementado a cada nova posiï¿½ï¿½o
+	private final int atrasoMS = 20;//Atraso da thread usado no Sleep (20 milisegundos)
+	private final double atrasoSPadrao = 0.04;//Valor do tempo que ï¿½ incrementado a cada nova posiï¿½ï¿½o
 	private boolean continuar = true;///Variï¿½vel usada para pausar a simulaï¿½ï¿½o
 	private boolean subida = false;
 	private boolean descida = true;
@@ -41,7 +41,7 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 		cfs.calculaForcaAtritoQueda();
 		cfo.calculaAceleracaoQueda();
 		cfs.calculaEscalaVerticalPadrao();
-
+		
 		//Repinta o painel de fórmulas
 		vpf.repaint();
 		
@@ -50,13 +50,14 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 		System.out.println("Escala: "+escala);
 		System.out.println("Coeficiente de Restituição: "+ma.getmO().getCoefRestituicao());
 		System.out.println("Fim da escala Pixel: "+ma.getmEV().getEscalaFimYPix());
-		ma.getmO().setPosicaoYMetros(1000);
+//		ma.getmO().setPosicaoYMetros(1000);Desnecessário isso
+//		ma.getmO().setPosicaoInicialYM(1000);E isso também
 		
 		//Início da thread
 		t = new Thread(this);
 		t.start();
 
-
+		System.out.println("Aceleração: " +ma.getmO().getAceleracao());
 
 
 		/*objectControl.calculaNormal(); --
@@ -68,150 +69,90 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 
 	@Override
 	public void run() {
-
 		while(true){
 			
 			if(continuar){
-				
-				/*double velocidadeFinal1;
-				//1ª Queda Livre
-				if(ma.getmO().getPosicaoYPx() >= 470){
-					System.out.println("soma: "+soma);
-					//Inverte o valor da aceleração
-					if(ma.getmO().getAceleracao() < 0){
-						ma.getmO().setAceleracao(ma.getmO().getAceleracao() *  (-1));
-					}
-					
-					ma.getmO().setPosicaoYPx(470);
-					int velocidadeFinal2 = 0;
-					
-					if(soma>=0 && !queda){
-						System.out.println("Primeiro");
-						velocidadeFinal2 = (int)(0 + 2 * ma.getmO().getAceleracao() * (soma * escala));
-					}
-					else{
-						System.out.println("SEGUNDA");
-						velocidadeFinal2 = (int)((ma.getmO().getVelocidadeInicial() * ma.getmO().getVelocidadeInicial()) + 
-								2 * ma.getmO().getAceleracao() * (ma.getmEV().getEscalaFimYM()));
-																//Variaï¿½ï¿½o de espaï¿½o
-					}
-					
-					soma = 0;
-					double vf = Math.sqrt(velocidadeFinal2);
-					
-					velocidadeFinal1 =
-							vf*(ma.getmO().getMassa()- 1000000000 *ma.getmO().getCoefRestituicao())/
-							(ma.getmO().getMassa() + 1000000000)*(-1);
-					
-					if(velocidadeFinal1 <=0)
-						continuar = false;
-					
-					ma.getmO().setVelocidadeInicial(velocidadeFinal1);
-					ma.getmO().setAceleracao(ma.getmO().getAceleracao() * (-1));
-					ma.setTempoAtual(0.04);
-					queda = false;			
-					
-				}
-				
-				if(queda){
-					
-					cfo.calculaNovaPosicaoY();
-					
-					ma.getmO().setPosicaoYPx(604 -
-							UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
-					
-				}
-				else{
-					cfo.calculaNovaPosicaoY();
-					
-                	//novaPosicï¿½o ï¿½ igual ao solo - posicaoAtualYPixel
-                	double novaPosicao = 470 - ma.getmO().getPosicaoYMetros() / escala;
-                	//- (environment.getObjeto().getPosicaoAtualY()/environment.getSurface().getEscala())
-	                if(novaPosicao <= (ma.getmO().getPosicaoYPx())){
-	                	System.out.println("PY: "+ma.getmO().getPosicaoYMetros());
-	                	soma = (ma.getmO().getPosicaoYMetros() / escala);
-	                }
-	                ma.getmO().setPosicaoYPx((int)novaPosicao);	
-	                
-				}*/
-				
-				/*if(ma.getmO().getPosicaoYPx() < (UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), 0) - 30)){
-					ma.getmO().setVelocidade(ma.getGravSelecionada() * tempoLocal);
-					ma.getmO().setPosicaoYMetros(1000 - (ma.getmO().getVelocidade() * Math.pow(ma.getTempoAtual(), 2) * 0.5));
-				}*/
-				
-				//Atualiza o tempo
-				ma.setTempoAtual(ma.getTempoAtual()+ATRASO_PADRAO);
-				ma.setTempoTotal(ma.getTempoTotal()+ma.getTempoTotal());
-				tempoLocal += ATRASO_PADRAO;
-				
-//				ma.getmO().setVelocidade(ma.getGravSelecionada() * tempoLocal);
-//				System.out.println("Velocidade: " +ma.getmO().getVelocidade());
-//				cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoYMetros());
-//				ma.getmO().setPosicaoYMetros(1000 - (ma.getmO().getVelocidade() * Math.pow(ma.getTempoAtual(), 2) * 0.5));	
-				
-				//DESCIDA++++++++++++++++++++++++++++++++++++++++++++++++++++++
-				if(descida && ma.getmO().getPosicaoYPx() < (UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), 0) - 30)){
-//					ma.getmO().setVelocidade(ma.getGravSelecionada() * tempoLocal);
-					cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoYMetros());
-					ma.getmO().setPosicaoYMetros(1000 - (ma.getmO().getVelocidade() * Math.pow(ma.getTempoAtual(), 2) * 0.5));	
-					System.out.println("Here|Descendo --- " +ma.getmO().getPosicaoYMetros());
-				}else if(descida && ma.getmO().getPosicaoYPx() >= (UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), 0) - 30)){
-					descida = false;	subida = true;
-					tempoLocal = ATRASO_PADRAO;
-					ma.setTempoAtual(tempoLocal);
-//					ma.getmO().setAceleracao(ma.getmO().getAceleracao() * ma.getmO().getCoefRestituicao() * (-1));
-					ma.getmO().setVelocidadeInicial(ma.getmO().getVelocidade()*ma.getmO().getCoefRestituicao());;
-					
-					if(ma.getmO().getAceleracao() > 0)
-						ma.getmO().setAceleracao(ma.getmO().getAceleracao() * (-1));
-					
-					ma.getmO().setPosicaoYPx((UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), 0) - 30));
+				//Aceleração>0 = Queda no final (bateu)
+				if(ma.getmO().getAceleracao()>0 && bateu()){
+					System.out.println("Here");
+					ma.getmO().setVelocidadeInicial(ma.getmO().getCoefRestituicao()*ma.getmO().getVelocidade());//V0=V*CoefR.
+					ma.getmO().setPosicaoInicialYM(0);
 					ma.getmO().setPosicaoYMetros(0);
+					acoesInversas();
 					
-					if(ma.getmO().getVelocidadeInicial()<=0){System.err.println("Fim QL!");break;}
-					System.out.println("Bateu");
-				}else{
-					System.err.println("E?");
-//					break;
+					cfo.calculaNovaPosicaoY(0);//Subida
+					ma.getmO().setPosicaoYMetros(ma.getmO().getPosicaoYMetros() * (-1));
+					
+					if(velocidadeZero())break;
+				}
+				//Aceleração<0 = Subida no final (caiu de novo)
+				if(ma.getmO().getAceleracao()<0 && velocidadeZero()){
+					System.out.println("There");
+					ma.getmO().setVelocidadeInicial(0);//V0=0
+					ma.getmO().setPosicaoInicialYM(ma.getmO().getPosicaoYMetros());
+					acoesInversas();
 				}
 				
-				//SUBIDA+++++++++++++++++++++++++++++++++++++++++++++++++++++++
-				if(subida && ma.getmO().getVelocidade() > 0){
-					ma.getmO().setVelocidade(ma.getmO().getAceleracao() * tempoLocal);
-//					cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoYMetros());
-					ma.getmO().setPosicaoYMetros(-1*(ma.getmO().getVelocidade() * Math.pow(ma.getTempoAtual(), 2) * 0.5));
-					System.out.println("Subida --- " +ma.getmO().getPosicaoYMetros());
-					try {	t.sleep(500);	}
-					catch (InterruptedException e) {System.err.println("Erro na Thread!");}
-				} else if(subida && ma.getmO().getVelocidade() <= 0){
-					subida = false;		descida = true;
-					tempoLocal = 0;
-					if(ma.getmO().getAceleracao() < 0)
-						ma.getmO().setAceleracao(ma.getmO().getAceleracao() * (-1));
-					System.out.println("Descendo");
+				//Movimentação do objeto
+				ma.setTempoAtual(ma.getTempoAtual()+atrasoSPadrao);
+				ma.getmO().setVelocidade(ma.getmO().getVelocidadeInicial()+ma.getmO().getAceleracao()*ma.getTempoAtual());
+					
+//				cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoYMetros());
+				if(!subida) cfo.calculaNovaPosicaoY(1000);//Queda
+				else	{
+					cfo.calculaNovaPosicaoY(0);//Subida
+					ma.getmO().setPosicaoYMetros(ma.getmO().getPosicaoYMetros() * (-1));
 				}
-				
-				//Repinta o painel para mostar o andamento da simulaï¿½ï¿½o
-				ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
-				cOBAC.repinta();
-				vpf.repaint();
-				//Repinta o painel de fï¿½rmulas
-				vpf.repaint();
-//				System.out.println("-+-+-+-+-+-+-+-+-+-+-+-");
 				
 				//Parada no carregamento para dar o realismo da simulação
 				//Esta ocorre no final para possibilitar a pausa da simulação
-					try {	t.sleep(ATRASO_MS);	}
+					try {	t.sleep(atrasoMS);	}
 					catch (InterruptedException e) {System.err.println("Erro na Thread!");}
 			}
-				//Repinta o painel para mostar o andamento da simulaï¿½ï¿½o
-				ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
+				//Repinta o painel para mostar o andamento da simulação
+				ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros())-30);
+				//__> Aqui está subitraindo 30px pois os mesmos foram retirados da escala
+				//____Por hora corrigiu o impacto com o solo, mas a parte da decida continua falha
+				//____COm o coeficiente em 1 a simulação funciona bem, exceto por um glitche no momento da queda
+				
+				
+				
 				cOBAC.repinta();
 				vpf.repaint();
-				//Repinta o painel de fï¿½rmulas
+				//Repinta o painel de fórmulas
 				vpf.repaint();
 		}
+	}
+	
+	//Métodos privados
+	//---Movimento feito pelo objeto
+	private void movimenta(){}
+	//---Verifica o momento do impacto do objeto
+	private boolean bateu(){
+		if(ma.getmO().getPosicaoYPx()>(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), 0) - 30)){
+			System.out.println("Hitted");
+			return true;
+		}
+		return false;
+	}
+	//---Verifica o ponto máximo da subida (ou a aprada total do objeto) 
+	private boolean velocidadeZero(){
+		if(ma.getmO().getVelocidade()<=0){
+			System.out.println("Zero");
+			return true;
+		}
+		return false;
+	}
+	//---Usado tanto na subida quanto na descida para quando realizam ações comuns nos momentos
+	//-----em que as partes da simulação vão se inverter de queda para impacto e vice-versa
+	//-----deve ser chamado após  o set da nova velocidade
+	private void acoesInversas(){
+		System.out.println("Change");
+		ma.getmO().setAceleracao(ma.getmO().getAceleracao()*(-1));//A=-A
+		ma.getmO().setVelocidade(ma.getmO().getVelocidadeInicial());//V=V0
+		ma.setTempoTotal(ma.getTempoTotal()+ma.getTempoAtual());//TempoT+=TempoA
+		ma.setTempoAtual(0);//TempoA=0
+		subida=!subida;
 	}
 
 	//Continuar

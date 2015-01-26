@@ -115,12 +115,12 @@ public class ControleFormulasObjeto {
 	}
 	
 	//Calcula Novas posições Y do objeto - s=s0+v0*t+(a*t^2)/2
-	public void calculaNovaPosicaoY(){
+	public void calculaNovaPosicaoY(int correcao){
 		ma.getmO().setPosicaoYMetros(
-				//S0 = 0
+				correcao-(ma.getmO().getPosicaoInicialYM()+
 				(ma.getmO().getVelocidadeInicial()*ma.getTempoAtual())
 				+((ma.getmO().getAceleracao()*ma.getTempoAtual()*ma.getTempoAtual())/2)
-				);
+				));
 		//Manda para o painel de fórmulas
 		vpf.getAtNovaPos().setText(
 				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempoAtual(), ma.getmO().getAceleracao()));
