@@ -46,9 +46,10 @@ public class ModeloObjeto {
 	
 	private double velocidade;//Esta se torna desnecessária se a velocidade não mudar
 	private double velocidadeInicial = 0;
+	private double velocidadeY = 0; //Utilizada no P&P
 	
 	private double aceleracao;
-	private double posicaoInicialYM;
+	private double aceleracaoY;
 	
 	private double posicaoXMetros = 0;	//Posicao em Metros
 	private double posicaoYMetros = 0;
@@ -77,17 +78,19 @@ public class ModeloObjeto {
 	public double getVelocidade() {return velocidade;}
 	public double getVelocidadeInicial() {return velocidadeInicial;}
 	public double getAceleracao() {return aceleracao;}
-	public double getPosicaoInicialYM() {return posicaoInicialYM;}
+	public double getAceleracaoY() {return aceleracaoY;}
 	public double getPosicaoXMetros() {return posicaoXMetros;}
 	public double getPosicaoYMetros() {return posicaoYMetros;}
 	public double getForcaNormal(){return forcaNormal;}
 	public double getPosFinalXMetros(){return posFinalXMetros;}
 	public double getPosFinalYMetros(){return posFinalYMetros;}
+	public double getVelocidadeY() {return velocidadeY;}
 	
 	//Setters
 	public void setMassa(double massa) {this.massa = massa;}
 	public void setCoefRestituicao(double coefRestituicao) {this.coefRestituicao = coefRestituicao;}
-	public void setPosicaoInicialYM(double posicaoInicialYM) {this.posicaoInicialYM = posicaoInicialYM;}
+	public void setAceleracaoY(double aceleracaoY) {this.aceleracaoY = aceleracaoY;}
+	public void setVelocidadeY(double velocidadeY) {this.velocidadeY = velocidadeY;}
 	public void setPosicaoXPx(int posicaoXPx) {this.posicaoXPx = posicaoXPx;}
 	public void setPosicaoYPx(int posicaoYPx) {this.posicaoYPx = posicaoYPx;}
 	public void setPosFinalXPix(int posFinalXPix){this.posFinalXPix = posFinalXPix;}
