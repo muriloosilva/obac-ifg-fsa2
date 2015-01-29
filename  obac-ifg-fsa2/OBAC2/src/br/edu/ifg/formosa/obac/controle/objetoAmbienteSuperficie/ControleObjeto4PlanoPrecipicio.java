@@ -1,6 +1,7 @@
 package br.edu.ifg.formosa.obac.controle.objetoAmbienteSuperficie;
 
 import br.edu.ifg.formosa.obac.controle.obac.ControleOBAC;
+import br.edu.ifg.formosa.obac.controle.simulacao.ControleSimulacao;
 import br.edu.ifg.formosa.obac.modelo.ModeloAmbiente;
 import br.edu.ifg.formosa.obac.modelo.ModeloEscala;
 import br.edu.ifg.formosa.obac.utilidades.UtilidadeConvercoesEscala;
@@ -14,7 +15,9 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 	//Variáveis
 	private boolean iniciouPrecipicio = false;
 	private boolean continuar = true;///Variável usada para pausar a simulação
-	private double velX = 0;
+	private double posInicialXQueda = 0;
+	private double tempoLocal = 0;
+	private double incrementoQueda = 0;
 	private Thread t = null;//Thread
 	//Variáveis do OBAC
 	//-----Modelos
@@ -51,6 +54,7 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 		//Repinta o painel de fórmulas
 		vpf.repaint();
 
+		ControleSimulacao.mudaMarcadores(ma.getmEH(), 2000);
 		ma.getmO().setPosicaoYMetros(ma.getmEV().getMarcadoresEscala()[ModeloEscala.qtdMarcadores]);
 
 		//Início da thread
@@ -70,8 +74,8 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 					//Movimento na parte do plano
 					if(ma.getmO().getPosicaoXPx()<=329){
 						if(torriceli)
-							//Atualiza a velocidade
-							cfo.calculaVelocidadeTorricelli(ma.getmO().getPosicaoXMetros());
+						//Atualiza a velocidade
+						cfo.calculaVelocidadeTorricelli();
 						//Calcula nova posição em METROS
 						cfo.calculaNovaPosicao();
 						//Converte a posição em METROS para PIXEL para poder movimentar o objeto
@@ -84,20 +88,33 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 					else{
 						if(!iniciouPrecipicio){
 							ma.getmO().setPosicaoXPx(331);
+							ma.getmO().setPosicaoYMetros(0);
+							ma.getmO().setVelocidadeY(0);
+							ma.getmO().setVelocidadeInicial(ma.getmO().getVelocidade());
+							ma.setTempoTotal(ma.getTempoAtual());
+							ma.setTempoAtual(0);
+							
+							double metro = UtilidadeConvercoesEscala.pixelParaMetroH(ma.getmEH(), 202);
+							tempoLocal = metro / ma.getmO().getVelocidadeInicial();
+									
 							iniciouPrecipicio = true;
-						}
+						}						
 						
+						ma.getmO().setPosicaoXMetros(ma.getmO().getVelocidadeInicial() * tempoLocal);
 						
+						ma.getmO().setVelocidadeY(ma.getGravSelecionada() * ma.getTempoAtual());
+						ma.getmO().setPosicaoYMetros(ma.getmO().getVelocidadeY() * ma.getTempoAtual() * 0.5);
 						
-						//ma.getmP().getmC().novoY();
 						
 						ma.getmO().setPosicaoXPx(UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
-						//ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
+						ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
 						
 						cOBAC.repinta();
 						
 						//Atualiza o tempo
 						ma.setTempoAtual(ma.getTempoAtual() + atrasoSPadrao);
+						tempoLocal += atrasoSPadrao;
+						System.out.println("Tempo: " + tempoLocal);
 					}
 					//Comandos abaixo ficam fora das condições pois pertencem a ambas
 					//Repinta o painel para mostar o andamento da simulação
