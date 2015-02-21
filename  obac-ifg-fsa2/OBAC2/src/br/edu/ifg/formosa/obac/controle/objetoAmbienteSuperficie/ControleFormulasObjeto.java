@@ -115,12 +115,12 @@ public class ControleFormulasObjeto {
 	}
 	
 	//Calcula Novas posições Y do objeto - s=s0+v0*t+(a*t^2)/2
-	public void calculaNovaPosicaoY(int correcao){
+	public void calculaNovaPosicaoY(){
 		ma.getmO().setPosicaoYMetros(
-				correcao-(ma.getmO().getPosicaoInicialYM()+
+				ma.getmO().getPosicaoInicialYM()+
 				(ma.getmO().getVelocidadeInicial()*ma.getTempoAtual())
 				+((ma.getmO().getAceleracao()*ma.getTempoAtual()*ma.getTempoAtual())/2)
-				));
+				);
 		//Manda para o painel de fórmulas
 		vpf.getAtNovaPos().setText(
 				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempoAtual(), ma.getmO().getAceleracao()));
@@ -128,13 +128,9 @@ public class ControleFormulasObjeto {
 	
 	//Velocidade após colisão do objeto - V²=V0^2+2*a*ΔS
 	public void calculaVelocidadeTorricelli(double posicaoM){
-		double v;
-		try{
-			v=Math.sqrt(((ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())+(2*ma.getmO().getAceleracao()*posicaoM)));
-		}catch(NumberFormatException e){
-			v=0;
-		}
-		ma.getmO().setVelocidade(v);
+		double v=((ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())+(2*ma.getmO().getAceleracao()*posicaoM));
+		if(v<0)	ma.getmO().setVelocidade(0);
+		else 	ma.getmO().setVelocidade(Math.sqrt(v));
 		//Manda para o painel de fórmulas
 //Criar esquema para ser usado em dois paineis (normal e pos colisão)
 		vpf.getAtNovaV().setText(

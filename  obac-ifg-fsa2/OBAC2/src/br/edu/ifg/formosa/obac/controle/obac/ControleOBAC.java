@@ -168,7 +168,7 @@ public class ControleOBAC {
 		//Repintar Applet
 			vPC.getCsPropulsao().setSelectedIndex(2);
 			vPC.getCtObjetoMassa().setText("10");
-			vPC.getdObjetoCoeficienteRestituicao().setValue(vPC.getdObjetoCoeficienteRestituicao().getMaximum());
+			vPC.getdObjetoCoeficienteRestituicao().setValue(68);
 			obac.repaint();
 	}
 	
