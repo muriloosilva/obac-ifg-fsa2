@@ -49,9 +49,9 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 		this.cacheAltura=ma.getmO().getPosicaoInicialYM();
 		ma.getmO().setPosFinalYMetros(cacheAltura*ma.getmO().getCoefRestituicao());
 
-		System.out.println("Escala: "+escala);
-		System.out.println("Coeficiente de Restituição: "+ma.getmO().getCoefRestituicao());
-		System.out.println("Fim da escala Pixel: "+ma.getmEV().getEscalaFimYPix());
+//		System.out.println("Escala: "+escala);
+//		System.out.println("Coeficiente de Restituição: "+ma.getmO().getCoefRestituicao());
+//		System.out.println("Fim da escala Pixel: "+ma.getmEV().getEscalaFimYPix());
 		//		ma.getmO().setPosicaoYMetros(1000);Desnecessário isso
 		//		ma.getmO().setPosicaoInicialYM(1000);E isso também
 		
@@ -59,7 +59,7 @@ public class ControleObjeto5QuedaLivre implements ControleObjeto0Generico, Runna
 		t = new Thread(this);
 		t.start();
 
-		System.out.println("Aceleração: " +ma.getmO().getAceleracao());
+//		System.out.println("Aceleração: " +ma.getmO().getAceleracao());
 
 
 		/*objectControl.calculaNormal(); --
