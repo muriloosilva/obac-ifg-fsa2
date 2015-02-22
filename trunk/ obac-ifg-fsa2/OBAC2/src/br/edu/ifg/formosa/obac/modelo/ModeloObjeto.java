@@ -52,6 +52,7 @@ public class ModeloObjeto {
 	private double aceleracaoY;
 	
 	private double posicaoXMetros = 0;	//Posicao em Metros
+	private double posicaoInicialYM = 0;
 	private double posicaoYMetros = 0;
 	
 	private double posFinalXMetros = 0;//Posição final do objeto em metros no eixo X
@@ -133,5 +134,7 @@ public class ModeloObjeto {
 			cpi.mudaValorPosFinalX(this.posFinalXMetros*-1);
 		else
 			cpi.mudaValorPosFinalX(this.posFinalXMetros);
-	}	
+	}
+	public double getPosicaoInicialYM() {return posicaoInicialYM;}
+	public void setPosicaoInicialYM(double posicaoInicialYM) {this.posicaoInicialYM = posicaoInicialYM;}
 }
