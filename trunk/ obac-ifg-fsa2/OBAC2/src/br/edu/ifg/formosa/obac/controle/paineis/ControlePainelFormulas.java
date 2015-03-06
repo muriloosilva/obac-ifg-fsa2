@@ -380,25 +380,6 @@ public class ControlePainelFormulas {
 		vpf.repaint();
 	}
 
-	// private void configuracaoColisao(){
-	// vpf.setPVInicial(true);
-	// vpf.setPFNormal(true);
-	// vpf.setPAtrito(true);
-	// vpf.setPAceleracao(true);
-	// vpf.setPPosFinal(true);
-	// vpf.setPTempo(true);
-	// vpf.setPNovaV(true);
-	// vpf.setPNovaPos(true);
-	// vpf.setPColisao(true);
-	// vpf.setPNovaPosColisao(true);
-	// vpf.setpAlcanceTotalHorizontal(false);
-	// vpf.setpAlcanceTotalVertical(false);
-	// vpf.setpMovimentoHorizontal(false);
-	// vpf.setpMovimentoVertical(false);
-	//
-	// vpf.modificaPTempo(false);
-	// vpf.repaint();
-	// }
 	private void configuracaoLancamentoObliquo() {
 		vpf.setPVInicial(false);
 		vpf.setPFNormal(false);
@@ -438,4 +419,24 @@ public class ControlePainelFormulas {
 		vpf.modificaPTempo(false);
 		vpf.repaint();
 	}
+	
+	// private void configuracaoColisao(){
+		// vpf.setPVInicial(true);
+		// vpf.setPFNormal(true);
+		// vpf.setPAtrito(true);
+		// vpf.setPAceleracao(true);
+		// vpf.setPPosFinal(true);
+		// vpf.setPTempo(true);
+		// vpf.setPNovaV(true);
+		// vpf.setPNovaPos(true);
+		// vpf.setPColisao(true);
+		// vpf.setPNovaPosColisao(true);
+		// vpf.setpAlcanceTotalHorizontal(false);
+		// vpf.setpAlcanceTotalVertical(false);
+		// vpf.setpMovimentoHorizontal(false);
+		// vpf.setpMovimentoVertical(false);
+		//
+		// vpf.modificaPTempo(false);
+		// vpf.repaint();
+	// }
 }
