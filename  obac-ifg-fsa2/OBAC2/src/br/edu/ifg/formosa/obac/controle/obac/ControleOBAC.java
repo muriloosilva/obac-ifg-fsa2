@@ -166,9 +166,6 @@ public class ControleOBAC {
 			cP = new ControlePropulsao(vPI, vPS, mA, vPC, mPC, this);
 			
 		//Repintar Applet
-			vPC.getCsPropulsao().setSelectedIndex(2);
-			vPC.getCtObjetoMassa().setText("10");
-			vPC.getdObjetoCoeficienteRestituicao().setValue(68);
 			obac.repaint();
 	}
 	
