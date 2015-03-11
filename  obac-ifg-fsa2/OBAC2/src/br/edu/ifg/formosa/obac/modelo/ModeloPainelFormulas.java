@@ -23,9 +23,15 @@ public class ModeloPainelFormulas {
 		//Nova Posição
 		public static String equaHorariaAbscissa = "s=s0+(v0*t)+((a*t²)/2)";
 		
+		
+		//Queda Livre
+			public static String velocidadeColisaoQL = "V0=V*e";
+		
 		//Colisão
-			//Colisão
-			public static String colisao ="Va'=((Va*(Ma-Mb*e))/(Ma-Mb))"; 
+			//Colisão c/ Muro
+			public static String colisao ="Va'=((Va*(Ma-Mb*e))/(Ma-Mb))";
+			//Colisão QL
+			public static String colisaoQL ="V'=V*e";
 			//Velocidade pós colisão - Equação de Torricceli
 			public static String equaTorricceli = "V²=V0²+2*a*ΔS\nV=√(V0²+2*a*ΔS)";
 		
