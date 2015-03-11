@@ -218,23 +218,34 @@ public class ControlePainelFormulas {
 		return s;
 	}
 
-	// Colisão
-	public String colisao(double va, double ma, double mb, double e) {
+	//Impacto QL
+	public String colisao(double va, double e) {
 		va = UtilidadeArredondamento.arredondamento(2, va);
-		ma = UtilidadeArredondamento.arredondamento(2, ma);
-		mb = UtilidadeArredondamento.arredondamento(2, mb);
 		e = UtilidadeArredondamento.arredondamento(2, e);
-		// Va'=((Va*(Ma-Mb*e))/(Ma-Mb))
-		String s = ModeloPainelFormulas.colisao + "\n";
-		s += "Va'=((" + va + "*(" + ma + "-" + mb + "*" + e + "))/(" + ma + "-"
-				+ mb + "))\n";
-		s += "Va'=((" + va + "*(" + ma + "-" + (mb * e) + "))/" + (ma - mb)
-				+ ")\n";
-		s += "Va'=((" + va + "*" + (ma - (mb * e)) + ")/" + (ma - mb) + ")\n";
-		s += "Va'=(" + (va * (ma - (mb * e))) + "/" + (ma - mb) + ")\n";
-		s += "Va'=" + ((va * (ma - (mb * e))) / (ma - mb));
+		// V'=V*e
+		String s = ModeloPainelFormulas.colisaoQL + "\n";
+		s += "V'="+va +" * " +e +"\n";
+		s += "V'="+(va*e) +"\n";
 		return s;
 	}
+	
+	// Colisão com Muro
+//	public String colisao(double va, double ma, double mb, double e) {
+//		va = UtilidadeArredondamento.arredondamento(2, va);
+//		ma = UtilidadeArredondamento.arredondamento(2, ma);
+//		mb = UtilidadeArredondamento.arredondamento(2, mb);
+//		e = UtilidadeArredondamento.arredondamento(2, e);
+//		// Va'=((Va*(Ma-Mb*e))/(Ma-Mb))
+//		String s = ModeloPainelFormulas.colisao + "\n";
+//		s += "Va'=((" + va + "*(" + ma + "-" + mb + "*" + e + "))/(" + ma + "-"
+//				+ mb + "))\n";
+//		s += "Va'=((" + va + "*(" + ma + "-" + (mb * e) + "))/" + (ma - mb)
+//				+ ")\n";
+//		s += "Va'=((" + va + "*" + (ma - (mb * e)) + ")/" + (ma - mb) + ")\n";
+//		s += "Va'=(" + (va * (ma - (mb * e))) + "/" + (ma - mb) + ")\n";
+//		s += "Va'=" + ((va * (ma - (mb * e))) / (ma - mb));
+//		return s;
+//	}
 
 	// Equação de Torricceli
 	public String equTorricceli(double v0, double a, double deltaS) {
@@ -244,7 +255,7 @@ public class ControlePainelFormulas {
 		double num1, num2;
 		// V = √(V0^2 + 2 * a * ΔS)
 		String s = ModeloPainelFormulas.equaTorricceli + "\n";
-		s += "V = " + "(" + v0 + "² + 2 *" + a + " * Δ" + deltaS + ")\n";
+		s += "V = " + "(" + v0 + "² + 2 *" + a + " * " + deltaS + ")\n";
 		num1 = UtilidadeArredondamento.arredondamento(2, (v0 * v0));
 		num2 = UtilidadeArredondamento.arredondamento(2, (a * deltaS));
 		s += "V = (" + num1 + " + 2 *" + num2 + ")\n";
@@ -260,13 +271,12 @@ public class ControlePainelFormulas {
 		v = UtilidadeArredondamento.arredondamento(2, v);
 		angulo = UtilidadeArredondamento.arredondamento(2, angulo);
 		g = UtilidadeArredondamento.arredondamento(2, g);
-
 		// t=(2*v*sen(θ))/g)
 		String s = ModeloPainelFormulas.tempoTotal + "\n";
 		s += "t Total = ((2 * " + v + " * sen(" + angulo + "))/" + g + ")\n";
 		s += "t Total = ((2 * " + v + " * " + Math.sin(angulo) + ")/" + g
 				+ ")\n";
-		s += "t Total = ((2 * " + (v * Math.sin(angulo)) + ")/" + g + ")\n";
+		s += "t Total = ((2 * " + (v * Math.sin(angulo)) + ")/" + g + ")\n";		
 		s += "t Total = (" + (2 * (v * Math.sin(angulo))) + "/" + g + ")\n";
 		s += "t Total = " + ((2 * (v * Math.sin(angulo))) / g);
 		return s;
