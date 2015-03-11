@@ -16,7 +16,7 @@ public class ControlePainelInformacao {
 		//Gravidade
 		public void mudaValorGravidade(double valor){vpi.getrGravidadeValor().setText("" + UtilidadeArredondamento.arredondamento(1, valor));}
 		//Coeficiente de Atrito
-		public void mudaValorCoefAtrito(double valor){vpi.getrCoefAtritoValor().setText("" + UtilidadeArredondamento.arredondamento(1, valor));}
+		public void mudaValorCoefAtrito(double valor){vpi.getrCoefAtritoValor().setText("" + UtilidadeArredondamento.arredondamento(2, valor));}
 		//Aceleração
 		public void mudaValorAceleracao(double valor){vpi.getrAceleracaoValor().setText("" + UtilidadeArredondamento.arredondamento(1, valor));}
 		//Posição Final X
