@@ -132,9 +132,14 @@ public class ControleFormulasObjeto {
 		if(v<0)	ma.getmO().setVelocidade(0);
 		else 	ma.getmO().setVelocidade(Math.sqrt(v));
 		//Manda para o painel de fórmulas
-//Criar esquema para ser usado em dois paineis (normal e pos colisão)
-		vpf.getAtNovaV().setText(
-				cpf.equTorricceli(ma.getmO().getVelocidadeInicial(), ma.getmO().getAceleracao(), ma.getmO().getPosicaoXMetros()));
+		//Criar esquema para ser usado em dois paineis (normal e pos colisão)
+		vpf.getAtNovaV().setText(cpf.equTorricceli(ma.getmO().getVelocidadeInicial(), ma.getmO().getAceleracao(), ma.getmO().getPosicaoXMetros()));
+	}
+	
+	//Velociade de retorno pós impacto da QL
+	public void impactoQL(){
+		ma.getmO().setVelocidadeInicial(ma.getmO().getVelocidade()*ma.getmO().getCoefRestituicao());
+//		vpf.getAt
 	}
 	
 	//Calcula coeficiente de restituição
