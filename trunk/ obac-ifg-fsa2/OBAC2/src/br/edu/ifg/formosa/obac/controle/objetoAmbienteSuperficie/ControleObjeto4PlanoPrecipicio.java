@@ -16,8 +16,8 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 	private boolean iniciouPrecipicio = false;
 	private boolean continuar = true;///Variável usada para pausar a simulação
 	private double posInicialXQueda = 0;
-	private double tempoLocal = 0;
 	private double incrementoQueda = 0;
+	public static double tempoLocal = 0;
 	private Thread t = null;//Thread
 	//Variáveis do OBAC
 	//-----Modelos
@@ -100,11 +100,9 @@ public class ControleObjeto4PlanoPrecipicio implements ControleObjeto0Generico, 
 							iniciouPrecipicio = true;
 						}						
 						
-						ma.getmO().setPosicaoXMetros(ma.getmO().getVelocidadeInicial() * tempoLocal);
-						
-						ma.getmO().setVelocidadeY(ma.getGravSelecionada() * ma.getTempoAtual());
-						ma.getmO().setPosicaoYMetros(ma.getmO().getVelocidadeY() * ma.getTempoAtual() * 0.5);
-						
+						cfo.posicaoXPEP();
+						cfo.velocidadeYPEP();						
+						cfo.posicaoYPEP();
 						
 						ma.getmO().setPosicaoXPx(UtilidadeConvercoesEscala.metroParaPixelH(ma.getmEH(), ma.getmO().getPosicaoXMetros()));
 						ma.getmO().setPosicaoYPx(UtilidadeConvercoesEscala.metroParaPixelV(ma.getmEV(), ma.getmO().getPosicaoYMetros()));
