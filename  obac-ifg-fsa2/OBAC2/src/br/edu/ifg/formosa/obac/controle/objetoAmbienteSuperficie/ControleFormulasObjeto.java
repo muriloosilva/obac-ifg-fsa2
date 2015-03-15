@@ -126,6 +126,24 @@ public class ControleFormulasObjeto {
 				cpf.novaPosicao(0, ma.getmO().getVelocidadeInicial(), ma.getTempoAtual(), ma.getmO().getAceleracao()));
 	}
 	
+	//Calcula a posição X PEP na queda
+	public void posicaoXPEP(){
+		ma.getmO().setPosicaoXMetros(ma.getmO().getVelocidadeInicial() * ControleObjeto4PlanoPrecipicio.tempoLocal);
+		//Sx = V * t
+	}
+	
+	//Calcula velocidade em Y PEP
+	public void velocidadeYPEP(){
+		ma.getmO().setVelocidadeY(ma.getGravSelecionada() * ma.getTempoAtual());
+		//Vy = g * t;
+	}
+	
+	//Calcula a posição Y PEP na queda
+	public void posicaoYPEP(){
+		ma.getmO().setPosicaoYMetros(ma.getmO().getVelocidadeY() * ma.getTempoAtual() * 0.5);
+		//Sy = (Vy*t)/2
+	}
+	
 	//Velocidade após colisão do objeto - V²=V0^2+2*a*ΔS
 	public void calculaVelocidadeTorricelli(double posicaoM){
 		double v=((ma.getmO().getVelocidadeInicial()*ma.getmO().getVelocidadeInicial())+(2*ma.getmO().getAceleracao()*posicaoM));
